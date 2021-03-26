@@ -1,0 +1,84 @@
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] #wrapper #content-wrapper {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}
+
+[data-theme="dark"] .card {
+  background-color: #303030 ;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-header {
+  background-color: #000000;
+  border-bottom: 1px solid #000000;
+}
+
+[data-theme="dark"] .card-body {
+  background-color: #303030 ;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+[data-theme="dark"] .modal-content {
+  background-color: #303030;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .col {
+  background-color: #303030;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .form-control {
+  background-color: #303030 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .custom-file-input {
+  background-color: #303030;
+  color: #303030  !important;
+}
+
+[data-theme="dark"] .page-link {
+background-color: #303030 !important;
+border: 1px solid #303030 !important;
+}
+
+[data-theme="dark"] #wrapper #content-wrapper {
+  background-color: #303030;
+ 
+  }
+
+  
+[data-theme="dark"] .hr {
+  border-top:  #ffffff;
+  }
+
+  /* [data-theme="dark"] .form-control:disabled, .form-control[readonly] {
+    background-color: #303030;
+    opacity: 1;
+    } */
+    
+  
+
+
