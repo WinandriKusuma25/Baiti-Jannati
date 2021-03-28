@@ -35,10 +35,10 @@
                                 <label class="custom-control-label" for="donasi_keuangan">Donasi Keuangan</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input value="donasi_non_keuangan" type="radio" id="donasi_non_keuangan"
-                                    name="transaksi" class="custom-control-input">
-                                <label class="custom-control-label" for="donasi_non_keuangan">Donasi Non
-                                    Keuangan</label>
+                                <input value="donasi_non_keuangan" type="radio" id="pengeluaran_donasi" name="transaksi"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="donasi_non_keuangan"> Pengeluaran
+                                    Donasi</label>
                             </div>
                             <?= form_error('transaksi', '<span class="text-danger small">', '</span>'); ?>
                         </div>

@@ -18,7 +18,7 @@ class laporan extends CI_Controller
     public function index()
     {
 
-        $this->form_validation->set_rules('transaksi', 'Transaksi', 'required|in_list[donasi_keuangan,donasi_non_keuangan]');
+        $this->form_validation->set_rules('transaksi', 'Transaksi', 'required|in_list[donasi_keuangan,pengeluaran_donasi]');
         $this->form_validation->set_rules('tanggal', 'Periode Tanggal', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -38,10 +38,10 @@ class laporan extends CI_Controller
             $akhir = date('Y-m-d', strtotime(end($pecah)));
 
             $query = '';
-            if ($table == 'donasi_non_keuangan') {
-                $query = $this->laporan->getDonasiNonKeuangan(null, null, ['mulai' => $mulai, 'akhir' => $akhir]);
+            if ($table == 'pengeluaran_donasi') {
+                $query = $this->laporan->getPengeluaranDonasi(null, null, ['mulai' => $mulai, 'akhir' => $akhir]);
             } else {
-                $query = $this->laporan->getDonasiKeuangan(null, null, ['mulai' => $mulai, 'akhir' => $akhir]);
+                $query = $this->laporan->getPengeluaranDonasi(null, null, ['mulai' => $mulai, 'akhir' => $akhir]);
             }
 
             $this->_cetak($query, $table, $tanggal);
@@ -51,10 +51,10 @@ class laporan extends CI_Controller
     private function _cetak($data, $table_, $tanggal)
     {
         $this->load->library('CustomPDF');
-        $table = $table_ == 'donasi_non_keuangan' ? 'Donasi Non Keuangan' : 'Donasi Keuangan';
+        $table = $table_ == 'pengeluaran_donasi' ? 'Pengeluaran Donasi' : 'Donasi Keuangan';
 
         $pdf = new FPDF();
-        $pdf->AddPage('P', 'Letter');
+        $pdf->AddPage('L', 'Legal');
         $pdf->SetFont('Times', 'B', 16);
         $pdf->Cell(190, 7, 'Laporan ' . $table, 0, 1, 'C');
         $pdf->SetFont('Times', '', 10);
@@ -63,43 +63,55 @@ class laporan extends CI_Controller
 
         $pdf->SetFont('Arial', 'B', 10);
 
-        if ($table_ == 'donasi_non_keuangan') :
-            $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
-            $pdf->Cell(25, 7, 'Nama', 1, 0, 'C');
-            $pdf->Cell(35, 7, 'Penerima', 1, 0, 'C');
-            $pdf->Cell(55, 7, 'Tgl.Donasi', 1, 0, 'C');
-            $pdf->Cell(40, 7, 'Jenis Donasi', 1, 0, 'C');
-            $pdf->Cell(30, 7, 'Jumlah', 1, 0, 'C');
+        if ($table_ == 'pengeluaran_donasi') :
+            // $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
+            // $pdf->Cell(25, 7, 'Nama', 1, 0, 'C');
+            // $pdf->Cell(35, 7, 'Penerima', 1, 0, 'C');
+            // $pdf->Cell(55, 7, 'Tgl.Donasi', 1, 0, 'C');
+            // $pdf->Cell(40, 7, 'Jenis Donasi', 1, 0, 'C');
+            // $pdf->Cell(30, 7, 'Jumlah', 1, 0, 'C');
             // $pdf->Cell(45, 7, 'Jumlah', 1, 0, 'C');
+            $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
+            $pdf->Cell(25, 7, 'Penanggung Jawab', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'Tgl.Donasi', 1, 0, 'C');
+            $pdf->Cell(95, 7, 'Nominal', 1, 0, 'C');
+            $pdf->Cell(30, 7, 'Keterangan', 1, 0, 'C');
             $pdf->Ln();
 
             $no = 1;
             foreach ($data as $d) {
+                // $pdf->SetFont('Arial', '', 10);
+                // $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
+                // $pdf->Cell(25, 7, $d['nama'], 1, 0, 'C');
+                // $pdf->Cell(35, 7, $d['nama_pengurus'], 1, 0, 'C');
+                // $pdf->Cell(55, 7, $d['tgl_donasi'], 1, 0, 'L');
+                // $pdf->Cell(40, 7, $d['jenis_donasi'], 1, 0, 'L');
+                // $pdf->Cell(30, 7, $d['jumlah'] . ' ' . $d['satuan'], 1, 0, 'C');
+                // $pdf->Ln();
                 $pdf->SetFont('Arial', '', 10);
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-                $pdf->Cell(25, 7, $d['nama'], 1, 0, 'C');
-                $pdf->Cell(35, 7, $d['nama_pengurus'], 1, 0, 'C');
-                $pdf->Cell(55, 7, $d['tgl_donasi'], 1, 0, 'L');
-                $pdf->Cell(40, 7, $d['jenis_donasi'], 1, 0, 'L');
-                $pdf->Cell(30, 7, $d['jumlah'] . ' ' . $d['satuan'], 1, 0, 'C');
+                $pdf->Cell(25, 7, $d['nama_pengurus'], 1, 0, 'C');
+                $pdf->Cell(35, 7, $d['tgl_donasi'], 1, 0, 'C');
+                $pdf->Cell(95, 7, $d['nominal'], 1, 0, 'L');
+                $pdf->Cell(95, 7, $d['keterangan'], 1, 0, 'L');
                 $pdf->Ln();
             }
         else :
             $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
-            $pdf->Cell(25, 7, 'Penerima', 1, 0, 'C');
-            $pdf->Cell(35, 7, 'Nama', 1, 0, 'C');
-            $pdf->Cell(95, 7, 'Nominal', 1, 0, 'C');
-            $pdf->Cell(30, 7, 'Tgl.Donasi', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'Penanggung Jawab', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'Tgl.Pengeluaran', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'Nominal', 1, 0, 'C');
+            $pdf->Cell(70, 7, 'Keterangan', 1, 0, 'C');
             $pdf->Ln();
 
             $no = 1;
             foreach ($data as $d) {
                 $pdf->SetFont('Arial', '', 10);
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-                $pdf->Cell(25, 7, $d['nama_pengurus'], 1, 0, 'C');
-                $pdf->Cell(35, 7, $d['nama'], 1, 0, 'C');
-                $pdf->Cell(95, 7, $d['nominal'], 1, 0, 'L');
-                $pdf->Cell(95, 7, $d['tgl_donasi'], 1, 0, 'L');
+                $pdf->Cell(35, 7, $d['nama_pengurus'], 1, 0, 'C');
+                $pdf->Cell(35, 7, $d['tgl_pengeluaran'], 1, 0, 'C');
+                $pdf->Cell(35, 7, $d['nominal'], 1, 0, 'L');
+                $pdf->Cell(70, 7, $d['keterangan'], 1, 0, 'L');
                 $pdf->Ln();
             }
         endif;
