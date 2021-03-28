@@ -36,6 +36,13 @@
                             <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
+                        <div class=" form-group">
+                            <label for="keterangan">keterangan</label>
+                            <textarea name="keterangan" id="keterangan" cols="50" rows="" class="form-control"
+                                value="<?= set_value('keterangan')  ?>"></textarea>
+                            <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+
                         <button button class="btn btn-primary" id="pay-button">Bayar</button>
                     </form>
 

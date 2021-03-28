@@ -71,7 +71,7 @@ if (
 
     <!-- Nav Item - Dashboard -->
 
-    <li class="nav-item <?= activate_menu('donasi') ?>">
+    <li class="nav-item <?= activate_menu('riwayat_donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('member/riwayat_donasi') ?>">
             <i class="fas fa-fw fa-sticky-note"></i>
             <span>Riwayat Donasi</span></a>

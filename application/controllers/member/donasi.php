@@ -69,25 +69,25 @@ class donasi extends CI_Controller
         );
 
         // Optional
-        $shipping_address = array(
-            'first_name'    => "Obet",
-            'last_name'     => "Supriadi",
-            'address'       => "Manggis 90",
-            'city'          => "Jakarta",
-            'postal_code'   => "16601",
-            'phone'         => "08113366345",
-            'country_code'  => 'IDN'
-        );
+        // $shipping_address = array(
+        //     'first_name'    => "Obet",
+        //     'last_name'     => "Supriadi",
+        //     'address'       => "Manggis 90",
+        //     'city'          => "Jakarta",
+        //     'postal_code'   => "16601",
+        //     'phone'         => "08113366345",
+        //     'country_code'  => 'IDN'
+        // );
 
         // Optional
-        $customer_details = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'email'         => "andri@litani.com",
-            'phone'         => "081122334455",
-            'billing_address'  => $billing_address,
-            'shipping_address' => $shipping_address
-        );
+        // $customer_details = array(
+        //     'first_name'    => "Andri",
+        //     'last_name'     => "Litani",
+        //     'email'         => "andri@litani.com",
+        //     'phone'         => "081122334455",
+        //     'billing_address'  => $billing_address,
+        //     'shipping_address' => $shipping_address
+        // );
 
         // Data yang akan dikirim untuk request redirect_url.
         $credit_card['secure'] = true;
@@ -98,13 +98,13 @@ class donasi extends CI_Controller
         $custom_expiry = array(
             'start_time' => date("Y-m-d H:i:s O", $time),
             'unit' => 'minute',
-            'duration'  => 2
+            'duration'  => 3600
         );
 
         $transaction_data = array(
             'transaction_details' => $transaction_details,
             'item_details'       => $item_details,
-            'customer_details'   => $customer_details,
+            // 'customer_details'   => $customer_details,
             'credit_card'        => $credit_card,
             'expiry'             => $custom_expiry
         );
@@ -118,6 +118,8 @@ class donasi extends CI_Controller
     public function finish()
     {
         $result = json_decode($this->input->post('result_data'), true);
+
+        $keterangan = $this->input->post('keterangan');
         $data = [
             'order_id' => $result['order_id'],
             'gross_amount' => $result['gross_amount'],
@@ -126,11 +128,21 @@ class donasi extends CI_Controller
             'bank' => $result['va_numbers'][0]['bank'],
             'va_number' => $result['va_numbers'][0]['va_number'],
             'pdf_url' => $result['pdf_url'],
-            'status_code' => $result['status_code']
+            'status_code' => $result['status_code'],
+            'keterangan' => $keterangan
         ];
         $simpan = $this->db->insert('transaksi_midtrans', $data);
         if ($simpan) {
-            echo "sukses";
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Transaksi berhasil, Silahkan segera melakukan pembayaran ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('member/riwayat_donasi', 'refresh');
         } else {
             echo "gagal";
         }
