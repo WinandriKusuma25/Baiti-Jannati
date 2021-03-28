@@ -119,4 +119,61 @@ class pengeluarandonasi_model extends CI_Model
             return false;
         }
     }
+
+    public function count($table)
+    {
+        return $this->db->count_all($table);
+    }
+
+    public function chartTransaksiDonasiTunai($bulan)
+    {
+        $like = 'T-TDT-' . date('y') . $bulan;
+        $this->db->like('id_donasi', $like, 'after');
+        return count($this->db->get('transaksi_donasi_tunai')->result_array());
+    }
+
+    public function chartPengeluaranDonasi($bulan)
+    {
+        $like = 'T-PD-' . date('y') . $bulan;
+        $this->db->like('id_pengeluaran', $like, 'after');
+        return count($this->db->get('pengeluaran_donasi')->result_array());
+    }
+
+
+    public function getDateforChart()
+    {
+        $this->db->select('MONTHNAME(tgl_pengeluaran) as month, 
+        SUM(IF(MONTH(tgl_pengeluaran)=MONTH(tgl_pengeluaran) , nominal, 0)) as revenue');
+        $this->db->from('pengeluaran_donasi');
+        $this->db->group_by('tgl_pengeluaran');
+        $this->db->order_by('id_pengeluaran', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getMonth()
+    {
+        $this->db->select('MONTHNAME(tgl_pengeluaran) as month');
+        $this->db->from('pengeluaran_donasi');
+        $this->db->group_by('tgl_pengeluaran');
+        $this->db->order_by('id_pengeluaran', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getStatistics()
+    {
+        $this->db->select('SUM(IF(DAY(tgl_pengeluaran)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
+        SUM(IF(DAY(tgl_pengeluaran)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
+        SUM(IF(MONTH(tgl_pengeluaran)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
+        SUM(IF(MONTH(tgl_pengeluaran)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
+            COUNT(id_pengeluaran) amount, SUM(nominal) nominal');
+        $this->db->from('pengeluaran_donasi');
+        return $this->db->get()->row_array();
+    }
+
+    public function nominalTerbesar()
+    {
+
+        $this->db->select_max('nominal');
+        return $this->db->get('pengeluaran_donasi')->result();
+    }
 }
