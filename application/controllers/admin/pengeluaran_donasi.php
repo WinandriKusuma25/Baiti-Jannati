@@ -47,6 +47,7 @@ class pengeluaran_donasi extends CI_Controller
         // die($startdate . "===" . $enddate);
         $data['title'] = 'Baiti Jannati | Pengeluaran Donasi ';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        // $data['nominal_terbesar'] = $this->pengeluarandonasi_model->nominalTerbesar();
         $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasiFilter(array($startdate, $enddate));
         $data['pengeluaran_donasi_hari'] = $this->pengeluarandonasi_model->countHari();
         $data['pengeluaran_donasi_bulan'] = $this->pengeluarandonasi_model->countBulan();
