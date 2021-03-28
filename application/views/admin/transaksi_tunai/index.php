@@ -30,7 +30,13 @@
             </a>
             <p>
 
-                <!-- Menampikan Data Filter Tanggal -->
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary">Left</button>
+                <button type="button" class="btn btn-primary">Middle</button>
+                <button type="button" class="btn btn-primary">Right</button>
+            </div>
+
+            <!-- Menampikan Data Filter Tanggal -->
 
             <form method="get" action="<?= base_url('admin/donasi_non_keuangan/filter'); ?>">
                 <div class=" form-group row">

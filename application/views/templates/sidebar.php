@@ -66,10 +66,10 @@ if (
     </li>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= activate_menu('pengeluaran') ?>">
-        <a class="nav-link pb-0" href=" <?= base_url('admin/pengeluaran') ?>">
+    <li class="nav-item <?= activate_menu('pengeluaran_donasi') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/pengeluaran_donasi') ?>">
             <i class="fas fa-fw fa-funnel-dollar"></i>
-            <span>Pengeluaran Keuangan</span></a>
+            <span>Pengeluaran Donasi</span></a>
     </li>
 
 
