@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2021 at 10:46 AM
+-- Generation Time: Mar 30, 2021 at 06:24 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -129,6 +129,32 @@ INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengeluaran_donasi`
+--
+
+CREATE TABLE `pengeluaran_donasi` (
+  `id_pengeluaran` int(11) NOT NULL,
+  `id_pengurus` int(11) NOT NULL,
+  `tgl_pengeluaran` date NOT NULL,
+  `nominal` int(128) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengeluaran_donasi`
+--
+
+INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_pengurus`, `tgl_pengeluaran`, `nominal`, `keterangan`) VALUES
+(1, 2, '2021-03-03', 9000, 'Untuk Pembangunan'),
+(3, 9, '2021-03-28', 600000, '<p>untuk santunan anak yatim</p>'),
+(4, 2, '2021-03-28', 90000, '<p>untuk pembangunan</p>'),
+(5, 2, '2021-03-28', 10000, '<p>a</p>'),
+(6, 5, '2021-03-31', 10000, '<p>a</p>'),
+(7, 9, '2021-04-01', 80000, '<p>a</p>');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pengurus`
 --
 
@@ -184,23 +210,27 @@ CREATE TABLE `transaksi_midtrans` (
   `payment_type` varchar(20) NOT NULL,
   `transaction_time` varchar(20) NOT NULL,
   `bank` varchar(20) NOT NULL,
-  `va_number` int(30) NOT NULL,
+  `va_number` varchar(30) NOT NULL,
   `pdf_url` varchar(512) NOT NULL,
-  `status_code` char(3) NOT NULL
+  `status_code` char(3) NOT NULL,
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaksi_midtrans`
 --
 
-INSERT INTO `transaksi_midtrans` (`order_id`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`) VALUES
-(54395835, 1000000, 'bank_transfer', '2021-03-06 16:15:50', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/76ba7819-1d5d-46da-b5c6-1fb89fa1653a/pdf', '201'),
-(853257284, 8000, 'bank_transfer', '2021-03-15 22:49:13', 'bri', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/33ffe4b7-ada7-4a19-a3ef-e0c1141b08b6/pdf', '201'),
-(943371113, 90000, 'bank_transfer', '2021-03-11 12:50:11', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/ff512cba-d9c3-40ad-946d-00f75d29cafe/pdf', '201'),
-(1269349588, 233232, 'bank_transfer', '2020-12-04 12:58:28', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/c584c8eb-c430-4126-9919-012bb069d4a9/pdf', '201'),
-(1457896182, 100000, 'bank_transfer', '2021-03-09 12:02:04', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/5590db96-ae6d-41f4-a1b7-cbc4b873648e/pdf', '201'),
-(1552855403, 90000, 'bank_transfer', '2021-03-07 19:23:12', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/84c93a26-13ef-41b5-8b4d-7ed5d8fbb3db/pdf', '201'),
-(2079383000, 111111, 'bank_transfer', '2020-12-03 23:39:49', 'bca', 2147483647, 'https://app.sandbox.midtrans.com/snap/v1/transactions/39b98f66-ec40-4122-8130-df7d73d02a3d/pdf', '201');
+INSERT INTO `transaksi_midtrans` (`order_id`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
+(54395835, 1000000, 'bank_transfer', '2021-03-06 16:15:50', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/76ba7819-1d5d-46da-b5c6-1fb89fa1653a/pdf', '201', 'aaaaa'),
+(484801864, 70000, 'bank_transfer', '2021-03-29 01:16:36', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/dac25bf5-c7ef-4fe0-a719-62605e474550/pdf', '201', ''),
+(853257284, 8000, 'bank_transfer', '2021-03-15 22:49:13', 'bri', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/33ffe4b7-ada7-4a19-a3ef-e0c1141b08b6/pdf', '201', ''),
+(943371113, 90000, 'bank_transfer', '2021-03-11 12:50:11', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/ff512cba-d9c3-40ad-946d-00f75d29cafe/pdf', '201', ''),
+(1000345545, 90000, 'bank_transfer', '2021-03-29 00:58:52', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3deb33ee-6e43-4569-acb4-2f40faa13ecd/pdf', '201', ''),
+(1269349588, 233232, 'bank_transfer', '2020-12-04 12:58:28', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/c584c8eb-c430-4126-9919-012bb069d4a9/pdf', '201', ''),
+(1457896182, 100000, 'bank_transfer', '2021-03-09 12:02:04', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/5590db96-ae6d-41f4-a1b7-cbc4b873648e/pdf', '201', ''),
+(1552855403, 90000, 'bank_transfer', '2021-03-07 19:23:12', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/84c93a26-13ef-41b5-8b4d-7ed5d8fbb3db/pdf', '201', ''),
+(1664832634, 90000, 'bank_transfer', '2021-03-29 01:45:45', 'bri', '677881841530730613', 'https://app.sandbox.midtrans.com/snap/v1/transactions/d949c10a-25f3-4c98-be4a-3a47e68f7ff1/pdf', '201', 'aaaaaaaaa'),
+(2079383000, 111111, 'bank_transfer', '2020-12-03 23:39:49', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/39b98f66-ec40-4122-8130-df7d73d02a3d/pdf', '201', '');
 
 -- --------------------------------------------------------
 
@@ -257,7 +287,8 @@ INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 (7, 'winandrikusuma27@gmail.com', 'WwJT3v49cYBNaXeWH9juxcLF9icHY6cCPxehLAm5TDk=', 1606835043),
 (8, 'baba@gmail.com', '3tvLouKa8kkQ+6KpbMt1M4Z3UvP81zmmgmT8h+a+M+8=', 1609926876),
 (9, 'baba2@gmail.com', '5tO3e9/8emAPhDm28Ptq9MsJGvs9QA3sierySBruT3Q=', 1609927094),
-(11, 'v@gmail.com', '6XqMz/j0nrcjxLurWWDkboMwhAS9liNKyar/kyKE1uk=', 1615816957);
+(11, 'v@gmail.com', '6XqMz/j0nrcjxLurWWDkboMwhAS9liNKyar/kyKE1uk=', 1615816957),
+(12, 'winandrikusuma27@gmail.com', 'w/Q1IJyoIXBM1Nnue/gdLL1e7zm5qt2E2y2nIO3/qjo=', 1617077988);
 
 --
 -- Indexes for dumped tables
@@ -289,6 +320,13 @@ ALTER TABLE `detail_donasi_tunai`
 --
 ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
+
+--
+-- Indexes for table `pengeluaran_donasi`
+--
+ALTER TABLE `pengeluaran_donasi`
+  ADD PRIMARY KEY (`id_pengeluaran`),
+  ADD KEY `id_pengurus` (`id_pengurus`);
 
 --
 -- Indexes for table `pengurus`
@@ -352,6 +390,12 @@ ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `pengeluaran_donasi`
+--
+ALTER TABLE `pengeluaran_donasi`
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
@@ -379,7 +423,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -402,6 +446,12 @@ ALTER TABLE `berita`
 --
 ALTER TABLE `detail_donasi_tunai`
   ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`);
+
+--
+-- Constraints for table `pengeluaran_donasi`
+--
+ALTER TABLE `pengeluaran_donasi`
+  ADD CONSTRAINT `pengeluaran_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
 -- Constraints for table `pengurus`
