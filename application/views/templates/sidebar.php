@@ -5,7 +5,7 @@
 // // echo $ses['id_role'];
 // die();
 if (
-    $this->session->userdata('id_role') != 1
+    $this->session->userdata('role') != "admin"
 ) {
     redirect('/notFound');
 }

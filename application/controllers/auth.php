@@ -50,7 +50,7 @@ class auth extends CI_Controller
                         'role' => $user['role'],
                     ];
                     $this->session->set_userdata($data);
-                    if ($user['role'] == 'donatur') {
+                    if ($user['role'] == 'admin') {
                         redirect('admin/home');
                     } else {
                         redirect('member/home');

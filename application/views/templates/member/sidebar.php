@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <?php
 if (
-    $this->session->userdata('id_role') != 2
+    $this->session->userdata('role') != "donatur"
 ) {
     redirect('/notFound');
 }
