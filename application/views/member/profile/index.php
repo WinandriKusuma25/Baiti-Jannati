@@ -30,11 +30,11 @@
 
                     <h5 class="card-title text-dark">Nama&nbsp;: <?= $ad->name ?></h5>
                     <h5 class="card-title text-dark">Email &nbsp;: <?= $ad->email ?></h5>
+                    <h5 class="card-title text-dark">Hak Akses &nbsp;: <?= $ad->role ?></h5>
                     <p class="card-text "><small class="text-muted">Tgl.
                             pembuatan,&nbsp;<?= date('d  F Y H:i:s', ($ad->date_created)); ?></small>
+                        <hr>
                         <?php endforeach ?>
-                        <br>
-                        <br>
                         <a href="<?php echo base_url("member/profile/edit"); ?>" class="btn btn-primary"> <i
                                 class="fas fa-pen"></i>&nbsp;Edit</a>
                         <a href="<?php echo base_url("member/Change_Password"); ?>" class="btn btn-primary"> <i

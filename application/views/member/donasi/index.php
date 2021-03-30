@@ -5,49 +5,73 @@
 </head>
 
 
+
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Donasi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Donasi</h1>
+        <small>
+            <div class="text-muted"> Donasi &nbsp; / &nbsp; <a href="<?php echo base_url("member/donasi"); ?>">Tambah
+                    Donasi</a>
+            </div>
+        </small>
     </div>
     <div class="row">
+
         <div class="col">
+            <div class="alert alert-primary" role="alert">
+                <h5 class="alert-heading">Berikut merupakan halaman tambah donasi
+                </h5>
+                <hr>
+                <p> Silahkan memasukkan nominal donasi, donasi Anda sangat berharga buat kami.
+
+            </div>
             <div class="card">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Donasi</h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body border-bottom-primary">
                     <form id="payment-form" method="post" action="<?= site_url() ?>/member/donasi/finish">
                         <input type="hidden" name="result_type" id="result-type" value="">
                         <input type="hidden" name="result_data" id="result-data" value="">
 
-                        <!-- <div class="form-group">
-                            <label for="nama">Keterangan</label>
-                            <input type="text" class="form-control" id="keterangan" name="keterangan"
-                                value="<?= set_value('nama')  ?>">
-                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div> -->
+                        <?php
+                        foreach ($user as $ad) : ?>
+                        <div class="form-group">
+                            <label for="text">Nama</label>
+                            <input type="text" class="form-control" id="name" name="name" readonly
+                                value="<?= $ad->name; ?>">
+                        </div>
+                        <?php endforeach ?>
+
 
                         <div class="form-group">
                             <label for="nama">Nominal</label>
-                            <input type="text" class="form-control" id="nominal" name="nominal"
-                                value="<?= set_value('nominal')  ?>">
+                            <input type="number" class="form-control" id="nominal" name="nominal" min="1"
+                                placeholder="Masukkan nominal Anda" value="<?= set_value('nominal')  ?>">
                             <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
                         <div class=" form-group">
-                            <label for="keterangan">keterangan</label>
-                            <textarea name="keterangan" id="keterangan" cols="50" rows="" class="form-control"
-                                value="<?= set_value('keterangan')  ?>"></textarea>
+                            <label for="keterangan">Berdoa di donasi ini</label>
+                            <textarea placeholder="Masukkan nominal Anda" name="keterangan" id="keterangan" cols="50"
+                                rows="" class="form-control" value="<?= set_value('keterangan')  ?>"> </textarea>
                             <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
-                        <button button class="btn btn-primary" id="pay-button">Bayar</button>
+                        <button button class="btn btn-primary" id="pay-button"> <i
+                                class="fas fa-fw fa-hand-holding-heart"></i>&nbsp;Donasi Sekarang</button>
                     </form>
 
                 </div>
             </div>
+            <p>
+            <p>
+
+
         </div>
     </div>
 </div>

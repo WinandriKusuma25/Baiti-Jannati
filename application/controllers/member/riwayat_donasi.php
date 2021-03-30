@@ -17,11 +17,22 @@ class riwayat_donasi extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Riwayat Donasi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
-        $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtrans();
+        $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtrans($this->session->userdata('email'));
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);
         $this->load->view('member/riwayat_donasi/index', $data);
         $this->load->view('templates/member/footer');
+    }
+    public function detail($order_id)
+    {
+        $data['title'] = 'Baiti Jannati | Detail Riwayat Donasi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
+        $data['transaksi_midtrans'] = $this->midtrans_model->getTransaksiMidtransDetail($order_id);
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('templates/member/sidebar', $data);
+        $this->load->view('templates/member/topbar', $data);
+        $this->load->view('member/riwayat_donasi/detail', $data);
+        $this->load->view('templates/member/footer', $data);
     }
 }

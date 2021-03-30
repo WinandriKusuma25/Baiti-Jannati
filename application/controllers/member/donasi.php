@@ -12,11 +12,15 @@ class donasi extends CI_Controller
         $this->midtrans->config($params);
         $this->load->helper('url');
         $this->load->model('admin/user_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Donasi';
+        $this->form_validation->set_rules('nominal', 'Password', 'required|trim', [
+            'required' => 'nominal tidak boleh kosong !',
+        ]);
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
@@ -29,7 +33,10 @@ class donasi extends CI_Controller
     {
 
         // $keterangan = $this->input->post();
+
         $nominal = $this->input->post('nominal');
+        $id_user = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
 
         // Required
         $transaction_details = array(
@@ -58,15 +65,15 @@ class donasi extends CI_Controller
         $item_details = array($item1_details);
 
         // Optional
-        $billing_address = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'address'       => "Mangga 20",
-            'city'          => "Jakarta",
-            'postal_code'   => "16602",
-            'phone'         => "081122334455",
-            'country_code'  => 'IDN'
-        );
+        // $billing_address = array(
+        //     'first_name'    => "Andri",
+        //     'last_name'     => "Litani",
+        //     'address'       => "Mangga 20",
+        //     'city'          => "Jakarta",
+        //     'postal_code'   => "16602",
+        //     'phone'         => "081122334455",
+        //     'country_code'  => 'IDN'
+        // );
 
         // Optional
         // $shipping_address = array(
@@ -80,14 +87,14 @@ class donasi extends CI_Controller
         // );
 
         // Optional
-        // $customer_details = array(
-        //     'first_name'    => "Andri",
-        //     'last_name'     => "Litani",
-        //     'email'         => "andri@litani.com",
-        //     'phone'         => "081122334455",
-        //     'billing_address'  => $billing_address,
-        //     'shipping_address' => $shipping_address
-        // );
+        $customer_details = array(
+            'first_name'    => $id_user,
+            // 'last_name'     => "Litani",
+            'email'         => $email,
+            // 'phone'         => "081122334455",
+            // 'billing_address'  => $billing_address,
+            // 'shipping_address' => $shipping_address
+        );
 
         // Data yang akan dikirim untuk request redirect_url.
         $credit_card['secure'] = true;
@@ -104,7 +111,7 @@ class donasi extends CI_Controller
         $transaction_data = array(
             'transaction_details' => $transaction_details,
             'item_details'       => $item_details,
-            // 'customer_details'   => $customer_details,
+            'customer_details'   => $customer_details,
             'credit_card'        => $credit_card,
             'expiry'             => $custom_expiry
         );
@@ -120,6 +127,7 @@ class donasi extends CI_Controller
         $result = json_decode($this->input->post('result_data'), true);
 
         $keterangan = $this->input->post('keterangan');
+        $nama = $this->session->userdata('id_user');
         $data = [
             'order_id' => $result['order_id'],
             'gross_amount' => $result['gross_amount'],
@@ -129,7 +137,8 @@ class donasi extends CI_Controller
             'va_number' => $result['va_numbers'][0]['va_number'],
             'pdf_url' => $result['pdf_url'],
             'status_code' => $result['status_code'],
-            'keterangan' => $keterangan
+            'keterangan' => $keterangan,
+            'id_user' => $nama
         ];
         $simpan = $this->db->insert('transaksi_midtrans', $data);
         if ($simpan) {

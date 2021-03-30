@@ -35,12 +35,13 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No.</th>
+                            <th class="text-primary">Order Id</th>
+                            <!-- <th class="text-primary">Nama</th> -->
                             <th class="text-primary">Nominal</th>
                             <th class="text-primary">Tipe Payment</th>
                             <th class="text-primary">Tgl. Transaksi</th>
                             <th class="text-primary">Bank</th>
                             <th class="text-primary">Va Number</th>
-                            <th class="text-primary">Keterangan</th>
                             <th class="text-primary">Status</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
@@ -50,12 +51,13 @@
                         foreach ($transaksi_midtrans as $j) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $j->gross_amount ?></td>
+                            <td><?= $j->order_id ?></td>
+                            <!-- <td><?= $j->name ?></td> -->
+                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <td><?= $j->payment_type ?></td>
                             <td><?= $j->transaction_time ?></td>
                             <td><?= $j->bank ?></td>
                             <td><?= $j->va_number ?></td>
-                            <td><?= $j->keterangan ?></td>
                             <?php if ($j->status_code == "200") : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Sukses</span>
@@ -74,7 +76,7 @@
 
                             <td>
                                 <a class='btn btn-primary'
-                                    href='<?= base_url() . 'member/jabatan/detail/' . $j->order_id ?>'
+                                    href='<?= base_url() . 'member/riwayat_donasi/detail/' . $j->order_id ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
@@ -93,7 +95,7 @@
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a> -->
 
-                                <a href="<?= $j->pdf_url; ?>" target="blank" class='btn btn-success'>Download </a>
+                                <!-- <a href="<?= $j->pdf_url; ?>" target="blank" class='btn btn-success'>Download </a> -->
                             </td>
                         </tr>
                         <?php endforeach ?>

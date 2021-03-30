@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2021 at 06:24 AM
+-- Generation Time: Mar 30, 2021 at 12:15 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -206,6 +206,7 @@ INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tg
 
 CREATE TABLE `transaksi_midtrans` (
   `order_id` int(20) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `gross_amount` int(11) NOT NULL,
   `payment_type` varchar(20) NOT NULL,
   `transaction_time` varchar(20) NOT NULL,
@@ -220,17 +221,20 @@ CREATE TABLE `transaksi_midtrans` (
 -- Dumping data for table `transaksi_midtrans`
 --
 
-INSERT INTO `transaksi_midtrans` (`order_id`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
-(54395835, 1000000, 'bank_transfer', '2021-03-06 16:15:50', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/76ba7819-1d5d-46da-b5c6-1fb89fa1653a/pdf', '201', 'aaaaa'),
-(484801864, 70000, 'bank_transfer', '2021-03-29 01:16:36', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/dac25bf5-c7ef-4fe0-a719-62605e474550/pdf', '201', ''),
-(853257284, 8000, 'bank_transfer', '2021-03-15 22:49:13', 'bri', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/33ffe4b7-ada7-4a19-a3ef-e0c1141b08b6/pdf', '201', ''),
-(943371113, 90000, 'bank_transfer', '2021-03-11 12:50:11', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/ff512cba-d9c3-40ad-946d-00f75d29cafe/pdf', '201', ''),
-(1000345545, 90000, 'bank_transfer', '2021-03-29 00:58:52', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3deb33ee-6e43-4569-acb4-2f40faa13ecd/pdf', '201', ''),
-(1269349588, 233232, 'bank_transfer', '2020-12-04 12:58:28', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/c584c8eb-c430-4126-9919-012bb069d4a9/pdf', '201', ''),
-(1457896182, 100000, 'bank_transfer', '2021-03-09 12:02:04', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/5590db96-ae6d-41f4-a1b7-cbc4b873648e/pdf', '201', ''),
-(1552855403, 90000, 'bank_transfer', '2021-03-07 19:23:12', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/84c93a26-13ef-41b5-8b4d-7ed5d8fbb3db/pdf', '201', ''),
-(1664832634, 90000, 'bank_transfer', '2021-03-29 01:45:45', 'bri', '677881841530730613', 'https://app.sandbox.midtrans.com/snap/v1/transactions/d949c10a-25f3-4c98-be4a-3a47e68f7ff1/pdf', '201', 'aaaaaaaaa'),
-(2079383000, 111111, 'bank_transfer', '2020-12-03 23:39:49', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/39b98f66-ec40-4122-8130-df7d73d02a3d/pdf', '201', '');
+INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
+(22817861, 5, 1, 'bank_transfer', '2021-03-30 16:11:01', 'bca', '67788661935', 'https://app.sandbox.midtrans.com/snap/v1/transactions/87bb78fe-4dd8-4a4c-9a4d-42a2bc9c43d3/pdf', '201', ' 12'),
+(54395835, 5, 1000000, 'bank_transfer', '2021-03-06 16:15:50', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/76ba7819-1d5d-46da-b5c6-1fb89fa1653a/pdf', '201', 'aaaaa'),
+(484801864, 6, 70000, 'bank_transfer', '2021-03-29 01:16:36', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/dac25bf5-c7ef-4fe0-a719-62605e474550/pdf', '201', ''),
+(785845944, 0, 111, 'bank_transfer', '2021-03-30 15:55:50', 'bni', '9886778828020872', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3fb6e4a2-8414-4daa-a62e-2910b77af038/pdf', '201', ' aaa'),
+(853257284, 0, 8000, 'bank_transfer', '2021-03-15 22:49:13', 'bri', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/33ffe4b7-ada7-4a19-a3ef-e0c1141b08b6/pdf', '201', ''),
+(943371113, 0, 90000, 'bank_transfer', '2021-03-11 12:50:11', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/ff512cba-d9c3-40ad-946d-00f75d29cafe/pdf', '201', ''),
+(1000345545, 0, 90000, 'bank_transfer', '2021-03-29 00:58:52', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3deb33ee-6e43-4569-acb4-2f40faa13ecd/pdf', '201', ''),
+(1269349588, 0, 233232, 'bank_transfer', '2020-12-04 12:58:28', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/c584c8eb-c430-4126-9919-012bb069d4a9/pdf', '201', ''),
+(1457896182, 0, 100000, 'bank_transfer', '2021-03-09 12:02:04', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/5590db96-ae6d-41f4-a1b7-cbc4b873648e/pdf', '201', ''),
+(1466533020, 0, 23000, 'bank_transfer', '2021-03-30 15:56:53', 'bni', '9886778865205291', 'https://app.sandbox.midtrans.com/snap/v1/transactions/15a01a71-b744-44ef-9284-35773dad3405/pdf', '201', ' a'),
+(1552855403, 0, 90000, 'bank_transfer', '2021-03-07 19:23:12', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/84c93a26-13ef-41b5-8b4d-7ed5d8fbb3db/pdf', '201', ''),
+(1664832634, 0, 90000, 'bank_transfer', '2021-03-29 01:45:45', 'bri', '677881841530730613', 'https://app.sandbox.midtrans.com/snap/v1/transactions/d949c10a-25f3-4c98-be4a-3a47e68f7ff1/pdf', '201', 'aaaaaaaaa'),
+(2079383000, 0, 111111, 'bank_transfer', '2020-12-03 23:39:49', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/39b98f66-ec40-4122-8130-df7d73d02a3d/pdf', '201', '');
 
 -- --------------------------------------------------------
 
@@ -244,7 +248,7 @@ CREATE TABLE `user` (
   `email` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `id_role` int(1) NOT NULL,
+  `role` enum('admin','donatur') NOT NULL,
   `is_active` enum('aktif','pasif') NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -253,16 +257,16 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `id_role`, `is_active`, `date_created`) VALUES
-(4, 'Admin Jannati', 'andri@gmail.com', 'default1.png', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 1, 'aktif', 1604837683),
-(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 2, 'aktif', 1605162134),
-(6, 'Rudi Harwoko', 'rudi@gmail.com', 'default.png', '$2y$10$DSip5tW6bToxSIeCyvtx4uOiJelod4fq9h0IOf0VVcRZl9uvciY5K', 2, 'pasif', 1605332749),
-(8, 'aaa', 'aaaa@gmail.com', 'default.png', '$2y$10$sQQPnQcXdCj4D3/j8VCMDOvCL7dchQVc5JeebNjI6Q5IsxFcA0Vi.', 2, 'pasif', 1605340036),
-(11, 'Winandri Kusuma', 'winandrikusuma27@gmail.com', 'default.png', '$2y$10$AUSo71s5vzKqpH5ckFWSke0b3aq2idPK3TP2qNqMOk2m4bg37oEFW', 2, 'aktif', 1605340846),
-(12, 'alaba', 'albabaihaki18@gmail.com', 'default.png', '$2y$10$yojJ48ob2GdSyxDjNpE1.ugCFENkdKRX3vPzxgMM5vyRUi36lbfpy', 2, 'pasif', 1606026815),
-(17, 'Hamba Allah', 'v@gmail.com', 'default.png', '$2y$10$BIs1LnvKUOybsPpsA8DWh.L3geQH9nC1T8yufs6YF63MpCGv6Wtie', 2, 'pasif', 1615816957),
-(18, 'Bayu', 'bayugunasar@gamil.com', 'default.png', '$2y$10$/CG3Fv9HyHgd7Kccl2oPWuUU6180UVPQywNArnh4O4sXECI2Ckw.q', 2, 'aktif', 1616693738),
-(19, 'coba', 'coba@gmail.com', 'default.png', '$2y$10$XzHNLjmy6EGLwTfpnK4C.eOdJZOiLxNcdeV7IM2G.Ij/qgIrAOc7i', 2, 'aktif', 0);
+INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`) VALUES
+(4, 'Admin Jannati', 'andri@gmail.com', 'default1.png', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'admin', 'aktif', 1604837683),
+(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134),
+(6, 'Rudi Harwoko', 'rudi@gmail.com', 'default.png', '$2y$10$DSip5tW6bToxSIeCyvtx4uOiJelod4fq9h0IOf0VVcRZl9uvciY5K', 'donatur', 'pasif', 1605332749),
+(8, 'aaa', 'aaaa@gmail.com', 'default.png', '$2y$10$sQQPnQcXdCj4D3/j8VCMDOvCL7dchQVc5JeebNjI6Q5IsxFcA0Vi.', 'donatur', 'pasif', 1605340036),
+(11, 'Winandri Kusuma', 'winandrikusuma27@gmail.com', 'default.png', '$2y$10$AUSo71s5vzKqpH5ckFWSke0b3aq2idPK3TP2qNqMOk2m4bg37oEFW', 'donatur', 'aktif', 1605340846),
+(12, 'alaba', 'albabaihaki18@gmail.com', 'default.png', '$2y$10$yojJ48ob2GdSyxDjNpE1.ugCFENkdKRX3vPzxgMM5vyRUi36lbfpy', 'donatur', 'pasif', 1606026815),
+(17, 'Hamba Allah', 'v@gmail.com', 'default.png', '$2y$10$BIs1LnvKUOybsPpsA8DWh.L3geQH9nC1T8yufs6YF63MpCGv6Wtie', 'donatur', 'pasif', 1615816957),
+(18, 'Bayu', 'bayugunasar@gamil.com', 'default.png', '$2y$10$/CG3Fv9HyHgd7Kccl2oPWuUU6180UVPQywNArnh4O4sXECI2Ckw.q', 'donatur', 'aktif', 1616693738),
+(19, 'coba', 'coba@gmail.com', 'default.png', '$2y$10$XzHNLjmy6EGLwTfpnK4C.eOdJZOiLxNcdeV7IM2G.Ij/qgIrAOc7i', 'donatur', 'aktif', 0);
 
 -- --------------------------------------------------------
 
@@ -347,7 +351,8 @@ ALTER TABLE `transaksi_donasi_tunai`
 -- Indexes for table `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `user`

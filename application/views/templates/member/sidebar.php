@@ -79,8 +79,8 @@ if (
 
     <li class="nav-item <?= activate_menu('donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('member/donasi') ?>">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Donasi</span></a>
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span> Tambah Donasi</span></a>
     </li>
 
     <!-- Divider -->

@@ -35,6 +35,14 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="text" class="col-sm-2 col-form-label">Hak Akses</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="role" name="role" readonly
+                                value="<?= $ad->role; ?>">
+                        </div>
+                    </div>
+
                     <div class=" form-group row">
                         <div class="col-sm-2">Foto</div>
                         <div class="col-sm-10">
