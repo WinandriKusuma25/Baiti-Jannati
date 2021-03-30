@@ -60,6 +60,9 @@
 <script src="<?= base_url(); ?>assets/js/demo/datatables-demo.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/chart.js/Chart.min.js"></script>
 
+<!-- select2 -->
+
+
 <script>
 $('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();

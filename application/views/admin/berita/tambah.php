@@ -1,8 +1,8 @@
 <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/select2/js/select2.min.js"></script>
+<link href="<?= base_url(); ?>assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css">
 <!-- <script src="<?= base_url(); ?>/assets/css/select2.css"></script> -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -97,6 +97,7 @@ CKEDITOR.replace('deskripsi');
 
 <script>
 $(".js-example-placeholder-multiple ").select2({
-    placeholder: "  Pilih Pengurus"
+    placeholder: "  Pilih Pengurus",
+    width: "100%",
 });
 </script>
