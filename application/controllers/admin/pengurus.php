@@ -153,17 +153,26 @@ class pengurus extends CI_Controller
 
         $object = new PHPExcel();
 
+
         $object->getProperties()->setCreator("Baiti jannati");
         $object->getProperties()->setLastModifiedBy("Baiti jannati");
         $object->getProperties()->setTitle("Baiti jannati");
 
-        $object->setActiveSheetIndex(0);
+        //CELL SIZE
+        $object->getActiveSheet()->getColumnDimension('A')->setWidth('10');
+        $object->getActiveSheet()->getColumnDimension('B')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('C')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('D')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('E')->setWidth('35');
 
-        $object->getActiveSheet()->setCellValue('A1', 'No');
-        $object->getActiveSheet()->setCellValue('B1', 'Nama Pengurus');
-        $object->getActiveSheet()->setCellValue('C1', 'Jenis Kelamin');
-        $object->getActiveSheet()->setCellValue('D1', 'Jabatan');
-        $object->getActiveSheet()->setCellValue('E1', 'No. Telepon');
+
+        $object->setActiveSheetIndex(0);
+        $object->getActiveSheet()->setCellValue('A1', 'Data Pengurus Baiti Jannati');
+        $object->getActiveSheet()->setCellValue('A3', 'No');
+        $object->getActiveSheet()->setCellValue('B3', 'Nama Pengurus');
+        $object->getActiveSheet()->setCellValue('C4', 'Jenis Kelamin');
+        $object->getActiveSheet()->setCellValue('D4', 'Jabatan');
+        $object->getActiveSheet()->setCellValue('E4', 'No. Telepon');
 
         $baris = 2;
         $no = 1;

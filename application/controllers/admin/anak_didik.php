@@ -118,6 +118,18 @@ class Anak_Didik extends CI_Controller
 
         $object->setActiveSheetIndex(0);
 
+        //CELL SIZE
+        $object->getActiveSheet()->getColumnDimension('A')->setWidth('10');
+        $object->getActiveSheet()->getColumnDimension('B')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('C')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('D')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('E')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('D')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('E')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('F')->setWidth('35');
+        $object->getActiveSheet()->getColumnDimension('G')->setWidth('35');
+        //  $object->getActiveSheet()->getColumnDimension('E')->setWidth('35');
+
         $object->getActiveSheet()->setCellValue('A1', 'No');
         $object->getActiveSheet()->setCellValue('B1', 'Nama');
         $object->getActiveSheet()->setCellValue('C1', 'Penanggung Jawab');
@@ -125,7 +137,7 @@ class Anak_Didik extends CI_Controller
         $object->getActiveSheet()->setCellValue('E1', 'TTL');
         $object->getActiveSheet()->setCellValue('F1', 'Alamat');
         $object->getActiveSheet()->setCellValue('G1', 'Nama Wali');
-        $object->getActiveSheet()->setCellValue('H1', 'Foto');
+        // $object->getActiveSheet()->setCellValue('H1', 'Foto');
 
         $baris = 2;
         $no = 1;
@@ -140,14 +152,14 @@ class Anak_Didik extends CI_Controller
             $object->getActiveSheet()->setCellValue('F' . $baris, $ad->alamat);
             $object->getActiveSheet()->setCellValue('G' . $baris, $ad->nama_wali);
 
-            $objDrawing = new PHPExcel_Worksheet_Drawing();
-            $objDrawing->setName('Logo');
-            $objDrawing->setDescription('Logo');
-            // echo FCPATH . 'assets/images/anak_didik/' . $ad->foto;
-            // die;
-            $objDrawing->setPath(FCPATH . 'assets/images/anak_didik/' . $ad->foto);
-            $objDrawing->setCoordinates('H' . $baris);
-            $object->getActiveSheet()->setCellValue('H' . $baris, FCPATH . 'assets/images/anak_didik/' . $ad->foto);
+            // $objDrawing = new PHPExcel_Worksheet_Drawing();
+            // $objDrawing->setName('Logo');
+            // $objDrawing->setDescription('Logo');
+            // // echo FCPATH . 'assets/images/anak_didik/' . $ad->foto;
+            // // die;
+            // $objDrawing->setPath(FCPATH . 'assets/images/anak_didik/' . $ad->foto);
+            // $objDrawing->setCoordinates('H' . $baris);
+            // $object->getActiveSheet()->setCellValue('H' . $baris, FCPATH . 'assets/images/anak_didik/' . $ad->foto);
 
             $baris++;
         }
