@@ -20,7 +20,7 @@ if (
     <hr class="sidebar-divider">
     <!-- Heading -->
     <div class="sidebar-heading">
-        Home
+        Beranda
     </div>
 
     <!-- Nav Item - Dashboard -->

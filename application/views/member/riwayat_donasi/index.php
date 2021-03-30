@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No.</th>
-                            <th class="text-primary">Order Id</th>
+                            <!-- <th class="text-primary">Order Id</th> -->
                             <!-- <th class="text-primary">Nama</th> -->
                             <th class="text-primary">Nominal</th>
                             <th class="text-primary">Tipe Payment</th>
@@ -43,7 +43,7 @@
                             <th class="text-primary">Bank</th>
                             <th class="text-primary">Va Number</th>
                             <th class="text-primary">Status</th>
-                            <th class="text-primary">Aksi</th>
+                            <th class="text-primary">Detail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                         foreach ($transaksi_midtrans as $j) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $j->order_id ?></td>
+                            <!-- <td><?= $j->order_id ?></td> -->
                             <!-- <td><?= $j->name ?></td> -->
                             <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <td><?= $j->payment_type ?></td>
@@ -75,7 +75,7 @@
 
 
                             <td>
-                                <a class='btn btn-primary'
+                                <a class=' btn-circle btn-primary'
                                     href='<?= base_url() . 'member/riwayat_donasi/detail/' . $j->order_id ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
