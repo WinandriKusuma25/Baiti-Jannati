@@ -39,8 +39,7 @@
                     <p class="card-text "><small class="text-muted">Tgl.
                             pembuatan,&nbsp;<?= date('d  F Y H:i:s', ($ad->date_created)); ?></small>
                         <?php endforeach ?>
-                        <br>
-                        <br>
+                        <hr>
                         <a href="<?php echo base_url("admin/profile/edit"); ?>" class="btn btn-primary"> <i
                                 class="fas fa-pen"></i>&nbsp;Edit</a>
                         <a href="<?php echo base_url("admin/Change_Password"); ?>" class="btn btn-primary"> <i

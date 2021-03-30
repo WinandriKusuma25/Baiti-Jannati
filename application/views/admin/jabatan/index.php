@@ -29,7 +29,7 @@
             <p>
 
             <div class="table-responsive">
-                Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?>
+                <b>Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?></b>
                 <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
                     cellspacing="0">
                     <thead>
