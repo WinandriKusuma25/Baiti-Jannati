@@ -25,7 +25,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Donatur Anonim</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('id_role' => '2', 'name' => 'Hamba Allah'))->num_rows() ?>
+                                <?php echo $this->db->get_where('user', array('role' => 'donatur', 'name' => 'Hamba Allah'))->num_rows() ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -45,7 +45,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Donatur</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('id_role' => '2'))->num_rows() ?>
+                                <?php echo $this->db->get_where('user', array('role' => 'donatur'))->num_rows() ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -85,7 +85,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Sudah Aktivasi Akun
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('is_active' => 'aktif', 'id_role' => '2'))->num_rows() ?>
+                                <?php echo $this->db->get_where('user', array('is_active' => 'aktif', 'role' => 'donatur'))->num_rows() ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -122,7 +122,7 @@
                             <!-- <th class="text-primary">Picture</th> -->
                             <th class="text-primary">Status</th>
                             <!-- <th class="text-primary">Date Created</th> -->
-                            <th class="text-primary">Detail</th>
+                            <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,18 +140,26 @@
                             </td>
                             <?php else : ?>
                             <td class="project-state">
-                                <span class="badge badge-danger"><?= $usr->is_active ?></span>
+                                <span class="badge badge-danger">belum aktif</span>
                             </td>
                             <?php endif ?>
                             <!-- <td><?= date('d  F Y H:i:s', ($usr->date_created)); ?></td> -->
 
                             <td>
-                                <a class='btn btn-primary'
+                                <a class='btn btn-primary btn-circle'
                                     href='<?= base_url() . 'admin/users/detail/' . $usr->id_user ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
+
+                                <a class='btn btn-warning btn-circle'
+                                    href="<?= base_url() . 'admin/users/edit/' . $usr->id_user ?>">
+                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                </a>
+
                             </td>
+
+
                         </tr>
                         <?php endforeach ?>
                     </tbody>

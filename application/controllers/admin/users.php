@@ -85,4 +85,35 @@ class users extends CI_Controller
             redirect('admin/users', 'refresh');
         }
     }
+
+    public function edit($id_user)
+    {
+
+        $data['users'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
+        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $this->form_validation->set_rules('id_user', 'id_user', 'required|numeric');
+        $this->form_validation->set_rules('is_active', 'is_active', 'required|trim');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Kominfo Batu | Edit Status User';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/users/edit', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->user_model->ubahUser();
+            $this->load->library('session');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Data berhasil diedit ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('admin/users', 'refresh');
+        }
+    }
 }

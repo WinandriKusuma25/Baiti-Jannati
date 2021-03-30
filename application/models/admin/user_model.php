@@ -12,8 +12,8 @@ class user_model extends CI_Model
 
     public function tampilUserSaja()
     {
-        $usersaja = '2';
-        $query = $this->db->order_by('id_user', 'DESC')->get_where('user', array('id_role' => $usersaja));
+        $usersaja = 'donatur';
+        $query = $this->db->order_by('id_user', 'DESC')->get_where('user', array('role' => $usersaja));
         return $query->result();
     }
 
@@ -30,10 +30,20 @@ class user_model extends CI_Model
             'email' => $this->input->post('email', true),
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'image' => 'default.png',
-            'id_role' => 2,
+            'role' => 'donatur',
             'is_active' => 'aktif',
             'date_created' => time(),
         ];
         $this->db->insert('user', $data);
+    }
+
+    public function ubahUser()
+    {
+        $data = [
+            'id_user' => $this->input->post('id_user', true),
+            'is_active' => $this->input->post('is_active', true),
+        ];
+        $this->db->where('id_user', $this->input->post('id_user'));
+        $this->db->update('user', $data);
     }
 }

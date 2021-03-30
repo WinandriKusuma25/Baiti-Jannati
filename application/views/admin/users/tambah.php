@@ -26,7 +26,7 @@
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="name" name="name"
                                 value="<?= set_value('nama')  ?>">
-                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">

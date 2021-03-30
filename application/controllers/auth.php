@@ -47,10 +47,10 @@ class auth extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'email' => $user['email'],
-                        'id_role' => $user['id_role'],
+                        'role' => $user['role'],
                     ];
                     $this->session->set_userdata($data);
-                    if ($user['id_role'] == 1) {
+                    if ($user['role'] == 'donatur') {
                         redirect('admin/home');
                     } else {
                         redirect('member/home');
@@ -122,7 +122,7 @@ class auth extends CI_Controller
                 'email' => htmlspecialchars($email),
                 'image' => 'default.png',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'id_role' =>  2,
+                'role' =>  'donatur',
                 'is_active' => 'pasif',
                 'date_created' => time()
             ];
@@ -258,7 +258,7 @@ class auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('email');
-        $this->session->unset_userdata('id_role');
+        $this->session->unset_userdata('role');
 
         $this->session->set_flashdata(
             'message',
