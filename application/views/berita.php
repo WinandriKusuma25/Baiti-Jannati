@@ -23,7 +23,7 @@
         <div class="container mr-12  wow fadeInUp">
             <div class="row justify-content-center">
                 <?php foreach ($berita as $ad) : ?>
-                <div class="card-page  mr-3 mb-3" style="width:340px; height:510px">
+                <div class="card-page  mr-3 mb-3" style="width:340px; height:530px">
                     <center><img src="<?= base_url('assets/images/berita/') . $ad->foto ?>"
                             style="width:270px; height:300px;">
                         <br>
@@ -35,10 +35,10 @@
                     </center>
                     <div class="text-muted">
                         <center>
+                            <small>Tanggal Kegiatan
+                                :&nbsp;<?= date('d F Y', strtotime($ad->tgl_kegiatan)); ?></small>
                             <h6><?= $ad->judul ?></h6>
-                            <!-- <b>Tanggal Kegiatan
-                                :</b><?= date('d F Y', strtotime($ad->tgl_kegiatan)); ?>
-                            <br> -->
+
                             <!-- <b>Penulis</b>&nbsp;: <?= $ad->nama_pengurus ?>
                             <br> -->
                             <br>

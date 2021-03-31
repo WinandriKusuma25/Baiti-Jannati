@@ -1,6 +1,3 @@
-<div class="nav-link">
-    <div id="darkSwitch"></div>
-</div>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
