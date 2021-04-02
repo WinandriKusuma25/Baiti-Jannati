@@ -3,33 +3,36 @@
 <div class="container-fluid">
     </script>
     <!-- Page Heading -->
+
+    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pengeluaran Donasi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Transaksi Non Tunai</h1>
         <small>
-            <div class="text-muted"> Manajemen Donasi&nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/pengeluaran_donasi"); ?>">
-                    Pengeluaran Donasi </a>
+            <div class="text-muted"> Manajemen Donasi &nbsp;/&nbsp; <a
+                    href="<?php echo base_url("admin/riwayat_donasi"); ?>">Transaksi Non Tunai</a>
             </div>
         </small>
     </div>
-    <?= $this->session->flashdata('message'); ?>
+
     <div class="row">
+
+
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Pengeluaran Hari Ini</div>
+                                Jumlah Pemasukan Hari Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pengeluaran_donasi_hari as $dt) : ?>
+                                <?php foreach ($pemasukan_donasi_hari as $dt) : ?>
                                 Total : <?= $dt ?>
                                 <?php endforeach ?>
                                 <br>
                                 <?php
                                 error_reporting(0);
                                 foreach ($nominal_hari as $total_pemasukkan) {
-                                    $total_hari += $total_pemasukkan->nominal;
+                                    $total_hari += $total_pemasukkan->gross_amount;
                                 }
                                 ?>
 
@@ -45,23 +48,22 @@
         </div>
 
 
-
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Pengeluaran Bulan Ini</div>
+                                Jumlah Pemasukan Bulan Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pengeluaran_donasi_bulan as $dt) : ?>
+                                <?php foreach ($pemasukan_donasi_bulan as $dt) : ?>
                                 Total : <?= $dt ?>
                                 <?php endforeach ?>
                                 <br>
                                 <?php
                                 error_reporting(0);
                                 foreach ($nominal_bulan as $total_pemasukkan) {
-                                    $total_bulan += $total_pemasukkan->nominal;
+                                    $total_bulan += $total_pemasukkan->gross_amount;
                                 }
                                 ?>
 
@@ -78,16 +80,15 @@
         </div>
 
 
-
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Pengeluaran Tahun Ini</div>
+                                Jumlah Pemasukan Tahun Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pengeluaran_donasi_tahun as $dt) : ?>
+                                <?php foreach ($pemasukan_donasi_tahun as $dt) : ?>
                                 Total : <?= $dt ?>
                                 <?php endforeach ?>
 
@@ -95,12 +96,10 @@
                                 <?php
                                 error_reporting(0);
                                 foreach ($nominal_tahun as $total_pemasukkan) {
-                                    $total_tahun += $total_pemasukkan->nominal;
+                                    $total_tahun += $total_pemasukkan->gross_amount;
                                 }
                                 ?>
-
                                 Rp. <?= number_format($total_tahun, 2, ',', '.'); ?>
-
                             </div>
                         </div>
                         <div class="col-auto">
@@ -112,58 +111,16 @@
         </div>
 
 
-
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Keseluruhan Pengeluaran Donasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('pengeluaran_donasi')->num_rows() ?>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pengeluaran Terbesar</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <!-- <?php foreach ($nominal_terbesar as $pmj) : ?>
-                                Rp.<?= number_format($pmj->nominal, 2, ',', '.'); ?>
-                                <?php endforeach ?> -->
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Saldo Total</div>
+                                Total Pemasukan Transaksi Non Tunai</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php foreach ($nominal_all as $na) : ?>
-                                Rp. <?= number_format($na->nominal, 2, ',', '.'); ?>
+                                Rp. <?= number_format($na->gross_amount, 2, ',', '.'); ?>
                                 <?php endforeach ?>
                             </div>
                         </div>
@@ -177,92 +134,95 @@
     </div>
 
 
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data pengeluaran donasi</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data donasi transaksi non tunai</h6>
         </div>
-        <div class=" card-body border-bottom-primary">
-
-            <a class='btn btn-success' href="pengeluaran_donasi/tambah">
+        <div class="card-body border-bottom-primary">
+            <?= $this->session->flashdata('message'); ?>
+            <!-- <a class='btn btn-success' href="jabatan/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>
                     Tambah
                 </span>
-            </a>
+            </a> -->
             <p>
 
-                <!-- Menampikan Data Filter Tanggal -->
-
-            <form method="get" action="<?= base_url('admin/pengeluaran_donasi/filter'); ?>">
-                <div class=" form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <label class="text-primary"><b>Filter Data Berdasarkan Tanggal</b></label>
-                        <br>
-                        <label>Tgl. Mulai</label>
-                        <input type="date" class="form-control form-control-user  border-left-primary" id="startdate"
-                            name="startdate" placeholder="Start Date">
-                        <?= form_error('startdate', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="col-sm-6">
-                        <label></label>
-                        <br>
-                        <br>
-                        <label>Tgl. Akhir</label>
-                        <input type="date" class="form-control form-control-user  border-left-primary" id="enddate"
-                            name="enddate" placeholder="End Date">
-                    </div>
-                </div>
-                <button type="submit" class=" btn btn-primary"><i class="fas fa-filter"></i>&nbsp;Filter</button>
-            </form>
-
             <div class="table-responsive">
+                <!-- Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?> -->
                 <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
                     cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-primary">No</th>
-                            <th class="text-primary">Penanggung Jawab</th>
-                            <th class="text-primary">Tgl. Pengeluaran</th>
+                            <th class="text-primary">No.</th>
+                            <!-- <th class="text-primary">Order Id</th> -->
+                            <th class="text-primary">Nama</th>
                             <th class="text-primary">Nominal</th>
-                            <!-- <th class="text-primary">Keterangan</th> -->
-                            <th class="text-primary">Aksi</th>
+                            <th class="text-primary">Tipe Payment</th>
+                            <th class="text-primary">Tgl. Transaksi</th>
+                            <th class="text-primary">Bank</th>
+                            <th class="text-primary">Va Number</th>
+                            <th class="text-primary">Status</th>
+                            <th class="text-primary">Detail</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        foreach ($pengeluaran_donasi as $dt) : ?>
+                        foreach ($transaksi_midtrans as $j) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $dt->nama_pengurus ?></td>
-                            <td><?= date('d F Y', strtotime($dt->tgl_pengeluaran)); ?></td>
-                            <td>Rp <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
-                            <!-- <td><?= $dt->keterangan ?></td> -->
+                            <!-- <td><?= $j->order_id ?></td> -->
+                            <td><?= $j->name ?></td>
+                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
+                            <td><?= $j->payment_type ?></td>
+                            <td><?= $j->transaction_time ?></td>
+                            <td><?= $j->bank ?></td>
+                            <td><?= $j->va_number ?></td>
+                            <?php if ($j->status_code == "200") : ?>
+                            <td class="project-state">
+                                <span class="badge badge-success">Sukses</span>
+                            </td>
+                            <?php elseif ($j->status_code == "201") : ?>
+                            <td class="project-state">
+                                <span class="badge badge-warning">Pending</span>
+                            </td>
+                            <?php else : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Gagal</span>
+                            </td>
+                            <?php endif ?>
+
 
 
                             <td>
-                                <a class='btn btn-circle btn-primary'
-                                    href='<?= base_url() . 'admin/pengeluaran_donasi/detail/' . $dt->id_pengeluaran ?>'
+                                <a class=' btn-circle btn-primary'
+                                    href='<?= base_url() . 'admin/transaksi_non_tunai/detail/' . $j->order_id ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a class='btn btn-circle btn-warning'
-                                    href="<?= base_url() . 'admin/pengeluaran_donasi/edit/' . $dt->id_pengeluaran ?>">
+                                <!-- <a class='btn btn-warning btn-circle'
+                                    href="<?= base_url() . 'admin/jabatan/edit/' . $j->order_id ?>">
                                     <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 
+                                
+
+
                                 <a href="#modalDelete" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/pengeluaran_donasi/hapus/' . $dt->id_pengeluaran) ?>')"
-                                    class='btn btn-circle btn-danger'>
+                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/jabatan/hapus/' . $j->order_id) ?>')"
+                                    class='btn btn-danger btn-circle'>
                                     <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
+                                </a> -->
+
+                                <!-- <a href="<?= $j->pdf_url; ?>" target="blank" class='btn btn-success'>Download </a> -->
                             </td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
