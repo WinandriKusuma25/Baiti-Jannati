@@ -24,6 +24,8 @@ class transaksitunai_model extends CI_Model
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
+
+
     // public function getDonasiTransaksiTunai($id_detail_donasi)
     // {
     //     $this->db->select('transaksi_donasi_tunai.*, user.name, pengurus.nama_pengurus, detail_donasi_tunai.*');
@@ -67,5 +69,15 @@ class transaksitunai_model extends CI_Model
         $this->db->select('transaksi_donasi_tunai.tgl_donasi');
         $this->db->where('id_donasi', $id);
         return $this->db->get('transaksi_donasi_tunai')->result();
+    }
+
+    //model untuk member
+    public function showDonasiTransaksiTunaiMember($email)
+    {
+
+        $this->db->select('transaksi_donasi_tunai.*, user.name, pengurus.nama_pengurus');
+        $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        return $this->db->get_where('transaksi_donasi_tunai', ['email' => $email])->result();
     }
 }

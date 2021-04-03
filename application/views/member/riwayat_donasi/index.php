@@ -6,17 +6,17 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Riwayat Donasi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Riwayat Donasi Non Tunai</h1>
         <small>
-            <div class="text-muted"> Manajemen Donasi &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("member/riwayat_donasi"); ?>">Riwayat Donasi</a>
+            <div class="text-muted">Donasi &nbsp;/&nbsp; <a
+                    href="<?php echo base_url("member/riwayat_donasi"); ?>">Riwayat Donasi Non Tunai</a>
             </div>
         </small>
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data riwayat donasi</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data riwayat donasi non tunai</h6>
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
@@ -27,6 +27,15 @@
                 </span>
             </a> -->
             <p>
+
+                <!-- <div class="btn-group">
+                <a href="<?php echo base_url("member/riwayat_donasi"); ?>"
+                    class=" btn btn-primary <?= activate_menu('riwayat_donasi') ?>">Donasi Non
+                    Tunai</a>
+                <a href="<?php echo base_url("member/riwayat_donasi_tunai"); ?>" class="btn btn-primary">Donasi
+                    Tunai</a>
+            </div>
+            <p> -->
 
             <div class="table-responsive">
                 <!-- Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?> -->

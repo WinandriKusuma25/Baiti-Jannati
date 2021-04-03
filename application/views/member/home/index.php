@@ -18,7 +18,8 @@
 
         </h4>
         <p>1. Halaman Profil terdapat <b>Edit Profil</b> dan <b>Ubah password</b> sebagai identitas Anda.</p>
-        <p>2. Halaman <b>Riwayat Donasi</b> untuk mengetahui riwayat donasi Anda</p>
+        <p>2. Halaman <b>Riwayat Donasi</b> untuk mengetahui riwayat donasi Anda yang terdiri dari Riwayat <b>Tunai dan
+                Non Tunai</b></p>
         <p>3. Halaman <b>Tambah Donasi</b> untuk menambahkan donasi</p>
         <hr>
         <p class="mb-0">Donasi Anda sangat berharga bagi kami.</p>

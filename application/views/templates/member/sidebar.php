@@ -74,7 +74,13 @@ if (
     <li class="nav-item <?= activate_menu('riwayat_donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('member/riwayat_donasi') ?>">
             <i class="fas fa-fw fa-sticky-note"></i>
-            <span>Riwayat Donasi</span></a>
+            <span>Riwayat Donasi Non Tunai</span></a>
+    </li>
+
+    <li class="nav-item <?= activate_menu('riwayat_donasi_tunai') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('member/riwayat_donasi_tunai') ?>">
+            <i class="fas fa-fw fa-sticky-note"></i>
+            <span>Riwayat Donasi Tunai</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('donasi') ?>">

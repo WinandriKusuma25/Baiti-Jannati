@@ -29,7 +29,7 @@ class transaksi_tunai extends CI_Controller
 
     public function detail($id)
     {
-        $data['title'] = 'Baiti Jannati | Detail Anak Didik';
+        $data['title'] = 'Baiti Jannati | Detail Transaksi Donasi Tunai';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $data['users'] = $this->transaksitunai_model->getTransaksiTunaiUser($id);

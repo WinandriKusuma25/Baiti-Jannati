@@ -1,11 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Riwayat Donasi Non Tunai</h1>
         <small>
             <div class="text-muted">Donasi &nbsp;/&nbsp; <a
                     href="<?php echo base_url("member/riwayat_donasi"); ?>">Detail
-                    Transaksi Donasi</a>
+                    Detail Riwayat Donasi Non Tunai</a>
             </div>
         </small>
     </div>
