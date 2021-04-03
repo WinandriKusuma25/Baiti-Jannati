@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="card-body border-bottom-primary">
-                    <form method="post" action="<?= base_url('admin/anak_didik/tambah'); ?>"
+                    <form method="post" action="<?= base_url('admin/transaksi_tunai/tambah'); ?>"
                         enctype="multipart/form-data">
 
 
@@ -131,7 +131,7 @@
                             <button type="reset" name="reset" class="btn btn-warning "><i
                                     class="fas fa-sync-alt"></i>&nbsp;Reset</button>
 
-                            <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
+                            <a href="<?php echo base_url("admin/transaksi_tunai"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
 
                             <link href="<?= base_url(); ?>assets/dark/dark-mode.css" rel="stylesheet" type="text/css">

@@ -1,171 +1,114 @@
-<?php $no = 1;
-foreach ($transaksi_tunai as $p) : ?>
-<?php if ($p->jenis_donasi == "keuangan") : ?>
-<div class="container-fluid">
-    <!-- Page Heading -->
-
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi Tunai</h1>
-        <?php $no = 1;
-                foreach ($transaksi_tunai as $ad) : ?>
-        <small>
-            <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Transaksi Tunai&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'admin/transaksi_tunai/detail/' . $ad->id_donasi ?>">Detail Transaksi
-                    Tunai</a></div>
-        </small>
-        <?php endforeach ?>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <?= $this->session->flashdata('message'); ?>
-        </div>
-    </div>
-    <div class="card mb-3  border-bottom-primary">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detail Transaksi Tunai</h6>
-        </div>
-        <div class="row no-gutters">
-            <?php foreach ($transaksi_tunai as $dnk) : ?>
-            <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title text-dark"><b>Nama Donatur</b>&nbsp;:
-                        <?= $ad->name ?>
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Penerima </b>
-                        &nbsp;:
-                        <td><?= $dnk->nama_pengurus ?></td>
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Tgl. Donasi</b>
-                        &nbsp;:
-                        <?= $dnk->tgl_donasi ?>
-                        <!-- <?= date('d F Y', strtotime($ad->tgl_lahir)); ?> </h5> -->
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Jenis Donasi</b>&nbsp;:
-                        <?= $dnk->jenis_donasi ?></h5>
-                    <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Nominal</b>&nbsp;:
-                        Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?>
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Keterangan</b>&nbsp;:
-                        <?= $dnk->keterangan ?></h5>
-                    <hr>
-                    </h5>
-
-
-
-
-
-                    <?php endforeach ?>
-                    <p>
-
-                        <a href="<?php echo base_url("admin/transaksi_tunai"); ?>" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<?php else : ?>
 <!-- Begin Page Content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="container-fluid">
+    </script>
     <!-- Page Heading -->
-
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi Tunai</h1>
-        <?php $no = 1;
-                foreach ($transaksi_tunai as $ad) : ?>
+        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi Donasi Tunai</h1>
         <small>
-            <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Transaksi Tunai&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'admin/transaksi_tunai/detail/' . $ad->id_donasi ?>">Detail Transaksi
-                    Tunai</a></div>
-        </small>
-        <?php endforeach ?>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <?= $this->session->flashdata('message'); ?>
-        </div>
-    </div>
-    <div class="card mb-3  border-bottom-primary">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detail Transaksi Tunai</h6>
-        </div>
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <?php foreach ($transaksi_tunai as $dnk) : ?>
-                <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>" class="card-img"
-                    alt="..." width="100px">
+            <div class="text-muted"> Manajemen Donasi&nbsp;/&nbsp; <a
+                    href="<?php echo base_url("admin/transaksi_tunai"); ?>">
+                    Detail Transaksi Donasi Tunai </a>
             </div>
+        </small>
+    </div>
 
-
-            <div class="col-md-8 ">
-                <div class="card-body">
-                    <h5 class="card-title text-dark"><b>Nama Donatur</b>&nbsp;:
-                        <?= $ad->name ?>
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Penerima </b>
-                        &nbsp;:
-                        <td><?= $dnk->nama_pengurus ?></td>
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Tgl. Donasi</b>
-                        &nbsp;:
-                        <?= $dnk->tgl_donasi ?>
-                        <!-- <?= date('d F Y', strtotime($ad->tgl_lahir)); ?> </h5> -->
-                        <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Jenis Donasi</b>&nbsp;:
-                        <?= $dnk->jenis_donasi ?></h5>
-                    <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Kategori</b>&nbsp;:
-                        <?= $dnk->kategori ?></h5>
-                    <hr>
-                    </h5>
-                    <!-- <h5 class="card-title text-dark"><b>Nominal</b>&nbsp;:
-                        <?= $dnk->nominal ?></h5>
-                    <hr>
-                    </h5> -->
-                    <h5 class="card-title text-dark"><b>Jumlah</b>&nbsp;:
-                        <?= $dnk->jumlah ?></h5>
-                    <hr>
-                    </h5>
-                    <h5 class="card-title text-dark"><b>Keterangan</b>&nbsp;:
-                        <?= $dnk->keterangan ?></h5>
-                    <hr>
-                    </h5>
-
-
-
-
-
-                    <?php endforeach ?>
-                    <p>
-
-                        <a href="<?php echo base_url("admin/transaksi_tunai"); ?>" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
-                    </p>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data detail transaksi donasi tunai</h6>
+        </div>
+        <p>
+        <div class="col-xl-6 col-md-6 mb-4">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="tm-0 font-weight-bold text-primary">
+                        Data Penerima dan Donatur : </div>
+                    <div class="h5 mb-0 text-gray-800">
+                        <br>
+                        <?php foreach ($users as $dt) : ?>
+                        Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                        <?= $dt->name ?>
+                        <?php endforeach ?>
+                        <br>
+                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php foreach ($pengurus as $dt) : ?>
+                        <?= $dt->nama_pengurus ?>
+                        <?php endforeach ?>
+                        <br>
+                        <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
+                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $dt->tgl_donasi ?>
+                        <?php endforeach ?>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col mr-3">
+            <div class="tm-0 font-weight-bold text-primary">
+                Rincian donasi sebagai berikut : </div>
+        </div>
+        <div class=" card-body border-bottom-primary">
+            <?= $this->session->flashdata('message'); ?>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
+                    cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-primary">No</th>
+                            <th class="text-primary">Jenis Donasi</th>
+                            <th class="text-primary">Kategori</th>
+                            <!-- <th class="text-primary">Nominal</th> -->
+                            <th class="text-primary">Jumlah</th>
+                            <th class="text-primary">Bukti</th>
+                            <th class="text-primary">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($transaksi_tunai as $dnk) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $dnk->jenis_donasi ?></td>
+                            <td><?= $dnk->kategori ?></td>
+                            <!-- <td><?= $dnk->nominal ?></td> -->
+                            <td><?= $dnk->jumlah ?></td>
+                            <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
+                                    class="img-thumbnail" width="20%"></td>
+                            <td><?= $dnk->keterangan ?></td>
+                        </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+                <a href="<?php echo base_url("admin/transaksi_tunai"); ?>" class="btn btn-primary"> <i
+                        class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+            </div>
+        </div>
     </div>
-
-</div>
-<!-- /.container-fluid -->
-
+    <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
-<?php endif ?>
+</div>
 
-<?php endforeach ?>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Konfirmasi Hapus Data</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin akan menghapus data ini?
+            </div>
+            <div class="modal-footer">
+                <form id="formDelete" action="" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

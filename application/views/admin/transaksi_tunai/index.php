@@ -70,12 +70,6 @@
                             <th class="text-primary">Penerima</th>
                             <th class="text-primary">Nama Donatur</th>
                             <th class="text-primary">Tgl Donasi</th>
-                            <th class="text-primary">Jenis Donasi</th>
-                            <th class="text-primary">Kategori</th>
-                            <th class="text-primary">Nominal</th>
-                            <th class="text-primary">Jumlah</th>
-                            <th class="text-primary">Foto</th>
-                            <th class="text-primary">Keterangan</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
@@ -88,12 +82,6 @@
                             <td><?= $dnk->name ?></td>
                             <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
                             <td><?= $dnk->tgl_donasi ?></td>
-                            <td><?= $dnk->jenis_donasi ?></td>
-                            <td><?= $dnk->kategori ?></td>
-                            <td><?= $dnk->nominal ?></td>
-                            <td><?= $dnk->jumlah ?></td>
-                            <td><?= $dnk->image ?></td>
-                            <td><?= $dnk->keterangan ?></td>
                             <td>
                                 <a class='btn btn-circle btn-primary'
                                     href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'
