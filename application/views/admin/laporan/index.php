@@ -14,6 +14,93 @@
         </small>
     </div>
 
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data rekap laporan donasi</h6>
+        </div>
+        <div class=" card-body border-bottom-primary">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
+                    cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-primary">No</th>
+                            <th class="text-primary">Nama Donatur </th>
+                            <th class="text-primary">Penanggung Jawab</th>
+                            <th class="text-primary">Tanggal</th>
+                            <th class="text-primary">Jenis</th>
+                            <th class="text-primary">Nominal</th>
+
+                            <!-- <th class="text-primary">Keterangan</th> -->
+                            <!-- <th class="text-primary">Aksi</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($pengeluaran_donasi as $dt) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td> --</td>
+                            <td><?= $dt->nama_pengurus ?></td>
+                            <td><?= date('d F Y', strtotime($dt->tgl_pengeluaran)); ?></td>
+                            <td style="color: #FF0000"><b>Pengeluaran</b></td>
+                            <td>Rp <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
+                            <!-- <td><?= $dt->keterangan ?></td> -->
+                        </tr>
+                        <?php endforeach ?>
+                        <?php
+                        foreach ($transaksi_midtrans as $j) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $j->name ?></td>
+                            <td>--</td>
+                            <td><?= $j->transaction_time ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Non Tunai</b></td>
+                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
+                            <td><?= $j->payment_type ?></td>
+
+                            <td><?= $j->bank ?></td>
+                        </tr>
+                        <?php endforeach ?>
+                        <?php
+                        foreach ($transaksi_tunai as $dnk) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $dnk->name ?></td>
+                            <td><?= $dnk->nama_pengurus ?></td>
+                            <td><?= $dnk->tgl_donasi ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Tunai</b></td>
+
+
+                            <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
+
+                        </tr>
+                        <?php endforeach ?>
+                    </tbody>
+
+                    <?php
+                    error_reporting(0);
+                    foreach ($transaksi_midtrans as $total_masuk) {
+                        $nominal_masuk += $total_masuk->gross_amount;
+                    }
+                    foreach ($pengeluaran_donasi as $total_keluar) {
+                        $nominal_keluar += $total_keluar->nominal;
+                    }
+                    $nominal = $nominal_masuk - $nominal_keluar;
+                    ?>
+                    <tr>
+                        <th colspan="2" scope="col">Saldo Total
+                        </th>
+                        <th scope="col">Rp. <?= number_format($nominal, 2, ',', '.'); ?></th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -32,7 +119,8 @@
                             <div class="custom-control custom-radio">
                                 <input value="donasi_keuangan" type="radio" id="donasi_keuangan" name="transaksi"
                                     class="custom-control-input">
-                                <label class="custom-control-label" for="donasi_keuangan">Donasi Keuangan</label>
+                                <label class="custom-control-label" for="donasi_keuangan">Donasi
+                                    Keuangan</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input value="donasi_non_keuangan" type="radio" id="pengeluaran_donasi" name="transaksi"
