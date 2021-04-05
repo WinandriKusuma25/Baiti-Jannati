@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2021 at 08:01 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: 05 Apr 2021 pada 10.24
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `anak_didik`
+-- Struktur dari tabel `anak_didik`
 --
 
 CREATE TABLE `anak_didik` (
@@ -40,7 +39,7 @@ CREATE TABLE `anak_didik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `anak_didik`
+-- Dumping data untuk tabel `anak_didik`
 --
 
 INSERT INTO `anak_didik` (`id_anak_didik`, `id_pengurus`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `nama_wali`, `foto`) VALUES
@@ -55,7 +54,7 @@ INSERT INTO `anak_didik` (`id_anak_didik`, `id_pengurus`, `nama`, `jenis_kelamin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
 CREATE TABLE `berita` (
@@ -68,19 +67,19 @@ CREATE TABLE `berita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`id_berita`, `id_pengurus`, `tgl_kegiatan`, `judul`, `deskripsi`, `foto`) VALUES
 (2, 11, '2021-02-18', ' Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Halo</p>', 'Screenshot_(8).png'),
 (3, 9, '2021-02-25', 'Santunan Anak Yatim Rutin Baiti Jannati lorem ipsum dolor', '<p>Seseorang bisa jadi berkecukupan secara materiil maupun nonmateriil. Akan tetapi, ada pula yang membutuhkan bantuan agar mencukupi kebutuhan sehari-harinya, terutama anak yang kehilangan ayahnya.</p><p>Sebab, dalam keluarga seorang ayah memiliki peranan penting. Ayah berfungsi sebagai kepala keluarga dan bertugas memenuhi kebutuhan hidup anggota keluarganya.</p><p>Lantas, bagaimana jika seorang anak telah kehilangan atau tidak memiliki seorang ayah? Anak yang telah kehilangan ayahnya dikenal di masyarakat sebagai anak yatim.</p><p>Berdasarkan definisi syariat, kata <em>yatim </em>ditujukan kepada mereka yang tidak memiliki ayah ketika berusia anak-anak atau masih dalam keadaan belum balig secara biologis, psikologis, dan sosiologis.</p>', 'anak_yatim.jpg'),
-(8, 9, '2021-02-18', 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target=\"_blank\" href=\"https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09\">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target=\"_blank\" href=\"https://us02web.zoom.us/u/kc3ZnsTPOL\">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png'),
+(8, 9, '2021-02-18', 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target="_blank" href="https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target="_blank" href="https://us02web.zoom.us/u/kc3ZnsTPOL">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png'),
 (10, 5, '2021-03-21', 'tes coba berita baiti jannati ya 123 aaaaaaaaaaaaa', '<p>tes coba</p>', 'windows-10-wallpaper-hd-19.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_donasi_tunai`
+-- Struktur dari tabel `detail_donasi_tunai`
 --
 
 CREATE TABLE `detail_donasi_tunai` (
@@ -95,7 +94,7 @@ CREATE TABLE `detail_donasi_tunai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `detail_donasi_tunai`
+-- Dumping data untuk tabel `detail_donasi_tunai`
 --
 
 INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donasi`, `kategori`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
@@ -106,7 +105,7 @@ INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donas
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
 CREATE TABLE `jabatan` (
@@ -115,7 +114,7 @@ CREATE TABLE `jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
@@ -130,20 +129,31 @@ INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemasukan_non_donasi`
+-- Struktur dari tabel `pemasukan_non_donasi`
 --
 
 CREATE TABLE `pemasukan_non_donasi` (
   `id_pemasukan` int(11) NOT NULL,
   `id_pengurus` int(11) NOT NULL,
+  `tgl_pemasukan` date NOT NULL,
   `nominal` int(11) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `pemasukan_non_donasi`
+--
+
+INSERT INTO `pemasukan_non_donasi` (`id_pemasukan`, `id_pengurus`, `tgl_pemasukan`, `nominal`, `keterangan`) VALUES
+(3, 2, '2021-04-05', 2021, '<p>baju celana sarung</p>'),
+(4, 9, '2021-04-05', 122222, '<p>aaa</p>'),
+(5, 5, '2021-04-05', 9000, '<p>asd</p>'),
+(6, 2, '2021-04-05', 9000, '<p>asd</p>');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengeluaran_donasi`
+-- Struktur dari tabel `pengeluaran_donasi`
 --
 
 CREATE TABLE `pengeluaran_donasi` (
@@ -155,7 +165,7 @@ CREATE TABLE `pengeluaran_donasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengeluaran_donasi`
+-- Dumping data untuk tabel `pengeluaran_donasi`
 --
 
 INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_pengurus`, `tgl_pengeluaran`, `nominal`, `keterangan`) VALUES
@@ -168,7 +178,7 @@ INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_pengurus`, `tgl_pengelua
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengurus`
+-- Struktur dari tabel `pengurus`
 --
 
 CREATE TABLE `pengurus` (
@@ -181,19 +191,19 @@ CREATE TABLE `pengurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengurus`
+-- Dumping data untuk tabel `pengurus`
 --
 
 INSERT INTO `pengurus` (`id_pengurus`, `id_jabatan`, `nama_pengurus`, `jenis_kelamin`, `jabatan`, `no_telp`) VALUES
 (2, 1, 'Sandi Cahyadi', 'L', 'ketua', '08383229874'),
 (5, 6, 'Khoirul Warisin', 'L', 'anggota aktif', '089765234123'),
-(9, 2, 'Mas\'udi Faris', 'L', 'ketua', '087654312345'),
+(9, 2, 'Mas''udi Faris', 'L', 'ketua', '087654312345'),
 (11, 3, 'Ram Alif Pramana', 'L', 'ketua', '083832298748');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi_donasi_tunai`
+-- Struktur dari tabel `transaksi_donasi_tunai`
 --
 
 CREATE TABLE `transaksi_donasi_tunai` (
@@ -204,7 +214,7 @@ CREATE TABLE `transaksi_donasi_tunai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `transaksi_donasi_tunai`
+-- Dumping data untuk tabel `transaksi_donasi_tunai`
 --
 
 INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tgl_donasi`) VALUES
@@ -214,7 +224,7 @@ INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tg
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi_midtrans`
+-- Struktur dari tabel `transaksi_midtrans`
 --
 
 CREATE TABLE `transaksi_midtrans` (
@@ -231,7 +241,7 @@ CREATE TABLE `transaksi_midtrans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `transaksi_midtrans`
+-- Dumping data untuk tabel `transaksi_midtrans`
 --
 
 INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
@@ -241,7 +251,7 @@ INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `paymen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -256,7 +266,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`) VALUES
@@ -273,7 +283,7 @@ INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_token`
+-- Struktur dari tabel `user_token`
 --
 
 CREATE TABLE `user_token` (
@@ -284,7 +294,7 @@ CREATE TABLE `user_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_token`
+-- Dumping data untuk tabel `user_token`
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
@@ -385,120 +395,108 @@ ALTER TABLE `user_token`
 --
 ALTER TABLE `anak_didik`
   MODIFY `id_anak_didik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
   MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
-  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
   MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
   MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
   MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2079383001;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
   MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `anak_didik`
+-- Ketidakleluasaan untuk tabel `anak_didik`
 --
 ALTER TABLE `anak_didik`
   ADD CONSTRAINT `anak_didik_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Constraints for table `berita`
+-- Ketidakleluasaan untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Constraints for table `detail_donasi_tunai`
+-- Ketidakleluasaan untuk tabel `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
   ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`);
 
 --
--- Constraints for table `pemasukan_non_donasi`
+-- Ketidakleluasaan untuk tabel `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
   ADD CONSTRAINT `pemasukan_non_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Constraints for table `pengeluaran_donasi`
+-- Ketidakleluasaan untuk tabel `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
   ADD CONSTRAINT `pengeluaran_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Constraints for table `pengurus`
+-- Ketidakleluasaan untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `jabatan` (`id_jabatan`);
 
 --
--- Constraints for table `transaksi_donasi_tunai`
+-- Ketidakleluasaan untuk tabel `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_2` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Constraints for table `transaksi_midtrans`
+-- Ketidakleluasaan untuk tabel `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
   ADD CONSTRAINT `transaksi_midtrans_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
