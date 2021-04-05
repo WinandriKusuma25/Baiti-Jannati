@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2021 at 12:15 PM
+-- Generation Time: Apr 05, 2021 at 08:01 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -49,7 +49,7 @@ INSERT INTO `anak_didik` (`id_anak_didik`, `id_pengurus`, `nama`, `jenis_kelamin
 (14, 9, 'Dwica Indah Ramayanti', 'P', 'Malang', '2007-07-11', 'RT. 04 RW. 01\r\n', 'Supardi', 'Dwica_Indah_Ramayanti.jpg'),
 (15, 9, 'Mochammad Faril Kurniawan', 'L', 'Malang', '2006-11-11', 'RT. 01\r\nRW. 02\r\n', 'M.Yusuf S', 'Mochammad_Faril_Kurniawan.jpg'),
 (16, 5, 'Mohammad Haidhor Alawy', 'L', 'Malang', '2006-11-11', 'RT. 01 RW. 02\r\n', 'Syamsul Arifin ', 'Mohammad_Haidhor_Alawy.jpg'),
-(17, 5, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', '', 'Aisyah_Rohmatul_Faizah.jpg'),
+(17, 5, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', 'Rudi', 'Aisyah_Rohmatul_Faizah.jpg'),
 (18, 5, 'M. Nazril Habibi', 'L', 'Malang', '2010-11-11', 'RT. 03 RW. 02\r\n', 'Anton Hilmi', 'aaa.jpg');
 
 -- --------------------------------------------------------
@@ -75,7 +75,7 @@ INSERT INTO `berita` (`id_berita`, `id_pengurus`, `tgl_kegiatan`, `judul`, `desk
 (2, 11, '2021-02-18', ' Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Halo</p>', 'Screenshot_(8).png'),
 (3, 9, '2021-02-25', 'Santunan Anak Yatim Rutin Baiti Jannati lorem ipsum dolor', '<p>Seseorang bisa jadi berkecukupan secara materiil maupun nonmateriil. Akan tetapi, ada pula yang membutuhkan bantuan agar mencukupi kebutuhan sehari-harinya, terutama anak yang kehilangan ayahnya.</p><p>Sebab, dalam keluarga seorang ayah memiliki peranan penting. Ayah berfungsi sebagai kepala keluarga dan bertugas memenuhi kebutuhan hidup anggota keluarganya.</p><p>Lantas, bagaimana jika seorang anak telah kehilangan atau tidak memiliki seorang ayah? Anak yang telah kehilangan ayahnya dikenal di masyarakat sebagai anak yatim.</p><p>Berdasarkan definisi syariat, kata <em>yatim </em>ditujukan kepada mereka yang tidak memiliki ayah ketika berusia anak-anak atau masih dalam keadaan belum balig secara biologis, psikologis, dan sosiologis.</p>', 'anak_yatim.jpg'),
 (8, 9, '2021-02-18', 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target=\"_blank\" href=\"https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09\">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target=\"_blank\" href=\"https://us02web.zoom.us/u/kc3ZnsTPOL\">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png'),
-(10, 5, '2021-03-21', 'tes coba berita baiti jannati ya 123', '<p>tes coba</p>', 'windows-10-wallpaper-hd-19.jpg');
+(10, 5, '2021-03-21', 'tes coba berita baiti jannati ya 123 aaaaaaaaaaaaa', '<p>tes coba</p>', 'windows-10-wallpaper-hd-19.jpg');
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,8 @@ CREATE TABLE `detail_donasi_tunai` (
 
 INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donasi`, `kategori`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
 (1, 1, 'non keuangan', 'makanan', 0, 2, 'mi.jpg', 'hgghggh'),
-(2, 2, 'keuangan', '', 10000, 0, '', '');
+(2, 2, 'keuangan', '', 10000, 0, '', ''),
+(3, 1, 'non keuangan', 'a', 0, 2, 'mi.jpg', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,19 @@ INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pemasukan_non_donasi`
+--
+
+CREATE TABLE `pemasukan_non_donasi` (
+  `id_pemasukan` int(11) NOT NULL,
+  `id_pengurus` int(11) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pengeluaran_donasi`
 --
 
@@ -146,7 +160,6 @@ CREATE TABLE `pengeluaran_donasi` (
 
 INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_pengurus`, `tgl_pengeluaran`, `nominal`, `keterangan`) VALUES
 (1, 2, '2021-03-03', 9000, 'Untuk Pembangunan'),
-(3, 9, '2021-03-28', 600000, '<p>untuk santunan anak yatim</p>'),
 (4, 2, '2021-03-28', 90000, '<p>untuk pembangunan</p>'),
 (5, 2, '2021-03-28', 10000, '<p>a</p>'),
 (6, 5, '2021-03-31', 10000, '<p>a</p>'),
@@ -222,19 +235,8 @@ CREATE TABLE `transaksi_midtrans` (
 --
 
 INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
-(22817861, 5, 1, 'bank_transfer', '2021-03-30 16:11:01', 'bca', '67788661935', 'https://app.sandbox.midtrans.com/snap/v1/transactions/87bb78fe-4dd8-4a4c-9a4d-42a2bc9c43d3/pdf', '201', ' 12'),
-(54395835, 5, 1000000, 'bank_transfer', '2021-03-06 16:15:50', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/76ba7819-1d5d-46da-b5c6-1fb89fa1653a/pdf', '201', 'aaaaa'),
-(484801864, 6, 70000, 'bank_transfer', '2021-03-29 01:16:36', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/dac25bf5-c7ef-4fe0-a719-62605e474550/pdf', '201', ''),
-(785845944, 0, 111, 'bank_transfer', '2021-03-30 15:55:50', 'bni', '9886778828020872', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3fb6e4a2-8414-4daa-a62e-2910b77af038/pdf', '201', ' aaa'),
-(853257284, 0, 8000, 'bank_transfer', '2021-03-15 22:49:13', 'bri', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/33ffe4b7-ada7-4a19-a3ef-e0c1141b08b6/pdf', '201', ''),
-(943371113, 0, 90000, 'bank_transfer', '2021-03-11 12:50:11', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/ff512cba-d9c3-40ad-946d-00f75d29cafe/pdf', '201', ''),
-(1000345545, 0, 90000, 'bank_transfer', '2021-03-29 00:58:52', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3deb33ee-6e43-4569-acb4-2f40faa13ecd/pdf', '201', ''),
-(1269349588, 0, 233232, 'bank_transfer', '2020-12-04 12:58:28', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/c584c8eb-c430-4126-9919-012bb069d4a9/pdf', '201', ''),
-(1457896182, 0, 100000, 'bank_transfer', '2021-03-09 12:02:04', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/5590db96-ae6d-41f4-a1b7-cbc4b873648e/pdf', '201', ''),
-(1466533020, 0, 23000, 'bank_transfer', '2021-03-30 15:56:53', 'bni', '9886778865205291', 'https://app.sandbox.midtrans.com/snap/v1/transactions/15a01a71-b744-44ef-9284-35773dad3405/pdf', '201', ' a'),
-(1552855403, 0, 90000, 'bank_transfer', '2021-03-07 19:23:12', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/84c93a26-13ef-41b5-8b4d-7ed5d8fbb3db/pdf', '201', ''),
-(1664832634, 0, 90000, 'bank_transfer', '2021-03-29 01:45:45', 'bri', '677881841530730613', 'https://app.sandbox.midtrans.com/snap/v1/transactions/d949c10a-25f3-4c98-be4a-3a47e68f7ff1/pdf', '201', 'aaaaaaaaa'),
-(2079383000, 0, 111111, 'bank_transfer', '2020-12-03 23:39:49', 'bca', '2147483647', 'https://app.sandbox.midtrans.com/snap/v1/transactions/39b98f66-ec40-4122-8130-df7d73d02a3d/pdf', '201', '');
+(571776600, 19, 90000, 'bank_transfer', '2021-04-02 23:47:08', 'bri', '677889999332323150', 'https://app.sandbox.midtrans.com/snap/v1/transactions/35a2a7d9-fe6e-4ce8-b1ea-ddc8ae141e51/pdf', '200', ' semoga sehat'),
+(1006854895, 5, 90000, 'bank_transfer', '2021-04-02 23:43:23', 'bca', '67788401447', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3ae36a1a-cca0-41b0-a8e6-6cb7a51021b6/pdf', '201', ' semoga berkah');
 
 -- --------------------------------------------------------
 
@@ -292,7 +294,8 @@ INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 (8, 'baba@gmail.com', '3tvLouKa8kkQ+6KpbMt1M4Z3UvP81zmmgmT8h+a+M+8=', 1609926876),
 (9, 'baba2@gmail.com', '5tO3e9/8emAPhDm28Ptq9MsJGvs9QA3sierySBruT3Q=', 1609927094),
 (11, 'v@gmail.com', '6XqMz/j0nrcjxLurWWDkboMwhAS9liNKyar/kyKE1uk=', 1615816957),
-(12, 'winandrikusuma27@gmail.com', 'w/Q1IJyoIXBM1Nnue/gdLL1e7zm5qt2E2y2nIO3/qjo=', 1617077988);
+(12, 'winandrikusuma27@gmail.com', 'w/Q1IJyoIXBM1Nnue/gdLL1e7zm5qt2E2y2nIO3/qjo=', 1617077988),
+(13, 'winandrikusuma27@gmail.com', 'sQgj1hLZ7GDplSUXRhhAI0KBLvCOaH+zUImHLf8hYLs=', 1617342577);
 
 --
 -- Indexes for dumped tables
@@ -324,6 +327,13 @@ ALTER TABLE `detail_donasi_tunai`
 --
 ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
+
+--
+-- Indexes for table `pemasukan_non_donasi`
+--
+ALTER TABLE `pemasukan_non_donasi`
+  ADD PRIMARY KEY (`id_pemasukan`),
+  ADD KEY `id_pengurus` (`id_pengurus`);
 
 --
 -- Indexes for table `pengeluaran_donasi`
@@ -386,13 +396,19 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
-  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `pemasukan_non_donasi`
+--
+ALTER TABLE `pemasukan_non_donasi`
+  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
@@ -428,7 +444,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -453,6 +469,12 @@ ALTER TABLE `detail_donasi_tunai`
   ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`);
 
 --
+-- Constraints for table `pemasukan_non_donasi`
+--
+ALTER TABLE `pemasukan_non_donasi`
+  ADD CONSTRAINT `pemasukan_non_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
+
+--
 -- Constraints for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
@@ -470,6 +492,12 @@ ALTER TABLE `pengurus`
 ALTER TABLE `transaksi_donasi_tunai`
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_2` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
+
+--
+-- Constraints for table `transaksi_midtrans`
+--
+ALTER TABLE `transaksi_midtrans`
+  ADD CONSTRAINT `transaksi_midtrans_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
