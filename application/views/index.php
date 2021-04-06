@@ -314,10 +314,9 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-5 py-3 wow fadeInUp">
                     <h3 class="mb-4 text-primary">Cara Berdonasi <br>Baiti Jannati</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, minus id consectetur
-                        accusantium illum necessitatibus, non quia sit laboriosam aut libero. Maiores neque velit
-                        modi,
-                        mollitia nostrum alias quibusdam et.</p>
+                    <p>Cara Berdonasi Pada Baiti Jannati yaitu pengunjung harus melakukan registrasi terlebih dahulu
+                    untuk menjadi menjadi member. Setelah itu pengunjung Login dan memilih fitur Tambah Donasi dan memasukkan nominal serta
+                    memilih metode pembayaran yang digunakan.</p>
 
                     <!-- <p class="fg-primary fw-medium">Need more helps?</p>
                     <a href="#" class="btn btn-gradient btn-split-icon rounded-pill">
@@ -329,22 +328,17 @@
                         <div class="accordion-item wow fadeInRight">
                             <div class="accordion-trigger" id="headingFour">
                                 <button class="btn collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Payment
-                                    types that won't work</button>
+                                    data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Ada berapa jenis Donasi yang tersedia?</button>
                             </div>
                             <div id="collapse1" class="collapse" aria-labelledby="headingFour"
                                 data-parent="#accordionFAQ">
                                 <div class="accordion-content">
-                                    <p>You can't add these payment methods to Google Pay:</p>
+                                    <p>Ada 3, yaitu :</p>
                                     <ul>
-                                        <li>Wire transfers</li>
-                                        <li>Bank transfers</li>
-                                        <li>Western Union</li>
-                                        <li>Moneygram</li>
-                                        <li>Virtual credit cards (VCC)</li>
-                                        <li>Health savings account (HSA)</li>
-                                        <li>Any escrow type of payment</li>
-                                        <li>Prepaid cards if you use automatic payments</li>
+                                        <li>Keuangan Tunai</li>
+                                        <li>Keuangan Non Tunai</li>
+                                        <li>Non Keuangan</li>
+                                        
                                     </ul>
                                 </div>
                             </div>
