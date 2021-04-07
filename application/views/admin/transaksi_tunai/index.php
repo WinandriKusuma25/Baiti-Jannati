@@ -38,7 +38,7 @@
 
             <!-- Menampikan Data Filter Tanggal -->
 
-            <form method="get" action="<?= base_url('admin/donasi_non_keuangan/filter'); ?>">
+            <form method="get" action="<?= base_url('admin/transaksi_tunai/filter'); ?>">
                 <div class=" form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <label class="text-primary"><b>Filter Data Berdasarkan Tanggal</b></label>

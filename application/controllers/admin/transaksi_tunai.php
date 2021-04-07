@@ -109,7 +109,7 @@ class transaksi_tunai extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/pengeluaran_donasi/index', $data);
+        $this->load->view('admin/transaksi_tunai/index', $data);
         $this->load->view('templates/footer');
     }
 }
