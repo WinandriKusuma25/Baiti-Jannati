@@ -18,6 +18,8 @@ class pengeluaran_donasi extends CI_Controller
     public function index()
     {
 
+        $this->session->unset_userdata('startSession');
+        $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Pengeluaran Donasi';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasi();
@@ -40,15 +42,19 @@ class pengeluaran_donasi extends CI_Controller
 
     public function filter()
     {
-        $this->form_validation->set_rules('startdate', 'startdate', 'required|trim');
-        $this->form_validation->set_rules('enddate', 'enddate', 'required|trim');
-        $startdate = $this->input->get('startdate', TRUE);
-        $enddate = $this->input->get('enddate', TRUE);
+        // $this->form_validation->set_rules('startdate', 'startdate', 'required|trim');
+        // $this->form_validation->set_rules('enddate', 'enddate', 'required|trim');
+        // $startdate = $this->input->get('startdate', TRUE);
+        // $enddate = $this->input->get('enddate', TRUE);
+
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
         // die($startdate . "===" . $enddate);
         $data['title'] = 'Baiti Jannati | Pengeluaran Donasi ';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         // $data['nominal_terbesar'] = $this->pengeluarandonasi_model->nominalTerbesar();
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasiFilter(array($startdate, $enddate));
+        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->filter();
+        // $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasiFilter(array($startdate, $enddate));
         $data['pengeluaran_donasi_hari'] = $this->pengeluarandonasi_model->countHari();
         $data['pengeluaran_donasi_bulan'] = $this->pengeluarandonasi_model->countBulan();
         $data['pengeluaran_donasi_tahun'] = $this->pengeluarandonasi_model->countTahun();

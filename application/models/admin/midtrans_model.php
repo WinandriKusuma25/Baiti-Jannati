@@ -36,6 +36,31 @@ class midtrans_model extends CI_Model
         return $this->db->get_where('transaksi_midtrans', ['order_id' => $order_id])->result();
     }
 
+    public function filter()
+    {
+        $start = $this->input->post('start');
+        $end = $this->input->post('end');
+        if ($this->session->userdata('startSession') == null && $this->session->userdata('endSession') == null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        } else if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null && $start != null && $end != null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        }
+        $stSession = $this->session->userdata('startSession');
+        $enSession =  $this->session->userdata('endSession');
+        $this->db->select('*');
+        $this->db->from('transaksi_midtrans');
+        $this->db->join('user', 'transaksi_midtrans.id_user = user.id_user');
+        $this->db->order_by('transaction_time', "asc");
+        if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
+            $this->db->where("transaksi_midtrans.transaction_time BETWEEN ' $stSession 'AND' $enSession'");
+        } else {
+            $this->db->where("transaksi_midtrans.transaction_time BETWEEN '$start 'AND' $end'");
+        }
+        return $this->db->get()->result();
+    }
+
     public function countHari()
     {
         $query = $this->db->query("SELECT COUNT(*) FROM transaksi_midtrans where transaction_time = CURDATE()    AND status_code = 200

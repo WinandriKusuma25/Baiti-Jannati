@@ -17,6 +17,8 @@ class pemasukan_non_donasi extends CI_Controller
     public function index()
     {
 
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
         $data['title'] = 'Baiti Jannati | Pemasukan Non Donasi';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showPemasukanNonDonasi();
@@ -27,8 +29,6 @@ class pemasukan_non_donasi extends CI_Controller
         $data['nominal_bulan'] = $this->pemasukannondonasi_model->nominalBulan();
         $data['nominal_tahun'] = $this->pemasukannondonasi_model->nominalTahun();
         $data['nominal_all'] = $this->pemasukannondonasi_model->nominalAll();
-        // var_dump($data);
-        // die();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -38,15 +38,13 @@ class pemasukan_non_donasi extends CI_Controller
 
     public function filter()
     {
-        $this->form_validation->set_rules('startdate', 'startdate', 'required|trim');
-        $this->form_validation->set_rules('enddate', 'enddate', 'required|trim');
-        $startdate = $this->input->get('startdate', TRUE);
-        $enddate = $this->input->get('enddate', TRUE);
-        // die($startdate . "===" . $enddate);
+
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
         $data['title'] = 'Baiti Jannati | Pemasukan Non Donasi ';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        // $data['nominal_terbesar'] = $this->pemasukandonasi_model->nominalTerbesar();
-        $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showpemasukanNonDonasiFilter(array($startdate, $enddate));
+        $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->filter();
+        // $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showPemasukanNonDonasi();
         $data['pemasukan_non_donasi_hari'] = $this->pemasukannondonasi_model->countHari();
         $data['pemasukan_non_donasi_bulan'] = $this->pemasukannondonasi_model->countBulan();
         $data['pemasukan_non_donasi_tahun'] = $this->pemasukannondonasi_model->countTahun();

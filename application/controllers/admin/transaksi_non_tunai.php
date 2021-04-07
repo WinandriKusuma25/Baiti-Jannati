@@ -15,9 +15,34 @@ class transaksi_non_tunai extends CI_Controller
 
     public function index()
     {
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtransAll();
+        $data['pemasukan_donasi_hari'] = $this->midtrans_model->countHari();
+        $data['pemasukan_donasi_bulan'] = $this->midtrans_model->countBulan();
+        $data['pemasukan_donasi_tahun'] = $this->midtrans_model->countTahun();
+        $data['nominal_all'] = $this->midtrans_model->nominalAll();
+        $data['nominal_hari'] = $this->midtrans_model->nominalHari();
+        $data['nominal_bulan'] = $this->midtrans_model->nominalBulan();
+        $data['nominal_tahun'] = $this->midtrans_model->nominalTahun();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/transaksi_non_tunai/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function filter()
+    {
+
+
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
+        $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
+        $data['transaksi_midtrans'] = $this->midtrans_model->filter();
         $data['pemasukan_donasi_hari'] = $this->midtrans_model->countHari();
         $data['pemasukan_donasi_bulan'] = $this->midtrans_model->countBulan();
         $data['pemasukan_donasi_tahun'] = $this->midtrans_model->countTahun();

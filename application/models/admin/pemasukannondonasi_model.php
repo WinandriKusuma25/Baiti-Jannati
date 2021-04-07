@@ -101,15 +101,40 @@ class pemasukannondonasi_model extends CI_Model
         return $query->result();
     }
 
-    public function showPemasukanNonDonasiFilter($daterange)
+    public function filter()
     {
-
-        $this->db->select('pemasukan_non_donasi.*, pengurus.nama_pengurus');
+        $start = $this->input->post('start');
+        $end = $this->input->post('end');
+        if ($this->session->userdata('startSession') == null && $this->session->userdata('endSession') == null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        } else if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null && $start != null && $end != null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        }
+        $stSession = $this->session->userdata('startSession');
+        $enSession =  $this->session->userdata('endSession');
+        $this->db->select('*');
+        $this->db->from('pemasukan_non_donasi');
         $this->db->join('pengurus', 'pemasukan_non_donasi.id_pengurus = pengurus.id_pengurus');
-        $this->db->where('tgl_pemasukan >=', $daterange[0]);
-        $this->db->where('tgl_pemasukan <=',  $daterange[1]);
-        return $this->db->get('pemasukan_non_donasi')->result();
+        $this->db->order_by('tgl_pemasukan', "asc");
+        if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
+            $this->db->where("pemasukan_non_donasi.tgl_pemasukan BETWEEN ' $stSession 'AND' $enSession'");
+        } else {
+            $this->db->where("pemasukan_non_donasi.tgl_pemasukan BETWEEN '$start 'AND' $end'");
+        }
+        return $this->db->get()->result();
     }
+
+    // public function showPemasukanNonDonasiFilter($daterange)
+    // {
+
+    //     $this->db->select('pemasukan_non_donasi.*, pengurus.nama_pengurus');
+    //     $this->db->join('pengurus', 'pemasukan_non_donasi.id_pengurus = pengurus.id_pengurus');
+    //     $this->db->where('tgl_pemasukan >=', $daterange[0]);
+    //     $this->db->where('tgl_pemasukan <=',  $daterange[1]);
+    //     return $this->db->get('pemasukan_non_donasi')->result();
+    // }
 
     public function hapusPemasukanNonDonasi($id_pemasukan)
     {
