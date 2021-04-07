@@ -83,7 +83,7 @@ class transaksitunai_model extends CI_Model
 
     public function NominalAll()
     {
-        $this->db->select_sum('nominal');
+        // $this->db->select_sum('nominal');
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
@@ -91,7 +91,7 @@ class transaksitunai_model extends CI_Model
     // 123
     public function countHari()
     {
-        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai where tgl_pemasukan = CURDATE() 
+        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai where tgl_donasi = CURDATE() 
          ");
         return $query->row();
     }
@@ -99,34 +99,34 @@ class transaksitunai_model extends CI_Model
     public function countBulan()
     {
         $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai where  
-                MONTH(tgl_pemasukan) = MONTH(NOW())");
+                MONTH(tgl_donasi) = MONTH(NOW())");
         return $query->row();
     }
 
     public function countTahun()
     {
         $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai where  
-                YEAR(tgl_pemasukan) = YEAR(NOW())");
+                YEAR(tgl_donasi) = YEAR(NOW())");
         return $query->row();
     }
 
     public function nominalHari()
     {
-        $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where tgl_pemasukan = CURDATE()");
+        $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where tgl_donasi = CURDATE()");
         return $query->result();
     }
 
     public function nominalBulan()
     {
         $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where 
-            MONTH(tgl_pemasukan) = MONTH(NOW())");
+            MONTH(tgl_donasi) = MONTH(NOW())");
         return $query->result();
     }
 
     public function nominalTahun()
     {
         $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where 
-            YEAR(tgl_pemasukan) = YEAR(NOW())");
+            YEAR(tgl_donasi) = YEAR(NOW())");
         return $query->result();
     }
 
@@ -134,10 +134,11 @@ class transaksitunai_model extends CI_Model
     public function showTransaksiTunaiFilter($daterange)
     {
 
-        $this->db->select('transaksi_donasi_tunai.*, pengurus.nama_pengurus');
+        $this->db->select('transaksi_donasi_tunai.*, pengurus.nama_pengurus, user.*');
         $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
-        $this->db->where('tgl_pemasukan >=', $daterange[0]);
-        $this->db->where('tgl_pemasukan <=',  $daterange[1]);
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->where('tgl_donasi >=', $daterange[0]);
+        $this->db->where('tgl_donasi <=',  $daterange[1]);
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
@@ -155,19 +156,19 @@ class transaksitunai_model extends CI_Model
 
     public function getMonth()
     {
-        $this->db->select('MONTHNAME(tgl_pemasukan) as month');
+        $this->db->select('MONTHNAME(tgl_donasi) as month');
         $this->db->from('transaksi_donasi_tunai');
-        $this->db->group_by('tgl_pemasukan');
+        $this->db->group_by('tgl_donasi');
         $this->db->order_by('id_pemasukan', 'DESC');
         return $this->db->get()->result_array();
     }
 
     public function getStatistics()
     {
-        $this->db->select('SUM(IF(DAY(tgl_pemasukan)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
-        SUM(IF(DAY(tgl_pemasukan)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
-        SUM(IF(MONTH(tgl_pemasukan)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
-        SUM(IF(MONTH(tgl_pemasukan)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
+        $this->db->select('SUM(IF(DAY(tgl_donasi)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
+        SUM(IF(DAY(tgl_donasi)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
+        SUM(IF(MONTH(tgl_donasi)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
+        SUM(IF(MONTH(tgl_donasi)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
             COUNT(id_pemasukan) amount, SUM(nominal) nominal');
         $this->db->from('pemasukan_nontransaksi_donasi_tunai_donasi');
         return $this->db->get()->row_array();
