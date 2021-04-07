@@ -46,7 +46,7 @@ class pemasukan_non_donasi extends CI_Controller
         $data['title'] = 'Baiti Jannati | Pemasukan Non Donasi ';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         // $data['nominal_terbesar'] = $this->pemasukandonasi_model->nominalTerbesar();
-        $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showpemasukanDonasiFilter(array($startdate, $enddate));
+        $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showpemasukanNonDonasiFilter(array($startdate, $enddate));
         $data['pemasukan_non_donasi_hari'] = $this->pemasukannondonasi_model->countHari();
         $data['pemasukan_non_donasi_bulan'] = $this->pemasukannondonasi_model->countBulan();
         $data['pemasukan_non_donasi_tahun'] = $this->pemasukannondonasi_model->countTahun();

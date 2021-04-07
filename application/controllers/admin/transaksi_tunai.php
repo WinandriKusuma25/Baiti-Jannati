@@ -87,4 +87,29 @@ class transaksi_tunai extends CI_Controller
             }
         }
     }
+
+    public function filter()
+    {
+        $this->form_validation->set_rules('startdate', 'startdate', 'required|trim');
+        $this->form_validation->set_rules('enddate', 'enddate', 'required|trim');
+        $startdate = $this->input->get('startdate', TRUE);
+        $enddate = $this->input->get('enddate', TRUE);
+        // die($startdate . "===" . $enddate);
+        $data['title'] = 'Baiti Jannati | Transaksi Tunai Donasi ';
+        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        // $data['nominal_terbesar'] = $this->transaksitunai_model->nominalTerbesar();
+        $data['transaksi_tunai'] = $this->transaksitunai_model->showTransaksiTunaiFilter(array($startdate, $enddate));
+        $data['transaksi_tunai_hari'] = $this->transaksitunai_model->countHari();
+        $data['transaksi_tunai_bulan'] = $this->transaksitunai_model->countBulan();
+        $data['transaksi_tunai_tahun'] = $this->transaksitunai_model->countTahun();
+        $data['nominal_hari'] = $this->transaksitunai_model->nominalHari();
+        $data['nominal_bulan'] = $this->transaksitunai_model->nominalBulan();
+        $data['nominal_tahun'] = $this->transaksitunai_model->nominalTahun();
+        $data['nominal_all'] = $this->transaksitunai_model->nominalAll();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/pengeluaran_donasi/index', $data);
+        $this->load->view('templates/footer');
+    }
 }
