@@ -15,8 +15,8 @@ class transaksi_non_tunai extends CI_Controller
 
     public function index()
     {
-        $this->session->unset_userdata('startdate');
-        $this->session->unset_userdata('enddate');
+        $this->session->unset_userdata('startSession');
+        $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtransAll();
@@ -38,8 +38,8 @@ class transaksi_non_tunai extends CI_Controller
     {
 
 
-        $this->session->unset_userdata('startdate');
-        $this->session->unset_userdata('enddate');
+        $this->session->unset_userdata('startSession');
+        $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->midtrans_model->filter();

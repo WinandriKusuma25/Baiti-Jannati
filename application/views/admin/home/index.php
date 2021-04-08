@@ -4,14 +4,192 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Beranda</h1>
         <small>
-            <div class="text-muted"> Home&nbsp;/&nbsp; <a href="<?php echo base_url("admin/home"); ?>">
+            <div class="text-muted"><a href="<?php echo base_url("admin/home"); ?>">
                     Beranda </a>
             </div>
         </small>
     </div>
 
+
+    <div class="alert alert-primary" role="alert">
+        <h6 class="alert-heading">Selamat Datang
+            <?php foreach ($user as $usr) : ?>
+            <?= $usr->name ?>
+            <?php endforeach ?>
+            di halaman admin Baiti Jannati
+        </h6>
+    </div>
+
+    <!-- <p class="section-lead">Berikut merupakan rekap donasi tunai </p> -->
+
+    <!-- Content Row -->
     <div class="row">
 
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Anak Didik</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
+                        class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Donatur</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get_where('user', array('role' => 'donatur'))->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <a href="<?php echo base_url("admin/user"); ?>" class="btn btn-primary"> <i
+                        class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Berita</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get_where('berita')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <a href="<?php echo base_url("admin/berita"); ?>" class="btn btn-primary"> <i
+                        class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Pengurus</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get_where('pengurus')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <a href="<?php echo base_url("admin/pengurus"); ?>" class="btn btn-primary"> <i
+                        class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
+            </div>
+        </div>
+
+
+        <!--    
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Daftar Anak Didik</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Daftar Anak Didik</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Daftar Anak Didik</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Daftar Anak Didik</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+
+    <div class="row">
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
@@ -75,193 +253,7 @@
 
 
 
-    <p class="section-lead">Berikut merupakan rekap donasi tunai </p>
 
-    <!-- Content Row -->
-    <div class="row">
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Hari ini</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Bulan ini</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('user')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Tahun ini</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('user')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Earnings (Monthly) Card Example -->
-        <!-- <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Total</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </div>
 

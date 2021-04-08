@@ -120,7 +120,7 @@
             </a>
             <p>
                 <!-- Menampikan Data Filter Tanggal -->
-            <form method="post" action="<?= site_url('admin/pemasukan_non_donasi/filter'); ?>">
+            <form method="post" action="<?= base_url('admin/pemasukan_non_donasi/filter'); ?>">
                 <label class="text-primary"><b>Filter Data Berdasarkan Tanggal</b></label>
                 <div class=" form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">

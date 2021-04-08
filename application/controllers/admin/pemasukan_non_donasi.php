@@ -17,8 +17,8 @@ class pemasukan_non_donasi extends CI_Controller
     public function index()
     {
 
-        $this->session->unset_userdata('startdate');
-        $this->session->unset_userdata('enddate');
+        $this->session->unset_userdata('startSession');
+        $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Pemasukan Non Donasi';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->showPemasukanNonDonasi();
@@ -39,8 +39,8 @@ class pemasukan_non_donasi extends CI_Controller
     public function filter()
     {
 
-        $this->session->unset_userdata('startdate');
-        $this->session->unset_userdata('enddate');
+        $this->session->unset_userdata('startSession');
+        $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Pemasukan Non Donasi ';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
         $data['pemasukan_non_donasi'] = $this->pemasukannondonasi_model->filter();
