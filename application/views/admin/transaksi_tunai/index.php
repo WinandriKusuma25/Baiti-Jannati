@@ -22,7 +22,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Pemasukan Donasi Hari Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pemasukan_donasi_hari as $dt) : ?>
+                                <?php foreach ($transaksi_tunai_hari as $dt) : ?>
                                 <?= $dt ?>
                                 <?php endforeach ?>
                             </div>
@@ -44,7 +44,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Pemasukan Donasi Bulan Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pemasukan_donasi_bulan as $dt) : ?>
+                                <?php foreach ($transaksi_tunai_bulan as $dt) : ?>
                                 <?= $dt ?>
                                 <?php endforeach ?>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Pemasukan Donasi Tahun Ini</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php foreach ($pemasukan_donasi_tahun as $dt) : ?>
+                                <?php foreach ($transaksi_tunai_tahun as $dt) : ?>
                                 <?= $dt ?>
                                 <?php endforeach ?>
                             </div>

@@ -131,15 +131,41 @@ class transaksitunai_model extends CI_Model
     }
 
 
-    public function showTransaksiTunaiFilter($daterange)
-    {
+    // public function showTransaksiTunaiFilter($daterange)
+    // {
 
-        $this->db->select('transaksi_donasi_tunai.*, pengurus.nama_pengurus, user.*');
-        $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+    //     $this->db->select('transaksi_donasi_tunai.*, pengurus.nama_pengurus, user.*');
+    //     $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+    //     $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+    //     $this->db->where('tgl_donasi >=', $daterange[0]);
+    //     $this->db->where('tgl_donasi <=',  $daterange[1]);
+    //     return $this->db->get('transaksi_donasi_tunai')->result();
+    // }
+
+    public function filter()
+    {
+        $start = $this->input->post('start');
+        $end = $this->input->post('end');
+        if ($this->session->userdata('startSession') == null && $this->session->userdata('endSession') == null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        } else if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null && $start != null && $end != null) {
+            $this->session->set_userdata('startSession', $start);
+            $this->session->set_userdata('endSession', $end);
+        }
+        $stSession = $this->session->userdata('startSession');
+        $enSession =  $this->session->userdata('endSession');
+        $this->db->select('*');
+        $this->db->from('transaksi_donasi_tunai');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
-        $this->db->where('tgl_donasi >=', $daterange[0]);
-        $this->db->where('tgl_donasi <=',  $daterange[1]);
-        return $this->db->get('transaksi_donasi_tunai')->result();
+        $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+        $this->db->order_by('tgl_donasi', "asc");
+        if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
+            $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN ' $stSession 'AND' $enSession'");
+        } else {
+            $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN '$start 'AND' $end'");
+        }
+        return $this->db->get()->result();
     }
 
     public function count($table)

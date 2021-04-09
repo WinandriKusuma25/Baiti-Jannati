@@ -36,8 +36,6 @@ class transaksi_non_tunai extends CI_Controller
 
     public function filter()
     {
-
-
         $this->session->unset_userdata('startSession');
         $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
