@@ -13,6 +13,93 @@
         </small>
     </div>
 
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Pemasukan Donasi Hari Ini</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php foreach ($pemasukan_donasi_hari as $dt) : ?>
+                                <?= $dt ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Pemasukan Donasi Bulan Ini</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php foreach ($pemasukan_donasi_bulan as $dt) : ?>
+                                <?= $dt ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Pemasukan Donasi Tahun Ini</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php foreach ($pemasukan_donasi_tahun as $dt) : ?>
+                                <?= $dt ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Keseluruhan Donasi Non Tunai</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $this->db->get_where('transaksi_midtrans', array('status_code' => 200))->num_rows() ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-database fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
