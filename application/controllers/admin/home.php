@@ -11,6 +11,7 @@ class home extends CI_Controller
         parent::__construct();
         $this->load->model('admin/user_model');
         $this->load->model('admin/pengeluarandonasi_model');
+        $this->load->model('admin/pemasukannondonasi_model');
         is_logged_in();
     }
 
@@ -23,6 +24,11 @@ class home extends CI_Controller
         $data['statistics'] = $this->pengeluarandonasi_model->getStatistics();
         $data['chart'] = $this->pengeluarandonasi_model->getDateforChart();
         $data['month'] = $this->pengeluarandonasi_model->getMonth();
+
+        $data['statistics2'] = $this->pemasukannondonasi_model->getStatistics();
+        $data['char2'] = $this->pemasukannondonasi_model->getDateforChart();
+        $data['month2'] = $this->pemasukannondonasi_model->getMonth();
+
 
 
         // $data['donasi_non_keuangan'] = $this->donasinonkeuangan_model->countBulan('donasi_non_keuangan');

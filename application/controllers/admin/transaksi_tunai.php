@@ -13,7 +13,6 @@ class transaksi_tunai extends CI_Controller
         $this->load->model('admin/pengurus_model');
         $this->load->model('admin/user_model');
         $this->load->library('form_validation');
-
     }
 
     public function index()
@@ -22,7 +21,7 @@ class transaksi_tunai extends CI_Controller
         $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Tunai';
         $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['transaksi_tunai'] = $this->transaksitunai_model->showDonasiTransaksiTunaiAll();
+        $data['transaksi_tunai'] = $this->transaksitunai_model->showDonasiTransaksiTunai();
         // $data['transaksi_tunai'] = $this->transaksitunai_model->filter();
         $data['transaksi_tunai_hari'] = $this->transaksitunai_model->countHari();
         $data['transaksi_tunai_bulan'] = $this->transaksitunai_model->countBulan();

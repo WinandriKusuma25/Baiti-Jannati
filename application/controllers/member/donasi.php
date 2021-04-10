@@ -35,8 +35,9 @@ class donasi extends CI_Controller
         // $keterangan = $this->input->post();
 
         $nominal = $this->input->post('nominal');
-        $id_user = $this->session->userdata('id_user');
+        // $id_user =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $email = $this->session->userdata('email');
+        $name =  $this->session->userdata('name');
 
         // Required
         $transaction_details = array(
@@ -88,7 +89,7 @@ class donasi extends CI_Controller
 
         // Optional
         $customer_details = array(
-            'first_name'    => $id_user,
+            'first_name'    => $name,
             // 'last_name'     => "Litani",
             'email'         => $email,
             // 'phone'         => "081122334455",
@@ -143,6 +144,9 @@ class donasi extends CI_Controller
             'va_number' => $result['va_numbers'][0]['va_number'],
             'pdf_url' => $result['pdf_url'],
             'status_code' => $result['status_code'],
+            'fraud_status' => $result['fraud_status'],
+            'payment_code' => $result['payment_code'],
+            'transaction_id' => $result['transaction_id'],
             'keterangan' => $keterangan,
             'id_user' => $nama
         ];

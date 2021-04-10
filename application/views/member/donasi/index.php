@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                             <label for="nama">Nominal</label>
-                            <input type="number" class="form-control" id="nominal" name="nominal" min="1"
+                            <input type="number" class="form-control" id="nominal" name="nominal" min="1" required
                                 placeholder="Masukkan nominal Anda" value="<?= set_value('nominal')  ?>">
                             <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
@@ -87,7 +87,7 @@
 <script type="text/javascript">
 $('#pay-button').click(function(event) {
     event.preventDefault();
-    $(this).attr("disabled", "disabled");
+    // $(this).attr("disabled", "disabled");
 
     //untuk mendapatkan value dari id
     // var keterangan = $("#keterangan").val();
