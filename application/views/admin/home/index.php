@@ -222,7 +222,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header bg-primary py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-white">Rekap Donasi</h6>
+                    <h6 class="m-0 font-weight-bold text-white">Rekap Pemasukan Dan Pengeluaran</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -244,6 +244,15 @@
                         </span>
                         <span class="mr-2">
                             <i class="fas fa-circle text-success"></i> Donasi Non Keuangan
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-danger"></i> Pengeluaran Keuangan
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-info"></i> Donasi Non Tunai
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-warning"></i> Pemasukan Non Donasi
                         </span>
                     </div>
                 </div>
@@ -267,14 +276,20 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["Donasi Keuangan", "Donasi Non Keuangan"],
+        labels: ["Donasi Keuangan", "Donasi Non Keuangan", "Pengeluaran Donasi", "Donasi Non Tunai",
+            "Pemasukan Non Donasi"
+        ],
         datasets: [{
             data: [
                 <?php echo $this->db->get_where('detail_donasi_tunai', array('jenis_donasi' => 'keuangan'))->num_rows() ?>,
                 <?php echo $this->db->get_where('detail_donasi_tunai', array('jenis_donasi' => 'non keuangan'))->num_rows() ?>,
+                <?php echo $this->db->get_where('pengeluaran_donasi')->num_rows() ?>,
+                <?php echo $this->db->get_where('transaksi_midtrans', array('status_code' => 200))->num_rows() ?>,
+                <?php echo $this->db->get_where('pemasukan_non_donasi')->num_rows() ?>,
+
             ],
-            backgroundColor: ['#4e73df', '#1cc88a'],
-            hoverBackgroundColor: ['#5a5c69', '#5a5c69'],
+            backgroundColor: ['#4e73df', '#1cc88a', '#e74a3b', '#36b9cc', '#f6c23e'],
+            hoverBackgroundColor: ['#5a5c69', '#5a5c69', '#5a5c69', '#5a5c69', '#5a5c69'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
         }],
     },
