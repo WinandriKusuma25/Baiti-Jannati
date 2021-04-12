@@ -99,7 +99,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -108,7 +108,7 @@
         <p>
 
         <div class=" card-body border-bottom-primary">
-            <!-- <?= $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('message'); ?>
             <a class='btn btn-success' href="transaksi_tunai/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>
@@ -117,13 +117,13 @@
             </a>
             <p>
 
-            <div class="btn-group" role="group" aria-label="Basic example">
+                <!-- <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary">Left</button>
                 <button type="button" class="btn btn-primary">Middle</button>
                 <button type="button" class="btn btn-primary">Right</button>
             </div> -->
 
-            <!-- Menampikan Data Filter Tanggal
+                <!-- Menampikan Data Filter Tanggal
 
             <form method="get" action="<?= base_url('admin/transaksi_tunai/filter'); ?>">
                 <div class=" form-group row">
@@ -147,7 +147,7 @@
                 <button type="submit" class=" btn btn-primary"><i class="fas fa-filter"></i>&nbsp;Filter</button>
             </form> -->
                 <!-- Menampikan Data Filter Tanggal -->
-                <form method="post" action="<?= base_url('admin/transaksi_tunai/filter'); ?>">
+            <form method="post" action="<?= base_url('admin/transaksi_tunai/filter'); ?>">
                 <label class="text-primary"><b>Filter Data Berdasarkan Tanggal</b></label>
                 <div class=" form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
@@ -170,6 +170,8 @@
                     </div>
                 </div>
             </form>
+
+
 
 
             <div class="table-responsive">

@@ -1,4 +1,8 @@
 <!-- Begin Page Content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/select2/js/select2.min.js"></script>
+<link href="<?= base_url(); ?>assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css">
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -96,10 +100,12 @@
                             </div>
                         </div>
 
-                        <div class=" form-group">
+                        <div class="form-group">
+
                             <label class="" for="pengurus">Penanggung Jawab</label>
                             <div class="input-group">
-                                <select name="id_pengurus" id="id_pengurus" class="custom-select">
+                                <select name="id_pengurus" id="id_pengurus"
+                                    class="js-example-placeholder-multiple js-states form-control" style="width: 100%">
                                     <option value="" selected disabled>Pilih pengurus</option>
                                     <?php foreach ($pengurus as $p) : ?>
                                     <option value="<?= $p->id_pengurus ?>"
@@ -113,16 +119,13 @@
                         </div>
 
                         <?php endforeach ?>
-                        <p>
-                        <p>
-                        <p>
-                            <button type="submit" class=" btn btn-success"><i
-                                    class="fas fa-save"></i>&nbsp;Simpan</button>
+                        <br>
+                        <button type="submit" class=" btn btn-success"><i class="fas fa-save"></i>&nbsp;Simpan</button>
 
-                            <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
-                                    class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                        <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
+                                class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
 
-                            <link href="<?= base_url(); ?>assets/dark/dark-mode.css" rel="stylesheet" type="text/css">
+                        <link href="<?= base_url(); ?>assets/dark/dark-mode.css" rel="stylesheet" type="text/css">
                     </form>
                 </div>
             </div>
@@ -130,3 +133,8 @@
     </div>
 </div>
 <br>
+<script>
+$(".js-example-placeholder-multiple ").select2({
+    placeholder: "  Pilih Pengurus"
+});
+</script>
