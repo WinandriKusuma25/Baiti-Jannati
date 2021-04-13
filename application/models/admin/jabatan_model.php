@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class jabatan_model extends CI_Model
+class Jabatan_model extends CI_Model
 {
     public function showJabatan()
     {

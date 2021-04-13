@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class laporan extends CI_Controller
+class Laporan extends CI_Controller
 {
 
 
@@ -10,11 +10,11 @@ class laporan extends CI_Controller
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model('admin/user_model');
-        $this->load->model('admin/midtrans_model');
-        $this->load->model('admin/transaksitunai_model');
-        $this->load->model('admin/pengeluarandonasi_model');
-        $this->load->model('admin/laporan_model', 'laporan');
+        $this->load->model('admin/User_model');
+        $this->load->model('admin/Midtrans_model');
+        $this->load->model('admin/Transaksitunai_model');
+        $this->load->model('admin/Pengeluarandonasi_model');
+        $this->load->model('admin/Laporan_model', 'laporan');
         is_logged_in();
     }
 
@@ -26,10 +26,10 @@ class laporan extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Laporan';
-            $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-            $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasi();
-            $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtransAll();
-            $data['transaksi_tunai'] = $this->transaksitunai_model->showDonasiTransaksiTunai();
+            $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+            $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
+            $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransAll();
+            $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);

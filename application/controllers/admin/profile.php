@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class profile extends CI_Controller
+class Profile extends CI_Controller
 {
     public function __construct()
     {
@@ -11,13 +11,13 @@ class profile extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/User_model');
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Profil';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -29,7 +29,7 @@ class profile extends CI_Controller
     public function edit()
     {
         $data['title'] = 'Baiti Jannati | Edit Profil';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
 
         $this->form_validation->set_rules('name', 'Fullname', 'required|trim');
 

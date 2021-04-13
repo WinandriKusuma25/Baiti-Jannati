@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class berita_model extends CI_Model
+class Berita_model extends CI_Model
 {
 
     //menampilkan berita

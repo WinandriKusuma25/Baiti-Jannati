@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class anakdidik_model extends CI_Model
+class Anakdidik_model extends CI_Model
 {
     public function showAnakDidik()
     {

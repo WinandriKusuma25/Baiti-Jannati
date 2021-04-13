@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class notFound extends CI_Controller
+class NotFound extends CI_Controller
 {
 
 

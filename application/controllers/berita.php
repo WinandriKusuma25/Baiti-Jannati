@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class berita extends CI_Controller
+class Berita extends CI_Controller
 {
 
 
@@ -9,9 +9,9 @@ class berita extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/berita_model');
-        $this->load->model('admin/pengurus_model');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/Berita_model');
+        $this->load->model('admin/Pengurus_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
         $this->load->library('pagination');
     }
@@ -21,11 +21,11 @@ class berita extends CI_Controller
         $data['title'] = 'Baiti Jannati | Berita';
 
         $config['base_url'] = 'http://localhost:8080/baitijannati/berita/index';
-        $config['total_rows'] = $this->berita_model->countAllBerita();
+        $config['total_rows'] = $this->Berita_model->countAllBerita();
         $config['per_page'] = 3;
 
         $data['start'] = $this->uri->segment(3);
-        $data['berita'] = $this->berita_model->showBeritaPagination($config['per_page'], $data['start']);
+        $data['berita'] = $this->Berita_model->showBeritaPagination($config['per_page'], $data['start']);
         $data['title'] = 'Baiti Jannati | Berita';
 
         //styling
@@ -67,9 +67,9 @@ class berita extends CI_Controller
     public function detail($id_berita)
     {
         $data['title'] = 'Baiti Jannati | Detail Berita';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['berita'] = $this->berita_model->getBerita($id_berita);
-        $data['beritaTerbaru'] = $this->berita_model->showBeritaTerbaru();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['berita'] = $this->Berita_model->getBerita($id_berita);
+        $data['beritaTerbaru'] = $this->Berita_model->showBeritaTerbaru();
         $this->load->view('template/header', $data);
         $this->load->view('detail_berita', $data);
         $this->load->view('template/footer', $data);

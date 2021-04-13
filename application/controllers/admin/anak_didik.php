@@ -10,18 +10,18 @@ class Anak_Didik extends CI_Controller
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
         is_logged_in();
-        $this->load->model('admin/anakdidik_model');
-        $this->load->model('admin/pengurus_model');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/Anakdidik_model');
+        $this->load->model('admin/Pengurus_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Anak Didik';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['anak_didik'] = $this->anakdidik_model->showAnakDidik();
-        $data['anak_didik_limit'] = $this->anakdidik_model->showAnakDidikLimit();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['anak_didik'] = $this->Anakdidik_model->showAnakDidik();
+        $data['anak_didik_limit'] = $this->Anakdidik_model->showAnakDidikLimit();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -41,9 +41,9 @@ class Anak_Didik extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('nama_wali', 'nama_wali', 'required|trim');
         // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['anak_didik'] = $this->anakdidik_model->showAnakDidik();
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['anak_didik'] = $this->Anakdidik_model->showAnakDidik();
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Anak Didik';
@@ -54,9 +54,9 @@ class Anak_Didik extends CI_Controller
             $this->load->view('templates/footer');
             $this->load->view('templates/footer_dark');
         } else {
-            $upload = $this->anakdidik_model->upload();
+            $upload = $this->Anakdidik_model->upload();
             if ($upload['result'] == 'success') {
-                $this->anakdidik_model->addAnakDidik($upload);
+                $this->Anakdidik_model->addAnakDidik($upload);
 
                 $this->session->set_flashdata(
                     'message',
@@ -76,7 +76,7 @@ class Anak_Didik extends CI_Controller
 
     public function hapus($id_anak_didik)
     {
-        $this->anakdidik_model->deleteAnakDidik($id_anak_didik);
+        $this->Anakdidik_model->deleteAnakDidik($id_anak_didik);
         $this->session->set_flashdata(
             'message',
             '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -93,8 +93,8 @@ class Anak_Didik extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Detail Anak Didik';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['anak_didik'] = $this->anakdidik_model->getAnakDidik($id_anak_didik);
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['anak_didik'] = $this->Anakdidik_model->getAnakDidik($id_anak_didik);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -105,7 +105,7 @@ class Anak_Didik extends CI_Controller
 
     public function excel()
     {
-        $data['anak_didik'] = $this->anakdidik_model->showAnakDidik();
+        $data['anak_didik'] = $this->Anakdidik_model->showAnakDidik();
 
         require(APPPATH . 'PHPExcel-1.8/Classes/PHPExcel.php');
         require(APPPATH . 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
@@ -183,9 +183,9 @@ class Anak_Didik extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Edit Anak Didik';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['anak_didik'] = $this->anakdidik_model->getAnakDidik($id_anak_didik);
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['anak_didik'] = $this->Anakdidik_model->getAnakDidik($id_anak_didik);
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
         // $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required|trim');
         // $this->form_validation->set_rules('tempat_lahir', 'tempat_lahir', 'required|trim');

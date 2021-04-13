@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class kontak extends CI_Controller
+class Kontak extends CI_Controller
 {
 
 
@@ -9,8 +9,8 @@ class kontak extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/pengurus_model');
-        $this->load->model('admin/jabatan_model');
+        $this->load->model('admin/Pengurus_model');
+        $this->load->model('admin/Jabatan_model');
         $this->load->library('pagination');
     }
 
@@ -18,12 +18,12 @@ class kontak extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Kontak';
         $config['base_url'] = 'http://localhost:8080/baitijannati/kontak/index';
-        $config['total_rows'] = $this->pengurus_model->countAllPengurus();
+        $config['total_rows'] = $this->Pengurus_model->countAllPengurus();
         $config['per_page'] = 3;
 
 
         $data['start'] = $this->uri->segment(3);
-        $data['pengurus'] = $this->pengurus_model->showPengurusPagination($config['per_page'], $data['start']);
+        $data['pengurus'] = $this->Pengurus_model->showPengurusPagination($config['per_page'], $data['start']);
         $data['title'] = 'Baiti Jannati | Kontak';
 
         //styling

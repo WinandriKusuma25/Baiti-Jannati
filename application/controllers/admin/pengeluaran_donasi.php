@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class pengeluaran_donasi extends CI_Controller
+class Pengeluaran_donasi extends CI_Controller
 {
 
     public function __construct()
@@ -9,9 +9,9 @@ class pengeluaran_donasi extends CI_Controller
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
         is_logged_in();
-        $this->load->model('admin/pengeluarandonasi_model');
-        $this->load->model('admin/pengurus_model');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/Pengeluarandonasi_model');
+        $this->load->model('admin/Pengurus_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
     }
 
@@ -21,15 +21,15 @@ class pengeluaran_donasi extends CI_Controller
         $this->session->unset_userdata('startSession');
         $this->session->unset_userdata('endSession');
         $data['title'] = 'Baiti Jannati | Pengeluaran Donasi';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasi();
-        $data['pengeluaran_donasi_hari'] = $this->pengeluarandonasi_model->countHari();
-        $data['pengeluaran_donasi_bulan'] = $this->pengeluarandonasi_model->countBulan();
-        $data['pengeluaran_donasi_tahun'] = $this->pengeluarandonasi_model->countTahun();
-        $data['nominal_hari'] = $this->pengeluarandonasi_model->nominalHari();
-        $data['nominal_bulan'] = $this->pengeluarandonasi_model->nominalBulan();
-        $data['nominal_tahun'] = $this->pengeluarandonasi_model->nominalTahun();
-        $data['nominal_all'] = $this->pengeluarandonasi_model->nominalAll();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
+        $data['pengeluaran_donasi_hari'] = $this->Pengeluarandonasi_model->countHari();
+        $data['pengeluaran_donasi_bulan'] = $this->Pengeluarandonasi_model->countBulan();
+        $data['pengeluaran_donasi_tahun'] = $this->Pengeluarandonasi_model->countTahun();
+        $data['nominal_hari'] = $this->Pengeluarandonasi_model->nominalHari();
+        $data['nominal_bulan'] = $this->Pengeluarandonasi_model->nominalBulan();
+        $data['nominal_tahun'] = $this->Pengeluarandonasi_model->nominalTahun();
+        $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
         // var_dump($data);
         // die();
         $this->load->view('templates/header', $data);
@@ -51,17 +51,17 @@ class pengeluaran_donasi extends CI_Controller
         $this->session->unset_userdata('enddate');
         // die($startdate . "===" . $enddate);
         $data['title'] = 'Baiti Jannati | Pengeluaran Donasi ';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        // $data['nominal_terbesar'] = $this->pengeluarandonasi_model->nominalTerbesar();
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->filter();
-        // $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasiFilter(array($startdate, $enddate));
-        $data['pengeluaran_donasi_hari'] = $this->pengeluarandonasi_model->countHari();
-        $data['pengeluaran_donasi_bulan'] = $this->pengeluarandonasi_model->countBulan();
-        $data['pengeluaran_donasi_tahun'] = $this->pengeluarandonasi_model->countTahun();
-        $data['nominal_hari'] = $this->pengeluarandonasi_model->nominalHari();
-        $data['nominal_bulan'] = $this->pengeluarandonasi_model->nominalBulan();
-        $data['nominal_tahun'] = $this->pengeluarandonasi_model->nominalTahun();
-        $data['nominal_all'] = $this->pengeluarandonasi_model->nominalAll();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        // $data['nominal_terbesar'] = $this->Pengeluarandonasi_model->nominalTerbesar();
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filter();
+        // $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiFilter(array($startdate, $enddate));
+        $data['pengeluaran_donasi_hari'] = $this->Pengeluarandonasi_model->countHari();
+        $data['pengeluaran_donasi_bulan'] = $this->Pengeluarandonasi_model->countBulan();
+        $data['pengeluaran_donasi_tahun'] = $this->Pengeluarandonasi_model->countTahun();
+        $data['nominal_hari'] = $this->Pengeluarandonasi_model->nominalHari();
+        $data['nominal_bulan'] = $this->Pengeluarandonasi_model->nominalBulan();
+        $data['nominal_tahun'] = $this->Pengeluarandonasi_model->nominalTahun();
+        $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -86,9 +86,9 @@ class pengeluaran_donasi extends CI_Controller
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim', [
             'required' => 'Keterangan tidak boleh kosong !',
         ]);
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->showPengeluaranDonasi();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati| Tambah Pengeluaran Donasi';
@@ -98,8 +98,8 @@ class pengeluaran_donasi extends CI_Controller
             $this->load->view('admin/pengeluaran_donasi/tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->model('admin/pengeluarandonasi_model');
-            $this->pengeluarandonasi_model->tambahPengeluaranDonasi();
+            $this->load->model('admin/Pengeluarandonasi_model');
+            $this->Pengeluarandonasi_model->tambahPengeluaranDonasi();
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -116,9 +116,9 @@ class pengeluaran_donasi extends CI_Controller
     public function edit($id_pengeluaran)
     {
 
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->getPengeluaranDonasi($id_pengeluaran);
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->getPengeluaranDonasi($id_pengeluaran);
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim', [
             'required' => 'Nominal tidak boleh kosong !',
         ]);
@@ -139,7 +139,7 @@ class pengeluaran_donasi extends CI_Controller
             $this->load->view('admin/pengeluaran_donasi/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            $this->pengeluarandonasi_model->ubahPengeluaranDonasi();
+            $this->Pengeluarandonasi_model->ubahPengeluaranDonasi();
             $this->load->library('session');
             $this->session->set_flashdata(
                 'message',
@@ -156,7 +156,7 @@ class pengeluaran_donasi extends CI_Controller
 
     public function hapus($id_pengeluaran)
     {
-        if ($this->pengeluarandonasi_model->hapusPengeluaranDonasi($id_pengeluaran) == false) {
+        if ($this->Pengeluarandonasi_model->hapusPengeluaranDonasi($id_pengeluaran) == false) {
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -185,8 +185,8 @@ class pengeluaran_donasi extends CI_Controller
     public function detail($id_pengeluaran)
     {
         $data['title'] = 'Baiti Jannati | Detail Pengeluaran Donasi';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->getPengeluaranDonasi($id_pengeluaran);
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->getPengeluaranDonasi($id_pengeluaran);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

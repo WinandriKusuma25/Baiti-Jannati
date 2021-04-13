@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class berita extends CI_Controller
+class Berita extends CI_Controller
 {
 
 
@@ -10,17 +10,17 @@ class berita extends CI_Controller
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
         is_logged_in();
-        $this->load->model('admin/berita_model');
-        $this->load->model('admin/user_model');
-        $this->load->model('admin/pengurus_model');
+        $this->load->model('admin/Berita_model');
+        $this->load->model('admin/User_model');
+        $this->load->model('admin/Pengurus_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Berita';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['berita'] = $this->berita_model->showBerita();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['berita'] = $this->Berita_model->showBerita();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -37,9 +37,9 @@ class berita extends CI_Controller
         // $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
 
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['berita'] = $this->berita_model->showBerita();
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['berita'] = $this->Berita_model->showBerita();
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
 
         // var_dump($this->form_validation->run());
         // die();
@@ -53,9 +53,9 @@ class berita extends CI_Controller
             $this->load->view('templates/footer');
             $this->load->view('templates/footer_dark');
         } else {
-            $upload = $this->berita_model->upload();
+            $upload = $this->Berita_model->upload();
             if ($upload['result'] == 'success') {
-                $this->berita_model->addBerita($upload);
+                $this->Berita_model->addBerita($upload);
 
                 $this->session->set_flashdata(
                     'message',
@@ -76,8 +76,8 @@ class berita extends CI_Controller
     public function detail($id_berita)
     {
         $data['title'] = 'Baiti Jannati | Detail Berita Kegiatan';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['berita'] = $this->berita_model->getBerita($id_berita);
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['berita'] = $this->Berita_model->getBerita($id_berita);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -89,9 +89,9 @@ class berita extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Edit Berita';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['berita'] = $this->berita_model->getBerita($id_berita);
-        $data['pengurus'] = $this->pengurus_model->showPengurus();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['berita'] = $this->Berita_model->getBerita($id_berita);
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $this->form_validation->set_rules('tgl_kegiatan', 'Tanggal Kegiatan', 'required|trim');
         // $this->form_validation->set_rules('tgl_kegiatan', 'tgl_kegiatan', 'required|trim');
         // $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required|trim');
@@ -155,7 +155,7 @@ class berita extends CI_Controller
 
     public function hapus($id_berita)
     {
-        $this->berita_model->deleteBerita($id_berita);
+        $this->Berita_model->deleteBerita($id_berita);
         $this->session->set_flashdata(
             'message',
             '<div class="alert alert-danger alert-dismissible fade show" role="alert">

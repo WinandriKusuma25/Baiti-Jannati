@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class home extends CI_Controller
+class Home extends CI_Controller
 {
 
 
@@ -9,25 +9,25 @@ class home extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/user_model');
-        $this->load->model('admin/pengeluarandonasi_model');
-        $this->load->model('admin/pemasukannondonasi_model');
+        $this->load->model('admin/User_model');
+        $this->load->model('admin/Pengeluarandonasi_model');
+        $this->load->model('admin/Pemasukannondonasi_model');
         is_logged_in();
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Beranda';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['transaksi_donasi_tunai'] = $this->pengeluarandonasi_model->count('transaksi_donasi_tunai');
-        $data['pengeluaran_donasi'] = $this->pengeluarandonasi_model->count('pengeluaran_donasi');
-        $data['statistics'] = $this->pengeluarandonasi_model->getStatistics();
-        $data['chart'] = $this->pengeluarandonasi_model->getDateforChart();
-        $data['month'] = $this->pengeluarandonasi_model->getMonth();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['transaksi_donasi_tunai'] = $this->Pengeluarandonasi_model->count('transaksi_donasi_tunai');
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->count('pengeluaran_donasi');
+        $data['statistics'] = $this->Pengeluarandonasi_model->getStatistics();
+        $data['chart'] = $this->Pengeluarandonasi_model->getDateforChart();
+        $data['month'] = $this->Pengeluarandonasi_model->getMonth();
 
-        $data['statistics2'] = $this->pemasukannondonasi_model->getStatistics();
-        $data['char2'] = $this->pemasukannondonasi_model->getDateforChart();
-        $data['month2'] = $this->pemasukannondonasi_model->getMonth();
+        $data['statistics2'] = $this->Pemasukannondonasi_model->getStatistics();
+        $data['char2'] = $this->Pemasukannondonasi_model->getDateforChart();
+        $data['month2'] = $this->Pemasukannondonasi_model->getMonth();
 
 
 
@@ -39,8 +39,8 @@ class home extends CI_Controller
         $data['pd'] = [];
 
         foreach ($bln as $b) {
-            $data['tdt'][] = $this->pengeluarandonasi_model->chartTransaksiDonasiTunai($b);
-            $data['pd'][] = $this->pengeluarandonasi_model->chartPengeluaranDonasi($b);
+            $data['tdt'][] = $this->Pengeluarandonasi_model->chartTransaksiDonasiTunai($b);
+            $data['pd'][] = $this->Pengeluarandonasi_model->chartPengeluaranDonasi($b);
         }
         // var_dump($data2);
         // die();

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class jabatan extends CI_Controller
+class Jabatan extends CI_Controller
 {
 
 
@@ -10,16 +10,16 @@ class jabatan extends CI_Controller
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
         is_logged_in();
-        $this->load->model('admin/jabatan_model');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/Jabatan_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Jabatan';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['jabatan'] = $this->jabatan_model->showJabatan();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['jabatan'] = $this->Jabatan_model->showJabatan();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -33,8 +33,8 @@ class jabatan extends CI_Controller
         $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim', [
             'required' => 'Jabatan tidak boleh kosong !',
         ]);
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['jabatan'] = $this->jabatan_model->showJabatan();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['jabatan'] = $this->Jabatan_model->showJabatan();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Data jabatan';
@@ -44,8 +44,8 @@ class jabatan extends CI_Controller
             $this->load->view('admin/jabatan/tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->model('admin/jabatan_model');
-            $this->jabatan_model->tambahJabatan();
+            $this->load->model('admin/Jabatan_model');
+            $this->Jabatan_model->tambahJabatan();
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -62,8 +62,8 @@ class jabatan extends CI_Controller
     public function edit($id_jabatan)
     {
 
-        $data['jabatan'] = $this->jabatan_model->showJabatanOne($id_jabatan);
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['jabatan'] = $this->Jabatan_model->showJabatanOne($id_jabatan);
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
@@ -74,7 +74,7 @@ class jabatan extends CI_Controller
             $this->load->view('admin/jabatan/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            $this->jabatan_model->ubahJabatan();
+            $this->Jabatan_model->ubahJabatan();
             $this->load->library('session');
             $this->session->set_flashdata(
                 'message',
@@ -91,7 +91,7 @@ class jabatan extends CI_Controller
 
     public function hapus($id_jabatan)
     {
-        if ($this->jabatan_model->hapusJabatan($id_jabatan) == false) {
+        if ($this->Jabatan_model->hapusJabatan($id_jabatan) == false) {
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">

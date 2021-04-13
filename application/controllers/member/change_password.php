@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class change_password extends CI_Controller
+class Change_password extends CI_Controller
 {
     public function __construct()
     {
@@ -11,14 +11,14 @@ class change_password extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/User_model');
     }
 
 
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Ubah Password';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);

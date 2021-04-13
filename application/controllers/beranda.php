@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class beranda extends CI_Controller
+class Beranda extends CI_Controller
 {
 
 

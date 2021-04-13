@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class anak_didik extends CI_Controller
+class Anak_didik extends CI_Controller
 {
 
 
@@ -9,9 +9,9 @@ class anak_didik extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/anakdidik_model');
-        $this->load->model('admin/pengurus_model');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/Anakdidik_model');
+        $this->load->model('admin/Pengurus_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
         $this->load->library('pagination');
     }
@@ -22,11 +22,11 @@ class anak_didik extends CI_Controller
 
         //config
         $config['base_url'] = 'http://localhost:8080/baitijannati/anak_didik/index';
-        $config['total_rows'] = $this->anakdidik_model->countAllAnakDidik();
+        $config['total_rows'] = $this->Anakdidik_model->countAllAnakDidik();
         $config['per_page'] = 6;
 
         $data['start'] = $this->uri->segment(3);
-        $data['anak_didik'] = $this->anakdidik_model->showAnakDidikPagination($config['per_page'], $data['start']);
+        $data['anak_didik'] = $this->Anakdidik_model->showAnakDidikPagination($config['per_page'], $data['start']);
         $data['title'] = 'Baiti Jannati | Anak Didik';
 
         //styling

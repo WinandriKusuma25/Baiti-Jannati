@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class transaksitunai_model extends CI_Model
+class Transaksitunai_model extends CI_Model
 {
     public function showDonasiTransaksiTunaiAll()
     {

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class users extends CI_Controller
+class Users extends CI_Controller
 {
 
 
@@ -9,7 +9,7 @@ class users extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
         is_logged_in();
     }
@@ -17,8 +17,8 @@ class users extends CI_Controller
     public function index()
     {
         $data['title'] = 'Baiti Jannati | Donatur';
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['users'] = $this->user_model->tampilUserSaja();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['users'] = $this->User_model->tampilUserSaja();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -30,7 +30,7 @@ class users extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Detail Donatur';
         $data['users'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -60,8 +60,8 @@ class users extends CI_Controller
             'required' => 'Password tidak boleh kosong !',
             'min_length' => 'Password terlalu pendek!'
         ]);
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
-        $data['users'] = $this->user_model->showUser();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['users'] = $this->User_model->showUser();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Data Doantur';
@@ -71,8 +71,8 @@ class users extends CI_Controller
             $this->load->view('admin/users/tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->model('admin/user_model');
-            $this->user_model->tambahUser();
+            $this->load->model('admin/User_model');
+            $this->User_model->tambahUser();
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -90,7 +90,7 @@ class users extends CI_Controller
     {
 
         $data['users'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('id_user', 'id_user', 'required|numeric');
         $this->form_validation->set_rules('is_active', 'is_active', 'required|trim');
 
@@ -102,7 +102,7 @@ class users extends CI_Controller
             $this->load->view('admin/users/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            $this->user_model->ubahUser();
+            $this->User_model->ubahUser();
             $this->load->library('session');
             $this->session->set_flashdata(
                 'message',

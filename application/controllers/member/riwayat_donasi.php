@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class riwayat_donasi extends CI_Controller
+class Riwayat_donasi extends CI_Controller
 {
 
     public function __construct()
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        $this->load->model('admin/user_model');
-        $this->load->model('admin/midtrans_model');
+        $this->load->model('admin/User_model');
+        $this->load->model('admin/Midtrans_model');
         is_logged_in();
     }
 
@@ -17,7 +17,7 @@ class riwayat_donasi extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Riwayat Donasi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
-        $data['transaksi_midtrans'] = $this->midtrans_model->showTransaksiMidtrans($this->session->userdata('email'));
+        $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtrans($this->session->userdata('email'));
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);
@@ -28,7 +28,7 @@ class riwayat_donasi extends CI_Controller
     {
         $data['title'] = 'Baiti Jannati | Detail Riwayat Donasi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
-        $data['transaksi_midtrans'] = $this->midtrans_model->getTransaksiMidtransDetail($order_id);
+        $data['transaksi_midtrans'] = $this->Midtrans_model->getTransaksiMidtransDetail($order_id);
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);

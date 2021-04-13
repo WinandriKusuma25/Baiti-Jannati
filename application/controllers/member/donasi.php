@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class donasi extends CI_Controller
+class Donasi extends CI_Controller
 {
 
     public function __construct()
@@ -11,7 +11,7 @@ class donasi extends CI_Controller
         $this->load->library('midtrans');
         $this->midtrans->config($params);
         $this->load->helper('url');
-        $this->load->model('admin/user_model');
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
     }
 
@@ -21,7 +21,7 @@ class donasi extends CI_Controller
         $this->form_validation->set_rules('nominal', 'Password', 'required|trim', [
             'required' => 'nominal tidak boleh kosong !',
         ]);
-        $data['user'] = $this->user_model->getUser($this->session->userdata('email'));
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);
