@@ -20,7 +20,7 @@
             <?= $this->session->flashdata('message'); ?>
         </div>
     </div>
-    <div class="card mb-3  border-bottom-primary">
+    <div class="card mb-3 shadow-sm border-bottom-primary">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Detail Anak Didik</h6>
         </div>

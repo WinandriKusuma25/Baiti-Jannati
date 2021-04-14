@@ -13,10 +13,17 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+
+
+        <div class="col-md-8 py-3">
+            <div class="alert alert-primary" role="alert">
+                <h6 class="alert-heading">
+                    * Berikut Form untuk mengaktivasi akun donatur
+                </h6>
+            </div>
             <?= $this->session->flashdata('message'); ?>
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Status Data Donatur</h6>
                 </div>
@@ -69,7 +76,7 @@
                         <p>
                         <p>
                         <p>
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
                             <!-- <button type="reset" name="reset" class="btn btn-warning "><i

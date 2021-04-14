@@ -11,10 +11,10 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card ">
+            <div class="card shadow-sm">
                 <div class="card-header bg-muted py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Pengurus</h6>
                 </div>
@@ -67,8 +67,8 @@
                             <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
-                        <button type="submit" class=" btn btn-success"><i class="fas fa-save"></i>&nbsp;Simpan</button>
-                        <button type="reset" name="reset" class="btn btn-warning "><i
+                        <button type="submit" class=" btn btn-primary"><i class="fas fa-save"></i>&nbsp;Simpan</button>
+                        <button type="reset" name="reset" class="btn btn-dark"><i
                                 class="fas fa-sync-alt"></i>&nbsp;Reset</button>
 
                         <a href="<?php echo base_url("admin/pengurus"); ?>" class="btn btn-primary"> <i

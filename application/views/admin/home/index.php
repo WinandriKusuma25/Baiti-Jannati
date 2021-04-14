@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo base_url("admin/user"); ?>" class="btn btn-primary"> <i
+                <a href="<?php echo base_url("admin/users"); ?>" class="btn btn-primary"> <i
                         class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
             </div>
         </div>

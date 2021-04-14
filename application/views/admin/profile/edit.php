@@ -1,6 +1,3 @@
-<div class="nav-link">
-    <div id="darkSwitch"></div>
-</div>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -12,11 +9,11 @@
             </div>
         </small>
     </div>
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Profil</h6>
                 </div>
                 <?php $no = 1;
                 foreach ($user as $ad) : ?>
@@ -60,7 +57,7 @@
 
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
                             <a href="<?php echo base_url("admin/profile"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali </a>

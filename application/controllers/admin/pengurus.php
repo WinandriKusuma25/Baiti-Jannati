@@ -21,6 +21,7 @@ class Pengurus extends CI_Controller
         $data['title'] = 'Baiti Jannati | Pengurus';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['pengurus'] = $this->Pengurus_model->showPengurus();
+        $data['pengurus_limit'] = $this->Pengurus_model->showPengurusLimit();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

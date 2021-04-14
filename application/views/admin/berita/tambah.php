@@ -16,18 +16,18 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row  justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card  border-bottom-primary">
+            <div class=" card shadow-sm border-bottom-primary">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Form tambah data berita kegiatan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Form tambah data Berita Kegiatan</h6>
                 </div>
 
                 <div class="card-body">
 
                     <form method="post" action="<?= base_url('admin/berita/tambah'); ?>" enctype="multipart/form-data">
-                        <div class=" form-group">
+                        <div class="form-group">
                             <label class="" for="pengurus">Penulis</label>
                             <div class="input-group">
                                 <select name="id_pengurus" id="id_pengurus"
@@ -37,6 +37,7 @@
                                     <option value="<?= $p->id_pengurus ?>"><?= $p->nama_pengurus ?></option>
                                     <?php endforeach ?>
                                 </select>
+
                             </div>
                             <?= form_error('id_pengurus', '<small class="text-danger">', '</small>'); ?>
                         </div>
@@ -63,7 +64,7 @@
 
                         <label for="foto">Foto</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto">
+                            <input type="file" class="custom-file-input" id="foto" name="foto" required>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                             <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
                         </div>
@@ -71,14 +72,14 @@
                         <p>
                         <p>
 
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
-                            <button type="reset" name="reset" class="btn btn-warning "><i
+                            <button type="reset" name="reset" class="btn btn-dark "><i
                                     class="fas fa-sync-alt"></i>&nbsp;Reset</button>
 
                             <a href="<?php echo base_url("admin/berita"); ?>" class="btn btn-primary"> <i
-                                    class="fas fa-arrow-left"></i>Kembali</a>
+                                    class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
 
 
                     </form>

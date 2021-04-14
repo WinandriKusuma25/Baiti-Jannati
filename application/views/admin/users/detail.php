@@ -15,12 +15,12 @@
         </small>
         <?php endforeach ?>
     </div>
-    <div class="row">
+    <div class="row ">
         <div class="col-lg-6">
             <?= $this->session->flashdata('message'); ?>
         </div>
     </div>
-    <div class="card mb-3 border-bottom-primary" style="max-width: 700px;">
+    <div class="card  shadow-sm mb-3 border-bottom-primary" style="max-width: 700px;">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Detail Akun Donatur</h6>
         </div>

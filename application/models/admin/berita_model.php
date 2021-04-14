@@ -10,6 +10,7 @@ class Berita_model extends CI_Model
     {
         $this->db->select('berita.*, pengurus.nama_pengurus');
         $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        $this->db->order_by('tgl_kegiatan', 'DESC');
         return $this->db->get('berita')->result();
     }
 

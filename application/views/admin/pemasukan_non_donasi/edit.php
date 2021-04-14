@@ -15,15 +15,15 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
             <div class="card border-bottom-primary">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Pemasukan Donasi</h6>
                 </div>
                 <?php foreach ($pemasukan_non_donasi as $ad) : ?>
-                <div class="card-body">
+                <div class="card-body shadow-sm">
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="id_pemasukan" name="id_pemasukan" value="<?= $ad->id_pemasukan; ?>">
 
@@ -72,7 +72,7 @@
                         <p>
                         <p>
                         <p>
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
                             <a href="<?php echo base_url("admin/pemasukan_non_donasi"); ?>" class="btn btn-primary"> <i

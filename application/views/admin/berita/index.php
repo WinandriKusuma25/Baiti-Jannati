@@ -14,7 +14,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data berita</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data Berita Kegiatan</h6>
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
@@ -26,8 +26,21 @@
             </a>
             <p>
 
+            <div class="card border-bottom-primary">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Rekap Pengurus</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b> <i class="fas fa-fw fa-user-tie"></i>&nbsp;Jumlah Berita:
+                            <?php echo $this->db->get_where('berita')->num_rows() ?></b>
+                        <hr>
+
+                </ul>
+            </div>
+            <br>
+
             <div class="table-responsive">
-                <b>Jumlah Berita : <?php echo $this->db->get_where('berita')->num_rows() ?></b>
+                <!-- <b>Jumlah Berita : <?php echo $this->db->get_where('berita')->num_rows() ?></b> -->
                 <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
                     cellspacing="0">
                     <thead>

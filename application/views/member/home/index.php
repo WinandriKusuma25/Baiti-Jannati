@@ -17,12 +17,12 @@
             di halaman donatur Baiti Jannati
 
         </h4>
-        <p>1. Halaman Profil terdapat <b>Edit Profil</b> dan <b>Ubah password</b> sebagai identitas Anda.</p>
-        <p>2. Halaman <b>Riwayat Donasi</b> untuk mengetahui riwayat donasi Anda yang terdiri dari Riwayat <b>Tunai dan
-                Non Tunai</b></p>
-        <p>3. Halaman <b>Tambah Donasi</b> untuk menambahkan donasi</p>
+        Halaman Profil terdapat <b>Edit Profil</b> dan <b>Ubah password</b> sebagai identitas Anda.
+        Halaman <b>Riwayat Donasi</b> untuk mengetahui riwayat donasi Anda yang terdiri dari Riwayat <b>Tunai dan
+            Non Tunai</b>
+        Halaman <b>Tambah Donasi</b> untuk menambahkan donasi
         <hr>
-        <p class="mb-0">Donasi Anda sangat berharga bagi kami.</p>
+        <p>Donasi Anda sangat berharga bagi kami.</p>
     </div>
 
 
@@ -36,7 +36,7 @@
 
         <?php foreach ($transaksi_midtrans as $ad) : ?>
 
-        <div class="card mr-3 mb-3 border-bottom-primary" style="width:450px; height:520px">
+        <div class="card mr-3 mb-3 shadow-sm border-bottom-primary" style="width:450px; height:520px">
 
             <div class="text-primary">
                 <h6>

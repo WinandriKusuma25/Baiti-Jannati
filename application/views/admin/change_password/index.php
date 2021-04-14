@@ -13,10 +13,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Ubah Password</h6>
                 </div>
@@ -44,13 +44,11 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
                             <a href="<?php echo base_url("admin/profile"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
                         </div>
-
-                        <link href="<?= base_url(); ?>assets/dark/dark-mode.css" rel="stylesheet" type="text/css">
                     </form>
             </div>
             <br>

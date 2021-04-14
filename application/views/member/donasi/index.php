@@ -19,17 +19,14 @@
             </div>
         </small>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
 
-        <div class="col">
+        <div class="col-md-8 py-3">
             <div class="alert alert-primary" role="alert">
-                <h5 class="alert-heading">Berikut merupakan halaman tambah donasi
-                </h5>
-                <hr>
-                <p> Silahkan memasukkan nominal donasi, donasi Anda sangat berharga buat kami.
+                <p> * Silahkan memasukkan nominal donasi, donasi Anda sangat berharga buat kami.
 
             </div>
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Donasi</h6>
                 </div>

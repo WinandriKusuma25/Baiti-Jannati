@@ -15,10 +15,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Pengeluaran Donasi</h6>
                 </div>
@@ -67,10 +67,10 @@
 
                         <p>
 
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
-                            <button type="reset" name="reset" class="btn btn-warning "><i
+                            <button type="reset" name="reset" class="btn btn-dark "><i
                                     class="fas fa-sync-alt"></i>&nbsp;Reset</button>
 
                             <a href="<?php echo base_url("admin/pengeluaran_donasi"); ?>" class="btn btn-primary"> <i

@@ -15,13 +15,13 @@
         </small>
         <?php endforeach ?>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-6">
             <?= $this->session->flashdata('message'); ?>
         </div>
     </div>
 
-    <div class="card mb-3">
+    <div class="card shadow-sm  mb-3">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Detail Berita Kegiatan</h6>
         </div>
@@ -31,7 +31,7 @@
                 foreach ($berita as $b) : ?>
                 <br>
                 <center>
-                    <h4 class="card-title text-dark">Judul :
+                    <h4 class="card-title text-dark"><b>Judul</b> :
                         &nbsp;
                         <?= $b->judul ?></h4>
                 </center>
@@ -39,7 +39,7 @@
                         width="30%">
                 </center>
 
-                <div class="card-body  border-bottom-primary">
+                <div class="card-body  shadow-sm  border-bottom-primary">
 
                     <h6 class="card-title text-dark"><b>Penulis
 

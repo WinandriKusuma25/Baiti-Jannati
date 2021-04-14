@@ -10,10 +10,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card border-bottom-primary">
+            <div class="card shadow-sm border-bottom-primary">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Data pengurus</h6>
                 </div>
@@ -77,7 +77,7 @@
                         <p>
                         <p>
                         <p>
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
                             <!-- <button type="reset" name="reset" class="btn btn-warning "><i

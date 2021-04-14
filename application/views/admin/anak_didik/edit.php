@@ -14,10 +14,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card border-bottom-primary">
+            <div class="card shadow-sm border-bottom-primary">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Anak Didik</h6>
                 </div>
@@ -120,7 +120,7 @@
 
                         <?php endforeach ?>
                         <br>
-                        <button type="submit" class=" btn btn-success"><i class="fas fa-save"></i>&nbsp;Simpan</button>
+                        <button type="submit" class=" btn btn-primary"><i class="fas fa-save"></i>&nbsp;Simpan</button>
 
                         <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
                                 class="fas fa-arrow-left"></i>&nbsp;Kembali </a>

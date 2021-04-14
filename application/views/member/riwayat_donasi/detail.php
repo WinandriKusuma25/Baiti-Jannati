@@ -15,9 +15,9 @@
 
 
 
-    <div class=" d-flex flex-wrap">
+    <div class="row justify-content-center">
         <?php foreach ($transaksi_midtrans as $ad) : ?>
-        <div class="card mr-3 mb-3 border-bottom-primary" style="width:500px; height:540px">
+        <div class="card  shadow-sm mr-3 mb-3 border-bottom-primary" style="width:500px; height:540px">
 
             <div class="text-primary">
                 <h6>

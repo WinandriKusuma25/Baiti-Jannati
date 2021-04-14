@@ -8,18 +8,18 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Edit berita</h1>
         <small>
-            <div class="text-muted"> Manajemen peminjaman &nbsp;/&nbsp; Daftar berita &nbsp; / &nbsp; <a
+            <div class="text-muted"> Manajemen berita &nbsp;/&nbsp; Daftar berita &nbsp; / &nbsp; <a
                     href="<?php echo base_url("admin/berita/edit"); ?>">Edit</a>
             </div>
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card  border-bottom-primary">
+            <div class="card  shadow-sm  border-bottom-primary">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Form Edit Data berita</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Form edit data Berita Kegiatan</h6>
                 </div>
 
                 <?php foreach ($berita as $b) : ?>
@@ -87,7 +87,7 @@
                         <p>
                         <p>
                         <p>
-                            <button type="submit" class=" btn btn-success"><i
+                            <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
                             <!-- <button type="reset" name="reset" class="btn btn-warning "><i

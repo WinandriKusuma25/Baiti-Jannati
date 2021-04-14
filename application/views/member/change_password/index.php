@@ -10,10 +10,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row justify-content-center">
+        <div class="col-md-8 py-3">
             <?= $this->session->flashdata('message'); ?>
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Ubah Password</h6>
                 </div>

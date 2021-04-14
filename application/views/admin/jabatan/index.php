@@ -13,6 +13,20 @@
             </div>
         </small>
     </div>
+
+    <div class="card   shadow border-bottom-primary">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rekap Pengurus</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b> <i class="fas fa-fw fa-user-tie"></i>&nbsp;Jumlah Pengurus:
+                    <?php echo $this->db->get_where('jabatan')->num_rows() ?></b>
+                <hr>
+
+        </ul>
+    </div>
+    <br>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -29,7 +43,7 @@
             <p>
 
             <div class="table-responsive">
-                <b>Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?></b>
+                <!-- <b>Jumlah Jabatan : <?php echo $this->db->get_where('jabatan')->num_rows() ?></b> -->
                 <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
                     cellspacing="0">
                     <thead>

@@ -32,10 +32,9 @@ class Berita extends CI_Controller
     {
 
         $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
-        // $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
-        // $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
-        // $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
+        $this->form_validation->set_rules('tgl_kegiatan', 'Tgl Kegiatan', 'required|trim');
+
+
 
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['berita'] = $this->Berita_model->showBerita();

@@ -68,4 +68,13 @@ class Pengurus_model extends CI_Model
             return false;
         }
     }
+
+    public function showPengurusLimit()
+    {
+        $this->db->select('pengurus.*, jabatan.jabatan');
+        $this->db->join('jabatan', 'pengurus.id_jabatan = jabatan.id_jabatan');
+        $this->db->limit(3);
+        $this->db->order_by('id_pengurus', 'DESC');
+        return $this->db->get('pengurus')->result();
+    }
 }

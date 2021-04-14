@@ -18,6 +18,7 @@ class Midtrans_model extends CI_Model
 
         $this->db->select('transaksi_midtrans.*, user.*');
         $this->db->join('user', 'transaksi_midtrans.id_user = user.id_user');
+        $this->db->order_by('transaction_time', 'DESC');
         return $this->db->get_where('transaksi_midtrans', ['email' => $email])->result();
     }
 
