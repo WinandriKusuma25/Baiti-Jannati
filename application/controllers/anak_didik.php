@@ -65,4 +65,6 @@ class Anak_didik extends CI_Controller
         $this->load->view('anak_didik', $data);
         $this->load->view('template/footer', $data);
     }
+
+  
 }

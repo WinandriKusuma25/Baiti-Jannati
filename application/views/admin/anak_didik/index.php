@@ -159,6 +159,10 @@
                             class="fa fa-file-excel"></i>
                         Unduh Excel</a>
 
+                    <a href="<?php echo base_url('admin/anak_didik/pdf') ?>"
+                        class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fa fa-file-pdf"></i>
+                        Unduh PDF</a>
+
                 </div>
             </div>
         </div>
