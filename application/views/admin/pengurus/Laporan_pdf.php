@@ -108,14 +108,14 @@
 
         <?php
         $no = 1;
-        foreach ($anak_didik as $ad) : ?>
+        foreach ($pengurus as $pn) : ?>
 
         <tr align="center">
             <td align="center"><?php echo $no++ ?></td>
-            <td align="center"><?php echo $ad->nama_pengurus ?></td>
-            <td align="center"><?= $ad->jenis_kelamin ?></td>
-            <td align="center"><?= $ad->jabatan ?>,
-            <td align="center"><?= $ad->no_telp ?></td>
+            <td align="center"><?php echo $pn->nama_pengurus ?></td>
+            <td align="center"><?= $pn->jenis_kelamin ?></td>
+            <td align="center"><?= $pn->jabatan ?>,
+            <td align="center"><?= $pn->no_telp ?></td>
         </tr>
 
         <?php endforeach; ?>

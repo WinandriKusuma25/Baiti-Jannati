@@ -207,7 +207,7 @@ class Pengurus extends CI_Controller
     {
         $this->load->library('dompdf_gen');
 
-        $data['pengurus'] = $this->Anakdidik_model->showAnakDidik();
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $this->load->view('admin/pengurus/laporan_pdf', $data);
         // $this->dompdf->set_option('isRemoteEnabled', true);
         $paper_size = 'A4';
