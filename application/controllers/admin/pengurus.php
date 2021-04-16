@@ -202,4 +202,21 @@ class Pengurus extends CI_Controller
 
         exit;
     }
+
+    public function pdf()
+    {
+        $this->load->library('dompdf_gen');
+
+        $data['pengurus'] = $this->Anakdidik_model->showAnakDidik();
+        $this->load->view('admin/pengurus/laporan_pdf', $data);
+        // $this->dompdf->set_option('isRemoteEnabled', true);
+        $paper_size = 'A4';
+        $orientation = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("Laporan_Pengurus_BaitiJannati.pdf", array('Attachment ' => 0));
+    }
 }
