@@ -66,6 +66,8 @@ class Transaksi_tunai extends CI_Controller
         $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
         $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $data['users'] = $this->User_model->tampilUserSaja();
+        $data['jumlah_form'] = $this->input->post('jumlah_form');
+        $data['jenis_donasi'] = $this->input->post('jenis_donasi');
 
 
         // var_dump($this->form_validation->run());
@@ -96,6 +98,125 @@ class Transaksi_tunai extends CI_Controller
                 echo $this->upload->display_errors();
             }
         }
+    }
+
+    public function prosestambah()
+    {
+
+        $config['upload_path'] = './assets/images/donasi_non_keuangan';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        // $config['file_name']  = $this->input->post('nama');
+        $this->load->library('upload', $config);
+        
+        $files = $_FILES['foto'];
+
+        $images = array();
+
+        foreach ($files['name'] as $key => $image) {
+            $_FILES['images[]']['name']= $files['name'][$key];
+            $_FILES['images[]']['type']= $files['type'][$key];
+            $_FILES['images[]']['tmp_name']= $files['tmp_name'][$key];
+            $_FILES['images[]']['error']= $files['error'][$key];
+            $_FILES['images[]']['size']= $files['size'][$key];
+
+            if ($this->upload->do_upload('images[]')) {
+                $this->upload->data();
+                $images[] = $this->upload->data("file_name");
+            } else {
+                return false;
+            }
+        }
+
+
+        $jumlah_form = $this->input->post('jumlah_form');
+        $jenis_donasi = $this->input->post('jenis_donasi');
+
+        $data1 = array(
+            'id_user' => $this->input->post('id_user'),
+            'id_pengurus' => $this->input->post('id_pengurus'),
+            'tgl_donasi' => date('Y-m-d H:i:s'),
+        );
+
+        
+
+            //
+        // model->insert data1
+        $this->db->insert('transaksi_donasi_tunai', $data1);
+        $id_donasi = $this->db->insert_id();
+        $data2 = [];
+
+        if ($jenis_donasi == 'keuangan') {
+            for ($i=0; $i < $jumlah_form; $i++) { 
+                $data2[] = array(
+                    'id_donasi' => $id_donasi,
+                    'jenis_donasi' => $jenis_donasi,
+                    'nominal' => $this->input->post('nominal')[$i],
+                    'keterangan' => $this->input->post('keterangan')[$i],
+                );
+            }
+        } else if ($jenis_donasi == 'non keuangan') {
+            for ($i=0; $i < $jumlah_form; $i++) { 
+                $data2[] = array(        
+                    'id_donasi' => $id_donasi,
+                    'jenis_donasi' => $jenis_donasi,
+                    'kategori' => $this->input->post('kategori')[$i],
+                    'jumlah' => $this->input->post('jumlah')[$i],
+                    'keterangan' => $this->input->post('keterangan')[$i],
+                    'image' => $images[$i],
+                );
+            }
+
+        }
+        for ($i=0; $i < $jumlah_form; $i++) { 
+            $this->db->insert('detail_donasi_tunai', $data2[$i]);
+        }
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      Data berhasil di tambahkan ! 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>'
+        );
+        redirect('admin/transaksi_tunai');
+    }
+
+    private function upload_files($path, $title, $files)
+    {
+        $config = array(
+            'upload_path'   => $path,
+            'allowed_types' => 'jpg|gif|png',
+            'overwrite'     => 1,                       
+        );
+
+        $this->load->library('upload', $config);
+
+        $images = array();
+
+        foreach ($files['name'] as $key => $image) {
+            $_FILES['images[]']['name']= $files['name'][$key];
+            $_FILES['images[]']['type']= $files['type'][$key];
+            $_FILES['images[]']['tmp_name']= $files['tmp_name'][$key];
+            $_FILES['images[]']['error']= $files['error'][$key];
+            $_FILES['images[]']['size']= $files['size'][$key];
+
+            $fileName = $title .'_'. $image;
+
+            $images[] = $fileName;
+
+            $config['file_name'] = $fileName;
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('images[]')) {
+                $this->upload->data();
+            } else {
+                return false;
+            }
+        }
+
+        return $images;
     }
 
     public function filter()
