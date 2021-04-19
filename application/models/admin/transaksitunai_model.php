@@ -21,6 +21,7 @@ class Transaksitunai_model extends CI_Model
         $this->db->select('transaksi_donasi_tunai.*, user.name, pengurus.nama_pengurus');
         $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->order_by('tgl_donasi', 'DESC');
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
@@ -205,5 +206,13 @@ class Transaksitunai_model extends CI_Model
 
         $this->db->select_max('nominal');
         return $this->db->get('transaksi_donasi_tunai')->result();
+    }
+
+    
+    public function getDetailTransaksiTunai($id_detail_donasi)
+    {
+        $this->db->select('detail_donasi_tunai.*');
+        // $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        return $this->db->get_where('detail_donasi_tunai', ['id_detail_donasi' => $id_detail_donasi])->result();
     }
 }

@@ -163,6 +163,7 @@ class Transaksi_tunai extends CI_Controller
                     'jumlah' => $this->input->post('jumlah')[$i],
                     'keterangan' => $this->input->post('keterangan')[$i],
                     'image' => $images[$i],
+
                 );
             }
 
@@ -242,5 +243,74 @@ class Transaksi_tunai extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/transaksi_tunai/index', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function edit($id_detail_donasi)
+    {
+        $data['title'] = 'Baiti Jannati | Edit Detail Donasi Tunai';
+        // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['detail_donasi'] = $this->Transaksitunai_model->getDetailTransaksiTunai($id_detail_donasi);
+        // $data['pengurus'] = $this->Pengurus_model->showPengurus();
+        // $this->form_validation->set_rules('tgl_kegiatan', 'Tanggal Kegiatan', 'required|trim');
+        // $this->form_validation->set_rules('tgl_kegiatan', 'tgl_kegiatan', 'required|trim');
+        // $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required|trim');
+
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/detail_donasi_tunai/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            //check jika ada gambar yang akan di upload
+            $upload_image = $_FILES['foto']['name'];
+            if ($upload_image) {
+                $config['allowed_types']        = 'gif|jpg|png|jpeg';
+                $config['max_size']             = 2048; //2mb
+                $config['upload_path']          = './assets/images/donasi_non_keuangan';
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $old_image = $data['detail_donasi_tunai']['iamge'];
+                    if ($old_image != 'default.png') {
+                        unlink(FCPATH . 'assets/images/donasi_non_keuangan/' . $old_image);
+                    }
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+
+            $id_detail_donasi = $this->input->post('id_detail_donasi');
+            $id_donasi = $this->input->post('id_donasi');
+            $jenis_donasi = $this->input->post('jenis_donasi');
+            $kategori = $this->input->post('kategori');
+            $nominal = $this->input->post('nominal');
+            $jumlah = $this->input->post('jumlah');
+            $keterangan = $this->input->post('keterangan');
+
+            $this->db->set('jenis_donasi', $jenis_donasi);
+            $this->db->set('nominal', $nominal);
+            $this->db->set('jumlah', $jumlah);
+            $this->db->set('keterangan', $keterangan);
+            $this->db->where('id_detail_donasi', $id_detail_donasi);
+            $this->db->update('detail_donasi_tunai');
+
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+               Data berhasil di edit ! 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+            );
+            redirect('admin/transaksi_tunai');
+        }
     }
 }

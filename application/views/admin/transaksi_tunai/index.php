@@ -262,7 +262,7 @@
                                 <i class="fas fa-eye" aria-hidden="true"></i>
                             </a>
 
-                            <a class='btn btn-circle btn-warning'
+                            <!-- <a class='btn btn-circle btn-warning'
                                 href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_donasi ?>">
                                 <i class="fas fa-edit" aria-hidden="true"></i>
                             </a>
@@ -271,7 +271,7 @@
                                 onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_tunai/hapus/' . $dnk->id_donasi) ?>')"
                                 class='btn btn-circle btn-danger'>
                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
+                            </a> -->
                         </td>
                     </tr>
                     <?php endforeach ?>

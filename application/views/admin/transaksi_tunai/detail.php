@@ -59,8 +59,9 @@
                             <th class="text-primary">Kategori</th>
                             <!-- <th class="text-primary">Nominal</th> -->
                             <th class="text-primary">Jumlah</th>
-                            <th class="text-primary">Bukti</th>
+                            <th class="text-primary" width="300px">Bukti</th>
                             <th class="text-primary">Keterangan</th>
+                            <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,9 +76,28 @@
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
                                     class="img-thumbnail" width="20%"></td>
                             <td><?= $dnk->keterangan ?></td>
+                            <td>
+                                <!-- <a class='btn btn-circle btn-primary'
+                                    href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'
+                                    class='btn btn-biru'>
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                </a> -->
+
+                                <a class='btn btn-circle btn-warning'
+                                    href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_donasi ?>">
+                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                </a>
+
+                                <a href="#modalDelete" data-toggle="modal"
+                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_tunai/hapus/' . $dnk->id_donasi) ?>')"
+                                    class='btn btn-circle btn-danger'>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
+
                 </table>
                 <a href="<?php echo base_url("admin/transaksi_tunai"); ?>" class="btn btn-primary"> <i
                         class="fas fa-arrow-left"></i>&nbsp;Kembali </a>

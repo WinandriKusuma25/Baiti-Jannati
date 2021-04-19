@@ -149,6 +149,9 @@
                                         class='btn btn-circle btn-danger'>
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
+
+
+
                                 </td>
                             </tr>
                             <?php endforeach ?>
@@ -191,6 +194,35 @@
                 <form id="formDelete" action="" method="post">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDetail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Detail Anak Didik</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php foreach ($anak_didik as $ad) : ?>
+
+                <?= $ad->nama ?>
+
+                <?php endforeach ?>
+
+
+            </div>
+            <div class="modal-footer">
+                <form id="formDetail" action="" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Kembali</button>
+                    <!-- <button type="submit" class="btn btn-danger">Hapus</button> -->
                 </form>
             </div>
         </div>
