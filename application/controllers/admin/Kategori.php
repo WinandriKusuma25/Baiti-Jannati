@@ -46,6 +46,7 @@ class Kategori extends CI_Controller
         } else {
             $this->load->model('admin/kategori_model');
             $this->Kategori_model->tambahKategori();
+         
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -55,6 +56,7 @@ class Kategori extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("add", "tambah kategori");
             redirect('admin/kategori', 'refresh');
         }
     }
@@ -113,6 +115,7 @@ class Kategori extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("delete", "hapus kategori");
             redirect('admin/kategori', 'refresh');
         }
     }

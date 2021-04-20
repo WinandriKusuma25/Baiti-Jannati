@@ -54,4 +54,10 @@ class User_model extends CI_Model
         $this->db->where('id_user', $this->input->post('id_user'));
         $this->db->update('user', $data);
     }
+
+        public function logout($date, $id)
+    {
+        $this->db->where('id_user' , $id);
+        $this->db->update('user', $date);
+    }
 }

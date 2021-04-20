@@ -119,9 +119,8 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Nama</th>
                             <th class="text-primary">Email</th>
-                            <!-- <th class="text-primary">Picture</th> -->
                             <th class="text-primary">Status</th>
-                            <!-- <th class="text-primary">Date Created</th> -->
+                            <th class="text-primary">Terakhir Login</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
@@ -132,18 +131,25 @@
                             <td><?= $no++ ?></td>
                             <td><?= $usr->name ?></td>
                             <td><?= $usr->email ?></td>
-                            <!-- <td><img src="<?= base_url('assets/images/profile/') . $usr->image ?>"
-                                        style="width:100px; height:100px;" class="img-thumbnail"></td> -->
                             <?php if ($usr->is_active == "aktif") : ?>
                             <td class="project-state">
                                 <span class="badge badge-success"><?= $usr->is_active ?></span>
                             </td>
                             <?php else : ?>
                             <td class="project-state">
-                                <span class="badge badge-danger">belum aktif</span>
+                                <span class="badge badge-danger">Belum Aktif</span>
                             </td>
                             <?php endif ?>
-                            <!-- <td><?= date('d  F Y H:i:s', ($usr->date_created)); ?></td> -->
+
+                            <?php if ($usr->last_login == NULL) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-success">Belum Pernah Login</span>
+                            </td>
+                            <?php else : ?>
+                            <td>
+                                <?=  date('d-m-Y H:i:s', strtotime($usr->last_login)); ?></td>
+                            </td>
+                            <?php endif ?>
 
                             <td>
                                 <a class='btn btn-primary btn-circle'

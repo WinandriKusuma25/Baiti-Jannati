@@ -18,6 +18,7 @@ class Home extends CI_Controller
         $data['title'] = 'Baiti Jannati | Beranda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransPending($this->session->userdata('email'));
+        
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);

@@ -121,7 +121,7 @@
                             <th class="text-primary">Email</th>
                             <!-- <th class="text-primary">Picture</th> -->
                             <th class="text-primary">Status</th>
-                            <!-- <th class="text-primary">Date Created</th> -->
+                            <th class="text-primary">Terakhir login</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
@@ -140,7 +140,16 @@
                             </td>
                             <?php else : ?>
                             <td class="project-state">
-                                <span class="badge badge-danger">belum aktif</span>
+                                <span class="badge badge-danger">Belum Aktif</span>
+                            </td>
+                            <?php endif ?>
+                            <?php if ($usr->last_login == NULL) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-success">Belum Pernah Login</span>
+                            </td>
+                            <?php else : ?>
+                            <td class="project-state">
+                            <td><?=  date('d-m-Y H:i:s', strtotime($usr->last_login)); ?></td>
                             </td>
                             <?php endif ?>
                             <!-- <td><?= date('d  F Y H:i:s', ($usr->date_created)); ?></td> -->

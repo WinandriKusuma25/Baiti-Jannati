@@ -8,6 +8,7 @@ class Auth extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
+        $this->load->model('admin/User_model');
         $this->load->library('form_validation');
     }
     public function index()
@@ -265,8 +266,13 @@ class Auth extends CI_Controller
 
     public function logout()
     {
+        date_default_timezone_set("ASIA/JAKARTA");
+        $date = array('last_login' => date('Y-m-d H:i:s'));
+        $id = $this->session->userdata('id_user');
+        $this->User_model->logout($date, $id);
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
+        // $this->session->sess_destroy();
 
         $this->session->set_flashdata(
             'message',
