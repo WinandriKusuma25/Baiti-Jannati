@@ -23,10 +23,12 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Login';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('template/header', $data);
+            // $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login');
             $this->load->view('templates/auth_footer');
-            $this->load->view('templates/footer_dark');
+            $this->load->view('template/footer');
+
         } else {
             $this->_login();
         }
@@ -112,10 +114,12 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Registrasi';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('template/header', $data);
+            // $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
-            $this->load->view('templates/footer_dark');
+            // $this->load->view('templates/auth_footer');
+            $this->load->view('template/footer', $data);
+   
         } else {
             $email = $this->input->post('email', true);
             $data = [
@@ -284,9 +288,9 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Lupa Password';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('template/header', $data);
             $this->load->view('auth/forgot_password');
-            $this->load->view('templates/auth_footer', $data);
+            $this->load->view('template/footer', $data);
         } else {
             $email = $this->input->post('email');
             $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();

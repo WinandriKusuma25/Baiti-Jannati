@@ -1,6 +1,5 @@
 <body>
     <div class="bg-light">
-
         <div class="page-hero-section bg-image hero-mini"
             style="background-image: url(<?= base_url(); ?>assets/user/img/hero_mini.svg);">
             <div class="hero-caption">

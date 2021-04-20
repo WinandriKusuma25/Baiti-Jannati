@@ -56,6 +56,9 @@
                 <li class="nav-item <?= activate_menu('kontak') ?>">
                     <a class="nav-link" href="<?= base_url('kontak') ?>">Kontak</a>
                 </li>
+                <li class="nav-item <?= activate_menu('Auth') ?>">
+                    <a class="nav-link" href="<?= base_url('Auth/registration') ?>">Registrasi</a>
+                </li>
 
 
             </ul>

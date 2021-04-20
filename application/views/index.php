@@ -315,8 +315,9 @@
                 <div class="col-lg-5 py-3 wow fadeInUp">
                     <h3 class="mb-4 text-primary">Cara Berdonasi <br>Baiti Jannati</h3>
                     <p>Cara Berdonasi Pada Baiti Jannati yaitu pengunjung harus melakukan registrasi terlebih dahulu
-                    untuk menjadi menjadi member. Setelah itu pengunjung Login dan memilih fitur Tambah Donasi dan memasukkan nominal serta
-                    memilih metode pembayaran yang digunakan.</p>
+                        untuk menjadi menjadi member. Setelah itu pengunjung Login dan memilih fitur Tambah Donasi dan
+                        memasukkan nominal serta
+                        memilih metode pembayaran yang digunakan.</p>
 
                     <!-- <p class="fg-primary fw-medium">Need more helps?</p>
                     <a href="#" class="btn btn-gradient btn-split-icon rounded-pill">
@@ -328,7 +329,8 @@
                         <div class="accordion-item wow fadeInRight">
                             <div class="accordion-trigger" id="headingFour">
                                 <button class="btn collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Ada berapa jenis Donasi yang tersedia?</button>
+                                    data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Ada berapa
+                                    jenis Donasi yang tersedia?</button>
                             </div>
                             <div id="collapse1" class="collapse" aria-labelledby="headingFour"
                                 data-parent="#accordionFAQ">
@@ -338,7 +340,7 @@
                                         <li>Keuangan Tunai</li>
                                         <li>Keuangan Non Tunai</li>
                                         <li>Non Keuangan</li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -346,24 +348,28 @@
                         <div class="accordion-item wow fadeInRight">
                             <div class="accordion-trigger" id="headingFive">
                                 <button class="btn" type="button" data-toggle="collapse" data-target="#collapse2"
-                                    aria-expanded="true" aria-controls="collapse2">Apa bisa Donatur berdonasi tanpa ke Yayasan?</button>
+                                    aria-expanded="true" aria-controls="collapse2">Apa bisa Donatur berdonasi tanpa ke
+                                    Yayasan?</button>
                             </div>
                             <div id="collapse2" class="collapse show" aria-labelledby="headingFive"
                                 data-parent="#accordionFAQ">
                                 <div class="accordion-content">
-                                    <p>Bisa, karena bisa langsung melalui sistem dan terdapat beberapa metode pembayaran yang tersedia.</p>
+                                    <p>Bisa, karena bisa langsung melalui sistem dan terdapat beberapa metode pembayaran
+                                        yang tersedia.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item wow fadeInRight">
                             <div class="accordion-trigger" id="headingSix">
                                 <button class="btn collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Apakah bisa Donatur menyembunyikan nama Donatur untuk berdonasi? </button>
+                                    data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Apakah bisa
+                                    Donatur menyembunyikan nama Donatur untuk berdonasi? </button>
                             </div>
                             <div id="collapse3" class="collapse" aria-labelledby="headingSix"
                                 data-parent="#accordionFAQ">
                                 <div class="accordion-content">
-                                    <p>Bisa, Donatur bisa mengubahnya di fitur Edit Profile halaman member, misalnya bisa diubah menjadi Hamba Allah.
+                                    <p>Bisa, Donatur bisa mengubahnya di fitur Edit Profile halaman member, misalnya
+                                        bisa diubah menjadi Hamba Allah.
                                     </p>
                                 </div>
                             </div>

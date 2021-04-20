@@ -76,17 +76,18 @@
             <p> -->
 
             <p>
-
-                <?php for ($i=0; $i < $jumlah_form; $i++) : ?>
-
             <div class="card  shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Transaksi Donasi</h6>
                 </div>
 
-
-
                 <div class="card-body border-bottom-primary shadow-sm">
+
+
+
+                    <?php for ($i=0; $i < $jumlah_form; $i++) : ?>
+
+
                     <div class="alert alert-primary" role="alert">
                         Detail <b>donasi</b> yang di berikan
                     </div>
@@ -123,13 +124,13 @@
                         <?= form_error('kategori', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
-
+                    <!-- 
                     <div class="form-group">
                         <label for="nominal">Nominal</label>
                         <input type="number" class="form-control" id="nominal" name="nominal[]" min="1"
                             value="<?= set_value('nominal')  ?>">
                         <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="jumlah">Jumlah</label>
@@ -152,6 +153,7 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                         <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
+                    <hr>
 
                     <p>
 
