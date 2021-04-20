@@ -58,7 +58,7 @@
                         foreach ($log as $j) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $j->log_time ?></td>
+                            <td><?=  date('d-m-Y H:i:s', strtotime($j->log_time)); ?></td>
                             <td><?= $j->log_user ?></td>
                             <td><?= $j->log_tipe ?></td>
                             <td><?= $j->log_desc ?></td>
