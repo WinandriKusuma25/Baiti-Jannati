@@ -36,13 +36,6 @@ if (
     </li>
 
     <!-- Nav Item - Dashboard -->
-    <!-- <li class="nav-item <?= activate_menu('calendar') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/calendar') ?>">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>Calendar</span></a>
-    </li> -->
-
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('profile') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('admin/profile') ?>">
             <i class="fas fa-fw fa-user"></i>
@@ -70,7 +63,7 @@ if (
     <li class="nav-item <?= activate_menu('transaksi_non_tunai') ?>">
         <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_non_tunai') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
-            <span>Pemasukan Transaksi Donasi Non Tunai</span></a>
+            <span>Pemasukan Transaksi Donasi Transfer</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('pemasukan_non_donasi') ?>">
@@ -86,6 +79,13 @@ if (
             <span>Pengeluaran Donasi</span></a>
     </li>
 
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('kategori') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/kategori') ?>">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Kategori</span></a>
+    </li>
+
 
 
     <!-- Nav Item - Dashboard -->
@@ -94,32 +94,6 @@ if (
             <i class="fas fa-fw fa-print"></i>
             <span>Laporan</span></a>
     </li>
-
-
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <!--    <li
-        class="nav-item  <?= activate_menu('profile') ?> <?= activate_menu('profile/edit') ?> <?= activate_menu('Change_Password') ?>">
-        <a class="nav-link collapsed <?= activate_menu('profile') ?>" href="#" data-toggle="collapse"
-            data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profile</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header  <?= activate_menu('profile') ?>">Profile Admin</h6>
-                <a class="collapse-item <?= activate_menu('profile') ?>"
-                    href=" <?= base_url('admin/profile') ?>">Profile</a>
-                <a class="collapse-item <?= activate_menu('profile/edit') ?>" href="
-                    <?= base_url('admin/profile/edit') ?>">Edit Profile</a>
-                <a class="collapse-item <?= activate_menu('Change_Password') ?>"
-                    href="<?= base_url('admin/Change_Password') ?>">Ubah Password</a>
-            </div>
-        </div>
-    </li> -->
-
-
-
 
     <!-- Divider -->
     <hr class="sidebar-divider">

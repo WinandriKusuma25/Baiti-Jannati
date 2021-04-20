@@ -27,7 +27,12 @@
                             <div class="card-page">
                                 <h5 class="fg-primary">Sejarah Baiti Jannati</h5>
                                 <hr>
-                                <p align="justify">Dalam rangka melaksanakan kegiatan sosial di wilayah desa Bakalan
+                                <?php 
+                        foreach ($pengaturan as $ad) : ?>
+                                <?= $ad->sejarah ?>
+                                <p align="justify">
+
+                                    Dalam rangka melaksanakan kegiatan sosial di wilayah desa Bakalan
                                     kecamatan Bululawang
                                     terutama bagi adik dan saudara kita Yatim-Piatu atau terlantar, maka kami merasa
                                     perlu mengadakan
@@ -57,6 +62,7 @@
                                     perwakilan lain, baik didalam maupun diluar wilayah
                                     Republik Indonesia berdasarkan Keputusan Pengurus dengan Persetujuan Pembina.
                                 </p>
+                                <?php endforeach ?>
                             </div>
                             <br>
                             <div class="card-page">

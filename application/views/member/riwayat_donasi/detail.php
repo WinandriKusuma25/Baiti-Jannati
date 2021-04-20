@@ -50,7 +50,8 @@
             <div class="card-text">&nbsp;&nbsp; Nominal :&nbsp;<b> Rp.
                     <?= number_format($ad->gross_amount, 2, ',', '.'); ?></b></div>
             <div class="card-text">&nbsp;&nbsp; Tipe Payment :&nbsp;<b><?= $ad->payment_type ?></b></div>
-            <div class="card-text">&nbsp;&nbsp; Tgl. Transaksi :&nbsp;<b><?= $ad->transaction_time ?></b></div>
+            <div class="card-text">&nbsp;&nbsp; Tgl. Transaksi
+                :&nbsp;<b><?=  date('d-m-Y H:i:s', strtotime($ad->transaction_time)); ?></b></div>
             <div class="card-text">&nbsp;&nbsp; Bank :&nbsp;<b><?= $ad->bank ?></b></div>
             <div class="card-text">&nbsp;&nbsp; Va number :&nbsp;<b><?= $ad->va_number ?></b></div>
 

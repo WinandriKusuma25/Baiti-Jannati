@@ -56,7 +56,9 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     if ($user['role'] == 'admin') {
                         redirect('admin/home');
-                    } else {
+                    }else if ($user['role'] == 'superadmin') {
+                        redirect('superadmin/home');
+                    }else{
                         redirect('member/home');
                     }
                 } else {
@@ -87,7 +89,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                   Email is not registered
+                   Email Belum Registrasi!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -148,7 +150,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Congratulation!</strong> You account has been created, Please Activate your account.
+                    <strong>Selamat!</strong> Akunmu telah berhasil dibuat, Segera aktifkan akunmu.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -178,7 +180,7 @@ class Auth extends CI_Controller
 
         if ($type  == 'verify') {
             $this->email->subject('Account verification');
-            $this->email->message('Click this link to verify your account : <a href="'
+            $this->email->message('Klik untuk memverikasi akunmu: <a href="'
                 . base_url() . 'auth/verify?email=' . $this->input->post('email') .
                 '&token=' . urlencode($token) . '">Active</a>');
         } else if ($type == 'forgot') {
@@ -213,7 +215,7 @@ class Auth extends CI_Controller
                     $this->session->set_flashdata(
                         'message',
                         '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Congratulation!</strong> ' . $email . ' has been activated please login!
+                            <strong>Selamat!</strong> ' . $email . ' telah aktif silahkan login!
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -226,7 +228,7 @@ class Auth extends CI_Controller
                     $this->session->set_flashdata(
                         'message',
                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                       Token Expired!
+                       Token Kadarluarsa!
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -238,7 +240,7 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata(
                     'message',
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Account activation failed! Token Invalid!
+                    Aktivasi Akun Gagal! Token Invalid!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -251,7 +253,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                Account activation failed! Wrong Email!
+                Akun aktivasi gagal ! Email Salah!
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -348,7 +350,7 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata(
                     'message',
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                       Reset password gagal ! wrong token
+                       Reset password gagal ! token salah
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

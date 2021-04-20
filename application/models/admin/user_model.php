@@ -17,6 +17,14 @@ class User_model extends CI_Model
         return $query->result();
     }
 
+    public function tampilPengurusSaja()
+    {
+        $pengurussaja = 'admin';
+        $query = $this->db->order_by('id_user', 'DESC')->get_where('user', array('role' => $pengurussaja));
+        return $query->result();
+    }
+
+
     public function showUser()
     {
         return $this->db->get('user')->result();

@@ -6,17 +6,17 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Riwayat Donasi Non Tunai</h1>
+        <h1 class="h3 mb-0 text-gray-800">Riwayat Donasi Transfer</h1>
         <small>
             <div class="text-muted">Donasi &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("member/riwayat_donasi"); ?>">Riwayat Donasi Non Tunai</a>
+                    href="<?php echo base_url("member/riwayat_donasi"); ?>">Riwayat Donasi Transfer</a>
             </div>
         </small>
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data riwayat donasi non tunai</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data riwayat donasi transfer</h6>
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
@@ -64,7 +64,9 @@
                             <!-- <td><?= $j->name ?></td> -->
                             <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <td><?= $j->payment_type ?></td>
-                            <td><?= $j->transaction_time ?></td>
+                            <!-- <td><?= $j->transaction_time ?></td> -->
+                            <td><?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
+                            <!-- <?php echo format_indo(date('Y-m-d H:i:s'));?> -->
                             <td><?= $j->bank ?></td>
                             <td><?= $j->va_number ?></td>
                             <?php if ($j->status_code == "200") : ?>
