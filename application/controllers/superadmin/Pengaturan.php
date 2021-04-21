@@ -135,12 +135,11 @@ class Pengaturan extends CI_Controller
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['pengaturan'] = $this->Pengaturan_model->getPengaturan($id_pengaturan);
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/superadmin/header', $data);
+        $this->load->view('templates/superadmin/sidebar', $data);
+        $this->load->view('templates/superadmin/topbar', $data);
         $this->load->view('superadmin/pengaturan/detail', $data);
-        $this->load->view('templates/footer', $data);
-        $this->load->view('templates/footer_dark', $data);
+        $this->load->view('templates/superadmin/footer');
     }
 
     public function hapus($id_pengaturan)

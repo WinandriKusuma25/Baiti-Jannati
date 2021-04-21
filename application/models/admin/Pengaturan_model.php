@@ -47,10 +47,23 @@ class Pengaturan_model extends CI_Model
         }
     }
 
-    public function deletePengaturan()
+    public function getpengaturanOne($id_pengaturan)
+    {
+        return $this->db->get_where('pengaturan', ['id_pengaturan' => $id_pengaturan])->row();
+    }
+
+
+    public function deletePengaturan($id_pengaturan)
     {
         $this->_deleteImage($id_pengaturan);
-        $this->db->where('id_pengatuan', $id_pengaturan);
+        $this->db->where('id_pengaturan', $id_pengaturan);
         $this->db->delete('pengaturan');
+    }
+
+    private function _deleteImage($id_pengaturan)
+    {
+        $pengaturan = $this->getpengaturanOne($id_pengaturan);
+        $filename = $pengaturan->foto;
+        unlink(FCPATH . "assets/images/pengaturan/" . $filename);
     }
 }

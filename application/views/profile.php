@@ -50,13 +50,15 @@
                             
                         foreach ($pengaturan as $f) : ?>
                                 <p align="justify">
-                                <?= $f->foto ?>
+                               
                                 </p>
-                                <?php endforeach ?>
+                              
 
                                 <div class="text-center py-5">
-                                    <img src="<?= base_url(); ?>assets/user/img/gambar_baiti.jpg" alt="" width="70%">
+                                <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>  "
+                                        class="img-thumbnail" width="50%">
                                 </div>
+                                  <?php endforeach ?>
                             </div>
 
                             <!-- <div class="card-page mt-3">
