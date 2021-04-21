@@ -20,4 +20,30 @@ class Pengaturan_model extends CI_Model
         $this->db->join('user', 'pengaturan.id_user = user.id_user');
         return $this->db->get_where('pengaturan', ['id_pengaturan' => $id_pengaturan])->result();
     }
+
+    public function addPengaturan($upload)
+    {
+        $data = [
+            'id_user' => $this->session->userdata('id_user'),
+            'sejarah' => $this->input->post('sejarah', true),
+            'kondisi' => $this->input->post('kondisi', true),
+            'foto' => $upload['file']['file_name'],
+        ];
+        $this->db->insert('pengaturan', $data);
+    }
+
+    public function upload()
+    {
+        $config['upload_path'] = './assets/images/pengaturan';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['file_name']  = $this->input->post('nama');
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('foto')) {
+            $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+            return $return;
+        } else {
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
+    }
 }

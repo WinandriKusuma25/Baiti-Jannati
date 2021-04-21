@@ -92,4 +92,40 @@ class Pengaturan extends CI_Controller
             redirect('superadmin/pengaturan');
         }
     }
+
+    public function tambah()
+    {
+        $data['title'] = 'Baiti Jannati | Tambah Profil';
+        $this->form_validation->set_rules('sejarah', 'Sejarah', 'required|trim');
+        $this->form_validation->set_rules('kondisi', 'Kondisi', 'required|trim');
+        // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
+        $data['user'] = $this->User_model->getUser($this->session->userdata('id_user'));
+        $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/superadmin/header', $data);
+            $this->load->view('templates/superadmin/sidebar', $data);
+            $this->load->view('templates/superadmin/topbar', $data);
+            $this->load->view('superadmin/pengaturan/tambah', $data);
+            $this->load->view('templates/superadmin/footer');
+        } else {
+            $upload = $this->Pengaturan_model->upload();
+            if ($upload['result'] == 'success') {
+                $this->Pengaturan_model->addPengaturan($upload);
+
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              Data berhasil di tambahkan ! 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+                );
+                redirect('superadmin/pengaturan');
+            } else {
+                echo $this->upload->display_errors();
+            }
+        }
+    }
 }

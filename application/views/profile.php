@@ -27,7 +27,7 @@
                             <div class="card-page">
                                 <h5 class="fg-primary">Sejarah Baiti Jannati</h5>
                                 <hr>
-                                <?php 
+                            <?php 
                         foreach ($pengaturan as $ad) : ?>
                                 <p align="justify">
                                 <?= $ad->sejarah ?>
@@ -35,42 +35,28 @@
                                 <?php endforeach ?>
                             </div>
                             <br>
+
                             <div class="card-page">
                                 <h5 class="fg-primary">Kondisi Anak Didik</h5>
                                 <hr>
-                                <p align="justify"> Ketika mulai didirikan dan memberikan santunan anak yatim untuk
-                                    pertama kalinya pada tanggal 21 Januari 2018 ada 11 anak yatim / piatu yang
-                                    menjadi
-                                    prioritas penerima santunan dari Rumah Cerdas ”BAITI JANNATI”,
-                                    selanjutnya pada bulan ke-2 (18 Pebruari 2018) jumlah anak didik bertambah 3
-                                    menjadi
-                                    14 anak didik,
-                                    dan pada santunan ke-3 (11 Maret 2018) jumlah anak didik bertambah 1 sehingga
-                                    menjadi 15 anak didik.
-                                    Pada santunan ke-4 (22 April 2018) jumlah anak didik menjadi 21 anak dan pada
-                                    santunan ke-5
-                                    (13 Mei 2018) menjadi 31 anak didik dan mulai santunan ke-6 (2 Juni 2018)
-                                    smenjadi
-                                    33 anak didik,
-                                    Santunan ke 8 menjadi 40 anak didik, santunan ke 10 sampai sekarang sudah
-                                    berkembang
-                                    45 anak didik
-                                    (per 22 Mei 2019) </p>
+                                <p align="justify">  </p>
+                            <?php 
+                        foreach ($pengaturan as $as) : ?>
+                                <p align="justify">
+                                <?= $as->kondisi ?>
+                                </p>
+                                <?php endforeach ?>
+                            <?php 
+                            
+                        foreach ($pengaturan as $f) : ?>
+                                <p align="justify">
+                                <?= $f->foto ?>
+                                </p>
+                                <?php endforeach ?>
 
-                                <!-- Video -->
                                 <div class="text-center py-5">
                                     <img src="<?= base_url(); ?>assets/user/img/gambar_baiti.jpg" alt="" width="70%">
                                 </div>
-
-                                <p align="justify">Yayasan ini bernama : YAYASAN RUMAH CERDAS YATIM PIATU BAITI
-                                    JANNATI,
-                                    selanjutnya dalam anggaran dasar ini disingkat Yayasan, yang berkedudukan di
-                                    Dusun Bakalan 02 RT. 01 RW. 03 Desa Bakalan Kecamatan Bululawang
-                                    Kabupaten Malang. Dalam perkembangannya, Yayasan dapat membuka kantor cabang
-                                    atau
-                                    perwakilan lain, baik didalam maupun diluar wilayah
-                                    Republik Indonesia berdasarkan Keputusan Pengurus dengan Persetujuan Pembina.
-                                </p>
                             </div>
 
                             <!-- <div class="card-page mt-3">
