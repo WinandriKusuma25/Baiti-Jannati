@@ -6,12 +6,12 @@
     <!-- Page Heading -->
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Anak Didik</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Pengaturan</h1>
         <?php $no = 1;
-        foreach ($anak_didik as $ad) : ?>
+        foreach ($pengaturan as $ad) : ?>
         <small>
-            <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Anak Didik&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'admin/users/detail/' . $ad->id_anak_didik ?>">Detail Anak Didik</a></div>
+            <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Pengaturan&nbsp; /&nbsp; <a
+                    href="<?= base_url() . 'superadmin/pengaturan/detail/' . $ad->id_pengaturan ?>">Detail Pengaturan</a></div>
         </small>
         <?php endforeach ?>
     </div>
@@ -22,49 +22,28 @@
     </div>
     <div class="card mb-3 shadow-sm border-bottom-primary">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detail Anak Didik</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Detail Pengaturan</h6>
         </div>
         <div class="row no-gutters">
             <div class="col-md-4">
-                <?php foreach ($anak_didik as $ad) : ?>
-                <img src="<?= base_url('assets/images/anak_didik/') . $ad->foto ?>" class="card-img" alt="..."
+                <?php foreach ($pengaturan as $ad) : ?>
+                <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>" class="card-img" alt="..."
                     width="100px">
             </div>
 
 
             <div class="col-md-8 ">
                 <div class="card-body">
-                    <h5 class="card-title text-dark"><b>Nama</b>&nbsp;:
-                        <?= $ad->nama ?>
+                    <h5 class="card-title text-dark"><b>Sejarah</b>&nbsp;:
+                        <?= $ad->sejarah ?>
                         <hr>
-                        <h5 class="card-title text-dark"><b>Jenis
-                                Kelamin</b>
+                        <h5 class="card-title text-dark"><b>Kondisi</b>
                             &nbsp;:
-                            <?= $ad->jenis_kelamin ?></h5>
+                            <?= $ad->kondisi ?></h5>
                         <hr>
-                        <h5 class="card-title text-dark"><b>TTL</b>
-                            &nbsp;:
-                            <?= $ad->tempat_lahir ?>,
-                            <?= date('d F Y', strtotime($ad->tgl_lahir)); ?> </h5>
-                        <hr>
-                        <h5 class="card-title text-dark"><b>Alamat</b>&nbsp;:
-                            <?= $ad->alamat ?></h5>
-                        <hr>
-                        <h5 class="card-title text-dark"><b>Orang Tua / Wali
-                            </b>&nbsp;: <?= $ad->nama_wali ?></h5>
-                        <hr>
-
-                        <h5 class="card-title text-dark"><b>Penanggung
-                                Jawab :
-                            </b>&nbsp;: <?= $ad->nama_pengurus ?></h5>
-                        <hr>
-
-
-
                         <?php endforeach ?>
                         <p>
-
-                            <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
+                            <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
                         </p>
                 </div>

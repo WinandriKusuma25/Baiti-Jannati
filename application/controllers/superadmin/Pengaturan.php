@@ -128,4 +128,33 @@ class Pengaturan extends CI_Controller
             }
         }
     }
+
+    public function detail($id_pengaturan)
+    {
+        $data['title'] = 'Baiti Jannati | Detail Pengaturan';
+        // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['pengaturan'] = $this->Pengaturan_model->getPengaturan($id_pengaturan);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('superadmin/pengaturan/detail', $data);
+        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer_dark', $data);
+    }
+
+    public function hapus($id_pengaturan)
+    {
+        $this->Pengaturan_model->deletePengaturan($id_pengaturan);
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+   Data berhasil di hapus !
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>'
+        );
+        redirect('superadmin/pengaturan', 'refresh');
+    }
 }

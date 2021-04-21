@@ -46,4 +46,11 @@ class Pengaturan_model extends CI_Model
             return $return;
         }
     }
+
+    public function deletePengaturan()
+    {
+        $this->_deleteImage($id_pengaturan);
+        $this->db->where('id_pengatuan', $id_pengaturan);
+        $this->db->delete('pengaturan');
+    }
 }
