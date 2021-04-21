@@ -36,6 +36,8 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Pembuat</th>
                             <th class="text-primary">Sejarah</th>
+                            <th class="text-primary">Kondisi</th>
+                            <th class="text-primary">Foto</th>
                             <th class="text-primary">Tgl. Pembuatan</th>
                             <th class="text-primary">Terakhir di edit</th>
                             <th class="text-primary">Aksi</th>
@@ -48,6 +50,9 @@
                             <td><?= $no++ ?></td>
                             <td><?= $ad->name ?></td>
                             <td><?= $ad->sejarah ?></td>
+                            <td><?= $ad->kondisi ?></td>
+                            <td>   <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>"
+                                        class="img-thumbnail"></td>
                             <td><?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></td>
 
                             <?php if ($ad->updated_at == NULL ) : ?>

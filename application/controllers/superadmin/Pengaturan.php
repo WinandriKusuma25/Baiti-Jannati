@@ -28,12 +28,14 @@ class Pengaturan extends CI_Controller
 
     public function edit($id_pengaturan)
     {
-        $data['title'] = 'Baiti Jannati | Edit Pengatura ';
+        $data['title'] = 'Baiti Jannati | Edit Pengaturan ';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['pengaturan'] = $this->Pengaturan_model->getPengaturan($id_pengaturan);
         // $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
         $this->form_validation->set_rules('sejarah', 'sejarah', 'required|trim');
+        $this->form_validation->set_rules('kondisi', 'kondisi', 'required|trim');
+        // $this->form_validation->set_rules('foto', 'foto', 'required|trim');
  
 
         if ($this->form_validation->run() == false) {
@@ -67,10 +69,16 @@ class Pengaturan extends CI_Controller
 
             $id_pengaturan = $this->input->post('id_pengaturan');
             $sejarah = $this->input->post('sejarah');
-            
+            $kondisi = $this->input->post('kondisi');
+            // var_dump($kondisi);
+            // die();
+       
             $this->db->set('sejarah', $sejarah);
+            $this->db->set('kondisi', $kondisi);
             $this->db->where('id_pengaturan', $id_pengaturan);
             $this->db->update('pengaturan');
+
+
 
             $this->session->set_flashdata(
                 'message',

@@ -42,6 +42,28 @@
                                 <?= form_error('sejarah', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
+                            <div class=" form-group">
+                                <label for="kondisi">Kondisi</label>
+                                <textarea name="kondisi" id="kondisi" cols="50" rows=""
+                                    class="form-control"><?= $b->kondisi; ?></textarea>
+                                <?= form_error('kondisi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class=" form-group">
+                            <div class="col-sm-3">
+                            <img src="<?= base_url('assets/images/pengaturan/') . $b->foto ?>"
+                                        class="img-thumbnail">
+                                        </div>
+                                        <div class="col-sm-9">
+                            <label for="foto">Foto</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto" name="foto">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            </div>
+                            </div>
+
 
                         </div>
 
@@ -71,6 +93,8 @@
 <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <script>
 CKEDITOR.replace('sejarah');
+CKEDITOR.replace('kondisi');
+// CKEDITOR.replace('foto');
 </script>
 
 <script>

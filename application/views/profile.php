@@ -29,38 +29,8 @@
                                 <hr>
                                 <?php 
                         foreach ($pengaturan as $ad) : ?>
-                                <?= $ad->sejarah ?>
                                 <p align="justify">
-
-                                    Dalam rangka melaksanakan kegiatan sosial di wilayah desa Bakalan
-                                    kecamatan Bululawang
-                                    terutama bagi adik dan saudara kita Yatim-Piatu atau terlantar, maka kami merasa
-                                    perlu mengadakan
-                                    kegiatan sosial dengan menyantuni, mendidik dan memberikan ketrampilan bagi anak
-                                    Yatim Piatu agar
-                                    dapat hidup lebih baik, mandiri dan sejahtera.
-                                    Dari kepedulian tersebut maka muncul sebuah gagasan dengan membuat Yayasan Rumah
-                                    Cerdas
-                                    Yatim Piatu yang kami beri nama ”BAITI JANNATI” (Rumahku Surgaku) dengan
-                                    kegiatan
-                                    utama yaitu
-                                    Memberikan santunan setiap bulan kepada anak Yatim Piatu, Memberikan bimbingan
-                                    pendidikan dan ketrampilan,
-                                    Makan bersama dan kegiatan lainnya dengan anak yatim / piatu.
-                                    Sehubungan dengan rencana tersebut maka diperlukan para Donatur baik dari Dalam
-                                    desa
-                                    maupun dari
-                                    luar desa agar kegiatan yang kami rencanakan dapat berjalan dengan lancar sesuai
-                                    yang diharapkan. </p>
-
-                                <p align="justify">Yayasan ini bernama : YAYASAN RUMAH CERDAS YATIM PIATU BAITI
-                                    JANNATI,
-                                    selanjutnya dalam anggaran dasar ini disingkat Yayasan, yang berkedudukan di
-                                    Dusun Bakalan 02 RT. 01 RW. 03 Desa Bakalan Kecamatan Bululawang
-                                    Kabupaten Malang. Dalam perkembangannya, Yayasan dapat membuka kantor cabang
-                                    atau
-                                    perwakilan lain, baik didalam maupun diluar wilayah
-                                    Republik Indonesia berdasarkan Keputusan Pengurus dengan Persetujuan Pembina.
+                                <?= $ad->sejarah ?>
                                 </p>
                                 <?php endforeach ?>
                             </div>
