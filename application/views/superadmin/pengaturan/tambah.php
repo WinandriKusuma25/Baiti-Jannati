@@ -30,17 +30,17 @@
                         <div class="form-group">
 
                         <div class="form-group">
-                            <label for="nama">Sejarah</label>
+                            <label for="sejarah">Sejarah</label>
                             <textarea name="sejarah" id="sejarah" cols="50" rows=""
                                     class="form-control"></textarea>
                                 <?= form_error('sejarah', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
                         <div class=" form-group">
-                            <label for="alamat">Kondisi</label>
+                            <label for="kondisi">Kondisi</label>
                             <textarea name="kondisi" id="kondisi" cols="50" rows=""
                                     class="form-control"></textarea>
-                            <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <?= form_error('', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
                         <label for="foto">Foto</label>
@@ -48,6 +48,14 @@
                             <input type="file" class="custom-file-input" id="foto" name="foto" required autofocus>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                             <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                        </div>
+                        <br><br>
+
+                        <div class=" form-group">
+                            <label for="mitra_berbagi">Mitra Berbagi</label>
+                            <textarea name="mitra_berbagi" id="mitra_berbagi" cols="50" rows=""
+                                    class="form-control"></textarea>
+                            <?= form_error('mitra_berbagi', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <br>
                         <br>
@@ -72,5 +80,5 @@
 <script>
 CKEDITOR.replace('sejarah');
 CKEDITOR.replace('kondisi');
-// CKEDITOR.replace('foto');
+CKEDITOR.replace('mitra_berbagi');
 </script>

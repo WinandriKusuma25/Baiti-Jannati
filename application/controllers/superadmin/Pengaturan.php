@@ -35,6 +35,7 @@ class Pengaturan extends CI_Controller
         // $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
         $this->form_validation->set_rules('sejarah', 'sejarah', 'required|trim');
         $this->form_validation->set_rules('kondisi', 'kondisi', 'required|trim');
+        $this->form_validation->set_rules('mitra_berbagi', 'mitra_berbagi', 'required|trim');
         // $this->form_validation->set_rules('foto', 'foto', 'required|trim');
  
 
@@ -70,11 +71,13 @@ class Pengaturan extends CI_Controller
             $id_pengaturan = $this->input->post('id_pengaturan');
             $sejarah = $this->input->post('sejarah');
             $kondisi = $this->input->post('kondisi');
+            $mitra_berbagi = $this->input->post('mitra_berbagi');
             // var_dump($kondisi);
             // die();
        
             $this->db->set('sejarah', $sejarah);
             $this->db->set('kondisi', $kondisi);
+            $this->db->set('mitra_berbagi', $mitra_berbagi);
             $this->db->where('id_pengaturan', $id_pengaturan);
             $this->db->update('pengaturan');
 
@@ -99,6 +102,7 @@ class Pengaturan extends CI_Controller
         $this->form_validation->set_rules('sejarah', 'Sejarah', 'required|trim');
         $this->form_validation->set_rules('kondisi', 'Kondisi', 'required|trim');
         // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
+        $this->form_validation->set_rules('mitra_berbagi', 'mitra_berbagi', 'required|trim');
         $data['user'] = $this->User_model->getUser($this->session->userdata('id_user'));
         $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
 

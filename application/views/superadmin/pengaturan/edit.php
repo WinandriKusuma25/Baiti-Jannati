@@ -64,6 +64,13 @@
                             </div>
                             </div>
 
+                            <div class=" form-group">
+                                <label for="mitra_berbagi">Mitra Berbagi</label>
+                                <textarea name="mitra_berbagi" id="mitra_berbagi" cols="50" rows=""
+                                    class="form-control"><?= $b->mitra_berbagi; ?></textarea>
+                                <?= form_error('mitra_berbagi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
 
                         </div>
 
@@ -94,6 +101,7 @@
 <script>
 CKEDITOR.replace('sejarah');
 CKEDITOR.replace('kondisi');
+CKEDITOR.replace('mitra_berbagi');
 // CKEDITOR.replace('foto');
 </script>
 

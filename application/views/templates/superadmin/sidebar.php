@@ -96,13 +96,6 @@ if (
             <span>Pengaturan</span></a>
     </li>
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= activate_menu('pengaturan') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('superadmin/pengaturan') ?>">
-            <i class="fas fa-fw fa-cogs"></i>
-            <span>Mitra Berbagi</span></a>
-    </li>
-
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

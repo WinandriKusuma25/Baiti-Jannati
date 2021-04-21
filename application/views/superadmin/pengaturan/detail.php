@@ -41,6 +41,10 @@
                             &nbsp;:
                             <?= $ad->kondisi ?></h5>
                         <hr>
+                        <h5 class="card-title text-dark"><b>Mitra Berbagi</b>
+                            &nbsp;:
+                            <?= $ad->mitra_berbagi ?></h5>
+                        <hr>
                         <?php endforeach ?>
                         <p>
                             <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary"> <i

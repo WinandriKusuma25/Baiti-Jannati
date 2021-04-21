@@ -53,13 +53,13 @@
                                
                                 </p>
                               
-
                                 <div class="text-center py-5">
                                 <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>  "
                                         class="img-thumbnail" width="50%">
                                 </div>
-                                  <?php endforeach ?>
+                                
                             </div>
+                            <?php endforeach ?>
 
                             <!-- <div class="card-page mt-3">
                                 <h5 class="fg-primary">Tim Utama Kami</h5>
@@ -150,29 +150,15 @@
                                 <h5 class="fg-primary">Mitra Berbagi</h5>
                                 <hr>
 
-                                <div
-                                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center align-items-center mt-5">
-                                    <div class="p-3 wow zoomIn">
-                                        <div class="img-place client-img">
-                                            <img src="<?= base_url(); ?>assets/user/img/clients/M14-01.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="p-3 wow zoomIn">
-                                        <div class="img-place client-img">
-                                            <img src="<?= base_url(); ?>assets/user/img/clients/M3-01.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="p-3 wow zoomIn">
-                                        <div class="img-place client-img">
-                                            <img src="<?= base_url(); ?>assets/user/img/clients/M8-01.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="p-3 wow zoomIn">
-                                        <div class="img-place client-img">
-                                            <img src="<?= base_url(); ?>assets/user/img/clients/M15-01.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                            foreach ($pengaturan as $as) : ?>
+                                <p align="justify">
+                                <?= $as->mitra_berbagi ?>
+                                </p>
+                                <?php endforeach ?>
+                             
+
+                                
                             </div>
                         </div>
                     </div>
