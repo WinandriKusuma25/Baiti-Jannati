@@ -96,11 +96,11 @@ class Users extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Kominfo Batu | Edit Status User';
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/superadmin/header', $data);
+            $this->load->view('templates/superadmin/sidebar', $data);
+            $this->load->view('templates/superadmin/topbar', $data);
             $this->load->view('admin/users/edit', $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('templates/superadmin/footer', $data);
         } else {
             $this->User_model->ubahUser();
             $this->load->library('session');
@@ -113,7 +113,7 @@ class Users extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/users', 'refresh');
+            redirect('superadmin/users', 'refresh');
         }
     }
 }

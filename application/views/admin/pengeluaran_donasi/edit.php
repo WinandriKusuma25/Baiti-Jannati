@@ -27,30 +27,13 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="id_pengeluaran" name="id_pengeluaran"
                             value="<?= $ad->id_pengeluaran; ?>">
-                        <div class="form-group">
-
-                            <label class="" for="pengurus">Penanggung Jawab</label>
-                            <div class="input-group">
-                                <select name="id_pengurus" id="id_pengurus"
-                                    class="js-example-placeholder-multiple js-states form-control" style="width: 100%">
-                                    <option value="" selected disabled>Pilih pengurus</option>
-                                    <?php foreach ($pengurus as $p) : ?>
-                                    <option value="<?= $p->id_pengurus ?>"
-                                        <?= $p->id_pengurus == $ad->id_pengurus ? "selected" : null ?>>
-                                        <?= $p->nama_pengurus ?>
-                                    </option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                            <?= form_error('id_pengurus', '<small class="text-danger">', '</small>'); ?>
-                        </div>
 
                         <div class="form-group">
-                            <label for="tgl_pengeluaran">Tgl. Pengeluaran</label>
-                            <input type="date" class="form-control" id="tgl_pengeluaran" name="tgl_pengeluaran"
-                                value="<?= $ad->tgl_pengeluaran; ?>">
-                            <?= form_error('tgl_pengeluaran', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="name">Penanggung Jawab</label>
+                            <input type="text" class="form-control" id="name" name="name" readonly
+                                value="<?= $ad->name; ?>">
                         </div>
+
 
                         <div class="form-group">
                             <label for="nominal">Nominal</label>

@@ -16,9 +16,21 @@ class M_log extends CI_Model {
 	
 		$this->db->select('*');
 		$this->db->from("$this->_table");
-		$this->db->order_by('log_time');
+		$this->db->order_by('log_time', 'DESC');
 		$query = $this->db->get();
 		return $query->result();
 //		return $this->db->get("$this->_table")->result();
 	}
+
+	public function hapusLog($log_id)
+    {
+        $this->db->where('log_id', $log_id);
+        if (
+            $this->db->delete('tabel_log')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

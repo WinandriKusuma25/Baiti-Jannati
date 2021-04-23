@@ -19,7 +19,7 @@ class User_model extends CI_Model
 
     public function tampilPengurusSaja()
     {
-        $pengurussaja = 'admin';
+        $pengurussaja = 'pengurus';
         $query = $this->db->order_by('id_user', 'DESC')->get_where('user', array('role' => $pengurussaja));
         return $query->result();
     }
@@ -44,6 +44,22 @@ class User_model extends CI_Model
         ];
         $this->db->insert('user', $data);
     }
+
+    public function tambahPengurus()
+    {
+        $data = [
+            'id_user' => $this->input->post('id_user', true),
+            'name' => $this->input->post('name', true),
+            'email' => $this->input->post('email', true),
+            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            'image' => 'default.png',
+            'role' => 'pengurus',
+            'is_active' => 'aktif',
+            'date_created' => time(),
+        ];
+        $this->db->insert('user', $data);
+    }
+
 
     public function ubahUser()
     {

@@ -56,7 +56,7 @@ class Kategori extends CI_Controller
                 </button>
                 </div>'
             );
-            helper_log("add", "tambah kategori");
+            helper_log("tambah", "tambah kategori");
             redirect('admin/kategori', 'refresh');
         }
     }
@@ -115,7 +115,7 @@ class Kategori extends CI_Controller
                 </button>
                 </div>'
             );
-            helper_log("delete", "hapus kategori");
+            helper_log("hapus", "hapus kategori");
             redirect('admin/kategori', 'refresh');
         }
     }

@@ -27,27 +27,15 @@
                     <form method="post" action="<?= base_url('admin/pengeluaran_donasi/tambah'); ?>"
                         enctype="multipart/form-data">
 
-                        <div class=" form-group">
-                            <label class="" for="pengurus">Penanggung Jawab</label>
-                            <div class="input-group">
-                                <select name="id_pengurus" id="id_pengurus"
-                                    class="js-example-placeholder-multiple js-states form-control" style="width: 100%">
-                                    <option value="" selected disabled>Pilih pengurus</option>
-                                    <?php foreach ($pengurus as $p) : ?>
-                                    <option value="<?= $p->id_pengurus ?>"><?= $p->nama_pengurus ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                        </div>
-                        <?= form_error('id_pengurus', '<small class="text-danger">', '</small>'); ?>
-
+                        <?php foreach ($user as $b) : ?>
                         <div class="form-group">
-                            <label for="tgl_pengeluaran">Tgl. Pengeluaran</label>
-                            <input type="date" class="form-control" id="tgl_pengeluaran" name="tgl_pengeluaran"
-                                value="<?= set_value('tgl_pengeluaran')  ?>">
-                            <?= form_error('tgl_pengeluaran', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="text">Penanggung Jawab</label>
+                            <input type="text" class="form-control" id="name" name="name" readonly
+                                value="<?= $b->name; ?>">
                         </div>
+
+                        <?php endforeach ?>
+
 
                         <div class="form-group">
                             <label for="nominal">Nominal</label>

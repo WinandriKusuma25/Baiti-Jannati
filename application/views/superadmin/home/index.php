@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Beranda</h1>
         <small>
-            <div class="text-muted"><a href="<?php echo base_url("member/home"); ?>">Beranda</a>
+            <div class="text-muted"><a href="<?php echo base_url("superadmin/home"); ?>">Beranda</a>
             </div>
         </small>
     </div>
@@ -46,10 +46,10 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No.</th>
-                            <th class="text-primary">Log Time</th>
-                            <th class="text-primary">Log User</th>
+                            <th class="text-primary">Log Waktu</th>
+                            <th class="text-primary">Log Pengurus</th>
                             <th class="text-primary">Log Tipe</th>
-                            <th class="text-primary">Log Desc</th>
+                            <th class="text-primary">Log Deskripsi</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>

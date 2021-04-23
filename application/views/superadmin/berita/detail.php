@@ -49,19 +49,27 @@
                     <h6 class="card-title text-dark"><b>Tgl. Pembuatan</b>&nbsp;:
                         <?=  date('d-m-Y H:i:s', strtotime($b->created_at)); ?></h6>
                     <hr>
+
                     <h6 class="card-title text-dark"><b>Terakhir di edit</b>&nbsp;:
-                        <?=  date('d-m-Y H:i:s', strtotime($b->updated_at)); ?></h6>
-                    <hr>
+                        <?php if ($b->updated_at== NULL) : ?>
 
-                    <h6 class="card-title text-dark"><b>Deskripsi : </b>&nbsp;<br>
-                        <?= $b->deskripsi ?></h6>
-                    <hr>
+                        <span class="badge badge-success">Belum Pernah di edit</span>
 
-                    <?php endforeach ?>
-                    <p>
-                        <a href="<?php echo base_url("admin/berita"); ?>" class="btn btn-primary right"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
-                    </p>
+                        <?php else : ?>
+
+                        <?=  date('d-m-Y H:i:s', strtotime($b->updated_at)); ?> <?php endif ?>
+                        <hr>
+
+
+                        <h6 class="card-title text-dark"><b>Deskripsi : </b>&nbsp;<br>
+                            <?= $b->deskripsi ?></h6>
+                        <hr>
+
+                        <?php endforeach ?>
+                        <p>
+                            <a href="<?php echo base_url("superadmin/berita"); ?>" class="btn btn-primary right"> <i
+                                    class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
+                        </p>
                 </div>
             </div>
         </div>

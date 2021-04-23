@@ -11,7 +11,7 @@
         foreach ($users as $usr) : ?>
         <small>
             <div class="text-muted"> Manjemen pengguna &nbsp;/&nbsp; Donatur&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'admin/users/detail/' . $usr->id_user ?>">Detail </a></div>
+                    href="<?= base_url() . 'superadmin/users/detail/' . $usr->id_user ?>">Detail </a></div>
         </small>
         <?php endforeach ?>
     </div>
@@ -57,7 +57,7 @@
 
                         <hr>
                     <p>
-                        <a href="<?php echo base_url("admin/users"); ?>" class="btn btn-primary"> <i
+                        <a href="<?php echo base_url("superadmin/users"); ?>" class="btn btn-primary"> <i
                                 class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
 
 

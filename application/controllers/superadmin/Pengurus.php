@@ -29,12 +29,12 @@ class Pengurus extends CI_Controller
     public function detail($id_user)
     {
         $data['title'] = 'Baiti Jannati | Detail Donatur';
-        $data['users'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
+        $data['pengurus'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->load->view('templates/superadmin/header', $data);
         $this->load->view('templates/superadmin/sidebar', $data);
         $this->load->view('templates/superadmin/topbar', $data);
-        $this->load->view('superadmin/users/detail', $data);
+        $this->load->view('superadmin/pengurus/detail', $data);
         $this->load->view('templates/superadmin/footer', $data);
     }
 
@@ -61,18 +61,18 @@ class Pengurus extends CI_Controller
             'min_length' => 'Password terlalu pendek!'
         ]);
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
-        $data['users'] = $this->User_model->showUser();
+        $data['pengurus'] = $this->User_model->showUser();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Data Doantur';
             $this->load->view('templates/superadmin/header', $data);
             $this->load->view('templates/superadmin/sidebar', $data);
             $this->load->view('templates/superadmin/topbar', $data);
-            $this->load->view('superadmin/users/tambah', $data);
+            $this->load->view('superadmin/pengurus/tambah', $data);
             $this->load->view('templates/superadmin/footer', $data);
         } else {
             $this->load->model('superadmin/User_model');
-            $this->User_model->tambahUser();
+            $this->User_model->tambahPengurus();
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -82,25 +82,25 @@ class Pengurus extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('superadmin/users', 'refresh');
+            redirect('superadmin/pengurus', 'refresh');
         }
     }
 
     public function edit($id_user)
     {
 
-        $data['users'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
+        $data['pengurus'] = $this->db->get_where('user', ['id_user' => $id_user])->result();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('id_user', 'id_user', 'required|numeric');
         $this->form_validation->set_rules('is_active', 'is_active', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Kominfo Batu | Edit Status User';
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/users/edit', $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('templates/superadmin/header', $data);
+            $this->load->view('templates/superadmin/sidebar', $data);
+            $this->load->view('templates/superadmin/topbar', $data);
+            $this->load->view('superadmin/pengurus/edit', $data);
+            $this->load->view('templates/superadmin/footer', $data);
         } else {
             $this->User_model->ubahUser();
             $this->load->library('session');
@@ -113,7 +113,7 @@ class Pengurus extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/users', 'refresh');
+            redirect('superadmin/pengurus', 'refresh');
         }
     }
 }

@@ -132,8 +132,6 @@
                             <td><?= $no++ ?></td>
                             <td><?= $usr->name ?></td>
                             <td><?= $usr->email ?></td>
-                            <!-- <td><img src="<?= base_url('assets/images/profile/') . $usr->image ?>"
-                                        style="width:100px; height:100px;" class="img-thumbnail"></td> -->
                             <?php if ($usr->is_active == "aktif") : ?>
                             <td class="project-state">
                                 <span class="badge badge-success"><?= $usr->is_active ?></span>
@@ -143,16 +141,18 @@
                                 <span class="badge badge-danger">Belum Aktif</span>
                             </td>
                             <?php endif ?>
+
                             <?php if ($usr->last_login == NULL) : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Belum Pernah Login</span>
                             </td>
                             <?php else : ?>
-                            <td class="project-state">
-                            <td><?=  date('d-m-Y H:i:s', strtotime($usr->last_login)); ?></td>
+                            <td>
+                                <?=  date('d-m-Y H:i:s', strtotime($usr->last_login)); ?></td>
                             </td>
                             <?php endif ?>
-                            <!-- <td><?= date('d  F Y H:i:s', ($usr->date_created)); ?></td> -->
+
+
 
                             <td>
                                 <a class='btn btn-primary btn-circle'

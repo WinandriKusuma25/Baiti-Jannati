@@ -8,16 +8,16 @@ class Berita_model extends CI_Model
     //menampilkan berita
     public function showBerita()
     {
-        $this->db->select('berita.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
-        $this->db->order_by('tgl_kegiatan', 'DESC');
+        $this->db->select('berita.*, user.name');
+        $this->db->join('user', 'berita.id_user = user.id_user');
+        $this->db->order_by('created_at', 'DESC');
         return $this->db->get('berita')->result();
     }
 
     public function showBeritaPagination($limit, $start)
     {
-        $this->db->select('berita.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('berita.*, user.name');
+        $this->db->join('user', 'berita.id_user = user.id_user');
         return $this->db->get('berita', $limit, $start)->result();
     }
 
@@ -29,9 +29,7 @@ class Berita_model extends CI_Model
     public function addBerita($upload)
     {
         $data = [
-            'id_berita' => $this->input->post('id_berita', true),
-            'id_pengurus' => $this->input->post('id_pengurus', true),
-            'tgl_kegiatan' => $this->input->post('tgl_kegiatan', true),
+            'id_user' => $this->session->userdata('id_user'),
             'judul' => $this->input->post('judul', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'foto' => $upload['file']['file_name'],
@@ -41,8 +39,8 @@ class Berita_model extends CI_Model
 
     public function showBeritaTerbaru()
     {
-        $this->db->select('berita.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('berita.*, user.name');
+        $this->db->join('user', 'berita.id_user = user.id_user');
         $this->db->limit(3);
         $this->db->order_by('id_berita', 'DESC');
         return $this->db->get('berita')->result();
@@ -51,8 +49,8 @@ class Berita_model extends CI_Model
 
     public function getBerita($id_berita)
     {
-        $this->db->select('berita.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('berita.*, user.name');
+        $this->db->join('user', 'berita.id_user = user.id_user');
         return $this->db->get_where('berita', ['id_berita' => $id_berita])->result();
     }
 

@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <?php
 if (
-    $this->session->userdata('role') != "superadmin"
+    $this->session->userdata('role') != "admin"
 ) {
     redirect('/notFound');
 }
@@ -60,7 +60,7 @@ if (
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
     <!-- Heading -->
     <div class="sidebar-heading">
         Manajemen Pengguna
@@ -80,14 +80,30 @@ if (
             <span>Pengurus</span></a>
     </li>
 
+
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
     <!-- Heading -->
     <div class="sidebar-heading">
         Pengaturan Profile
     </div>
 
-    
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('anak_didik') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/anak_didik') ?>">
+            <i class="fas fa-fw fa-child"></i>
+            <span>Anak Didik</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('berita') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/berita') ?>">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>Berita Kegiatan</span></a>
+    </li>
+
+
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('pengaturan') ?>">
@@ -95,6 +111,8 @@ if (
             <i class="fas fa-fw fa-cogs"></i>
             <span>Pengaturan</span></a>
     </li>
+
+
 
 
     <!-- Divider -->

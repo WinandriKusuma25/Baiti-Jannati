@@ -77,17 +77,11 @@ class Pengeluaran_donasi extends CI_Controller
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim', [
             'required' => 'Nominal tidak boleh kosong !',
         ]);
-        $this->form_validation->set_rules('tgl_pengeluaran', 'tgl_pengeluaran', 'required|trim', [
-            'required' => 'Tanggal Pengeluaran tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('id_pengurus', 'id_pengurus', 'required|trim', [
-            'required' => 'Pengurus tidak boleh kosong !',
-        ]);
+        
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim', [
             'required' => 'Keterangan tidak boleh kosong !',
         ]);
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
-        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
 
         if ($this->form_validation->run() == false) {
@@ -109,6 +103,7 @@ class Pengeluaran_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("tambah", "tambah pengeluaran donasi");
             redirect('admin/pengeluaran_donasi', 'refresh');
         }
     }
@@ -117,16 +112,9 @@ class Pengeluaran_donasi extends CI_Controller
     {
 
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->getPengeluaranDonasi($id_pengeluaran);
-        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim', [
             'required' => 'Nominal tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('tgl_pengeluaran', 'tgl_pengeluaran', 'required|trim', [
-            'required' => 'Tanggal Pengeluaran tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('id_pengurus', 'id_pengurus', 'required|trim', [
-            'required' => 'Pengurus tidak boleh kosong !',
         ]);
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim', [
             'required' => 'Keterangan tidak boleh kosong !',
@@ -150,6 +138,7 @@ class Pengeluaran_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("edit", "edit pengeluaran donasi");
             redirect('admin/pengeluaran_donasi', 'refresh');
         }
     }
@@ -178,6 +167,7 @@ class Pengeluaran_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("hapus", "hapus pengeluaran donasi");
             redirect('admin/pengeluaran_donasi', 'refresh');
         }
     }

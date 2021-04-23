@@ -6,8 +6,8 @@ class Anakdidik_model extends CI_Model
 {
     public function showAnakDidik()
     {
-        $this->db->select('anak_didik.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'anak_didik.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('anak_didik.*');
+        // $this->db->join('user', 'anak_didik.id_user = user.id_user');
         return $this->db->get('anak_didik')->result();
     }
 
@@ -19,22 +19,21 @@ class Anakdidik_model extends CI_Model
 
     public function showAnakDidikPagination($limit, $start)
     {
-        $this->db->select('anak_didik.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'anak_didik.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('anak_didik.*, user.name');
+        $this->db->join('user', 'anak_didik.id_user = user.id_user');
         return $this->db->get('anak_didik', $limit, $start)->result();
     }
 
     public function getAnakDidik($id_anak_didik)
     {
-        $this->db->select('anak_didik.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'anak_didik.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('anak_didik.*, user.name');
+        $this->db->join('user', 'anak_didik.id_user = user.id_user');
         return $this->db->get_where('anak_didik', ['id_anak_didik' => $id_anak_didik])->result();
     }
 
     public function showAnakDidikLimit()
     {
-        $this->db->select('anak_didik.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'anak_didik.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('anak_didik.*');
         $this->db->limit(3);
         $this->db->order_by('id_anak_didik', 'DESC');
         return $this->db->get('anak_didik')->result();
@@ -42,8 +41,8 @@ class Anakdidik_model extends CI_Model
 
     public function showAnakDidikOne($id_anak_didik)
     {
-        $this->db->select('anak_didik.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'anak_didik.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('anak_didik.*, user.name');
+        $this->db->join('user', 'anak_didik.id_user = user.id_user');
         $this->db->where('id_anak_didik', $id_anak_didik);
         return $this->db->get('anak_didik')->result();
     }
@@ -53,7 +52,7 @@ class Anakdidik_model extends CI_Model
     {
         $data = [
             'id_anak_didik' => $this->input->post('anak_didik', true),
-            'id_pengurus' => $this->input->post('id_pengurus', true),
+            'id_user' => $this->input->post('id_user', true),
             'nama' => $this->input->post('nama', true),
             'nama_wali' => $this->input->post('nama_wali', true),
             'jenis_kelamin' => $this->input->post('jenis_kelamin', true),

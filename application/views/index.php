@@ -34,16 +34,11 @@
                     <h3 class="mb-4 text-primary">Sejarah Baiti Jannati</h3>
                     <hr>
                     <div class="text-muted">
-                        <p class="mb-4" align="justify">Dalam rangka melaksanakan kegiatan sosial di wilayah desa
-                            Bakalan kecamatan Bululawang
-                            terutama bagi adik dan saudara kita Yatim-Piatu atau terlantar,
-                            maka kami merasa perlu mengadakan kegiatan sosial dengan menyantuni,
-                            mendidik dan memberikan ketrampilan bagi anak Yatim Piatu agar dapat hidup lebih baik,
-                            mandiri dan sejahtera. Dari kepedulian tersebut maka muncul sebuah gagasan dengan
-                            membuat Yayasan Rumah Cerdas Yatim Piatu yang kami beri nama ”BAITI JANNATI” (Rumahku
-                            Surgaku) dengan kegiatan utama yaitu Memberikan santunan setiap bulan kepada anak Yatim
-                            Piatu, Memberikan bimbingan pendidikan dan ketrampilan, Makan bersama dan kegiatan
-                            lainnya dengan anak yatim / piatu.</p>
+                        <p class="mb-4" align="justify"> <?php 
+                        foreach ($pengaturan as $ad) : ?>
+                            <?php echo word_limiter($ad->sejarah,50 ); ?>
+
+                        </p>
                         <a href="<?= base_url('profile') ?>" class="btn btn-primary rounded-pill">
                             <i class="fas fa-eye"></i> Baca
                             Selengkapnya
@@ -52,7 +47,7 @@
                 </div>
                 <div class="col-lg-5 py-3">
                     <div class="img-place img-thumbnail  shadow wow zoomIn">
-                        <img src="<?= base_url(); ?>assets/user/img/anak_yatim.jpg" alt="">
+                        <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>  ">
                     </div>
                 </div>
             </div>
@@ -63,6 +58,7 @@
                         <img src="<?= base_url(); ?>assets/user/img/gambar5.png" alt="" width="50px">
                     </div>
                 </div>
+                <?php endforeach ?>
                 <div class="col-lg-6 py-3 mt-lg-5">
                     <center>
                         <h3 class="mb-4 text-primary">Tujuan Baiti Jannati</h3>

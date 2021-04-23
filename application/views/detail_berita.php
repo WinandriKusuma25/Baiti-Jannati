@@ -34,7 +34,7 @@
                                     style="width:600px; height:400px;">
                             </div>
                             <div class="post-date">
-                                Tanggal Kegiatan : <?= date('d F Y', strtotime($ad->tgl_kegiatan)); ?>
+                                Tanggal Pembuatan : <?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?>
                             </div>
                             <div class="text-primary">
                                 <h1 class="post-title"><?= $ad->judul ?></h1>
@@ -42,7 +42,7 @@
                             <div class="entry-meta mb-4">
                                 <div class="meta-item entry-author">
                                     <div class="text-muted">
-                                        <i class="fas fa-user"></i>&nbsp; Penulis : <?= $ad->nama_pengurus ?>
+                                        <i class="fas fa-user"></i>&nbsp; Penulis : <?= $ad->name ?>
                                     </div>
                                 </div>
                                 <!-- <div class="meta-item">
@@ -90,8 +90,8 @@
                                             href="<?= base_url() . 'berita/detail/' . $ad->id_berita ?>"><?= $ad->judul ?></a>
                                     </div>
                                     <div class="meta">
-                                        <a href="#"><span
-                                                class="icon-calendar"></span><?= date('d F Y', strtotime($ad->tgl_kegiatan)); ?></a>
+                                        <a href="#"><span class="icon-calendar"></span>
+                                            <?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></a>
                                     </div>
 
                                 </div>

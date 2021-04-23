@@ -9,14 +9,14 @@ function helper_log($tipe = "", $str = ""){
     {
         $log_tipe   = "logout";
     }
-    elseif(strtolower($tipe) == "add"){
-        $log_tipe   = "add";
+    elseif(strtolower($tipe) == "tambah"){
+        $log_tipe   = "tambah";
     }
     elseif(strtolower($tipe) == "edit"){
         $log_tipe  = "edit";
     }
-    elseif(strtolower($tipe) == "delete"){
-        $log_tipe  = "delete";
+    elseif(strtolower($tipe) == "hapus"){
+        $log_tipe  = "hapus";
 	}
  
 	// parameter

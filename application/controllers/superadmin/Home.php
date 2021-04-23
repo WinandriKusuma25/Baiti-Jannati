@@ -24,4 +24,32 @@ class Home extends CI_Controller
         $this->load->view('superadmin/home/index', $data);
         $this->load->view('templates/superadmin/footer');
     }
+
+    public function hapus($log_id)
+    {
+        if ($this->M_log->hapusLog($log_id) == false) {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 Data tidak dapat dihapus, karena data digunakan !
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('superadmin/home');
+        } else {
+            $this->load->library('session');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     Data berhasil di hapus !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('superadmin/home', 'refresh');
+        }
+    }
 }

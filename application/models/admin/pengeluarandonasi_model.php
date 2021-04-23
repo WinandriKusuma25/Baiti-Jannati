@@ -7,8 +7,8 @@ class Pengeluarandonasi_model extends CI_Model
     public function showPengeluaranDonasi()
     {
 
-        $this->db->select('pengeluaran_donasi.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'pengeluaran_donasi.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('pengeluaran_donasi.*, user.name');
+        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
         return $this->db->get('pengeluaran_donasi')->result();
     }
 
@@ -16,8 +16,7 @@ class Pengeluarandonasi_model extends CI_Model
     {
         $data = [
             'id_pengeluaran' => $this->input->post('id_pengeluaran', true),
-            'id_pengurus' => $this->input->post('id_pengurus', true),
-            'tgl_pengeluaran' => $this->input->post('tgl_pengeluaran', true),
+            'id_user' =>  $this->session->userdata('id_user'),
             'nominal' => $this->input->post('nominal', true),
             'keterangan' => $this->input->post('keterangan', true),
         ];
@@ -33,8 +32,8 @@ class Pengeluarandonasi_model extends CI_Model
 
     public function getPengeluaranDonasi($id_pengeluaran)
     {
-        $this->db->select('pengeluaran_donasi.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'pengeluaran_donasi.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('pengeluaran_donasi.*, user.name');
+        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
         return $this->db->get_where('pengeluaran_donasi', ['id_pengeluaran' => $id_pengeluaran])->result();
     }
 
@@ -42,8 +41,7 @@ class Pengeluarandonasi_model extends CI_Model
     {
         $data = [
             'id_pengeluaran' => $this->input->post('id_pengeluaran', true),
-            'id_pengurus' => $this->input->post('id_pengurus', true),
-            'tgl_pengeluaran' => $this->input->post('tgl_pengeluaran', true),
+            'id_user' =>  $this->session->userdata('id_user'),
             'nominal' => $this->input->post('nominal', true),
             'keterangan' => $this->input->post('keterangan', true),
         ];
@@ -59,7 +57,7 @@ class Pengeluarandonasi_model extends CI_Model
 
     public function countHari()
     {
-        $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where tgl_pengeluaran = CURDATE() 
+        $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where created_at = CURDATE() 
          ");
         return $query->row();
     }
@@ -67,44 +65,44 @@ class Pengeluarandonasi_model extends CI_Model
     public function countBulan()
     {
         $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where  
-                MONTH(tgl_pengeluaran) = MONTH(NOW())");
+                MONTH(created_at) = MONTH(NOW())");
         return $query->row();
     }
 
     public function countTahun()
     {
         $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where  
-                YEAR(tgl_pengeluaran) = YEAR(NOW())");
+                YEAR(created_at) = YEAR(NOW())");
         return $query->row();
     }
 
     public function nominalHari()
     {
-        $query = $this->db->query("SELECT * FROM pengeluaran_donasi where tgl_pengeluaran = CURDATE()");
+        $query = $this->db->query("SELECT * FROM pengeluaran_donasi where created_at = CURDATE()");
         return $query->result();
     }
 
     public function nominalBulan()
     {
         $query = $this->db->query("SELECT * FROM pengeluaran_donasi where 
-            MONTH(tgl_pengeluaran) = MONTH(NOW())");
+            MONTH(created_at) = MONTH(NOW())");
         return $query->result();
     }
 
     public function nominalTahun()
     {
         $query = $this->db->query("SELECT * FROM pengeluaran_donasi where 
-            YEAR(tgl_pengeluaran) = YEAR(NOW())");
+            YEAR(created_at) = YEAR(NOW())");
         return $query->result();
     }
 
     public function showPengeluaranDonasiFilter($daterange)
     {
 
-        $this->db->select('pengeluaran_donasi.*, pengurus.nama_pengurus');
-        $this->db->join('pengurus', 'pengeluaran_donasi.id_pengurus = pengurus.id_pengurus');
-        $this->db->where('tgl_pengeluaran >=', $daterange[0]);
-        $this->db->where('tgl_pengeluaran <=',  $daterange[1]);
+        $this->db->select('pengeluaran_donasi.*, user.name');
+        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
+        $this->db->where('created_at >=', $daterange[0]);
+        $this->db->where('created_at <=',  $daterange[1]);
         return $this->db->get('pengeluaran_donasi')->result();
     }
 
@@ -135,12 +133,12 @@ class Pengeluarandonasi_model extends CI_Model
         $enSession =  $this->session->userdata('endSession');
         $this->db->select('*');
         $this->db->from('pengeluaran_donasi');
-        $this->db->join('pengurus', 'pengeluaran_donasi.id_pengurus = pengurus.id_pengurus');
-        $this->db->order_by('tgl_pengeluaran', "asc");
+        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
+        $this->db->order_by('created_at', "asc");
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-            $this->db->where("pengeluaran_donasi.tgl_pengeluaran BETWEEN ' $stSession 'AND' $enSession'");
+            $this->db->where("pengeluaran_donasi.created_at BETWEEN ' $stSession 'AND' $enSession'");
         } else {
-            $this->db->where("pengeluaran_donasi.tgl_pengeluaran BETWEEN '$start 'AND' $end'");
+            $this->db->where("pengeluaran_donasi.created_at BETWEEN '$start 'AND' $end'");
         }
         return $this->db->get()->result();
     }
@@ -167,29 +165,29 @@ class Pengeluarandonasi_model extends CI_Model
 
     public function getDateforChart()
     {
-        $this->db->select('MONTHNAME(tgl_pengeluaran) as month, 
-        SUM(IF(MONTH(tgl_pengeluaran)=MONTH(tgl_pengeluaran) , nominal, 0)) as revenue');
+        $this->db->select('MONTHNAME(created_at) as month, 
+        SUM(IF(MONTH(created_at)=MONTH(created_at) , nominal, 0)) as revenue');
         $this->db->from('pengeluaran_donasi');
-        $this->db->group_by('tgl_pengeluaran');
+        $this->db->group_by('created_at');
         $this->db->order_by('id_pengeluaran', 'DESC');
         return $this->db->get()->result_array();
     }
 
     public function getMonth()
     {
-        $this->db->select('MONTHNAME(tgl_pengeluaran) as month');
+        $this->db->select('MONTHNAME(created_at) as month');
         $this->db->from('pengeluaran_donasi');
-        $this->db->group_by('tgl_pengeluaran');
+        $this->db->group_by('created_at');
         $this->db->order_by('id_pengeluaran', 'DESC');
         return $this->db->get()->result_array();
     }
 
     public function getStatistics()
     {
-        $this->db->select('SUM(IF(DAY(tgl_pengeluaran)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
-        SUM(IF(DAY(tgl_pengeluaran)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
-        SUM(IF(MONTH(tgl_pengeluaran)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
-        SUM(IF(MONTH(tgl_pengeluaran)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
+        $this->db->select('SUM(IF(DAY(created_at)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
+        SUM(IF(DAY(created_at)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
+        SUM(IF(MONTH(created_at)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
+        SUM(IF(MONTH(created_at)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
             COUNT(id_pengeluaran) amount, SUM(nominal) nominal');
         $this->db->from('pengeluaran_donasi');
         return $this->db->get()->row_array();

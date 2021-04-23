@@ -32,23 +32,38 @@
                 <div class="card-body  border-bottom-primary">
 
                     <h6 class="card-title text-dark"><b>Penanggung Jawab
-                        </b>&nbsp;: <?= $b->nama_pengurus ?></h6>
+                        </b>&nbsp;: <?= $b->name ?></h6>
                     <hr>
+
                     <h6 class="card-title text-dark"><b>Tgl.Pengeluaran</b>&nbsp;:
-                        <?= date('d F Y', strtotime($b->tgl_pengeluaran)); ?></h6>
+                        <?=  date('d-m-Y H:i:s', strtotime($b->created_at)); ?></h6>
                     <hr>
+
                     <h6 class="card-title text-dark"><b>Nominal
                         </b>&nbsp;:&nbsp;Rp <?= number_format($b->nominal, 2, ',', '.'); ?></h6>
                     <hr>
+
                     <h6 class="card-title text-dark"><b>Keterangan : </b>&nbsp;
                         <?= $b->keterangan ?></h6>
                     <hr>
 
-                    <?php endforeach ?>
-                    <p>
-                        <a href="<?php echo base_url("admin/pengeluaran_donasi"); ?>" class="btn btn-primary right"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
-                    </p>
+                    <h6 class="card-title text-dark"><b>Terakhir di edit</b>&nbsp;:
+                        <?php if ($b->updated_at == NULL) : ?>
+                        <td class="project-state">
+                            <span class="badge badge-success">Tidak pernah di edit</span>
+                        </td>
+                        <?php else : ?>
+                        <td>
+                            <?=  date('d-m-Y H:i:s', strtotime($b->updated_at)); ?></td>
+                        </td>
+                        <?php endif ?>
+                        <hr>
+
+                        <?php endforeach ?>
+                        <p>
+                            <a href="<?php echo base_url("admin/pengeluaran_donasi"); ?>" class="btn btn-primary right">
+                                <i class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
+                        </p>
                 </div>
             </div>
         </div>

@@ -81,7 +81,7 @@
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
-            <a class='btn btn-success' href="users/tambah">
+            <a class='btn btn-success' href="pengurus/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>
                     Tambah
@@ -133,13 +133,13 @@
 
                             <td>
                                 <a class='btn btn-primary btn-circle'
-                                    href='<?= base_url() . 'superadmin/users/detail/' . $usr->id_user ?>'
+                                    href='<?= base_url() . 'superadmin/pengurus/detail/' . $usr->id_user ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
 
                                 <a class='btn btn-warning btn-circle'
-                                    href="<?= base_url() . 'superadmin/users/edit/' . $usr->id_user ?>">
+                                    href="<?= base_url() . 'superadmin/pengurus/edit/' . $usr->id_user ?>">
                                     <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 

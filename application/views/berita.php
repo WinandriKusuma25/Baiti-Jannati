@@ -35,8 +35,8 @@
                     </center>
                     <div class="text-muted">
                         <center>
-                            <small>Tanggal Kegiatan
-                                :&nbsp;<?= date('d F Y', strtotime($ad->tgl_kegiatan)); ?></small>
+                            <small>Tanggal Pembuatan
+                                :&nbsp; <?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></small>
                             <h6><?= $ad->judul ?></h6>
 
                             <!-- <b>Penulis</b>&nbsp;: <?= $ad->nama_pengurus ?>
