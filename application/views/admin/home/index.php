@@ -16,7 +16,7 @@
             <?php foreach ($user as $usr) : ?>
             <?= $usr->name ?>
             <?php endforeach ?>
-            di halaman admin Baiti Jannati
+            di halaman pengurus Baiti Jannati
         </h6>
     </div>
 

@@ -120,7 +120,7 @@
             <?= date('d F Y', strtotime($ad->tgl_lahir)); ?></td>
             <td align="center"><?= $ad->alamat ?></td>
             <td align="center"><?= $ad->nama_wali ?></td>
-            <td align="center"><?= $ad->nama_pengurus ?></td>
+            <td align="center"><?= $ad->name ?></td>
             <td align="center"> <img src="<?php echo 'assets/images/anak_didik/' . $ad->foto ?>" class="card-img" alt="..."
                     width="100px"></td>
                     <!-- <img src="<?php echo base_url('assets/images/anak_didik/$ad->foto') ?>"> -->

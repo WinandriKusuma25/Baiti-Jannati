@@ -148,12 +148,13 @@
                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-primary" style=" text-align: center;">No</th>
-                            <th class="text-primary" style=" text-align: center;">Penanggung Jawab</th>
-                            <th class="text-primary" style=" text-align: center;">Tgl. pemasukan</th>
-                            <th class="text-primary" style=" text-align: center;">Nominal</th>
+                            <th class="text-primary" style=" text-align: center; ">No</th>
+                            <th class="text-primary" style=" text-align: center; ">Penanggung Jawab</th>
+                            <th class="text-primary" style=" text-align: center; ">Tgl. Pemasukan</th>
+                            <th class="text-primary" style=" text-align: center; ">Nominal</th>
+                            <th class="text-primary" style=" text-align: center; ">Terakhir di edit</th>
                             <!-- <th class="text-primary">Keterangan</th> -->
-                            <th class="text-primary" style=" text-align: center;">Aksi</th>
+                            <th class="text-primary" style=" text-align: center; ">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -161,12 +162,24 @@
                         foreach ($pemasukan_non_donasi as $dt) : ?>
                         <tr>
                             <td style=" text-align: center;"><?= $no++ ?></td>
-                            <td style=" text-align: center;"><?= $dt->nama_pengurus ?></td>
-                            <td style="text-align: center;"><?= date('d F Y', strtotime($dt->tgl_pemasukan)); ?></td>
-                            <td style="text-align: center;"> Rp.
-                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
-                            <!-- <td><?= $dt->keterangan ?></td> -->
+                            <td style=" text-align: center;"><?= $dt->name ?></td>
+                            <td style=" text-align: center;">
+                                <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
+                            </td>
 
+
+                            <td style=" text-align: center; ">Rp
+                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
+
+                            <?php if ($dt->updated_at == NULL) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-success">Tidak pernah di edit</span>
+                            </td>
+                            <?php else : ?>
+                            <td>
+                                <?=  date('d-m-Y H:i:s', strtotime($dt->updated_at)); ?></td>
+                            </td>
+                            <?php endif ?>
 
                             <td>
                                 <a class='btn btn-circle btn-primary'
@@ -221,29 +234,29 @@
 
 
                         <tr>
-                            <th colspan="5" style="color : #4169E1">Rekap pemasukan Keuangan Non Donasi
+                            <th colspan="6" style="color : #4169E1">Rekap pemasukan Keuangan Non Donasi
                         </tr>
 
                         <tr>
-                            <th colspan="4" style="color : #4169E1">Pemasukan Hari ini
+                            <th colspan="5" style="color : #4169E1">Pemasukan Hari ini
                             </th>
                             <th scope="col" style="color: #1cc88a;">Rp. <?= number_format($total_hari, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="4" style="color : #4169E1">Pemasukan Bulan ini
+                            <th colspan="5" style="color : #4169E1">Pemasukan Bulan ini
                             </th>
                             <th scope="col" style="color:#1cc88a">Rp. <?= number_format($total_bulan, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="4" style="color : #4169E1">Pemasukan Tahun ini
+                            <th colspan="5" style="color : #4169E1">Pemasukan Tahun ini
                             </th>
                             <th scope="col" style="color:#1cc88a">Rp. <?= number_format($total_tahun, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="4" style="color : #4169E1">Total pemasukan
+                            <th colspan="5" style="color : #4169E1">Total pemasukan
                             </th>
                             <th scope="col" style="color:#1cc88a"> Rp. <?= number_format($na->nominal, 2, ',', '.'); ?>
                             </th>

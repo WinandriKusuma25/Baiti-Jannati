@@ -9,14 +9,14 @@
         </small>
     </div>
 
-    <!-- <div class="alert alert-primary" role="alert">
+    <div class="alert alert-primary" role="alert">
         <h6 class="alert-heading">Selamat Datang
             <?php foreach ($user as $usr) : ?>
             <?= $usr->name ?>
             <?php endforeach ?>
-            di halaman Super Admin Baiti Jannati
+            di halaman Admin Baiti Jannati
         </h6>
-    </div> -->
+    </div>
 
 
     <!-- <div class="card   shadow border-bottom-primary">
@@ -40,9 +40,11 @@
 
 
             <div class="table-responsive">
-                <b>Jumlah Log Aktivitas : <?php echo $this->db->get_where('tabel_log')->num_rows() ?></b>
+
                 <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
                     cellspacing="0">
+                    <div class="text-primary"><b>Jumlah Log Aktivitas :
+                            <?php echo $this->db->get_where('tabel_log')->num_rows() ?></b></div>
                     <thead>
                         <tr>
                             <th class="text-primary">No.</th>
@@ -73,6 +75,14 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
+
+                <a href="<?php echo base_url('superadmin/home/excel') ?>"
+                    class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fa fa-file-excel"></i>
+                    Unduh Excel</a>
+
+                <a href="<?php echo base_url('superadmin/home/database') ?>"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-database"></i>
+                    Backup Database</a>
 
             </div>
         </div>

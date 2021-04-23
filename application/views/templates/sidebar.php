@@ -96,7 +96,7 @@ if (
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider  mt-3">
     <!-- Heading -->
     <div class="sidebar-heading">
         Manajemen Pengguna
@@ -132,7 +132,10 @@ if (
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">
-
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Logout
+    </div>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link pb-1" href="<?= base_url('auth/logout') ?>" data-toggle="modal" data-target="#logoutModal">

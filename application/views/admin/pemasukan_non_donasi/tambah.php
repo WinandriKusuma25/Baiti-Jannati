@@ -20,33 +20,21 @@
             <?= $this->session->flashdata('message'); ?>
             <div class="card shadow-sm ">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Form Tambah Pemasukan Donasi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Form Tambah Pemasukan Non Donasi</h6>
                 </div>
 
                 <div class="card-body border-bottom-primary">
                     <form method="post" action="<?= base_url('admin/pemasukan_non_donasi/tambah'); ?>"
                         enctype="multipart/form-data">
-                        <div class=" form-group">
-                            <label class="" for="pengurus">Penanggung Jawab</label>
-                            <div class="input-group">
-                                <select name="id_pengurus" id="id_pengurus"
-                                    class="js-example-placeholder-multiple js-states form-control" style="width: 100%">
-                                    <option value="" selected disabled>Pilih pengurus</option>
-                                    <?php foreach ($pengurus as $p) : ?>
-                                    <option value="<?= $p->id_pengurus ?>"><?= $p->nama_pengurus ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                        </div>
-                        <?= form_error('id_pengurus', '<small class="text-danger">', '</small>'); ?>
-
+                        <?php foreach ($user as $b) : ?>
                         <div class="form-group">
-                            <label for="tgl_pemasukan">Tgl. Pemasukan</label>
-                            <input type="date" class="form-control" id="tgl_pemasukan" name="tgl_pemasukan"
-                                value="<?= set_value('tgl_pemasukan')  ?>">
-                            <?= form_error('tgl_pemasukan', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="text">Penanggung Jawab</label>
+                            <input type="text" class="form-control" id="name" name="name" readonly
+                                value="<?= $b->name; ?>">
                         </div>
+
+                        <?php endforeach ?>
+
 
                         <div class="form-group">
                             <label for="nominal">Nominal</label>

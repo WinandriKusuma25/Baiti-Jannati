@@ -56,8 +56,10 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role'] == 'pengurus') {
+                        // helper_log("login", "telah melakukan login");
                         redirect('admin/home');
                     }else if ($user['role'] == 'admin') {
+                        // helper_log("login", "telah melakukan login");
                         redirect('superadmin/home');
                     }else{
                         redirect('member/home');
@@ -283,6 +285,7 @@ class Auth extends CI_Controller
                 </button>
             </div>'
         );
+        // helper_log("logout", "telah melakukan logout");
         redirect('auth');
     }
 

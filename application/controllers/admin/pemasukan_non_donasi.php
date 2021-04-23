@@ -66,17 +66,10 @@ class Pemasukan_non_donasi extends CI_Controller
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim', [
             'required' => 'Nominal tidak boleh kosong !',
         ]);
-        $this->form_validation->set_rules('tgl_pemasukan', 'tgl_pemasukan', 'required|trim', [
-            'required' => 'Tanggal Pemasukan tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('id_pengurus', 'id_pengurus', 'required|trim', [
-            'required' => 'Pengurus tidak boleh kosong !',
-        ]);
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim', [
             'required' => 'Keterangan tidak boleh kosong !',
         ]);
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
-        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
 
         if ($this->form_validation->run() == false) {
@@ -98,6 +91,7 @@ class Pemasukan_non_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("tambah", "tambah pemasukan non donasi");
             redirect('admin/pemasukan_non_donasi', 'refresh');
         }
     }
@@ -110,12 +104,6 @@ class Pemasukan_non_donasi extends CI_Controller
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim', [
             'required' => 'Nominal tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('tgl_pemasukan', 'tgl_pemasukan', 'required|trim', [
-            'required' => 'Tanggal Pemasukan tidak boleh kosong !',
-        ]);
-        $this->form_validation->set_rules('id_pengurus', 'id_pengurus', 'required|trim', [
-            'required' => 'Pengurus tidak boleh kosong !',
         ]);
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim', [
             'required' => 'Keterangan tidak boleh kosong !',
@@ -139,6 +127,7 @@ class Pemasukan_non_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("edit", "edit pemasukan non donasi");
             redirect('admin/pemasukan_non_donasi', 'refresh');
         }
     }
@@ -167,6 +156,7 @@ class Pemasukan_non_donasi extends CI_Controller
                 </button>
                 </div>'
             );
+            helper_log("hapus", "hapus pemasukan non donasi");
             redirect('admin/pemasukan_non_donasi', 'refresh');
         }
     }

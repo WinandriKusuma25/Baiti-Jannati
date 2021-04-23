@@ -6,8 +6,8 @@ class Anakdidik_model extends CI_Model
 {
     public function showAnakDidik()
     {
-        $this->db->select('anak_didik.*');
-        // $this->db->join('user', 'anak_didik.id_user = user.id_user');
+        $this->db->select('anak_didik.*, user.name');
+        $this->db->join('user', 'anak_didik.id_user = user.id_user');
         return $this->db->get('anak_didik')->result();
     }
 

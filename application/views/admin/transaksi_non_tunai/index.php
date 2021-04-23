@@ -6,10 +6,10 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Transaksi Non Tunai</h1>
+        <h1 class="h3 mb-0 text-gray-800">Transaksi Transfer</h1>
         <small>
             <div class="text-muted"> Manajemen Donasi &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/riwayat_donasi"); ?>">Transaksi Non Tunai</a>
+                    href="<?php echo base_url("admin/riwayat_donasi"); ?>">Transaksi Transfer</a>
             </div>
         </small>
     </div>

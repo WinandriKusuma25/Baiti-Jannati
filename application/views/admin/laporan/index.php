@@ -41,8 +41,8 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td> --</td>
-                            <td><?= $dt->nama_pengurus ?></td>
-                            <td><?= date('d F Y', strtotime($dt->tgl_pengeluaran)); ?></td>
+                            <td><?= $dt->name ?></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
                             <td style="color: #FF0000"><b>Pengeluaran</b></td>
                             <td>Rp <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
                             <!-- <td><?= $dt->keterangan ?></td> -->
@@ -54,7 +54,7 @@
                             <td><?= $no++ ?></td>
                             <td><?= $j->name ?></td>
                             <td>--</td>
-                            <td><?= $j->transaction_time ?></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                             <td style="color : #4169E1"><b>Pemasukan Non Tunai</b></td>
                             <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <!-- <td><?= $j->payment_type ?></td>
@@ -67,7 +67,7 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->name ?></td>
-                            <td><?= $dnk->nama_pengurus ?></td>
+                            <td><?= $dnk->name ?></td>
                             <td><?= $dnk->tgl_donasi ?></td>
                             <td style="color : #4169E1"><b>Pemasukan Tunai</b></td>
 

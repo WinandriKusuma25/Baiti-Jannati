@@ -143,7 +143,7 @@ class Anak_Didik extends CI_Controller
         foreach ($data['anak_didik'] as $ad) {
             $object->getActiveSheet()->setCellValue('A' . $baris, $no++);
             $object->getActiveSheet()->setCellValue('B' . $baris, $ad->nama);
-            $object->getActiveSheet()->setCellValue('C' . $baris, $ad->nama);
+            $object->getActiveSheet()->setCellValue('C' . $baris, $ad->name);
             $object->getActiveSheet()->setCellValue('D' . $baris, $ad->jenis_kelamin);
             $object->getActiveSheet()->setCellValue('E' . $baris, $ad->tempat_lahir);
             $object->getActiveSheet()->setCellValue('E' . $baris, $ad->tgl_lahir);
