@@ -12,6 +12,7 @@ class Transaksi_tunai extends CI_Controller
         $this->load->model('admin/Transaksitunai_model');
         $this->load->model('admin/Pengurus_model');
         $this->load->model('admin/User_model');
+        $this->load->model('admin/Kategori_model');
         $this->load->library('form_validation');
     }
 
@@ -79,6 +80,51 @@ class Transaksi_tunai extends CI_Controller
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/transaksi_tunai/tambah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $upload = $this->Transaksitunai_model->upload();
+            if ($upload['result'] == 'success') {
+                $this->Transaksitunai_model->tambahTransaksiTunai($upload);
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              Data berhasil di tambahkan ! 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+                );
+                redirect('admin/transaksi_tunai');
+            } else {
+                echo $this->upload->display_errors();
+            }
+        }
+    }
+
+
+    public function tambah_coba()
+    {
+
+        $this->form_validation->set_rules('tgl_donasi', 'Tgl. Doanasi', 'required|trim');
+     
+
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
+        $data['kategori'] = $this->Kategori_model->showKategori();
+        $data['users'] = $this->User_model->tampilUserSaja();
+        // $data['jumlah_form'] = $this->input->post('jumlah_form');
+        // $data['jenis_donasi'] = $this->input->post('jenis_donasi');
+
+
+        // var_dump($this->form_validation->run());
+        // die();
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Baiti Jannati | Tambah Transaksi Donasi';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/transaksi_tunai/tambahcoba', $data);
             $this->load->view('templates/footer');
         } else {
             $upload = $this->Transaksitunai_model->upload();

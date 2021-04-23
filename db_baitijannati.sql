@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Apr 2021 pada 17.04
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Apr 23, 2021 at 09:41 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,12 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anak_didik`
+-- Table structure for table `anak_didik`
 --
 
 CREATE TABLE `anak_didik` (
   `id_anak_didik` int(11) NOT NULL,
-  `id_pengurus` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
   `tempat_lahir` varchar(128) NOT NULL,
@@ -39,47 +40,49 @@ CREATE TABLE `anak_didik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `anak_didik`
+-- Dumping data for table `anak_didik`
 --
 
-INSERT INTO `anak_didik` (`id_anak_didik`, `id_pengurus`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `nama_wali`, `foto`) VALUES
-(10, 5, 'Ilham Arifin', 'L', 'Malang', '2007-01-01', 'RT. 04 RW. 04\r\n', 'Bhakti Waluyo', 'Ilham_Arifin1.jpg'),
-(11, 9, 'Steven Andra Kusuma', 'L', 'Malang', '2008-12-17', 'RT. 01 RW. 04\r\n', 'Kusnan', 'Steven_Andra_Kusuma1.jpg'),
-(14, 9, 'Dwica Indah Ramayanti', 'P', 'Malang', '2007-07-11', 'RT. 04 RW. 01\r\n', 'Supardi', 'Dwica_Indah_Ramayanti.jpg'),
-(15, 9, 'Mochammad Faril Kurniawan', 'L', 'Malang', '2006-11-11', 'RT. 01\r\nRW. 02\r\n', 'M.Yusuf S', 'Mochammad_Faril_Kurniawan.jpg'),
-(16, 5, 'Mohammad Haidhor Alawy', 'L', 'Malang', '2006-11-11', 'RT. 01 RW. 02\r\n', 'Syamsul Arifin ', 'Mohammad_Haidhor_Alawy.jpg'),
-(17, 5, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', 'Rudi', 'Aisyah_Rohmatul_Faizah.jpg'),
-(18, 5, 'M. Nazril Habibi', 'L', 'Malang', '2010-11-11', 'RT. 03 RW. 02\r\n', 'Anton Hilmi', 'aaa.jpg');
+INSERT INTO `anak_didik` (`id_anak_didik`, `id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `nama_wali`, `foto`) VALUES
+(10, 4, 'Ilham Arifin', 'L', 'Malang', '2007-01-01', 'RT. 04 RW. 04\r\n', 'Bhakti Waluyo', 'Ilham_Arifin1.jpg'),
+(11, 4, 'Steven Andra Kusuma', 'L', 'Malang', '2008-12-17', 'RT. 01 RW. 04\r\n', 'Kusnan', 'Steven_Andra_Kusuma1.jpg'),
+(14, 4, 'Dwica Indah Ramayanti', 'P', 'Malang', '2007-07-11', 'RT. 04 RW. 01\r\n', 'Supardi', 'Dwica_Indah_Ramayanti.jpg'),
+(15, 4, 'Mochammad Faril Kurniawan', 'L', 'Malang', '2006-11-11', 'RT. 01\r\nRW. 02\r\n', 'M.Yusuf S', 'Mochammad_Faril_Kurniawan.jpg'),
+(16, 4, 'Mohammad Haidhor Alawy', 'L', 'Malang', '2006-11-11', 'RT. 01 RW. 02\r\n', 'Syamsul Arifin ', 'Mohammad_Haidhor_Alawy.jpg'),
+(17, 4, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', 'Rudi', 'Aisyah_Rohmatul_Faizah.jpg'),
+(18, 4, 'M. Nazril Habibi', 'L', 'Malang', '2010-11-11', 'RT. 03 RW. 02\r\n', 'Anton Hilmi', 'aaa.jpg'),
+(23, 26, 'sadas', 'L', 'sadas', '2021-04-23', 'asdasdas', 'sadas', 'sadas1.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL,
-  `id_pengurus` int(11) NOT NULL,
-  `tgl_kegiatan` date NOT NULL,
+  `id_user` int(11) NOT NULL,
   `judul` varchar(128) NOT NULL,
   `deskripsi` text NOT NULL,
-  `foto` varchar(256) NOT NULL
+  `foto` varchar(256) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `berita`
+-- Dumping data for table `berita`
 --
 
-INSERT INTO `berita` (`id_berita`, `id_pengurus`, `tgl_kegiatan`, `judul`, `deskripsi`, `foto`) VALUES
-(2, 11, '2021-02-18', ' Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Halo</p>', 'Screenshot_(8).png'),
-(3, 9, '2021-02-25', 'Santunan Anak Yatim Rutin Baiti Jannati lorem ipsum dolor', '<p>Seseorang bisa jadi berkecukupan secara materiil maupun nonmateriil. Akan tetapi, ada pula yang membutuhkan bantuan agar mencukupi kebutuhan sehari-harinya, terutama anak yang kehilangan ayahnya.</p><p>Sebab, dalam keluarga seorang ayah memiliki peranan penting. Ayah berfungsi sebagai kepala keluarga dan bertugas memenuhi kebutuhan hidup anggota keluarganya.</p><p>Lantas, bagaimana jika seorang anak telah kehilangan atau tidak memiliki seorang ayah? Anak yang telah kehilangan ayahnya dikenal di masyarakat sebagai anak yatim.</p><p>Berdasarkan definisi syariat, kata <em>yatim </em>ditujukan kepada mereka yang tidak memiliki ayah ketika berusia anak-anak atau masih dalam keadaan belum balig secara biologis, psikologis, dan sosiologis.</p>', 'anak_yatim.jpg'),
-(8, 9, '2021-02-18', 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target="_blank" href="https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target="_blank" href="https://us02web.zoom.us/u/kc3ZnsTPOL">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png'),
-(10, 5, '2021-03-21', 'tes coba berita baiti jannati ya 123 aaaaaaaaaaaaa', '<p>tes coba 2</p>', 'WhatsApp_Image_2021-02-12_at_21_27_09.jpeg');
+INSERT INTO `berita` (`id_berita`, `id_user`, `judul`, `deskripsi`, `foto`, `created_at`, `updated_at`) VALUES
+(3, 21, 'Santunan Anak Yatim Rutin Baiti Jannati lorem ipsum dolor', '<p>Seseorang bisa jadi berkecukupan secara materiil maupun nonmateriil. Akan tetapi, ada pula yang membutuhkan bantuan agar mencukupi kebutuhan sehari-harinya, terutama anak yang kehilangan ayahnya.</p><p>Sebab, dalam keluarga seorang ayah memiliki peranan penting. Ayah berfungsi sebagai kepala keluarga dan bertugas memenuhi kebutuhan hidup anggota keluarganya.</p><p>Lantas, bagaimana jika seorang anak telah kehilangan atau tidak memiliki seorang ayah? Anak yang telah kehilangan ayahnya dikenal di masyarakat sebagai anak yatim.</p><p>Berdasarkan definisi syariat, kata <em>yatim </em>ditujukan kepada mereka yang tidak memiliki ayah ketika berusia anak-anak atau masih dalam keadaan belum balig secara biologis, psikologis, dan sosiologis.</p>', 'anak_yatim.jpg', '2021-04-23 03:02:54', '2021-04-23 20:04:53'),
+(8, 21, 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target=\"_blank\" href=\"https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09\">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target=\"_blank\" href=\"https://us02web.zoom.us/u/kc3ZnsTPOL\">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png', '2021-04-23 03:02:54', '2021-04-23 20:04:58'),
+(10, 21, 'tes coba berita baiti jannati ya 123 aaaaaaaaaaaaa', '<p>tes coba 2</p>', 'WhatsApp_Image_2021-02-12_at_21_27_09.jpeg', '2021-04-23 03:02:54', '2021-04-23 20:05:01'),
+(12, 21, 'coba coba coba', '<p>fufufu cok</p>', 'foto_fandi1.jpg', '2021-04-23 20:49:41', '2021-04-23 20:53:59');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_donasi_tunai`
+-- Table structure for table `detail_donasi_tunai`
 --
 
 CREATE TABLE `detail_donasi_tunai` (
@@ -94,7 +97,7 @@ CREATE TABLE `detail_donasi_tunai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `detail_donasi_tunai`
+-- Dumping data for table `detail_donasi_tunai`
 --
 
 INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donasi`, `kategori`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
@@ -121,7 +124,7 @@ INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donas
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jabatan`
+-- Table structure for table `jabatan`
 --
 
 CREATE TABLE `jabatan` (
@@ -130,7 +133,7 @@ CREATE TABLE `jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jabatan`
+-- Dumping data for table `jabatan`
 --
 
 INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
@@ -145,7 +148,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -154,45 +157,43 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'makanan2'),
-(2, 'minuman'),
-(4, '1111'),
-(5, '1111'),
-(6, '1111'),
-(7, '1111');
+(1, 'makanan'),
+(2, 'minuman');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemasukan_non_donasi`
+-- Table structure for table `pemasukan_non_donasi`
 --
 
 CREATE TABLE `pemasukan_non_donasi` (
   `id_pemasukan` int(11) NOT NULL,
-  `id_pengurus` int(11) NOT NULL,
-  `tgl_pemasukan` date NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nominal` int(11) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pemasukan_non_donasi`
+-- Dumping data for table `pemasukan_non_donasi`
 --
 
-INSERT INTO `pemasukan_non_donasi` (`id_pemasukan`, `id_pengurus`, `tgl_pemasukan`, `nominal`, `keterangan`) VALUES
-(3, 2, '2021-04-05', 2021, '<p>baju celana sarung</p>'),
-(4, 11, '2021-04-05', 2021, '<p>aaa</p>'),
-(5, 5, '2021-04-05', 9000, '<p>asd</p>'),
-(6, 2, '2021-04-05', 9000, '<p>asd</p>');
+INSERT INTO `pemasukan_non_donasi` (`id_pemasukan`, `id_user`, `nominal`, `keterangan`, `created_at`, `updated_at`) VALUES
+(3, 4, 2021, '<p>baju celana sarung</p>', '2021-04-23 23:27:27', '2021-04-23 23:27:55'),
+(4, 4, 2021, '<p>aaa</p>', '2021-04-23 23:27:27', '2021-04-23 23:27:59'),
+(5, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:03'),
+(6, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:06'),
+(11, 4, 12345, '<p>sdsadsasadsadas</p>', '2021-04-23 23:38:27', '2021-04-23 23:42:47');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengaturan`
+-- Table structure for table `pengaturan`
 --
 
 CREATE TABLE `pengaturan` (
@@ -200,14 +201,14 @@ CREATE TABLE `pengaturan` (
   `id_user` int(11) NOT NULL,
   `sejarah` text NOT NULL,
   `kondisi` text NOT NULL,
-  `foto` varchar(10) NOT NULL,
+  `foto` varchar(128) NOT NULL,
   `mitra_berbagi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengaturan`
+-- Dumping data for table `pengaturan`
 --
 
 INSERT INTO `pengaturan` (`id_pengaturan`, `id_user`, `sejarah`, `kondisi`, `foto`, `mitra_berbagi`, `created_at`, `updated_at`) VALUES
@@ -216,32 +217,35 @@ INSERT INTO `pengaturan` (`id_pengaturan`, `id_user`, `sejarah`, `kondisi`, `fot
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengeluaran_donasi`
+-- Table structure for table `pengeluaran_donasi`
 --
 
 CREATE TABLE `pengeluaran_donasi` (
   `id_pengeluaran` int(11) NOT NULL,
-  `id_pengurus` int(11) NOT NULL,
-  `tgl_pengeluaran` date NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nominal` int(128) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengeluaran_donasi`
+-- Dumping data for table `pengeluaran_donasi`
 --
 
-INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_pengurus`, `tgl_pengeluaran`, `nominal`, `keterangan`) VALUES
-(1, 2, '2021-03-03', 9000, '<p>Untuk Pembangunan</p>'),
-(4, 2, '2021-03-28', 90000, '<p>untuk pembangunan</p>'),
-(5, 2, '2021-03-28', 10000, '<p>a</p>'),
-(6, 5, '2021-03-31', 10000, '<p>a</p>'),
-(7, 9, '2021-04-01', 80000, '<p>a</p>');
+INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_user`, `nominal`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 4, 9000, '<p>Untuk Pembangunan</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:18'),
+(4, 4, 90000, '<p>untuk pembangunan</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:22'),
+(5, 4, 10000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:25'),
+(6, 4, 10000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:28'),
+(7, 4, 80000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:31'),
+(9, 4, 9000, '<p>untuk santunan anak yatim</p>', '2021-04-23 22:04:28', '2021-04-23 22:54:21'),
+(11, 4, 1091, '<p>cccc</p>', '2021-04-23 22:56:55', '2021-04-23 23:01:01');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengurus`
+-- Table structure for table `pengurus`
 --
 
 CREATE TABLE `pengurus` (
@@ -254,41 +258,57 @@ CREATE TABLE `pengurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengurus`
+-- Dumping data for table `pengurus`
 --
 
 INSERT INTO `pengurus` (`id_pengurus`, `id_jabatan`, `nama_pengurus`, `jenis_kelamin`, `jabatan`, `no_telp`) VALUES
 (2, 1, 'Sandi Cahyadi', 'L', 'ketua', '08383229874'),
 (5, 6, 'Khoirul Warisin', 'L', 'anggota aktif', '089765234123'),
-(9, 2, 'Mas''udi Faris', 'L', 'ketua', '087654312345'),
+(9, 2, 'Mas\'udi Faris', 'L', 'ketua', '087654312345'),
 (11, 3, 'Ram Alif Pramana', 'L', 'ketua', '083832298748');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_log`
+-- Table structure for table `tabel_log`
 --
 
 CREATE TABLE `tabel_log` (
   `log_id` int(11) NOT NULL,
-  `log_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `log_time` datetime NOT NULL DEFAULT current_timestamp(),
   `log_user` varchar(128) DEFAULT NULL,
   `log_tipe` varchar(10) DEFAULT NULL,
   `log_desc` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tabel_log`
+-- Dumping data for table `tabel_log`
 --
 
 INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc`) VALUES
-(5, '2021-04-21 05:29:49', 'Admin Jannati', 'delete', 'hapus kategori'),
-(6, '2021-04-21 05:30:18', 'Admin Jannati', 'delete', 'hapus kategori');
+(9, '2021-04-23 22:58:45', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(10, '2021-04-23 23:00:30', 'Sandi Cahyadi', 'hapus', 'hapus pengeluaran donasi'),
+(11, '2021-04-23 23:01:01', 'Sandi Cahyadi', 'edit', 'edit pengeluaran donasi'),
+(13, '2021-04-23 23:13:02', 'Sandi Cahyadi', 'hapus', 'hapus kategori'),
+(14, '2021-04-23 23:13:08', 'Sandi Cahyadi', 'hapus', 'hapus kategori'),
+(18, '2021-04-23 23:46:01', 'Sandi Cahyadi', 'hapus', 'hapus pengeluaran donasi'),
+(20, '2021-04-23 23:55:40', 'Sandi Cahyadi', 'logout', 'telah melakukan logout'),
+(21, '2021-04-23 23:55:54', 'Superadmin', 'logout', 'telah melakukan logout'),
+(22, '2021-04-23 23:57:26', 'Sandi Cahyadi', 'login', 'telah melakukan login'),
+(23, '2021-04-23 23:57:53', 'Superadmin', 'logout', 'telah melakukan logout'),
+(24, '2021-04-23 23:58:01', 'Sandi Cahyadi', 'login', 'telah melakukan login'),
+(26, '2021-04-24 00:00:03', 'Superadmin', 'logout', 'telah melakukan logout'),
+(27, '2021-04-24 00:01:13', 'Sandi Cahyadi', 'logout', 'telah melakukan logout'),
+(29, '2021-04-24 00:11:14', 'Sandi Cahyadi', 'login', 'telah melakukan login'),
+(30, '2021-04-24 00:43:18', 'Superadmin', 'logout', 'telah melakukan logout'),
+(31, '2021-04-24 00:43:26', 'Superadmin', 'login', 'telah melakukan login'),
+(32, '2021-04-24 00:47:13', 'Sandi Cahyadi', 'logout', 'telah melakukan logout'),
+(33, '2021-04-24 00:47:28', 'Superadmin', 'login', 'telah melakukan login');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_donasi_tunai`
+-- Table structure for table `transaksi_donasi_tunai`
 --
 
 CREATE TABLE `transaksi_donasi_tunai` (
@@ -299,7 +319,7 @@ CREATE TABLE `transaksi_donasi_tunai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `transaksi_donasi_tunai`
+-- Dumping data for table `transaksi_donasi_tunai`
 --
 
 INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tgl_donasi`) VALUES
@@ -322,7 +342,7 @@ INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_midtrans`
+-- Table structure for table `transaksi_midtrans`
 --
 
 CREATE TABLE `transaksi_midtrans` (
@@ -339,7 +359,7 @@ CREATE TABLE `transaksi_midtrans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `transaksi_midtrans`
+-- Dumping data for table `transaksi_midtrans`
 --
 
 INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
@@ -352,7 +372,7 @@ INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `paymen
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -361,19 +381,19 @@ CREATE TABLE `user` (
   `email` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `role` enum('admin','donatur','superadmin') NOT NULL,
+  `role` enum('admin','donatur','pengurus') NOT NULL,
   `is_active` enum('aktif','pasif') NOT NULL,
   `date_created` int(11) NOT NULL,
-  `last_login` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `last_login` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`, `last_login`) VALUES
-(4, 'Admin Jannati', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'admin', 'aktif', 1604837683, '2021-04-21 14:55:38'),
-(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-20 21:21:29'),
+(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-23 19:41:23'),
+(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-23 17:51:24'),
 (6, 'Rudi Harwoko', 'rudi@gmail.com', 'default.png', '$2y$10$DSip5tW6bToxSIeCyvtx4uOiJelod4fq9h0IOf0VVcRZl9uvciY5K', 'donatur', 'pasif', 1605332749, '2021-04-20 21:21:29'),
 (8, 'aaa', 'aaaa@gmail.com', 'default.png', '$2y$10$sQQPnQcXdCj4D3/j8VCMDOvCL7dchQVc5JeebNjI6Q5IsxFcA0Vi.', 'donatur', 'pasif', 1605340036, '2021-04-20 21:21:29'),
 (11, 'Winandri Kusuma', 'winandrikusuma27@gmail.com', 'default.png', '$2y$10$AUSo71s5vzKqpH5ckFWSke0b3aq2idPK3TP2qNqMOk2m4bg37oEFW', 'donatur', 'aktif', 1605340846, '2021-04-20 21:21:29'),
@@ -382,13 +402,15 @@ INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is
 (18, 'Bayu', 'bayugunasar@gamil.com', 'default.png', '$2y$10$/CG3Fv9HyHgd7Kccl2oPWuUU6180UVPQywNArnh4O4sXECI2Ckw.q', 'donatur', 'aktif', 1616693738, '2021-04-20 21:21:29'),
 (19, 'coba', 'coba@gmail.com', 'default.png', '$2y$10$XzHNLjmy6EGLwTfpnK4C.eOdJZOiLxNcdeV7IM2G.Ij/qgIrAOc7i', 'donatur', 'aktif', 0, '2021-04-20 21:21:29'),
 (20, 'Hamba Allah', 'winandrikusuma25@gmail.com', 'default.png', '$2y$10$/V4eDddSoPd9feEGABl0.O71E72LMPccf1MG7a7AvYFmCE8ScCaXW', 'donatur', 'aktif', 1618902988, '2021-04-20 21:21:29'),
-(21, 'Superadmin', 'superadmin@gmail.com', 'ggf.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'superadmin', 'aktif', 1618934725, '2021-04-21 14:53:28'),
-(22, 'a', 'a@gmail.com', 'default.png', '$2y$10$cliySOZqXUqvPuE6YppIo.Bx4xCBjKAbaZ1/rWmIVsiaOPWDzzwlG', 'donatur', 'aktif', 1618954333, '2021-04-20 21:33:02');
+(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-23 18:20:30'),
+(22, 'a', 'a@gmail.com', 'default.png', '$2y$10$cliySOZqXUqvPuE6YppIo.Bx4xCBjKAbaZ1/rWmIVsiaOPWDzzwlG', 'donatur', 'aktif', 1618954333, '2021-04-20 21:33:02'),
+(23, 'aaa', 'b@gmail.com', 'default.png', '$2y$10$mNA2MbC/NuNZhoHueL5.QOna2HszTQD/jzjj6fTsjGGa6GknrQjJa', 'donatur', 'aktif', 1619117321, '2021-04-22 18:54:23'),
+(26, 'Misbaqul ulum', '1234@gmail.com', 'default.png', '$2y$10$6ipPjRWEoo8ARReKRc7e5OU8kdn1ZaJgog44GpxI67KrmBnJ5Pv1.', 'pengurus', 'aktif', 1619119520, '2021-04-23 16:13:47');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_token`
+-- Table structure for table `user_token`
 --
 
 CREATE TABLE `user_token` (
@@ -399,7 +421,7 @@ CREATE TABLE `user_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_token`
+-- Dumping data for table `user_token`
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
@@ -425,14 +447,14 @@ INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 --
 ALTER TABLE `anak_didik`
   ADD PRIMARY KEY (`id_anak_didik`),
-  ADD KEY `id_pengurus` (`id_pengurus`);
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id_berita`),
-  ADD KEY `id_pengurus` (`id_pengurus`);
+  ADD KEY `id_pengurus` (`id_user`);
 
 --
 -- Indexes for table `detail_donasi_tunai`
@@ -458,7 +480,7 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `pemasukan_non_donasi`
   ADD PRIMARY KEY (`id_pemasukan`),
-  ADD KEY `id_pengurus` (`id_pengurus`);
+  ADD KEY `id_pengurus` (`id_user`);
 
 --
 -- Indexes for table `pengaturan`
@@ -472,7 +494,7 @@ ALTER TABLE `pengaturan`
 --
 ALTER TABLE `pengeluaran_donasi`
   ADD PRIMARY KEY (`id_pengeluaran`),
-  ADD KEY `id_pengurus` (`id_pengurus`);
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `pengurus`
@@ -522,130 +544,133 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `anak_didik`
 --
 ALTER TABLE `anak_didik`
-  MODIFY `id_anak_didik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_anak_didik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
   MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
-  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
   MODIFY `id_pengaturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
   MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `tabel_log`
 --
 ALTER TABLE `tabel_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
   MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2079383001;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
   MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `anak_didik`
---
-ALTER TABLE `anak_didik`
-  ADD CONSTRAINT `anak_didik_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
-
---
--- Ketidakleluasaan untuk tabel `berita`
---
-ALTER TABLE `berita`
-  ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
-
---
--- Ketidakleluasaan untuk tabel `detail_donasi_tunai`
+-- Constraints for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
   ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`);
 
 --
--- Ketidakleluasaan untuk tabel `pemasukan_non_donasi`
+-- Constraints for table `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
-  ADD CONSTRAINT `pemasukan_non_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
+  ADD CONSTRAINT `pemasukan_non_donasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `pengaturan`
+-- Constraints for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
   ADD CONSTRAINT `pengaturan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `pengeluaran_donasi`
+-- Constraints for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  ADD CONSTRAINT `pengeluaran_donasi_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
+  ADD CONSTRAINT `pengeluaran_donasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `pengurus`
+-- Constraints for table `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `jabatan` (`id_jabatan`);
 
 --
--- Ketidakleluasaan untuk tabel `transaksi_donasi_tunai`
+-- Constraints for table `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_2` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
--- Ketidakleluasaan untuk tabel `transaksi_midtrans`
+-- Constraints for table `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
   ADD CONSTRAINT `transaksi_midtrans_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

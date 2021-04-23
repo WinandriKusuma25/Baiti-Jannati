@@ -26,9 +26,9 @@
                     width="200%">
             </div>
             <div class="col-md-8">
-                <div class="card-body >
+                <div class="card-body">
 
-                    <h5 class=" card-title text-dark">Nama&nbsp;: <?= $ad->name ?></h5>
+                    <h5 class="card-title text-dark">Nama&nbsp;: <?= $ad->name ?></h5>
                     <h5 class="card-title text-dark">Email &nbsp;: <?= $ad->email ?></h5>
                     <h5 class="card-title text-dark">Hak Akses &nbsp;: <?= $ad->role ?></h5>
                     <p class="card-text "><small class="text-muted">Tgl.
