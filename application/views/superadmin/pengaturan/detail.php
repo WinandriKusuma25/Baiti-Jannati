@@ -1,6 +1,3 @@
-<div class="nav-link">
-    <div id="darkSwitch"></div>
-</div>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -11,7 +8,8 @@
         foreach ($pengaturan as $ad) : ?>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Pengaturan&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'superadmin/pengaturan/detail/' . $ad->id_pengaturan ?>">Detail Pengaturan</a></div>
+                    href="<?= base_url() . 'superadmin/pengaturan/detail/' . $ad->id_pengaturan ?>">Detail
+                    Pengaturan</a></div>
         </small>
         <?php endforeach ?>
     </div>
@@ -24,36 +22,71 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Detail Pengaturan</h6>
         </div>
+
+
+
         <div class="row no-gutters">
-            <div class="col-md-4">
-                <?php foreach ($pengaturan as $ad) : ?>
-                <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>" class="card-img" alt="..."
-                    width="100px">
-            </div>
+            <div class="col">
+                <?php $no = 1;
+                foreach ($pengaturan as $b) : ?>
+                <br>
 
 
-            <div class="col-md-8 ">
-                <div class="card-body">
-                    <h5 class="card-title text-dark"><b>Sejarah</b>&nbsp;:
-                        <?= $ad->sejarah ?>
+
+
+                <div class="card-body  shadow-sm ">
+
+                    <h6 class="card-title text-dark"><b>Foto Kondisi Anak Didik :</b>
+                        <br>
+                        <p>
+                            <img src="<?= base_url('assets/images/pengaturan/') . $b->foto ?>" alt="..."
+                                class=" card-image" width="30%">
+                            <hr>
+
+                        <h6 class="card-title text-dark"><b>Penulis
+
+
+                            </b>&nbsp;: <?= $b->name ?></h6>
                         <hr>
-                        <h5 class="card-title text-dark"><b>Kondisi</b>
-                            &nbsp;:
-                            <?= $ad->kondisi ?></h5>
+                        <h6 class="card-title text-dark"><b>Tgl. Pembuatan</b>&nbsp;:
+                            <?=  date('d-m-Y H:i:s', strtotime($b->created_at)); ?></h6>
                         <hr>
-                        <h5 class="card-title text-dark"><b>Mitra Berbagi</b>
-                            &nbsp;:
-                            <?= $ad->mitra_berbagi ?></h5>
+                        <h6 class="card-title text-dark"><b>Terakhir di edit</b>&nbsp;:
+                            <?=  date('d-m-Y H:i:s', strtotime($b->updated_at)); ?></h6>
                         <hr>
+
+
+                        <h6 class="card-title text-dark"><b>Sejarah : </b>&nbsp;<br>
+                            <?= $b->sejarah ?></h6>
+                        <hr>
+
+                        <h6 class="card-title text-dark"><b>Kondisi Anak Didik : </b>&nbsp;<br>
+                            <?= $b->kondisi ?></h6>
+                        <hr>
+
+                        <h6 class="card-title text-dark"><b>Kata-kata Bijak : </b>&nbsp;<br>
+                            <?= $b->motivasi ?></h6>
+                        <hr>
+
+
+
+                        <h6 class="card-title text-dark"><b>Mitra Berbagi : </b>&nbsp;<br>
+                            <?= $b->mitra_berbagi ?></h6>
+                        <hr>
+
+
+
                         <?php endforeach ?>
                         <p>
-                            <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary"> <i
+                            <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary right"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
                         </p>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 </div>
 <!-- /.container-fluid -->

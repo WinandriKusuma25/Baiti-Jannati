@@ -12,6 +12,18 @@ class Pengeluarandonasi_model extends CI_Model
         return $this->db->get('pengeluaran_donasi')->result();
     }
 
+
+    public function showPengeluaranDonasiLimit()
+    {
+
+        $this->db->select('pengeluaran_donasi.*, user.name');
+        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
+        $this->db->limit(5);
+        $this->db->order_by('id_pengeluaran', 'DESC');
+        return $this->db->get('pengeluaran_donasi')->result();
+    }
+
+
     public function tambahPengeluaranDonasi()
     {
         $data = [
@@ -57,8 +69,8 @@ class Pengeluarandonasi_model extends CI_Model
 
     public function countHari()
     {
-        $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where created_at = CURDATE() 
-         ");
+        $query = $this->db->query("SELECT COUNT(*) FROM pengeluaran_donasi where  
+        DAY(created_at) = DAY(NOW()) ");
         return $query->row();
     }
 
@@ -78,7 +90,7 @@ class Pengeluarandonasi_model extends CI_Model
 
     public function nominalHari()
     {
-        $query = $this->db->query("SELECT * FROM pengeluaran_donasi where created_at = CURDATE()");
+        $query = $this->db->query("SELECT * FROM pengeluaran_donasi where DAY(created_at) = DAY(NOW()) ");
         return $query->result();
     }
 

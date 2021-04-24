@@ -32,17 +32,17 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Anak Didik</div>
+                                Pemasukan Keuangan Non Donasi</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
+                                <?php echo $this->db->get('pemasukan_non_donasi')->num_rows() ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
+                            <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
                         </div>
 
                     </div>
                 </div>
-                <a href="<?php echo base_url("admin/anak_didik"); ?>" class="btn btn-primary"> <i
+                <a href="<?php echo base_url("admin/pemasukan_non_donasi"); ?>" class="btn btn-primary"> <i
                         class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
             </div>
         </div>
@@ -75,16 +75,16 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Berita</div>
+                                Jumlah Pengeluaran Keuangan Donasi</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('berita')->num_rows() ?></div>
+                                <?php echo $this->db->get_where('pengeluaran_donasi')->num_rows() ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                            <i class="fas fa-funnel-dollar fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo base_url("admin/berita"); ?>" class="btn btn-primary"> <i
+                <a href="<?php echo base_url("admin/pengeluaran_donasi"); ?>" class="btn btn-primary"> <i
                         class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
             </div>
         </div>
@@ -96,98 +96,20 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Pengurus</div>
+                                Jumlah Kategori</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('pengurus')->num_rows() ?></div>
+                                <?php echo $this->db->get_where('kategori')->num_rows() ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
+                            <i class="fas fa-list fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo base_url("admin/pengurus"); ?>" class="btn btn-primary"> <i
+                <a href="<?php echo base_url("admin/kategori"); ?>" class="btn btn-primary"> <i
                         class="fas fa-fw fa-eye"></i>&nbsp;Detail </a>
             </div>
         </div>
-
-
-        <!--    
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-   
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-     
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Anak Didik</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get('anak_didik')->num_rows() ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-child fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
-
 
     <div class="row">
         <!-- Area Chart -->
@@ -195,7 +117,8 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header bg-primary py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-white">Total Pengeluaran Keuangan Donasi Perbulan pada Tahun
+                    <h6 class="m-0 font-weight-bold text-white">Total Pengeluaran Keuangan Donasi Perbulan pada
+                        Tahun
                         <?= date('Y'); ?>
                     </h6>
                 </div>
@@ -259,6 +182,146 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary py-3">
+                    <h6 class="m-0 font-weight-bold text-white text-center">5 Pengeluaran Keuangan Donasi Terbaru
+                    </h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0 table-sm table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-primary">Penanggung Jawab</th>
+                                <th class="text-primary">Tgl.Pengeluaran</th>
+                                <th class="text-primary">Nominal</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1;
+                            foreach ($pengeluaran_donasi as $ad) : ?>
+                            <tr>
+                                <td><strong><?= $ad->name ?></strong></td>
+                                <td>
+                                    <?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></td>
+                                </td>
+                                <td>Rp<?= number_format($ad->nominal, 2, ',', '.'); ?></td>
+
+
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                        <?php
+                    error_reporting(0);
+                    foreach ($pengeluaran_donasi as $total_keluar) {
+                        $nominal_keluar += $total_keluar->nominal;
+                    }
+                    ?>
+                        <tr>
+                            <th colspan="2" scope="col" class="text-primary">Total Pengeluaran
+                            </th>
+
+                            <th scope="col">
+                                <div class="text-danger">Rp. <?= number_format($nominal_keluar, 2, ',', '.'); ?> </div>
+                            </th>
+
+                            <!-- <th scope=" col">&nbsp;</th> -->
+                        </tr>
+
+                        <tr>
+                            <th colspan="2" scope="col" class="text-primary">Lihat Detail
+                            </th>
+
+                            <th scope="col">
+                                <a href="<?php echo base_url("admin/pengeluaran_donasi"); ?>"
+                                    class="btn btn-primary right">
+                                    <i class="fas fa-eye"></i>&nbsp;Detail</a>
+
+                            </th>
+
+                            <!-- <th scope=" col">&nbsp;</th> -->
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary py-3">
+                    <h6 class="m-0 font-weight-bold text-white text-center">5 Pemasukan Keuangan Non Donasi Terbaru
+                    </h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0 table-sm table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-primary">Penanggung Jawab</th>
+                                <th class="text-primary">Tgl.Pemasukan</th>
+                                <th class="text-primary">Nominal</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1;
+                            foreach ($pemasukan_non_donasi as $ad) : ?>
+                            <tr>
+                                <td><strong><?= $ad->name ?></strong></td>
+                                <td>
+                                    <?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></td>
+                                </td>
+                                <td>Rp<?= number_format($ad->nominal, 2, ',', '.'); ?></td>
+
+
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                        <?php
+                    error_reporting(0);
+                    foreach ($pemasukan_non_donasi as $total_masuk) {
+                        $nominal_masuk += $total_masuk->nominal;
+                    }
+                    ?>
+                        <tr>
+                            <th colspan="2" scope="col" class="text-primary">Total Pemasukan
+                            </th>
+
+                            <th scope="col">
+                                <div class="text-success">Rp. <?= number_format($nominal_masuk, 2, ',', '.'); ?> </div>
+                            </th>
+
+                            <!-- <th scope=" col">&nbsp;</th> -->
+                        </tr>
+
+                        <tr>
+                            <th colspan="2" scope="col" class="text-primary">Lihat Detail
+                            </th>
+
+                            <th scope="col">
+                                <a href="<?php echo base_url("admin/pemasukan_non_donasi"); ?>"
+                                    class="btn btn-primary right">
+                                    <i class="fas fa-eye"></i>&nbsp;Detail</a>
+
+                            </th>
+
+                            <!-- <th scope=" col">&nbsp;</th> -->
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 

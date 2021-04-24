@@ -15,7 +15,7 @@
     </div>
     <!-- Content Row -->
     <div class="row justify-content-center">
-        <div class="col-md-8 py-3">
+        <div class="col">
             <?= $this->session->flashdata('message'); ?>
             <div class="card  shadow-sm  border-bottom-primary">
                 <div class="card-header py-3">
@@ -49,19 +49,22 @@
                                 <?= form_error('kondisi', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
-                            <div class=" form-group">
-                            <div class="col-sm-3">
-                            <img src="<?= base_url('assets/images/pengaturan/') . $b->foto ?>"
-                                        class="img-thumbnail">
+                            <div class="form-group ">
+                                <label for="foto">Foto</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img src="<?= base_url('assets/images/pengaturan/') . $b->foto ?>"
+                                                class="img-thumbnail">
                                         </div>
                                         <div class="col-sm-9">
-                            <label for="foto">Foto</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto" name="foto">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="foto" name="foto">
+                                                <label class="custom-file-label" for="image"><?= $b->foto; ?></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class=" form-group">
@@ -69,6 +72,15 @@
                                 <textarea name="mitra_berbagi" id="mitra_berbagi" cols="50" rows=""
                                     class="form-control"><?= $b->mitra_berbagi; ?></textarea>
                                 <?= form_error('mitra_berbagi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+
+
+                            <div class=" form-group">
+                                <label for="motivasi">Motivasi</label>
+                                <textarea name="motivasi" id="motivasi" cols="50" rows=""
+                                    class="form-control"><?= $b->motivasi; ?></textarea>
+                                <?= form_error('motivasi', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
 
@@ -102,6 +114,7 @@
 CKEDITOR.replace('sejarah');
 CKEDITOR.replace('kondisi');
 CKEDITOR.replace('mitra_berbagi');
+CKEDITOR.replace('motivasi');
 // CKEDITOR.replace('foto');
 </script>
 

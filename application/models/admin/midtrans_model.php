@@ -64,7 +64,7 @@ class Midtrans_model extends CI_Model
 
     public function countHari()
     {
-        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_midtrans where transaction_time = CURDATE()    AND status_code = 200
+        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_midtrans where  DAY(transaction_time) = DAY(NOW())    AND status_code = 200
          ");
         return $query->row();
     }
@@ -91,7 +91,7 @@ class Midtrans_model extends CI_Model
 
     public function nominalHari()
     {
-        $query = $this->db->query("SELECT * FROM transaksi_midtrans where transaction_time = CURDATE()  AND status_code = 200");
+        $query = $this->db->query("SELECT * FROM transaksi_midtrans where DAY(transaction_time) = DAY(NOW()) AND status_code = 200");
         return $query->result();
     }
 

@@ -204,7 +204,9 @@
             <div class="row">
                 <div class="col-md-8 col-lg-6 offset-lg-1 wow fadeInUp">
                     <h2 class="mb-5 fg-white fw-normal">Kata-Kata Bijak</h2>
-                    <p class="fs-large font-italic">Berbagi, Berkarya, dan Bermanfaat Bagi Sesama</p>
+                    <?php foreach ($pengaturan as $ad) : ?>
+                    <p class="fs-large font-italic"> <?php echo $ad->motivasi; ?></p>
+                    <?php endforeach?>
                     <p class="fs-large fg-grey fw-medium mb-5">Baiti Jannati</p>
                     <!-- 
                     <a href="#" class="btn btn-outline-light rounded-pill">Read Stories <span

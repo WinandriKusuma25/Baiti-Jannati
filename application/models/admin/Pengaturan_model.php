@@ -29,6 +29,7 @@ class Pengaturan_model extends CI_Model
             'kondisi' => $this->input->post('kondisi', true),
             'foto' => $upload['file']['file_name'],
             'mitra_berbagi' => $this->input->post('mitra_berbagi', true),
+            'motivasi' => $this->input->post('motivasi', true),
         ];
         $this->db->insert('pengaturan', $data);
     }

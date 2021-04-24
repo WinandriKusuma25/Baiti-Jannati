@@ -16,7 +16,7 @@
     </div>
     <!-- Content Row -->
     <div class="row justify-content-center">
-        <div class="col-md-8 py-3">
+        <div class="col">
             <?= $this->session->flashdata('message'); ?>
             <div class="card shadow-sm">
                 <div class="card-header py-3">
@@ -29,44 +29,52 @@
                         enctype="multipart/form-data">
                         <div class="form-group">
 
-                        <div class="form-group">
-                            <label for="sejarah">Sejarah</label>
-                            <textarea name="sejarah" id="sejarah" cols="50" rows=""
-                                    class="form-control"></textarea>
+                            <div class="form-group">
+                                <label for="sejarah">Sejarah</label>
+                                <textarea name="sejarah" id="sejarah" cols="50" rows="" class="form-control"></textarea>
                                 <?= form_error('sejarah', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
+                            </div>
 
-                        <div class=" form-group">
-                            <label for="kondisi">Kondisi</label>
-                            <textarea name="kondisi" id="kondisi" cols="50" rows=""
+                            <div class=" form-group">
+                                <label for="kondisi">Kondisi</label>
+                                <textarea name="kondisi" id="kondisi" cols="50" rows="" class="form-control"></textarea>
+                                <?= form_error('', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+                            <label for="foto">Foto</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto" name="foto" required autofocus>
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                            </div>
+                            <br><br>
+
+                            <div class=" form-group">
+                                <label for="mitra_berbagi">Mitra Berbagi</label>
+                                <textarea name="mitra_berbagi" id="mitra_berbagi" cols="50" rows=""
                                     class="form-control"></textarea>
-                            <?= form_error('', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
+                                <?= form_error('mitra_berbagi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
 
-                        <label for="foto">Foto</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" required autofocus>
-                            <label class="custom-file-label" for="customFile">Choose file</label>
-                            <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
-                        </div>
-                        <br><br>
-
-                        <div class=" form-group">
-                            <label for="mitra_berbagi">Mitra Berbagi</label>
-                            <textarea name="mitra_berbagi" id="mitra_berbagi" cols="50" rows=""
+                            <div class=" form-group">
+                                <label for="motivasi">Motivasi</label>
+                                <textarea name="motivasi" id="motivasi" cols="50" rows=""
                                     class="form-control"></textarea>
-                            <?= form_error('mitra_berbagi', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                        <br>
-                        <br>
+                                <?= form_error('motivasi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
 
-                        <button type="submit" class=" btn btn-primary"><i class="fas fa-save"></i>&nbsp;Simpan</button>
 
-                        <button type="reset" name="reset" class="btn btn-dark "><i
-                                class="fas fa-sync-alt"></i>&nbsp;Reset</button>
+                            <br>
+                            <br>
 
-                        <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                            <button type="submit" class=" btn btn-primary"><i
+                                    class="fas fa-save"></i>&nbsp;Simpan</button>
+
+                            <button type="reset" name="reset" class="btn btn-dark "><i
+                                    class="fas fa-sync-alt"></i>&nbsp;Reset</button>
+
+                            <a href="<?php echo base_url("superadmin/pengaturan"); ?>" class="btn btn-primary"> <i
+                                    class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
 
                         </div>
                     </form>
@@ -77,8 +85,9 @@
     </div>
 
     <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-<script>
-CKEDITOR.replace('sejarah');
-CKEDITOR.replace('kondisi');
-CKEDITOR.replace('mitra_berbagi');
-</script>
+    <script>
+    CKEDITOR.replace('sejarah');
+    CKEDITOR.replace('kondisi');
+    CKEDITOR.replace('mitra_berbagi');
+    CKEDITOR.replace('motivasi');
+    </script>

@@ -72,11 +72,14 @@ class Pengaturan extends CI_Controller
             $sejarah = $this->input->post('sejarah');
             $kondisi = $this->input->post('kondisi');
             $mitra_berbagi = $this->input->post('mitra_berbagi');
+            $motivasi = $this->input->post('motivasi');
             // var_dump($kondisi);
             // die();
-       
+
+         
             $this->db->set('sejarah', $sejarah);
             $this->db->set('kondisi', $kondisi);
+            $this->db->set('motivasi', $motivasi);
             $this->db->set('mitra_berbagi', $mitra_berbagi);
             $this->db->where('id_pengaturan', $id_pengaturan);
             $this->db->update('pengaturan');
