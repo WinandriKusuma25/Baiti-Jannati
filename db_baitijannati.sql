@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2021 at 08:13 PM
+-- Generation Time: Apr 25, 2021 at 10:12 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -77,7 +77,7 @@ INSERT INTO `berita` (`id_berita`, `id_user`, `judul`, `deskripsi`, `foto`, `cre
 (3, 21, 'Santunan Anak Yatim Rutin Baiti Jannati lorem ipsum dolor', '<p>Seseorang bisa jadi berkecukupan secara materiil maupun nonmateriil. Akan tetapi, ada pula yang membutuhkan bantuan agar mencukupi kebutuhan sehari-harinya, terutama anak yang kehilangan ayahnya.</p><p>Sebab, dalam keluarga seorang ayah memiliki peranan penting. Ayah berfungsi sebagai kepala keluarga dan bertugas memenuhi kebutuhan hidup anggota keluarganya.</p><p>Lantas, bagaimana jika seorang anak telah kehilangan atau tidak memiliki seorang ayah? Anak yang telah kehilangan ayahnya dikenal di masyarakat sebagai anak yatim.</p><p>Berdasarkan definisi syariat, kata <em>yatim </em>ditujukan kepada mereka yang tidak memiliki ayah ketika berusia anak-anak atau masih dalam keadaan belum balig secara biologis, psikologis, dan sosiologis.</p>', 'anak_yatim.jpg', '2021-04-23 03:02:54', '2021-04-23 20:04:53'),
 (8, 21, 'Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium', '<p>Link zoom yang akan kita gunakan semester ini Shohib M is inviting you to a scheduled Zoom meeting. Topic: Etika Profesi Bidang Teknologi Informasi 3E-3F D3 TI Time: This is a recurring meeting Meet anytime Join Zoom Meeting <a target=\"_blank\" href=\"https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09\">https://us02web.zoom.us/j/81356554546?pwd=Q1lrK0pYRWgzbTJhbW5TSmhDK2ZRUT09</a> Meeting ID: 813 5655 4546 Passcode: POLINEMA One tap mobile +13126266799,,81356554546#,,,,*66873050# US (Chicago) +13462487799,,81356554546#,,,,*66873050# US (Houston) Dial by your location +1 312 626 6799 US (Chicago) +1 346 248 7799 US (Houston) +1 669 900 6833 US (San Jose) +1 929 205 6099 US (New York) +1 253 215 8782 US (Tacoma) +1 301 715 8592 US (Washington DC) Meeting ID: 813 5655 4546 Passcode: 66873050 Find your local number: <a target=\"_blank\" href=\"https://us02web.zoom.us/u/kc3ZnsTPOL\">https://us02web.zoom.us/u/kc3ZnsTPOL</a></p>', 'jasa.png', '2021-04-23 03:02:54', '2021-04-23 20:04:58'),
 (10, 21, 'tes coba berita baiti jannati ya 123 aaaaaaaaaaaaa', '<p>tes coba 2</p>', 'WhatsApp_Image_2021-02-12_at_21_27_09.jpeg', '2021-04-23 03:02:54', '2021-04-23 20:05:01'),
-(12, 21, 'coba coba coba', '<p>fufufu cok</p>', 'foto_fandi1.jpg', '2021-04-23 20:49:41', '2021-04-23 20:53:59');
+(12, 21, 'coba coba coba', '<p>coba coba</p>', 'es.png', '2021-04-23 20:49:41', '2021-04-26 01:50:03');
 
 -- --------------------------------------------------------
 
@@ -232,7 +232,7 @@ INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_user`, `nominal`, `keter
 (15, 4, 100000, '<p>sadas</p>', '2021-04-24 23:07:50', NULL),
 (16, 4, 1, '<p>asdas</p>', '2021-04-25 00:17:45', NULL),
 (17, 4, 1221, '<p>asdas</p>', '2021-04-25 00:21:55', NULL),
-(18, 26, 10000, '<p>asda</p>', '2021-04-25 00:25:25', NULL);
+(18, 4, 100000, '<p>asda</p>', '2021-04-25 00:25:25', '2021-04-26 01:45:27');
 
 -- --------------------------------------------------------
 
@@ -304,7 +304,8 @@ INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc
 (39, '2021-04-25 00:21:55', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
 (40, '2021-04-25 00:25:26', 'Misbaqul ulum', 'tambah', 'tambah pengeluaran donasi'),
 (41, '2021-04-25 00:29:44', 'Misbaqul ulum', 'tambah', 'tambah pemasukan non donasi'),
-(42, '2021-04-25 22:42:58', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi');
+(42, '2021-04-25 22:42:58', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
+(43, '2021-04-26 01:45:27', 'Sandi Cahyadi', 'edit', 'edit pengeluaran donasi');
 
 -- --------------------------------------------------------
 
@@ -355,6 +356,32 @@ INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `paymen
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tujuan`
+--
+
+CREATE TABLE `tujuan` (
+  `id_tujuan` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `judul` varchar(128) NOT NULL,
+  `deskripsi` varchar(256) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tujuan`
+--
+
+INSERT INTO `tujuan` (`id_tujuan`, `id_user`, `judul`, `deskripsi`, `created_at`, `updated_at`) VALUES
+(1, 21, 'Donasi', '<p>Mencari dan mendapatkan Donatur Tetap maupun Tidak Tetap yang hasilnya akan diberikan sepenuhnya kepada anak yatim / piatu.</p>', '2021-04-26 02:17:50', '2021-04-26 03:08:16'),
+(3, 21, 'Santunan Rutin', '<p>Memberikan santunan secara rutin perbulan kepada anak yatim/piatu</p>', '2021-04-26 02:53:15', NULL),
+(4, 21, 'Bimbingan Pendidikan', '<p>Memberikan bimbingan pendidikan dan ketrampilan secara gratis kepada anak didik rumah cerdas ”BAITI JANNATI”</p>', '2021-04-26 02:54:31', NULL),
+(5, 21, 'Biaya Pendidikan', '<p>Membantu biaya pendidikan dan perlengkapan sekolah anak didik mulai dari tingkat TK sampai dengan SMP / MTs.</p>', '2021-04-26 02:55:48', NULL),
+(6, 21, 'Pendanaan', '<p>Mengadakan berbagai kegiatan yang dapat mendatangkan dana untuk selanjutnya diperuntukkan untuk anak yatim / piatu.</p>', '2021-04-26 02:56:57', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -375,10 +402,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`, `last_login`) VALUES
-(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-25 18:05:56'),
+(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-25 19:03:58'),
 (5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-25 15:41:10'),
 (20, 'Hamba Allah', 'winandrikusuma25@gmail.com', 'default.png', '$2y$10$/V4eDddSoPd9feEGABl0.O71E72LMPccf1MG7a7AvYFmCE8ScCaXW', 'donatur', 'aktif', 1618902988, '2021-04-20 21:21:29'),
-(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-24 17:57:52'),
+(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-25 20:12:22'),
 (26, 'Misbaqul ulum', '1234@gmail.com', 'default.png', '$2y$10$6ipPjRWEoo8ARReKRc7e5OU8kdn1ZaJgog44GpxI67KrmBnJ5Pv1.', 'pengurus', 'aktif', 1619119520, '2021-04-24 17:47:25');
 
 -- --------------------------------------------------------
@@ -500,6 +527,13 @@ ALTER TABLE `transaksi_midtrans`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `tujuan`
+--
+ALTER TABLE `tujuan`
+  ADD PRIMARY KEY (`id_tujuan`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -537,7 +571,7 @@ ALTER TABLE `detail_donasi_tunai`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -573,7 +607,7 @@ ALTER TABLE `pengurus`
 -- AUTO_INCREMENT for table `tabel_log`
 --
 ALTER TABLE `tabel_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `transaksi_donasi_tunai`
@@ -586,6 +620,12 @@ ALTER TABLE `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_midtrans`
   MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2079383001;
+
+--
+-- AUTO_INCREMENT for table `tujuan`
+--
+ALTER TABLE `tujuan`
+  MODIFY `id_tujuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -646,6 +686,12 @@ ALTER TABLE `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_midtrans`
   ADD CONSTRAINT `transaksi_midtrans_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `tujuan`
+--
+ALTER TABLE `tujuan`
+  ADD CONSTRAINT `tujuan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

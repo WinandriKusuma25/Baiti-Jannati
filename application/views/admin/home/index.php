@@ -11,6 +11,39 @@
     </div>
 
 
+
+
+
+
+
+
+
+
+    <!-- <div class="alert alert-primary" role="alert">
+        <h6 class="alert-heading">Selamat Datang
+            <?php foreach ($user as $usr) : ?>
+            <?= $usr->name ?>
+            <?php endforeach ?>
+            di halaman pengurus Baiti Jannati
+        </h6>
+    </div> -->
+
+    <!-- menghitung saldo -->
+    <?php
+                    error_reporting(0);
+                    foreach ($transaksi_midtrans_hitung as $total_masuk) {
+                        $nominal_masuk += $total_masuk->gross_amount;
+                    }
+                    foreach ($pengeluaran_donasi_hitung as $total_keluar) {
+                        $nominal_keluar += $total_keluar->nominal;
+                    }
+                    foreach ($pemasukan_non_donasi_hitung as $total_non_masuk) {
+                        $nominal_non_masuk += $total_non_masuk->nominal;
+                    }
+                    $nominal = $nominal_non_masuk + $nominal_masuk - $nominal_keluar;
+                    ?>
+
+
     <div class="alert alert-primary" role="alert">
         <h6 class="alert-heading">Selamat Datang
             <?php foreach ($user as $usr) : ?>
@@ -18,7 +51,12 @@
             <?php endforeach ?>
             di halaman pengurus Baiti Jannati
         </h6>
+        <hr>
+        <h1 class="alert-heading">
+            Sisa Saldo Keuangan <b>Rp. <?= number_format($nominal, 2, ',', '.'); ?></b>
+        </h1>
     </div>
+
 
     <!-- <p class="section-lead">Berikut merupakan rekap donasi tunai </p> -->
 

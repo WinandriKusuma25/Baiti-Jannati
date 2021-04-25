@@ -70,16 +70,22 @@ if (
     <li class="nav-item <?= activate_menu('users') ?>">
         <a class="nav-link pb-0" href="<?= base_url('superadmin/users') ?>">
             <i class="fas fa-fw fa-users"></i>
-            <span>Donatur</span></a>
+            <span>Akun Donatur</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('pengurus') ?>">
         <a class="nav-link pb-0" href="<?= base_url('superadmin/pengurus') ?>">
             <i class="fas fa-fw fa-user-tie"></i>
-            <span>Pengurus</span></a>
+            <span>Akun Pengurus</span></a>
     </li>
 
+
+    <li class="nav-item <?= activate_menu('jabatan') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/jabatan') ?>">
+            <i class="fas fa-fw fa-address-card"></i>
+            <span>Jabatan</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">
@@ -103,6 +109,11 @@ if (
             <span>Berita Kegiatan</span></a>
     </li>
 
+    <li class="nav-item <?= activate_menu('tujuan') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/tujuan') ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Tujuan</span></a>
+    </li>
 
 
     <!-- Nav Item - Dashboard -->

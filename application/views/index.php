@@ -64,22 +64,27 @@
                         <h3 class="mb-4 text-primary">Tujuan Baiti Jannati</h3>
                         <hr>
                     </center>
+
+                    <?php  $no = 1;
+                        foreach ($tujuan as $ad) :  ?>
                     <div class="iconic-list">
                         <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
-                                <span>1</span>
-                            </div>
+                            <!-- <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
+                                <span><?= $no++ ?></span>
+                            </div> -->
                             <div class="iconic-content">
-                                <h5>Donasi</h5>
+                                <h5><?= $ad->judul ?></h5>
                                 <div class="text-muted">
-                                    <p class="fs-small">Mencari dan mendapatkan Donatur Tetap
-                                        maupun Tidak Tetap yang hasilnya akan diberikan sepenuhnya kepada anak yatim
-                                        /
-                                        piatu.</p>
+                                    <p class="fs-small"><?= $ad->deskripsi ?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="iconic-item wow fadeInUp">
+
+
+                        <!-- Mencari dan mendapatkan Donatur Tetap maupun Tidak Tetap yang hasilnya akan diberikan sepenuhnya
+                        kepada anak yatim / piatu. -->
+
+                        <!-- <div class="iconic-item wow fadeInUp">
                             <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
                                 <span>2</span>
                             </div>
@@ -130,8 +135,11 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
+                    <?php endforeach ?>
+
                 </div>
 
 

@@ -2,10 +2,10 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Jabatan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Edit Jabatan</h1>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Jabatan &nbsp; / &nbsp; <a
-                    href="<?php echo base_url("admin/jabatan/tambah"); ?>">Tambah</a>
+                    href="<?php echo base_url("superadmin/jabatan/edit"); ?>">Edit</a>
             </div>
         </small>
     </div>
@@ -15,34 +15,36 @@
             <?= $this->session->flashdata('message'); ?>
             <div class="card shadow-sm">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Jabatan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Form edit data jabatan</h6>
                 </div>
 
+                <?php foreach ($jabatan as $j) : ?>
                 <div class="card-body border-bottom-primary">
-
-                    <form method="post" action="<?= base_url('admin/jabatan/tambah'); ?>">
+                    <form method="post" action="">
+                        <input type="hidden" id="id_jabatan" name="id_jabatan" value="<?= $j->id_jabatan; ?>">
 
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>
                             <input type="text" class="form-control" id="jabatan" name="jabatan"
-                                value="<?= set_value('jabatan')  ?>">
+                                value="<?= $j->jabatan; ?>">
                             <?= form_error('jabatan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
+                        <?php endforeach ?>
+                        <p>
+                        <p>
+                        <p>
+                            <button type="submit" class=" btn btn-primary"><i
+                                    class="fas fa-save"></i>&nbsp;Simpan</button>
 
-                        <button type="submit" class=" btn btn-primary"><i class="fas fa-save"></i>&nbsp;Simpan</button>
-
-                        <button type="reset" name="reset" class="btn btn-dark "><i
-                                class="fas fa-sync-alt"></i>&nbsp;Reset</button>
-
-                        <a href="<?php echo base_url("admin/jabatan"); ?>" class="btn btn-primary"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali</a>
+                            <a href="<?php echo base_url("superadmin/jabatan"); ?>" class="btn btn-primary"> <i
+                                    class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
                     </form>
                 </div>
             </div>
             <br>
-            <br>
         </div>
         <br>
     </div>
+    <br>
 </div>
 </div>

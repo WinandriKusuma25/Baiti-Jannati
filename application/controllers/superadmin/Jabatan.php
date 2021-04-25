@@ -20,11 +20,11 @@ class Jabatan extends CI_Controller
         $data['title'] = 'Baiti Jannati | Jabatan';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['jabatan'] = $this->Jabatan_model->showJabatan();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/jabatan/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/superadmin/header', $data);
+        $this->load->view('templates/superadmin/sidebar', $data);
+        $this->load->view('templates/superadmin/topbar', $data);
+        $this->load->view('superadmin/jabatan/index', $data);
+        $this->load->view('templates/superadmin/footer');
     }
 
     public function tambah()
@@ -38,11 +38,11 @@ class Jabatan extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Data jabatan';
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/jabatan/tambah', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/superadmin/header', $data);
+            $this->load->view('templates/superadmin/sidebar', $data);
+            $this->load->view('templates/superadmin/topbar', $data);
+            $this->load->view('superadmin/jabatan/tambah', $data);
+            $this->load->view('templates/superadmin/footer');
         } else {
             $this->load->model('admin/Jabatan_model');
             $this->Jabatan_model->tambahJabatan();
@@ -55,7 +55,7 @@ class Jabatan extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/jabatan', 'refresh');
+            redirect('superadmin/jabatan', 'refresh');
         }
     }
 
@@ -68,11 +68,11 @@ class Jabatan extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Baiti Jannati| Edit Jabatan';
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/jabatan/edit', $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('templates/superadmin/header', $data);
+            $this->load->view('templates/superadmin/sidebar', $data);
+            $this->load->view('templates/superadmin/topbar', $data);
+            $this->load->view('superadmin/jabatan/edit', $data);
+            $this->load->view('templates/superadmin/footer');
         } else {
             $this->Jabatan_model->ubahJabatan();
             $this->load->library('session');
@@ -85,7 +85,7 @@ class Jabatan extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/jabatan', 'refresh');
+            redirect('superadmin/jabatan', 'refresh');
         }
     }
 
@@ -101,7 +101,7 @@ class Jabatan extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/jabatan');
+            redirect('superadmin/jabatan');
         } else {
             $this->load->library('session');
             $this->session->set_flashdata(
@@ -113,7 +113,7 @@ class Jabatan extends CI_Controller
                 </button>
                 </div>'
             );
-            redirect('admin/jabatan', 'refresh');
+            redirect('superadmin/jabatan', 'refresh');
         }
     }
 }
