@@ -90,7 +90,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Keseluruhan Donasi Non Tunai</div>
+                                Jumlah Keseluruhan Donasi Transfer</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php echo $this->db->get_where('transaksi_midtrans', array('status_code' => 200))->num_rows() ?>
                             </div>
@@ -108,7 +108,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data donasi transaksi non tunai</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data donasi transaksi keuangan transfer</h6>
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
@@ -232,7 +232,7 @@
 
 
                         <tr>
-                            <th colspan="9" style="color : #4169E1">Rekap pemasukan Keuangan Donasi Non Tunai
+                            <th colspan="9" style="color : #4169E1">Rekap pemasukan Keuangan Donasi Keuangan Transfer
                         </tr>
 
                         <tr>
@@ -267,7 +267,7 @@
                 </table>
 
                 <br>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-primary" role="alert">
                     <p><b>*Catatan :</b>&nbsp;Transaksi di hitung ketika status pembayaran telah sukses </p>
                 </div>
 

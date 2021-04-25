@@ -28,7 +28,7 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No</th>
-                            <th class="text-primary">Penerima</th>
+                            <!-- <th class="text-primary">Penerima</th> -->
                             <th class="text-primary">Nama Donatur</th>
                             <th class="text-primary">Tgl Donasi</th>
                             <th class="text-primary">Detail</th>
@@ -39,8 +39,8 @@
                         foreach ($transaksi_tunai as $dnk) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $dnk->nama_pengurus ?></td>
-                            <td><?= $dnk->name ?></td>
+                            <td><?= $dnk->name?></td>
+                            <!-- <td><?= $dnk->id_user ?></td> -->
                             <td><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
                             <td>
                                 <a class='btn btn-circle btn-primary'

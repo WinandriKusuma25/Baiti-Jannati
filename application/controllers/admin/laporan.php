@@ -14,6 +14,7 @@ class Laporan extends CI_Controller
         $this->load->model('admin/Midtrans_model');
         $this->load->model('admin/Transaksitunai_model');
         $this->load->model('admin/Pengeluarandonasi_model');
+        $this->load->model('admin/Pemasukannondonasi_model');
         $this->load->model('admin/Laporan_model', 'laporan');
         is_logged_in();
     }
@@ -30,6 +31,7 @@ class Laporan extends CI_Controller
             $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
             $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransAll();
             $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
+            $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);

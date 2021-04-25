@@ -33,7 +33,7 @@ class Riwayat_donasi_tunai extends CI_Controller
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['users'] = $this->Transaksitunai_model->getTransaksiTunaiUser($id);
-        $data['pengurus'] = $this->Transaksitunai_model->getTransaksiTunaiPengurus($id);
+        // $data['pengurus'] = $this->Transaksitunai_model->getTransaksiTunaiPengurus($id);
         $data['transaksi_tunai'] = $this->Transaksitunai_model->getDonasiTransaksiTunai($id);
         $data['transaksi_tunai_tgl'] = $this->Transaksitunai_model->getTransaksiTunaiTglDonasi($id);
         $this->load->view('templates/member/header', $data);

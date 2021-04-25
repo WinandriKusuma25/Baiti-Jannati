@@ -9,6 +9,7 @@ class Pengeluarandonasi_model extends CI_Model
 
         $this->db->select('pengeluaran_donasi.*, user.name');
         $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
+        $this->db->order_by('created_at', 'DESC');
         return $this->db->get('pengeluaran_donasi')->result();
     }
 
@@ -146,7 +147,7 @@ class Pengeluarandonasi_model extends CI_Model
         $this->db->select('*');
         $this->db->from('pengeluaran_donasi');
         $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
-        $this->db->order_by('created_at', "asc");
+        $this->db->order_by('created_at', "DESC");
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
             $this->db->where("pengeluaran_donasi.created_at BETWEEN ' $stSession 'AND' $enSession'");
         } else {

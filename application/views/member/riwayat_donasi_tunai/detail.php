@@ -28,11 +28,11 @@
                         <br>
                         <?php foreach ($users as $dt) : ?>
                         Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                        <?= $dt->name ?>
-                        <?php endforeach ?>
+                        <?= $dt->id_user ?>
+
                         <br>
-                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php foreach ($pengurus as $dt) : ?>
-                        <?= $dt->nama_pengurus ?>
+                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                        <?= $dt->id_user_pengurus ?>
                         <?php endforeach ?>
                         <br>
                         <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
@@ -69,7 +69,7 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->jenis_donasi ?></td>
-                            <td><?= $dnk->kategori ?></td>
+                            <td><?= $dnk->nama_kategori ?></td>
                             <!-- <td><?= $dnk->nominal ?></td> -->
                             <td><?= $dnk->jumlah ?></td>
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"

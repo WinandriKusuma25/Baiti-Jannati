@@ -62,20 +62,20 @@
                             <td><?= $j->bank ?></td> -->
                         </tr>
                         <?php endforeach ?>
-                        <!-- <?php
-                                foreach ($transaksi_tunai as $dnk) : ?>
+                        <?php
+                                foreach ($pemasukan_non_donasi as $dnk) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
+                            <td>--</td>
                             <td><?= $dnk->name ?></td>
-                            <td><?= $dnk->name ?></td>
-                            <td><?= $dnk->tgl_donasi ?></td>
-                            <td style="color : #4169E1"><b>Pemasukan Tunai</b></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Non Donasi</b></td>
+                            <td>Rp <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
 
 
-                             <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> 
 
                         </tr>
-                        <?php endforeach ?> -->
+                        <?php endforeach ?>
                     </tbody>
 
                     <?php
@@ -86,7 +86,10 @@
                     foreach ($pengeluaran_donasi as $total_keluar) {
                         $nominal_keluar += $total_keluar->nominal;
                     }
-                    $nominal = $nominal_masuk - $nominal_keluar;
+                    foreach ($pemasukan_non_donasi as $total_non_masuk) {
+                        $nominal_non_masuk += $total_non_masuk->nominal;
+                    }
+                    $nominal = $nominal_non_masuk + $nominal_masuk - $nominal_keluar;
                     ?>
                     <tr>
                         <th colspan="5" scope="col">Saldo Total

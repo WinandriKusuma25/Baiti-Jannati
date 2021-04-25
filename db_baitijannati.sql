@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 09:41 PM
+-- Generation Time: Apr 25, 2021 at 08:13 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -88,11 +88,11 @@ INSERT INTO `berita` (`id_berita`, `id_user`, `judul`, `deskripsi`, `foto`, `cre
 CREATE TABLE `detail_donasi_tunai` (
   `id_detail_donasi` int(11) NOT NULL,
   `id_donasi` int(11) NOT NULL,
+  `id_kategori` int(11) DEFAULT NULL,
   `jenis_donasi` enum('keuangan','non keuangan') NOT NULL,
-  `kategori` varchar(128) NOT NULL,
-  `nominal` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `image` varchar(256) NOT NULL,
+  `nominal` int(11) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `image` varchar(256) DEFAULT NULL,
   `keterangan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -100,26 +100,8 @@ CREATE TABLE `detail_donasi_tunai` (
 -- Dumping data for table `detail_donasi_tunai`
 --
 
-INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `jenis_donasi`, `kategori`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
-(1, 1, 'non keuangan', 'makanan', 0, 2, 'mi.jpg', 'hgghggh'),
-(2, 2, 'keuangan', '', 10000, 0, '', ''),
-(3, 1, 'non keuangan', 'a', 0, 2, 'mi.jpg', 'aaa'),
-(4, 4, 'keuangan', '', 1, 0, '', 'aaa'),
-(5, 5, 'keuangan', '', 11, 0, '', 'aa'),
-(6, 6, 'keuangan', '', 1, 0, '', 'dqws'),
-(7, 7, 'keuangan', '', 12, 0, '', 'cews'),
-(8, 7, 'keuangan', '', 12, 0, '', 'cscwc'),
-(9, 9, 'keuangan', '', 1, 0, '', 'a'),
-(10, 9, 'keuangan', '', 1, 0, '', 'a'),
-(11, 11, 'non keuangan', 'a', 0, 1, 'a', 'aaa'),
-(12, 11, 'non keuangan', '1', 0, 1, 'a', 'aa'),
-(13, 12, 'non keuangan', '1', 0, 1111, 'WhatsApp_Image_2021-02-12_at_21_27_09.jpeg', 'bhjvhg'),
-(14, 12, 'non keuangan', '111111', 0, 222222, 'WhatsApp_Image_2021-02-12_at_23_19_19.jpeg', 'jvhjvh'),
-(15, 13, 'non keuangan', 'aa', 0, 2, 'WhatsApp_Image_2021-02-12_at_22_34_39.jpeg', 'sad'),
-(16, 13, 'non keuangan', 'sdsa', 0, 11, 'aaaa.jpg', 'asdas'),
-(17, 14, 'keuangan', '', 1, 0, '', ''),
-(18, 15, 'non keuangan', 'makanan', 0, 1, 'logo_malang.png', 'aaa'),
-(19, 15, 'non keuangan', 'minuman', 0, 1, 'logo_malang1.png', 'aaa');
+INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `id_kategori`, `jenis_donasi`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
+(20, 16, 1, 'non keuangan', NULL, 2, 'mi.jpg', 'Donasi 2 kardus mie');
 
 -- --------------------------------------------------------
 
@@ -162,7 +144,8 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 (1, 'makanan'),
-(2, 'minuman');
+(2, 'minuman'),
+(15, 'Pakaian');
 
 -- --------------------------------------------------------
 
@@ -188,7 +171,10 @@ INSERT INTO `pemasukan_non_donasi` (`id_pemasukan`, `id_user`, `nominal`, `keter
 (4, 4, 2021, '<p>aaa</p>', '2021-04-23 23:27:27', '2021-04-23 23:27:59'),
 (5, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:03'),
 (6, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:06'),
-(11, 4, 12345, '<p>sdsadsasadsadas</p>', '2021-04-23 23:38:27', '2021-04-23 23:42:47');
+(11, 4, 12345, '<p>sdsadsasadsadas</p>', '2021-04-23 23:38:27', '2021-04-23 23:42:47'),
+(12, 4, 21312, '<p>asdasdas</p>', '2021-04-24 23:08:30', NULL),
+(13, 26, 111, '<p>sada</p>', '2021-04-25 00:29:44', NULL),
+(14, 4, 700000, '<p>aaa</p>', '2021-04-25 22:42:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -203,6 +189,7 @@ CREATE TABLE `pengaturan` (
   `kondisi` text NOT NULL,
   `foto` varchar(128) NOT NULL,
   `mitra_berbagi` text NOT NULL,
+  `motivasi` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -211,8 +198,8 @@ CREATE TABLE `pengaturan` (
 -- Dumping data for table `pengaturan`
 --
 
-INSERT INTO `pengaturan` (`id_pengaturan`, `id_user`, `sejarah`, `kondisi`, `foto`, `mitra_berbagi`, `created_at`, `updated_at`) VALUES
-(1, 21, '<p>Dalam rangka melaksanakan kegiatan sosial di wilayah desa Bakalan kecamatan Bululawang terutama bagi adik dan saudara kita Yatim-Piatu atau terlantar, maka kami merasa perlu mengadakan kegiatan sosial dengan menyantuni, mendidik dan memberikan ketrampilan bagi anak Yatim Piatu agar dapat hidup lebih baik, mandiri dan sejahtera. Dari kepedulian tersebut maka muncul sebuah gagasan dengan membuat Yayasan Rumah Cerdas Yatim Piatu yang kami beri nama &rdquo;BAITI JANNATI&rdquo; (Rumahku Surgaku) dengan kegiatan utama yaitu Memberikan santunan setiap bulan kepada anak Yatim Piatu, Memberikan bimbingan pendidikan dan ketrampilan, Makan bersama dan kegiatan lainnya dengan anak yatim / piatu. Sehubungan dengan rencana tersebut maka diperlukan para Donatur baik dari Dalam desa maupun dari luar desa agar kegiatan yang kami rencanakan dapat berjalan dengan lancar sesuai yang diharapkan.</p><p>Yayasan ini bernama : YAYASAN RUMAH CERDAS YATIM PIATU BAITI JANNATI, selanjutnya dalam anggaran dasar ini disingkat Yayasan, yang berkedudukan di Dusun Bakalan 02 RT. 01 RW. 03 Desa Bakalan Kecamatan Bululawang Kabupaten Malang. Dalam perkembangannya, Yayasan dapat membuka kantor cabang atau perwakilan lain, baik didalam maupun diluar wilayah Republik Indonesia berdasarkan Keputusan Pengurus dengan Persetujuan Pembina.</p>', '<p>Ketika mulai didirikan dan memberikan santunan anak yatim untuk pertama kalinya pada tanggal 21 Januari 2018 ada 11 anak yatim / piatu yang menjadi prioritas penerima santunan dari Rumah Cerdas &rdquo;BAITI JANNATI&rdquo;, selanjutnya pada bulan ke-2 (18 Pebruari 2018) jumlah anak didik bertambah 3 menjadi 14 anak didik, dan pada santunan ke-3 (11 Maret 2018) jumlah anak didik bertambah 1 sehingga menjadi 15 anak didik. Pada santunan ke-4 (22 April 2018) jumlah anak didik menjadi 21 anak dan pada santunan ke-5 (13 Mei 2018) menjadi 31 anak didik dan mulai santunan ke-6 (2 Juni 2018) menjadi 33 anak didik, Santunan ke 8 menjadi 40 anak didik, santunan ke 10 sampai sekarang sudah berkembang 45 anak didik (per 22 Mei 2019)</p>', 'baju.jpg', '<ol><li><em><strong>&nbsp;Susu kedelai </strong></em></li><li><em><strong>&nbsp;Pecel uyun </strong></em></li><li><em><strong>&nbsp;Bu pri</strong></em></li></ol>', '2021-04-21 02:32:35', '2021-04-21 21:41:40');
+INSERT INTO `pengaturan` (`id_pengaturan`, `id_user`, `sejarah`, `kondisi`, `foto`, `mitra_berbagi`, `motivasi`, `created_at`, `updated_at`) VALUES
+(1, 21, '<p>Dalam rangka melaksanakan kegiatan sosial di wilayah desa Bakalan kecamatan Bululawang terutama bagi adik dan saudara kita Yatim-Piatu atau terlantar, maka kami merasa perlu mengadakan kegiatan sosial dengan menyantuni, mendidik dan memberikan ketrampilan bagi anak Yatim Piatu agar dapat hidup lebih baik, mandiri dan sejahtera. Dari kepedulian tersebut maka muncul sebuah gagasan dengan membuat Yayasan Rumah Cerdas Yatim Piatu yang kami beri nama &rdquo;BAITI JANNATI&rdquo; (Rumahku Surgaku) dengan kegiatan utama yaitu Memberikan santunan setiap bulan kepada anak Yatim Piatu, Memberikan bimbingan pendidikan dan ketrampilan, Makan bersama dan kegiatan lainnya dengan anak yatim / piatu. Sehubungan dengan rencana tersebut maka diperlukan para Donatur baik dari Dalam desa maupun dari luar desa agar kegiatan yang kami rencanakan dapat berjalan dengan lancar sesuai yang diharapkan.</p><p>Yayasan ini bernama : YAYASAN RUMAH CERDAS YATIM PIATU BAITI JANNATI, selanjutnya dalam anggaran dasar ini disingkat Yayasan, yang berkedudukan di Dusun Bakalan 02 RT. 01 RW. 03 Desa Bakalan Kecamatan Bululawang Kabupaten Malang. Dalam perkembangannya, Yayasan dapat membuka kantor cabang atau perwakilan lain, baik didalam maupun diluar wilayah Republik Indonesia berdasarkan Keputusan Pengurus dengan Persetujuan Pembina.</p>', '<p>Ketika mulai didirikan dan memberikan santunan anak yatim untuk pertama kalinya pada tanggal 21 Januari 2018 ada 11 anak yatim / piatu yang menjadi prioritas penerima santunan dari Rumah Cerdas &rdquo;BAITI JANNATI&rdquo;, selanjutnya pada bulan ke-2 (18 Pebruari 2018) jumlah anak didik bertambah 3 menjadi 14 anak didik, dan pada santunan ke-3 (11 Maret 2018) jumlah anak didik bertambah 1 sehingga menjadi 15 anak didik. Pada santunan ke-4 (22 April 2018) jumlah anak didik menjadi 21 anak dan pada santunan ke-5 (13 Mei 2018) menjadi 31 anak didik dan mulai santunan ke-6 (2 Juni 2018) menjadi 33 anak didik, Santunan ke 8 menjadi 40 anak didik, santunan ke 10 sampai sekarang sudah berkembang 45 anak didik (per 22 Mei 2019)</p>', 'baju.jpg', '<ol><li><em><strong>&nbsp;Susu kedelai </strong></em></li><li><em><strong>&nbsp;Pecel uyun </strong></em></li><li><em><strong>&nbsp;Bu pri</strong></em></li></ol>', '<p>&quot;Adapun bila Tuhannya mengujinya lalu membatasi rezekinya maka dia berkata: &quot;Tuhanku menghinakanku&quot;. Sekali-kali tidak (demikian), sebenarnya kamu tidak memuliakan anak yatim&quot; (QS. al-Fajr : 16-17).</p>', '2021-04-21 02:32:35', '2021-04-24 23:28:25');
 
 -- --------------------------------------------------------
 
@@ -240,7 +227,12 @@ INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_user`, `nominal`, `keter
 (6, 4, 10000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:28'),
 (7, 4, 80000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:31'),
 (9, 4, 9000, '<p>untuk santunan anak yatim</p>', '2021-04-23 22:04:28', '2021-04-23 22:54:21'),
-(11, 4, 1091, '<p>cccc</p>', '2021-04-23 22:56:55', '2021-04-23 23:01:01');
+(11, 4, 1091, '<p>cccc</p>', '2021-04-23 22:56:55', '2021-04-23 23:01:01'),
+(14, 4, 11111, '<p>sadasads</p>', '2021-04-24 23:01:02', NULL),
+(15, 4, 100000, '<p>sadas</p>', '2021-04-24 23:07:50', NULL),
+(16, 4, 1, '<p>asdas</p>', '2021-04-25 00:17:45', NULL),
+(17, 4, 1221, '<p>asdas</p>', '2021-04-25 00:21:55', NULL),
+(18, 26, 10000, '<p>asda</p>', '2021-04-25 00:25:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -303,7 +295,16 @@ INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc
 (30, '2021-04-24 00:43:18', 'Superadmin', 'logout', 'telah melakukan logout'),
 (31, '2021-04-24 00:43:26', 'Superadmin', 'login', 'telah melakukan login'),
 (32, '2021-04-24 00:47:13', 'Sandi Cahyadi', 'logout', 'telah melakukan logout'),
-(33, '2021-04-24 00:47:28', 'Superadmin', 'login', 'telah melakukan login');
+(33, '2021-04-24 00:47:28', 'Superadmin', 'login', 'telah melakukan login'),
+(34, '2021-04-24 12:26:25', 'Sandi Cahyadi', 'tambah', 'tambah kategori'),
+(35, '2021-04-24 23:01:02', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(36, '2021-04-24 23:07:50', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(37, '2021-04-24 23:08:31', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
+(38, '2021-04-25 00:17:45', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(39, '2021-04-25 00:21:55', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(40, '2021-04-25 00:25:26', 'Misbaqul ulum', 'tambah', 'tambah pengeluaran donasi'),
+(41, '2021-04-25 00:29:44', 'Misbaqul ulum', 'tambah', 'tambah pemasukan non donasi'),
+(42, '2021-04-25 22:42:58', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi');
 
 -- --------------------------------------------------------
 
@@ -314,30 +315,16 @@ INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc
 CREATE TABLE `transaksi_donasi_tunai` (
   `id_donasi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_pengurus` int(11) NOT NULL,
-  `tgl_donasi` datetime NOT NULL
+  `id_user_pengurus` int(11) NOT NULL,
+  `tgl_donasi` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaksi_donasi_tunai`
 --
 
-INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_pengurus`, `tgl_donasi`) VALUES
-(1, 5, 9, '2021-03-09 13:59:01'),
-(2, 6, 11, '2021-03-17 01:59:01'),
-(3, 18, 5, '2021-04-17 17:15:08'),
-(4, 18, 5, '2021-04-17 17:15:33'),
-(5, 18, 5, '2021-04-17 17:21:33'),
-(6, 18, 5, '2021-04-17 17:28:25'),
-(7, 12, 11, '2021-04-17 17:31:18'),
-(8, 11, 9, '2021-04-17 17:32:42'),
-(9, 17, 9, '2021-04-17 17:33:34'),
-(10, 17, 9, '2021-04-17 17:34:14'),
-(11, 17, 9, '2021-04-17 17:38:13'),
-(12, 17, 2, '2021-04-17 17:56:14'),
-(13, 11, 5, '2021-04-17 17:57:55'),
-(14, 8, 9, '2021-04-17 23:00:45'),
-(15, 20, 5, '2021-04-20 14:36:54');
+INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_user_pengurus`, `tgl_donasi`) VALUES
+(16, 5, 4, '2021-04-25 21:16:58');
 
 -- --------------------------------------------------------
 
@@ -363,10 +350,6 @@ CREATE TABLE `transaksi_midtrans` (
 --
 
 INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
-(571776600, 19, 90000, 'bank_transfer', '2021-04-02 23:47:08', 'bri', '677889999332323150', 'https://app.sandbox.midtrans.com/snap/v1/transactions/35a2a7d9-fe6e-4ce8-b1ea-ddc8ae141e51/pdf', '200', ' semoga sehat'),
-(1006854895, 5, 90000, 'bank_transfer', '2021-04-02 23:43:23', 'bca', '67788401447', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3ae36a1a-cca0-41b0-a8e6-6cb7a51021b6/pdf', '201', ' semoga berkah'),
-(1629171484, 5, 21211212, 'bank_transfer', '2021-04-13 00:47:18', 'bca', '67788982885', 'https://app.sandbox.midtrans.com/snap/v1/transactions/35a078db-196f-44d8-88af-e71f2c7faa34/pdf', '201', ' a'),
-(1704181588, 5, 1, 'bank_transfer', '2021-04-14 21:19:08', 'bri', '677885725796699660', 'https://app.sandbox.midtrans.com/snap/v1/transactions/3cefc235-afb3-4784-95b2-e7c0c29ed183/pdf', '201', ' '),
 (1913193508, 20, 10000, 'bank_transfer', '2021-04-20 14:22:10', 'bca', '67788421591', 'https://app.sandbox.midtrans.com/snap/v1/transactions/99b1dc47-761f-4f25-af73-19e9f198598b/pdf', '201', ' semoga berkah');
 
 -- --------------------------------------------------------
@@ -392,20 +375,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`, `last_login`) VALUES
-(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-23 19:41:23'),
-(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-23 17:51:24'),
-(6, 'Rudi Harwoko', 'rudi@gmail.com', 'default.png', '$2y$10$DSip5tW6bToxSIeCyvtx4uOiJelod4fq9h0IOf0VVcRZl9uvciY5K', 'donatur', 'pasif', 1605332749, '2021-04-20 21:21:29'),
-(8, 'aaa', 'aaaa@gmail.com', 'default.png', '$2y$10$sQQPnQcXdCj4D3/j8VCMDOvCL7dchQVc5JeebNjI6Q5IsxFcA0Vi.', 'donatur', 'pasif', 1605340036, '2021-04-20 21:21:29'),
-(11, 'Winandri Kusuma', 'winandrikusuma27@gmail.com', 'default.png', '$2y$10$AUSo71s5vzKqpH5ckFWSke0b3aq2idPK3TP2qNqMOk2m4bg37oEFW', 'donatur', 'aktif', 1605340846, '2021-04-20 21:21:29'),
-(12, 'alaba', 'albabaihaki18@gmail.com', 'default.png', '$2y$10$yojJ48ob2GdSyxDjNpE1.ugCFENkdKRX3vPzxgMM5vyRUi36lbfpy', 'donatur', 'pasif', 1606026815, '2021-04-20 21:21:29'),
-(17, 'Hamba Allah', 'v@gmail.com', 'default.png', '$2y$10$BIs1LnvKUOybsPpsA8DWh.L3geQH9nC1T8yufs6YF63MpCGv6Wtie', 'donatur', 'pasif', 1615816957, '2021-04-20 21:21:29'),
-(18, 'Bayu', 'bayugunasar@gamil.com', 'default.png', '$2y$10$/CG3Fv9HyHgd7Kccl2oPWuUU6180UVPQywNArnh4O4sXECI2Ckw.q', 'donatur', 'aktif', 1616693738, '2021-04-20 21:21:29'),
-(19, 'coba', 'coba@gmail.com', 'default.png', '$2y$10$XzHNLjmy6EGLwTfpnK4C.eOdJZOiLxNcdeV7IM2G.Ij/qgIrAOc7i', 'donatur', 'aktif', 0, '2021-04-20 21:21:29'),
+(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-25 18:05:56'),
+(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-25 15:41:10'),
 (20, 'Hamba Allah', 'winandrikusuma25@gmail.com', 'default.png', '$2y$10$/V4eDddSoPd9feEGABl0.O71E72LMPccf1MG7a7AvYFmCE8ScCaXW', 'donatur', 'aktif', 1618902988, '2021-04-20 21:21:29'),
-(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-23 18:20:30'),
-(22, 'a', 'a@gmail.com', 'default.png', '$2y$10$cliySOZqXUqvPuE6YppIo.Bx4xCBjKAbaZ1/rWmIVsiaOPWDzzwlG', 'donatur', 'aktif', 1618954333, '2021-04-20 21:33:02'),
-(23, 'aaa', 'b@gmail.com', 'default.png', '$2y$10$mNA2MbC/NuNZhoHueL5.QOna2HszTQD/jzjj6fTsjGGa6GknrQjJa', 'donatur', 'aktif', 1619117321, '2021-04-22 18:54:23'),
-(26, 'Misbaqul ulum', '1234@gmail.com', 'default.png', '$2y$10$6ipPjRWEoo8ARReKRc7e5OU8kdn1ZaJgog44GpxI67KrmBnJ5Pv1.', 'pengurus', 'aktif', 1619119520, '2021-04-23 16:13:47');
+(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-24 17:57:52'),
+(26, 'Misbaqul ulum', '1234@gmail.com', 'default.png', '$2y$10$6ipPjRWEoo8ARReKRc7e5OU8kdn1ZaJgog44GpxI67KrmBnJ5Pv1.', 'pengurus', 'aktif', 1619119520, '2021-04-24 17:47:25');
 
 -- --------------------------------------------------------
 
@@ -461,7 +435,8 @@ ALTER TABLE `berita`
 --
 ALTER TABLE `detail_donasi_tunai`
   ADD PRIMARY KEY (`id_detail_donasi`),
-  ADD KEY `id_donasi` (`id_donasi`);
+  ADD KEY `id_donasi` (`id_donasi`),
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indexes for table `jabatan`
@@ -514,8 +489,8 @@ ALTER TABLE `tabel_log`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   ADD PRIMARY KEY (`id_donasi`),
-  ADD KEY `id_user` (`id_user`,`id_pengurus`),
-  ADD KEY `id_pengurus` (`id_pengurus`);
+  ADD KEY `id_user` (`id_user`,`id_user_pengurus`),
+  ADD KEY `id_pengurus` (`id_user_pengurus`);
 
 --
 -- Indexes for table `transaksi_midtrans`
@@ -556,7 +531,7 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
-  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -568,13 +543,13 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
-  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `pengaturan`
@@ -586,7 +561,7 @@ ALTER TABLE `pengaturan`
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pengurus`
@@ -598,13 +573,13 @@ ALTER TABLE `pengurus`
 -- AUTO_INCREMENT for table `tabel_log`
 --
 ALTER TABLE `tabel_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
-  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `transaksi_midtrans`
@@ -632,7 +607,8 @@ ALTER TABLE `user_token`
 -- Constraints for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
-  ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`);
+  ADD CONSTRAINT `detail_donasi_tunai_ibfk_1` FOREIGN KEY (`id_donasi`) REFERENCES `transaksi_donasi_tunai` (`id_donasi`),
+  ADD CONSTRAINT `detail_donasi_tunai_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
 
 --
 -- Constraints for table `pemasukan_non_donasi`
@@ -663,7 +639,7 @@ ALTER TABLE `pengurus`
 --
 ALTER TABLE `transaksi_donasi_tunai`
   ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_2` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
+  ADD CONSTRAINT `transaksi_donasi_tunai_ibfk_2` FOREIGN KEY (`id_user_pengurus`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `transaksi_midtrans`

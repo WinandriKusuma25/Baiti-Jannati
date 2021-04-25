@@ -224,8 +224,8 @@
                         foreach ($transaksi_tunai as $dnk) : ?>
                     <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= $dnk->nama_pengurus ?></td>
-                        <td><?= $dnk->name ?></td>
+                        <td><?= $dnk->id_user_pengurus?></td>
+                        <td><?= $dnk->id_user ?></td>
                         <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
                         <td><?= $dnk->tgl_donasi ?></td>
                         <td>
