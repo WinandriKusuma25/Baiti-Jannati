@@ -19,13 +19,12 @@
             </div>
         </small>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
 
-        <div class="col-md-8 py-3">
-            <div class="alert alert-primary" role="alert">
+        <div class="col-xl-7 col-lg-7">
+            <!-- <div class="alert alert-primary" role="alert">
                 <p> * Silahkan memasukkan nominal donasi, donasi Anda sangat berharga buat kami.
-
-            </div>
+            </div> -->
             <div class="card shadow-sm">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Donasi</h6>
@@ -58,19 +57,40 @@
                                 rows="" class="form-control" value="<?= set_value('keterangan')  ?>"> </textarea>
                             <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-
                         <button button class="btn btn-primary" id="pay-button"> <i
                                 class="fas fa-fw fa-hand-holding-heart"></i>&nbsp;Donasi Sekarang</button>
                     </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-xl-5 col-lg-5">
+            <div class="card shadow mb-4 border-bottom-primary">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Sekilas Info</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            src="<?= base_url(); ?>assets/images/donasi.svg" alt="">
+                        <br>
+                        Silahkan memasukkan nominal donasi, donasi Anda sangat berharga buat kami.
+                    </div>
 
                 </div>
             </div>
-            <p>
-            <p>
-
-
         </div>
+
+
+
+
     </div>
+    <p>
+    <p>
 </div>
 </div>
 

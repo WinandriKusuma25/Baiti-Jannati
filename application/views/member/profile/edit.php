@@ -9,9 +9,19 @@
             </div>
         </small>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8 py-3">
-            <div class="card shadow-sm">
+
+
+
+
+    <div class="row">
+
+
+
+
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Edit Profil</h6>
                 </div>
@@ -73,8 +83,41 @@
                     </form>
                 </div>
             </div>
-            <br>
         </div>
+
+
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4 border-bottom-primary">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Sekilas Info</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            src="<?= base_url(); ?>assets/images/profil.svg" alt="">
+                    </div>
+                    Selamat Datang di halaman edit profil
+                    <?php foreach ($user as $usr) : ?>
+                    <?= $usr->name ?>, Anda dapat mengubah profil Anda disini.
+                    <hr>
+
+                    Baiti Jannati
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
     </div>
+
+
+
+
+
 </div>
 </div>

@@ -10,8 +10,10 @@
         </small>
     </div>
     <!-- Content Row -->
-    <div class="row justify-content-center">
-        <div class="col-md-8 py-3">
+    <div class="row ">
+
+
+        <div class="col-xl-6 col-lg-7">
             <?= $this->session->flashdata('message'); ?>
             <div class="card shadow-sm">
                 <div class="card-header py-3">
@@ -49,6 +51,28 @@
             </div>
             <br>
         </div>
+
+
+        <div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4 border-bottom-primary">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Sekilas Info</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            src="<?= base_url(); ?>assets/images/security.svg" alt="">
+                        <br>
+                        Keamanan Anda sangat penting
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 </div>
