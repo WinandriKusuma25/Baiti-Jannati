@@ -1,11 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Riwayat Donasi Non Tunai</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Riwayat Donasi Transfer </h1>
         <small>
             <div class="text-muted">Donasi &nbsp;/&nbsp; <a
                     href="<?php echo base_url("member/riwayat_donasi"); ?>">Detail
-                    Detail Riwayat Donasi Non Tunai</a>
+                    Detail Riwayat Donasi Transfer</a>
             </div>
         </small>
     </div>
@@ -75,8 +75,10 @@
                 <?php endif ?>
                 <div class="card-text">&nbsp;&nbsp; Keterangan :&nbsp;<b><?= $ad->keterangan ?></b></div>
                 <p>
-                    <center> <a href="<?php echo base_url("member/riwayat_donasi"); ?>" class="btn btn-primary"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                <p>
+                    &nbsp;&nbsp; <a href="<?php echo base_url("member/riwayat_donasi"); ?>" class="btn btn-primary"> <i
+                            class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                    <!-- <hr width="90%"> -->
 
             </div>
             <?php endforeach ?>

@@ -15,21 +15,20 @@
 
 
 
-
-
-
-
-    <!-- <div class="alert alert-primary" role="alert">
-        <h6 class="alert-heading">Selamat Datang
-            <?php foreach ($user as $usr) : ?>
-            <?= $usr->name ?>
-            <?php endforeach ?>
-            di halaman pengurus Baiti Jannati
-        </h6>
-    </div> -->
-
-    <!-- menghitung saldo -->
-    <?php
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mb-4 border-bottom-primary">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Sekilas Info</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            src="<?= base_url(); ?>assets/images/dashboard.svg" alt="">
+                    </div>
+                    <?php
                     error_reporting(0);
                     foreach ($transaksi_midtrans_hitung as $total_masuk) {
                         $nominal_masuk += $total_masuk->gross_amount;
@@ -44,18 +43,39 @@
                     ?>
 
 
-    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-primary" role="alert">
+                        <center>
+                            <h6 class="alert-heading">Selamat Datang Pengurus
+                                <?php foreach ($user as $usr) : ?>
+                                <b><?= $usr->name ?></b>
+                                <?php endforeach ?>
+                                di halaman pengurus <b>Baiti Jannati</b>
+                            </h6>
+                        </center>
+                        <hr>
+                        <h1 class="alert-heading">
+                            <center>Sisa Saldo Keuangan <b>Rp. <?= number_format($nominal, 2, ',', '.'); ?></b>
+                            </center>
+                        </h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="alert alert-primary" role="alert">
         <h6 class="alert-heading">Selamat Datang
             <?php foreach ($user as $usr) : ?>
             <?= $usr->name ?>
             <?php endforeach ?>
             di halaman pengurus Baiti Jannati
         </h6>
-        <hr>
-        <h1 class="alert-heading">
-            Sisa Saldo Keuangan <b>Rp. <?= number_format($nominal, 2, ',', '.'); ?></b>
-        </h1>
-    </div>
+    </div> -->
+
+    <!-- menghitung saldo -->
 
 
     <!-- <p class="section-lead">Berikut merupakan rekap donasi tunai </p> -->
@@ -94,7 +114,8 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Donatur</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('role' => 'donatur'))->num_rows() ?></div>
+                                <?php echo $this->db->get_where('user', array('role' => 'donatur'))->num_rows() ?>
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -222,7 +243,8 @@
     </div>
 
     <div class="row">
-        <div class="col">
+
+        <div class="col-xl-6 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header bg-primary py-3">
                     <h6 class="m-0 font-weight-bold text-white text-center">5 Pengeluaran Keuangan Donasi Terbaru
@@ -263,7 +285,8 @@
                             </th>
 
                             <th scope="col">
-                                <div class="text-danger">Rp. <?= number_format($nominal_keluar, 2, ',', '.'); ?> </div>
+                                <div class="text-danger">Rp. <?= number_format($nominal_keluar, 2, ',', '.'); ?>
+                                </div>
                             </th>
 
                             <!-- <th scope=" col">&nbsp;</th> -->
@@ -287,11 +310,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="row">
-        <div class="col">
+        <div class="col-xl-6 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header bg-primary py-3">
                     <h6 class="m-0 font-weight-bold text-white text-center">5 Pemasukan Keuangan Non Donasi Terbaru
@@ -332,7 +353,8 @@
                             </th>
 
                             <th scope="col">
-                                <div class="text-success">Rp. <?= number_format($nominal_masuk, 2, ',', '.'); ?> </div>
+                                <div class="text-success">Rp. <?= number_format($nominal_masuk, 2, ',', '.'); ?>
+                                </div>
                             </th>
 
                             <!-- <th scope=" col">&nbsp;</th> -->

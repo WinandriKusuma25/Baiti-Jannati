@@ -44,15 +44,8 @@
 
 
 
-        <div class="row justify-content-center">
-            <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h3 class="h3 mb-0 text-gray-800">Berikut merupakan data donasi yang belum di bayarkan</h3>
-            <hr>
-
-        </div> -->
-
+        <!-- <div class="row justify-content-center">
             <?php foreach ($transaksi_midtrans as $ad) : ?>
-
             <div class="card mr-3 mb-3 shadow-sm border-bottom-primary" style="width:450px; height:520px">
 
                 <div class="text-primary">
@@ -61,7 +54,7 @@
                                 <center>Data Donatur</center>
                             </b></p>
                     </h6>
-                </div>
+                </div> 
                 <center>
                     <hr width="90%">
                 </center>
@@ -115,7 +108,7 @@
                         </a></center>
             </div>
             <?php endforeach ?>
-        </div>
+        </div> -->
 
     </div>
 </div>

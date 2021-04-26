@@ -14,7 +14,7 @@
             <?= $this->session->flashdata('message'); ?>
         </div>
     </div>
-    <div class="card mb-3  border-bottom-primary" style="max-width: 700px;">
+    <div class="card mb-3  shadow-sm border-bottom-primary" style="max-width: 700px;">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Profil akun</h6>
         </div>
@@ -45,7 +45,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
 

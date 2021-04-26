@@ -114,8 +114,7 @@
                             <div class=" form-group col-6">
                                 <label for="foto">Bukti</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="foto" name="foto"
-                                        autofocus>
+                                    <input type="file" class="custom-file-input" id="foto" name="foto" autofocus>
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                     <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
                                 </div>
@@ -143,7 +142,8 @@
                         <div class="form-row">
                             <div class="form-group col-3">
                                 <label>Jenis Donasi </label>
-                                <input type="text" id="jenis_keuangan" value="Keuangan" readonly class="form-control keuangan">
+                                <input type="text" id="jenis_keuangan" value="Keuangan" readonly
+                                    class="form-control keuangan">
                             </div>
 
                             <div class="form-group col-3">
@@ -221,129 +221,133 @@ CKEDITOR.replace('keterangan');
 
 
 <script>
+// inisialisasi nilai variabel data untuk penampungan sementara
+var dataDonasi = new Array();
 
-    // inisialisasi nilai variabel data untuk penampungan sementara
-    var dataDonasi = new Array();
+/**
+ * 
+ *  To Do List 
+ *  1. Ambil event berdasarkan button
+ *  2. Ambil nilai dari masing" komponen
+ *  3. Memasukkan ke dalam tabel dengan menggunakan variabel array()
+ *  4. Eksekusi insert atau mengirim data ke controller | POST | GET
+ * */
 
-    /**
-     * 
-     *  To Do List 
-     *  1. Ambil event berdasarkan button
-     *  2. Ambil nilai dari masing" komponen
-     *  3. Memasukkan ke dalam tabel dengan menggunakan variabel array()
-     *  4. Eksekusi insert atau mengirim data ke controller | POST | GET
-     * */
-     
-    // @TODO 1 : Ambil event
-    $('#tambah-keuangan').on('click', function() {
+// @TODO 1 : Ambil event
+$('#tambah-keuangan').on('click', function() {
 
-        // @TODO 2 : Ambil nilai dari masing" komponen 
-        let $jenis   = $('#jenis_keuangan').val();
-        let $nominal = $('#nominal').val();
-        let $keterangan = $('#keterangan-k').val();
+    // @TODO 2 : Ambil nilai dari masing" komponen 
+    let $jenis = $('#jenis_keuangan').val();
+    let $nominal = $('#nominal').val();
+    let $keterangan = $('#keterangan-k').val();
 
-        let kondisiValidasi = 0;
+    let kondisiValidasi = 0;
 
-        // cek dari masing" nilai
-        if ( $nominal.length > 0 ) {
-            
-            kondisiValidasi++;
-        } else {
+    // cek dari masing" nilai
+    if ($nominal.length > 0) {
 
-            $('#nominal').css('border', '1px solid red');    
-        }
+        kondisiValidasi++;
+    } else {
 
-
-        if ( kondisiValidasi == 1 ){
-
-            // membuat objek
-            let dataKeuangan = {
-
-                
-                jenis_donasi : $jenis,
-                id_kategori  : "<?php echo $id_kategori_uang->id_kategori ?>",
-                kategori     : "<?php echo $id_kategori_uang->nama_kategori ?>",
-                nominal        : $nominal,
-                jumlah         : 0,
-                image          : "",
-                keterangan     : $keterangan
-            };
-
-            // push data penyimpanan
-            dataDonasi.push( dataKeuangan );
-
-
-            // clear all component
-            $('#jenis_keuangan').val("Keuangan");
-            $('#nominal').val(null);
-            $('#keterangan-k').val(null);
-
-        } else {
-
-            alert("Kolom belum diisi");
-        }
-        
-
-        // panggil fungsi output 
-        showDataDonasi();
-    })
-    
-
-
-    // hapus
-    $('#table-donasi tbody').on('click', '#hapus-donasi', function() {
-
-        let index = $(this).data('index');
-
-        let dataTR = $('#data-tr-' + index);
-        dataTR.fadeOut( function() {
-
-            this.remove();
-
-            // remove data index dataDonasi
-            dataDonasi.splice(index, 1);
-
-            // reload data
-            showDataDonasi();
-        } );
-
-        // alert("Hapus index ke - " + index);
-    });
-
-
-    function showDataDonasi() {
-
-        // console.log( dataDonasi );
-        
-        var elementHTML = "";
-
-        // apabila data donasi memiliki nilai atau isi
-        if ( dataDonasi.length > 0 ) {
-
-            dataDonasi.forEach( function( item, index ) {
-                
-                elementHTML += '<tr id="data-tr-'+ index +'">' +
-                                    '<td>'+( parseInt(index) + 1 )+'</td>' +
-                                    '<td>'+ item.jenis_donasi +' <input type="hidden" name="jenis[]" value="'+ item.jenis_donasi +'"/></td>' +
-                                    '<td>'+ item.kategori +' <input type="hidden" name="kategori[]" value="'+ item.id_kategori +'"> </td>' +
-                                    '<td>'+ item.nominal +' <input type="hidden" name="nominal[]" value="'+ item.nominal +'"> </td>' +
-                                    '<td>'+ item.jumlah +' <input type="hidden" name="jumlah[]" value="'+ item.jumlah +'"> </td>' +
-                                    '<td>'+ item.image +' <input type="hidden" name="image[]" value="'+ item.image +'"></td>' +
-                                    '<td>'+ item.keterangan +' <input type="hidden" name="keterangan[]" value="'+ item.keterangan +'"></td>' +
-                                    '<td><a href="javascript:void(0)" id="hapus-donasi" data-index="'+ index +'" class="btn btn-danger btn-sm">Hapus</a></td>' +
-                                '</tr>';
-            } );
-
-
-        } else {
-
-            alert("Mohon ditambahkan salah satu Non keuangan / Keuangan");
-        }
-        // buat element baris
-        $('#table-donasi tbody').html( elementHTML ).hide().fadeIn();
-
+        $('#nominal').css('border', '1px solid red');
     }
 
+
+    if (kondisiValidasi == 1) {
+
+        // membuat objek
+        let dataKeuangan = {
+
+
+            jenis_donasi: $jenis,
+            id_kategori: "<?php echo $id_kategori_uang->id_kategori ?>",
+            kategori: "<?php echo $id_kategori_uang->nama_kategori ?>",
+            nominal: $nominal,
+            jumlah: 0,
+            image: "",
+            keterangan: $keterangan
+        };
+
+        // push data penyimpanan
+        dataDonasi.push(dataKeuangan);
+
+
+        // clear all component
+        $('#jenis_keuangan').val("Keuangan");
+        $('#nominal').val(null);
+        $('#keterangan-k').val(null);
+
+    } else {
+
+        alert("Kolom belum diisi");
+    }
+
+
+    // panggil fungsi output 
+    showDataDonasi();
+})
+
+
+
+// hapus
+$('#table-donasi tbody').on('click', '#hapus-donasi', function() {
+
+    let index = $(this).data('index');
+
+    let dataTR = $('#data-tr-' + index);
+    dataTR.fadeOut(function() {
+
+        this.remove();
+
+        // remove data index dataDonasi
+        dataDonasi.splice(index, 1);
+
+        // reload data
+        showDataDonasi();
+    });
+
+    // alert("Hapus index ke - " + index);
+});
+
+
+function showDataDonasi() {
+
+    // console.log( dataDonasi );
+
+    var elementHTML = "";
+
+    // apabila data donasi memiliki nilai atau isi
+    if (dataDonasi.length > 0) {
+
+        dataDonasi.forEach(function(item, index) {
+
+            elementHTML += '<tr id="data-tr-' + index + '">' +
+                '<td>' + (parseInt(index) + 1) + '</td>' +
+                '<td>' + item.jenis_donasi + ' <input type="hidden" name="jenis[]" value="' + item
+                .jenis_donasi + '"/></td>' +
+                '<td>' + item.kategori + ' <input type="hidden" name="kategori[]" value="' + item.id_kategori +
+                '"> </td>' +
+                '<td>' + item.nominal + ' <input type="hidden" name="nominal[]" value="' + item.nominal +
+                '"> </td>' +
+                '<td>' + item.jumlah + ' <input type="hidden" name="jumlah[]" value="' + item.jumlah +
+                '"> </td>' +
+                '<td>' + item.image + ' <input type="hidden" name="image[]" value="' + item.image + '"></td>' +
+                '<td>' + item.keterangan + ' <input type="hidden" name="keterangan[]" value="' + item
+                .keterangan + '"></td>' +
+                '<td><a href="javascript:void(0)" id="hapus-donasi" data-index="' + index +
+                '" class="btn btn-danger btn-sm">Hapus</a></td>' +
+                '</tr>';
+        });
+
+
+    } else {
+
+        alert("Mohon ditambahkan salah satu Non keuangan / Keuangan");
+    }
+    // buat element baris
+    $('#table-donasi tbody').html(elementHTML).hide().fadeIn();
+
+}
 </script>
 
 

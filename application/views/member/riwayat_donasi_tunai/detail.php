@@ -36,7 +36,8 @@
                         <?php endforeach ?>
                         <br>
                         <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
-                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $dt->tgl_donasi ?>
+                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <td>
+                            <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?></td>
                         <?php endforeach ?>
                         <br>
                     </div>

@@ -42,10 +42,11 @@
 
                         </div>
                         <div class="form-group">
-                            <button type="submit" class=" btn btn-primary"><i
-                                    class="fas fa-save"></i>&nbsp;Simpan</button>
                             <a href="<?php echo base_url("member/profile"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                            <button type="submit" class=" btn btn-primary"><i
+                                    class="fas fa-save"></i>&nbsp;Simpan</button>
+
                         </div>
                     </form>
             </div>

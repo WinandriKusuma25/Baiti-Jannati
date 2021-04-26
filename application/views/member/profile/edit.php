@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Edit Profil</h1>
         <small>
-            <div class="text-muted"> Profilk &nbsp;/&nbsp; Profilku &nbsp; / &nbsp; <a
+            <div class="text-muted"> Profil &nbsp;/&nbsp; Profilku &nbsp; / &nbsp; <a
                     href="<?php echo base_url("member/profile/edit"); ?>">Edit Profil</a>
             </div>
         </small>
@@ -74,10 +74,10 @@
 
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class=" btn btn-primary"><i
-                                    class="fas fa-save"></i>&nbsp;Simpan</button>
                             <a href="<?php echo base_url("member/profile"); ?>" class="btn btn-primary"> <i
                                     class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
+                            <button type="submit" class=" btn btn-primary"><i
+                                    class="fas fa-save"></i>&nbsp;Simpan</button>
                         </div>
                     </div>
                     </form>
