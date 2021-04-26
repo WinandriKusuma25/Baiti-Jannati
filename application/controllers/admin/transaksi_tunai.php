@@ -105,13 +105,17 @@ class Transaksi_tunai extends CI_Controller
     public function tambah_coba()
     {
 
-        $this->form_validation->set_rules('tgl_donasi', 'Tgl. Doanasi', 'required|trim');
+        $this->form_validation->set_rules('id_user', 'Nama Donatur', 'required|trim');
      
 
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
         $data['kategori'] = $this->Kategori_model->showKategori();
         $data['users'] = $this->User_model->tampilUserSaja();
+
+        $data['id_kategori_uang'] = $this->Transaksitunai_model->getDataKategoriByUang();
+
+
         // $data['jumlah_form'] = $this->input->post('jumlah_form');
         // $data['jenis_donasi'] = $this->input->post('jenis_donasi');
 
@@ -127,22 +131,25 @@ class Transaksi_tunai extends CI_Controller
             $this->load->view('admin/transaksi_tunai/tambahcoba', $data);
             $this->load->view('templates/footer');
         } else {
-            $upload = $this->Transaksitunai_model->upload();
-            if ($upload['result'] == 'success') {
-                $this->Transaksitunai_model->tambahTransaksiTunai($upload);
-                $this->session->set_flashdata(
-                    'message',
-                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
-              Data berhasil di tambahkan ! 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>'
-                );
-                redirect('admin/transaksi_tunai');
-            } else {
-                echo $this->upload->display_errors();
-            }
+
+            $this->Transaksitunai_model->onInsertDataTransaksi();
+
+            // $upload = $this->Transaksitunai_model->upload();
+            // if ($upload['result'] == 'success') {
+                
+            //     $this->session->set_flashdata(
+            //         'message',
+            //         '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            //   Data berhasil di tambahkan ! 
+            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            //             <span aria-hidden="true">&times;</span>
+            //         </button>
+            //     </div>'
+            //     );
+            //     // redirect('admin/transaksi_tunai');
+            // } else {
+            //     echo $this->upload->display_errors();
+            // }
         }
     }
 

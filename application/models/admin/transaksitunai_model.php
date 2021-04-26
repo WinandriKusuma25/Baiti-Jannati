@@ -4,6 +4,69 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Transaksitunai_model extends CI_Model
 {
+
+
+
+    // ambil kategori id yang bernilai uang
+    function getDataKategoriByUang() {
+
+        $where = ['nama_kategori' => "uang"];
+        return $this->db->get_where('kategori', $where)->row();
+    }
+
+
+    // trial
+    function onInsertDataTransaksi() {
+
+        $donatur    = $this->input->post('id_user');
+        
+        // multiple data
+        $jenis  = $this->input->post('jenis');
+        $nominal   = $this->input->post('nominal');
+        $keterangan= $this->input->post('keterangan');
+        $kategori  = $this->input->post('kategori');
+        $jumlah    = $this->input->post('jumlah');
+        $image     = "";
+
+
+        $transaksi_donasi = array(
+
+            'id_user'           => $donatur,
+            'id_user_pengurus'  => $this->session->userdata('id_user')
+        );
+        $this->db->insert('transaksi_donasi_tunai', $transaksi_donasi);
+        // ambil nilai terakhir kali di masukkan ke dalam table
+        $id_donasi_terakhir = $this->db->insert_id();
+
+
+
+
+
+        $detail_donasi_tunai = array(); 
+        for ( $i = 0; $i < count($jenis); $i++ ) {
+
+            // push  
+            array_push( $detail_donasi_tunai, array(
+
+                'id_donasi'     => $id_donasi_terakhir,
+                'id_kategori'   => $kategori[$i],
+                'jenis_donasi'  => $jenis[$i],
+                'nominal'   => $nominal[$i],
+                'jumlah'    => $jumlah[$i],
+                'image'     => null,
+                'keterangan' => $keterangan[$i]
+            ) );
+        } 
+
+
+        // insert batch
+        $this->db->insert_batch('detail_donasi_tunai', $detail_donasi_tunai);
+        
+        redirect('admin/transaksi_tunai');
+    }
+
+
+
     public function showDonasiTransaksiTunaiAll()
     {
 
