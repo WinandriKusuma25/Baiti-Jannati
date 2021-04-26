@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body border-bottom-primary">
-                    <form method="post" action="<?= base_url('admin/pengeluaran_donasi/tambah'); ?>"
+                    <form method="post" action="<?= base_url('admin/transaksi_tunai/tambah_coba'); ?>"
                         enctype="multipart/form-data">
 
                         <div class="text-primary">
@@ -41,7 +41,7 @@
 
                             <div class="form-group col-6">
                                 <label class="" for="user">Nama Donatur</label>
-                                <div class="input-group">
+                                <div class="input-group" style="margin-bottom: 10px">
                                     <select name="id_user" id="id_user"
                                         class="js-example-placeholder-multiple js-states form-control"
                                         style="width: 100%">
@@ -114,7 +114,7 @@
                             <div class=" form-group col-6">
                                 <label for="foto">Bukti</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="foto" name="foto" required
+                                    <input type="file" class="custom-file-input" id="foto" name="foto"
                                         autofocus>
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                     <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
@@ -123,14 +123,14 @@
 
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
-                                <textarea name="keterangan" id="keterangan" cols="50" rows="" class="form-control"
+                                <textarea name="keterangan" id="keterangan-nk" cols="50" rows="" class="form-control"
                                     value="<?= set_value('keterangan')  ?>"></textarea>
                                 <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
                             <div class="form-group col-1">
                                 <label for="">&nbsp;</label>
-                                <button type="button" class="btn btn-primary btn-block" id="tambah"><i
+                                <button type="button" class="btn btn-primary btn-block" id="tambah-non-keuangan"><i
                                         class="fa fa-plus"></i></button>
                             </div>
                         </div>
@@ -143,24 +143,24 @@
                         <div class="form-row">
                             <div class="form-group col-3">
                                 <label>Jenis Donasi </label>
-                                <input type="text" name="tgl_penjualan" value="Keuangan" readonly class="form-control">
+                                <input type="text" id="jenis_keuangan" value="Keuangan" readonly class="form-control keuangan">
                             </div>
 
                             <div class="form-group col-3">
                                 <label>Nominal</label>
-                                <input type="number" name="nominal" value="" class="form-control" min="1">
+                                <input type="number" id="nominal" value="" class="form-control" min="1">
                             </div>
 
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
-                                <textarea name="keterangan" id="keterangan" cols="50" rows="" class="form-control"
+                                <textarea id="keterangan-k" cols="50" rows="" class="form-control"
                                     value="<?= set_value('keterangan')  ?>"></textarea>
                                 <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
                             <div class="form-group col-1">
                                 <label for="">&nbsp;</label>
-                                <button type="button" class="btn btn-primary btn-block" id="tambah"><i
+                                <button type="button" class="btn btn-primary btn-block" id="tambah-keuangan"><i
                                         class="fa fa-plus"></i></button>
                             </div>
 
@@ -172,9 +172,10 @@
                                 <h5><b>Detail Transaksi Donasi</b></h5>
                             </div>
                             <hr>
-                            <table class="table table-bordered" id="keranjang">
+                            <table class="table table-bordered" id="table-donasi">
                                 <thead>
                                     <tr>
+                                        <td width="5%">No</td>
                                         <td width="15%">Jenis Donasi</td>
                                         <td width="15%">Kategori</td>
                                         <td width="15%">Nominal</td>
@@ -183,6 +184,7 @@
                                         <td width="10%">Keterangan</td>
                                         <td width="10%">Aksi</td>
                                     </tr>
+
                                 </thead>
                                 <tbody>
 
@@ -216,6 +218,134 @@
 <!-- <script>
 CKEDITOR.replace('keterangan');
 </script> -->
+
+
+<script>
+
+    // inisialisasi nilai variabel data untuk penampungan sementara
+    var dataDonasi = new Array();
+
+    /**
+     * 
+     *  To Do List 
+     *  1. Ambil event berdasarkan button
+     *  2. Ambil nilai dari masing" komponen
+     *  3. Memasukkan ke dalam tabel dengan menggunakan variabel array()
+     *  4. Eksekusi insert atau mengirim data ke controller | POST | GET
+     * */
+     
+    // @TODO 1 : Ambil event
+    $('#tambah-keuangan').on('click', function() {
+
+        // @TODO 2 : Ambil nilai dari masing" komponen 
+        let $jenis   = $('#jenis_keuangan').val();
+        let $nominal = $('#nominal').val();
+        let $keterangan = $('#keterangan-k').val();
+
+        let kondisiValidasi = 0;
+
+        // cek dari masing" nilai
+        if ( $nominal.length > 0 ) {
+            
+            kondisiValidasi++;
+        } else {
+
+            $('#nominal').css('border', '1px solid red');    
+        }
+
+
+        if ( kondisiValidasi == 1 ){
+
+            // membuat objek
+            let dataKeuangan = {
+
+                
+                jenis_donasi : $jenis,
+                id_kategori  : "<?php echo $id_kategori_uang->id_kategori ?>",
+                kategori     : "<?php echo $id_kategori_uang->nama_kategori ?>",
+                nominal        : $nominal,
+                jumlah         : 0,
+                image          : "",
+                keterangan     : $keterangan
+            };
+
+            // push data penyimpanan
+            dataDonasi.push( dataKeuangan );
+
+
+            // clear all component
+            $('#jenis_keuangan').val("Keuangan");
+            $('#nominal').val(null);
+            $('#keterangan-k').val(null);
+
+        } else {
+
+            alert("Kolom belum diisi");
+        }
+        
+
+        // panggil fungsi output 
+        showDataDonasi();
+    })
+    
+
+
+    // hapus
+    $('#table-donasi tbody').on('click', '#hapus-donasi', function() {
+
+        let index = $(this).data('index');
+
+        let dataTR = $('#data-tr-' + index);
+        dataTR.fadeOut( function() {
+
+            this.remove();
+
+            // remove data index dataDonasi
+            dataDonasi.splice(index, 1);
+
+            // reload data
+            showDataDonasi();
+        } );
+
+        // alert("Hapus index ke - " + index);
+    });
+
+
+    function showDataDonasi() {
+
+        // console.log( dataDonasi );
+        
+        var elementHTML = "";
+
+        // apabila data donasi memiliki nilai atau isi
+        if ( dataDonasi.length > 0 ) {
+
+            dataDonasi.forEach( function( item, index ) {
+                
+                elementHTML += '<tr id="data-tr-'+ index +'">' +
+                                    '<td>'+( parseInt(index) + 1 )+'</td>' +
+                                    '<td>'+ item.jenis_donasi +' <input type="hidden" name="jenis[]" value="'+ item.jenis_donasi +'"/></td>' +
+                                    '<td>'+ item.kategori +' <input type="hidden" name="kategori[]" value="'+ item.id_kategori +'"> </td>' +
+                                    '<td>'+ item.nominal +' <input type="hidden" name="nominal[]" value="'+ item.nominal +'"> </td>' +
+                                    '<td>'+ item.jumlah +' <input type="hidden" name="jumlah[]" value="'+ item.jumlah +'"> </td>' +
+                                    '<td>'+ item.image +' <input type="hidden" name="image[]" value="'+ item.image +'"></td>' +
+                                    '<td>'+ item.keterangan +' <input type="hidden" name="keterangan[]" value="'+ item.keterangan +'"></td>' +
+                                    '<td><a href="javascript:void(0)" id="hapus-donasi" data-index="'+ index +'" class="btn btn-danger btn-sm">Hapus</a></td>' +
+                                '</tr>';
+            } );
+
+
+        } else {
+
+            alert("Mohon ditambahkan salah satu Non keuangan / Keuangan");
+        }
+        // buat element baris
+        $('#table-donasi tbody').html( elementHTML ).hide().fadeIn();
+
+    }
+
+</script>
+
 
 <script>
 $(".js-example-placeholder-multiple ").select2({
