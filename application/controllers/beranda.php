@@ -10,6 +10,7 @@ class Beranda extends CI_Controller
         parent::__construct();
         $this->load->model('admin/Pengaturan_model');
         $this->load->model('admin/Tujuan_model');
+        $this->load->model('admin/Kegiatan_model');
         $this->load->library('form_validation');
         $this->load->helper('text');
     }
@@ -18,6 +19,7 @@ class Beranda extends CI_Controller
     {
         $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
         $data['tujuan'] = $this->Tujuan_model->showtujuan();
+        $data['kegiatan'] = $this->Kegiatan_model->showkegiatan();
         $data['title'] = 'Baiti Jannati | Beranda';
         $this->load->view('template/header', $data);
         $this->load->view('index', $data);

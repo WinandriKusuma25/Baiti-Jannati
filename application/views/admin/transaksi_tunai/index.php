@@ -227,7 +227,7 @@
                         <td><?= $dnk->id_user_pengurus?></td>
                         <td><?= $dnk->id_user ?></td>
                         <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
-                        <td><?= $dnk->tgl_donasi ?></td>
+                        <td><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
                         <td>
                             <a class='btn btn-circle btn-primary'
                                 href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'

@@ -115,6 +115,13 @@ if (
             <span>Tujuan</span></a>
     </li>
 
+    <li class="nav-item <?= activate_menu('kegiatan') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/kegiatan') ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Kegiatan</span></a>
+    </li>
+
+
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('pengaturan') ?>">

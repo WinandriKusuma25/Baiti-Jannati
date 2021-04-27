@@ -68,13 +68,21 @@
                             <?= $b->motivasi ?></h6>
                         <hr>
 
-
-
                         <h6 class="card-title text-dark"><b>Mitra Berbagi : </b>&nbsp;<br>
                             <?= $b->mitra_berbagi ?></h6>
                         <hr>
 
+                        <h6 class="card-title text-dark"><b>Lokasi : </b>&nbsp;<br>
+                            <?= $b->lokasi ?></h6>
+                        <hr>
 
+                        <h6 class="card-title text-dark"><b>Kontak : </b>&nbsp;<br>
+                            <?= $b->kontak ?></h6>
+                        <hr>
+
+                        <h6 class="card-title text-dark"><b>Email : </b>&nbsp;<br>
+                            <?= $b->email ?></h6>
+                        <hr>
 
                         <?php endforeach ?>
                         <p>

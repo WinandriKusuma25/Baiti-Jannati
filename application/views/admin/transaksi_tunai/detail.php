@@ -36,7 +36,8 @@
                         <?php endforeach ?>
                         <br>
                         <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
-                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $dt->tgl_donasi ?>
+                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                        <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?>
                         <?php endforeach ?>
                         <br>
                     </div>
@@ -57,7 +58,7 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Jenis Donasi</th>
                             <th class="text-primary">Kategori</th>
-                            <!-- <th class="text-primary">Nominal</th> -->
+                            <th class="text-primary">Nominal</th>
                             <th class="text-primary">Jumlah</th>
                             <th class="text-primary" width="300px">Bukti</th>
                             <th class="text-primary">Keterangan</th>
@@ -71,7 +72,8 @@
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->jenis_donasi ?></td>
                             <td><?= $dnk->nama_kategori ?></td>
-                            <!-- <td><?= $dnk->nominal ?></td> -->
+                            <td>Rp
+                                <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                             <td><?= $dnk->jumlah ?></td>
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
                                     class="img-thumbnail" width="20%"></td>

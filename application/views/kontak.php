@@ -44,29 +44,30 @@
                         <div class="col-lg-10 my-3 wow fadeInUp">
                             <center><?= $this->pagination->create_links(); ?></center>
                             <hr>
+
+                            <?php 
+                        foreach ($pengaturan as $ad) : ?>
                             <div class="card-page">
                                 <div class="row row-beam-md">
 
                                     <div class="col-md-4 text-center py-3 py-md-2">
                                         <i class="mai-location-outline h3"></i>
                                         <p class="fg-primary fw-medium fs-vlarge">Lokasi</p>
-                                        <p class="mb-0">Dsn Bakalan 02 RT. 01 RW. 03 Desa Bakalan Kec. Bululawang Kab.
-                                            Malang</p>
+                                        <p class="mb-0"><?= $ad->lokasi ?></p>
                                     </div>
                                     <div class="col-md-4 text-center py-3 py-md-2">
                                         <i class="mai-call-outline h3"></i>
                                         <p class="fg-primary fw-medium fs-vlarge">Kontak</p>
-                                        <p class="mb-1">+62 812 3334 1493</p>
-                                        <p class="mb-0">+62 821 4081 3388</p>
+                                        <p class="mb-1"><?= $ad->kontak ?></p>
                                     </div>
                                     <div class="col-md-4 text-center py-3 py-md-2">
                                         <i class="mai-mail-open-outline h3"></i>
                                         <p class="fg-primary fw-medium fs-vlarge">Email</p>
-                                        <p class="mb-1">baitijannati@gmail.com</p>
-                                        <p class="mb-1">baitijannati@gmail.com</p>
+                                        <p class="mb-1"><?= $ad->email ?></p>
                                     </div>
                                 </div>
                             </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>

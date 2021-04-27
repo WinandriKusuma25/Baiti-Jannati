@@ -8,7 +8,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Edit Pengaturan</h1>
         <small>
-            <div class="text-muted">Pengaturan profil&nbsp;/&nbsp;Pengaturan&nbsp; / &nbsp; <a
+            <div class="text-muted">Pengaturan profil&nbsp;&nbsp;/&nbsp;&nbsp;Pengaturan&nbsp; / &nbsp; <a
                     href="<?php echo base_url("superadmin/pengaturan/edit"); ?>">Edit</a>
             </div>
         </small>
@@ -83,6 +83,33 @@
                                 <?= form_error('motivasi', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
+                            <div class=" form-group">
+                                <label for="lokasi">Lokasi</label>
+                                <textarea name="lokasi" id="lokasi" cols="50" rows=""
+                                    class="form-control"><?= $b->lokasi; ?></textarea>
+                                <?= form_error('lokasi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="kontak">Kontak</label>
+                                <input type="number" class="form-control" id="kontak" name="kontak"
+                                    value="<?= $b->kontak; ?>">
+                                <?= form_error('kontak', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    value="<?= $b->email; ?>">
+                                <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+
+
+
+
 
                         </div>
 
@@ -115,6 +142,7 @@ CKEDITOR.replace('sejarah');
 CKEDITOR.replace('kondisi');
 CKEDITOR.replace('mitra_berbagi');
 CKEDITOR.replace('motivasi');
+CKEDITOR.replace('lokasi');
 // CKEDITOR.replace('foto');
 </script>
 

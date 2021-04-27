@@ -73,7 +73,9 @@
                                 <span><?= $no++ ?></span>
                             </div> -->
                             <div class="iconic-content">
-                                <h5><?= $ad->judul ?></h5>
+                                <div class="text-primary">
+                                    <h5><?= $ad->judul ?></h5>
+                                </div>
                                 <div class="text-muted">
                                     <p class="fs-small"><?= $ad->deskripsi ?></p>
                                 </div>
@@ -143,67 +145,46 @@
                 </div>
 
 
-                <div class="container">
+                <div class="container mr-12  wow fadeInUp">
                     <h3 class="text-center wow fadeIn text-primary">Kegiatan Kami</h3>
                     <hr>
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-lg-10">
-                            <div class="row justify-content-center">
-                                <div class="col-md-6 col-lg-4 py-3 wow fadeInLeft">
-                                    <div class="card card-body border-0 text-center shadow pt-5">
-                                        <div class="svg-icon mx-auto mb-4">
-                                            <img src="<?= base_url(); ?>assets/user/img/icons/love.png" width="100px"
-                                                alt="">
+                    <br>
+                    <div class="row justify-content-center">
+                        <?php foreach ($kegiatan as $ad) : ?>
+                        <div class="card-page  mr-3 mb-3" style="width:340px; height:300px">
+                            <center><img src="<?= base_url('assets/images/kegiatan/') . $ad->foto ?>"
+                                    style="width:100px; height:100px;">
+                                <br>
+
+                            </center>
+                            <br>
+                            <div class="text-muted">
+                                <center>
+                                    <b>
+                                        <div class="text-primary">
+                                            <h5><?= $ad->judul ?></h5>
                                         </div>
-                                        <h5 class="fg-gray"><b>Santunan</b></h5>
-                                        <div class="text-muted">
-                                            <p align="justify" class="fs-small">Santunan yang kami adakan yaitu
-                                                setiap 1
-                                                bulan
-                                                sekali.
-                                                Yaitu menyantuni anak
-                                                yatim, piatu, dan dhuafa yang ada di Desa Bakalan.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
-                                    <div class="card card-body border-0 text-center shadow pt-5">
-                                        <div class="svg-icon mx-auto mb-4">
-                                            <img src="<?= base_url(); ?>assets/user/img/icons/love2.png" width="100px"
-                                                alt="">
-                                        </div>
-                                        <h5 class="fg-gray"><b>Bakti Sosial</b></h5>
-                                        <div class="text-muted">
-                                            <p align="justify" class="fs-small">Melakukan Bakti Sosial bagi warga
-                                                yang
-                                                mengalami
-                                                kesusahan, misalnya
-                                                kematian dan warga kurang mampu dan warga yang membutuhkan.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 py-3 wow fadeInRight">
-                                    <div class="card card-body border-0 text-center shadow pt-5">
-                                        <div class="svg-icon mx-auto mb-4">
-                                            <img src="<?= base_url(); ?>assets/user/img/icons/education.png"
-                                                width="100px" alt="">
-                                        </div>
-                                        <h5 class="fg-gray"><b>Beasiswa Pendidikan</b></h5>
-                                        <div class="text-muted">
-                                            <p align="justify" class="fs-small">Membantu SPP anak didik setiap bulan
-                                                yang sudah
-                                                sekolah SMP. Meskipun membantunya
-                                                tidak penuh 100% tetapi tetap dibantu oleh yayasan. </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </b>
+                                    <h6><?= $ad->deskripsi ?></h6>
+
+
+                                </center>
                             </div>
+
+                            <center>
+                                <br>
+
+
+                            </center>
+
+
                         </div>
+                        <?php endforeach ?>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="page-section bg-image bg-image-overlay-dark"
@@ -223,96 +204,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- <div class="page-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 py-3">
-                    <div class="iconic-list">
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-content">
-                                <h5>Powerful Features</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                            <div class="iconic-md iconic-text bg-warning fg-white rounded-circle">
-                                <span class="mai-analytics"></span>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-content">
-                                <h5>Fully Secured</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                            <div class="iconic-md iconic-text bg-info fg-white rounded-circle">
-                                <span class="mai-checkmark"></span>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-content">
-                                <h5>Easy Monitoring</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                            <div class="iconic-md iconic-text bg-indigo fg-white rounded-circle">
-                                <span class="mai-desktop-outline"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 py-3 wow zoomIn">
-                    <div class="img-place mobile-preview shadow">
-                        <img src="<?= base_url(); ?>assets/user/img/app_preview_2.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4 py-3">
-                    <div class="iconic-list">
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-warning fg-white rounded-circle">
-                                <span class="mai-speedometer-outline"></span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Powerful Features</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-success fg-white rounded-circle">
-                                <span class="mai-aperture"></span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Fully Secured</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-indigo fg-white rounded-circle">
-                                <span class="mai-stats-chart-outline"></span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Easy Monitoring</h5>
-                                <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                    diam
-                                    nonumy eirmod tempor invidunt ut labore et dolore</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 
     <!-- FAQ -->
     <div class="page-section bg-light">

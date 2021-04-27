@@ -22,8 +22,6 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Profil</h6>
                 </div>
-
-
                 <div class="card-body border-bottom-primary">
                     <form method="post" action="<?= base_url('superadmin/pengaturan/tambah'); ?>"
                         enctype="multipart/form-data">
@@ -63,10 +61,26 @@
                                 <?= form_error('motivasi', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
+                            <div class=" form-group">
+                                <label for="lokasi">Lokasi</label>
+                                <textarea name="lokasi" id="lokasi" cols="50" rows="" class="form-control"></textarea>
+                                <?= form_error('lokasi', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
 
-                            <br>
-                            <br>
+                            <div class="form-group">
+                                <label for="kontak">Kontak</label>
+                                <input type="number" class="form-control" id="kontak" name="kontak"
+                                    value="<?= set_value('kontak')  ?>">
+                                <?= form_error('kontak', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    value="<?= set_value('email')  ?>">
+                                <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <br>
                             <button type="submit" class=" btn btn-primary"><i
                                     class="fas fa-save"></i>&nbsp;Simpan</button>
 
@@ -83,11 +97,13 @@
             <br>
         </div>
     </div>
+</div>
 
-    <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-    <script>
-    CKEDITOR.replace('sejarah');
-    CKEDITOR.replace('kondisi');
-    CKEDITOR.replace('mitra_berbagi');
-    CKEDITOR.replace('motivasi');
-    </script>
+<script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+<script>
+CKEDITOR.replace('sejarah');
+CKEDITOR.replace('kondisi');
+CKEDITOR.replace('mitra_berbagi');
+CKEDITOR.replace('motivasi');
+CKEDITOR.replace('lokasi');
+</script>

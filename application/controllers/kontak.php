@@ -11,6 +11,7 @@ class Kontak extends CI_Controller
         parent::__construct();
         $this->load->model('admin/Pengurus_model');
         $this->load->model('admin/Jabatan_model');
+        $this->load->model('admin/Pengaturan_model');
         $this->load->library('pagination');
     }
 
@@ -24,6 +25,7 @@ class Kontak extends CI_Controller
 
         $data['start'] = $this->uri->segment(3);
         $data['pengurus'] = $this->Pengurus_model->showPengurusPagination($config['per_page'], $data['start']);
+        $data['pengaturan'] = $this->Pengaturan_model->showPengaturan();
         $data['title'] = 'Baiti Jannati | Kontak';
 
         //styling

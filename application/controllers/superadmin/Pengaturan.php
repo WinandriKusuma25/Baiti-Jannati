@@ -73,6 +73,9 @@ class Pengaturan extends CI_Controller
             $kondisi = $this->input->post('kondisi');
             $mitra_berbagi = $this->input->post('mitra_berbagi');
             $motivasi = $this->input->post('motivasi');
+            $lokasi = $this->input->post('lokasi');
+            $kontak = $this->input->post('kontak');
+            $email = $this->input->post('email');
             // var_dump($kondisi);
             // die();
 
@@ -81,6 +84,9 @@ class Pengaturan extends CI_Controller
             $this->db->set('kondisi', $kondisi);
             $this->db->set('motivasi', $motivasi);
             $this->db->set('mitra_berbagi', $mitra_berbagi);
+            $this->db->set('lokasi', $lokasi);
+            $this->db->set('kontak', $kontak);
+            $this->db->set('email', $email);
             $this->db->where('id_pengaturan', $id_pengaturan);
             $this->db->update('pengaturan');
 
