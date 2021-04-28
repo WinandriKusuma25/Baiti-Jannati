@@ -121,6 +121,13 @@ if (
             <span>Kegiatan</span></a>
     </li>
 
+    <li class="nav-item <?= activate_menu('cara_donasi') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/cara_donasi') ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Cara Berdonasi</span></a>
+    </li>
+
+
 
 
     <!-- Nav Item - Dashboard -->
