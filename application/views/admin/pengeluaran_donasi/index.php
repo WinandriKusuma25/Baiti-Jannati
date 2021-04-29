@@ -260,9 +260,14 @@
                     </thead>
                 </table>
 
-                <a href="<?php echo base_url('admin/pengeluaran_donasi/pdf') ?>"
+                <!-- <a href="<?php echo base_url('admin/pengeluaran_donasi/pdf') ?>"
                     class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fa fa-file-pdf"></i>
-                    Unduh PDF</a>
+                    Unduh PDF</a> -->
+
+
+                <a href="<?php echo base_url('admin/laporan_pengeluaran') ?>"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-print"></i>
+                    Cetak Laporan</a>
 
 
 

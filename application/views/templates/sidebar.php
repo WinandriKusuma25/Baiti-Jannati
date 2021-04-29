@@ -134,7 +134,7 @@ if (
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('laporan_pengeluaran') ?>">
-        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pengeluran') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pengeluaran') ?>">
             <i class="fas fa-fw fa-print"></i>
             <span>Laporan Pengeluaran</span></a>
     </li>

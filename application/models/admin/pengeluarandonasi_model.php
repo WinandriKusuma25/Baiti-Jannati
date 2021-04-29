@@ -219,4 +219,34 @@ class Pengeluarandonasi_model extends CI_Model
         $this->db->select_max('nominal');
         return $this->db->get('pengeluaran_donasi')->result();
     }
+
+
+      
+    public function gettahun(){
+        $query = $this->db->query("SELECT YEAR(created_at) AS tahun FROM 
+            pengeluaran_donasi GROUP BY YEAR(created_at) ORDER BY YEAR(created_at)
+            ASC");
+        return $query->result();
+    }
+    
+    public function filterbytanggal( $tanggalawal, $tanggalakhir){
+        $query = $this->db->query("SELECT * FROM pengeluaran_donasi INNER JOIN user ON pengeluaran_donasi.id_user = user.id_user
+         WHERE created_at 
+            BETWEEN '$tanggalawal' AND '$tanggalakhir' ORDER BY created_at ASC");
+        return $query->result();
+    }
+
+    public function filterbytahun($tahun2){
+        $query = $this->db->query("SELECT * FROM pengeluaran_donasi  INNER JOIN user ON pengeluaran_donasi.id_user = user.id_user WHERE  YEAR(created_at) = 
+            '$tahun2' ORDER BY created_at ASC");
+
+        return $query->result();
+    }
+
+    public function filterbybulan($tahun1, $bulanawal, $bulanakhir){
+        $query = $this->db->query("SELECT * FROM pengeluaran_donasi INNER JOIN user ON pengeluaran_donasi.id_user = user.id_user WHERE YEAR(created_at) = 
+            '$tahun1' AND MONTH(created_at) BETWEEN '$bulanawal' AND '$bulanakhir'
+            ORDER BY created_at ASC");
+        return $query->result();
+    }
 }
