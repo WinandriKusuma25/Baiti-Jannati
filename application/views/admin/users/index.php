@@ -1,6 +1,3 @@
-<div class="nav-link">
-    <div id="darkSwitch"></div>
-</div>
 <!-- Begin Page Content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="container-fluid">

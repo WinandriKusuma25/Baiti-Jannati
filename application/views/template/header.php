@@ -53,6 +53,9 @@
                 <li class="nav-item <?= activate_menu('anak_didik') ?>">
                     <a class="nav-link" href="<?= base_url('anak_didik') ?>">Anak Didik</a>
                 </li>
+                <li class="nav-item <?= activate_menu('laporan') ?>">
+                    <a class="nav-link" href="<?= base_url('laporan') ?>">Laporan</a>
+                </li>
                 <li class="nav-item <?= activate_menu('kontak') ?>">
                     <a class="nav-link" href="<?= base_url('kontak') ?>">Kontak</a>
                 </li>
@@ -61,10 +64,13 @@
                 </li>
 
 
+
+
             </ul>
             <div class="ml-auto my-2 my-lg-0">
                 <a href="<?= base_url('auth'); ?>" class="btn btn-primary rounded-pill">Login</a>
             </div>
+
         </div>
     </div>
 </nav>
