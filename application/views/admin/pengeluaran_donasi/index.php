@@ -260,6 +260,10 @@
                     </thead>
                 </table>
 
+                <a href="<?php echo base_url('admin/pengeluaran_donasi/pdf') ?>"
+                    class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fa fa-file-pdf"></i>
+                    Unduh PDF</a>
+
 
 
             </div>

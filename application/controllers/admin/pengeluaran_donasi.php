@@ -13,6 +13,7 @@ class Pengeluaran_donasi extends CI_Controller
         $this->load->model('admin/Pengurus_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -182,5 +183,18 @@ class Pengeluaran_donasi extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/pengeluaran_donasi/detail', $data);
         $this->load->view('templates/footer', $data);
+    }
+
+    public function pdf(){
+       
+        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
+        $data['nominal_hari'] = $this->Pengeluarandonasi_model->nominalHari();
+        $data['nominal_bulan'] = $this->Pengeluarandonasi_model->nominalBulan();
+        $data['nominal_tahun'] = $this->Pengeluarandonasi_model->nominalTahun();
+        $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
+        $this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "Pengeluaran.pdf"; 
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->load_view('admin/pengeluaran_donasi/laporan_pdf', $data);	
     }
 }
