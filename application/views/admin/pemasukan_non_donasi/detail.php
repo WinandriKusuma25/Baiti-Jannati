@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="card mb-3">
+    <div class="card mb-3 shadow-sm">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Detail Pemasukan Non Donasi</h6>
         </div>

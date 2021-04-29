@@ -392,7 +392,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Repeat Password', 'required|trim|min_length[3]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Baiti Jannati | Change Password';
+            $data['title'] = 'Baiti Jannati | Reset Password';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/change_password');
             $this->load->view('templates/auth_footer');
@@ -403,6 +403,7 @@ class Auth extends CI_Controller
             $this->db->set('password', $password);
             $this->db->where('email', $email);
             $this->db->update('user');
+            $this->db->delete('user_token', ['email' => $email]);
 
             $this->session->unset_userdata('reset_email');
 

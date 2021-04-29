@@ -98,11 +98,11 @@
 
     </div>
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data donatur di Baiti Jannati</h6>
         </div>
-        <div class="card-body border-bottom-primary">
+        <div class="card-body shadow-sm border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
             <a class='btn btn-success' href="users/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>

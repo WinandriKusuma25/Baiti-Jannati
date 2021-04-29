@@ -262,7 +262,7 @@
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($pengeluaran_donasi as $ad) : ?>
+                            foreach ($pengeluaran_donasi_hitung as $ad) : ?>
                             <tr>
                                 <td><strong><?= $ad->name ?></strong></td>
                                 <td>
@@ -274,18 +274,19 @@
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
-                        <?php
-                    error_reporting(0);
-                    foreach ($pengeluaran_donasi as $total_keluar) {
-                        $nominal_keluar += $total_keluar->nominal;
-                    }
-                    ?>
+
+                        <!-- total pengeluaran -->
+                        <?php foreach ($pengeluaran_donasi_limit as $na) : ?>
+
+                        <?php endforeach ?>
+
+                        ?>
                         <tr>
                             <th colspan="2" scope="col" class="text-primary">Total Pengeluaran
                             </th>
 
                             <th scope="col">
-                                <div class="text-danger">Rp. <?= number_format($nominal_keluar, 2, ',', '.'); ?>
+                                <div class="text-danger"> Rp. <?= number_format($na->nominal, 2, ',', '.'); ?>
                                 </div>
                             </th>
 

@@ -24,6 +24,13 @@ class Pengeluarandonasi_model extends CI_Model
         return $this->db->get('pengeluaran_donasi')->result();
     }
 
+    public function NominalLimit()
+    {
+        $this->db->select_sum('nominal');
+        $this->db->limit(5);
+        return $this->db->get('pengeluaran_donasi')->result();
+    }
+
 
     public function tambahPengeluaranDonasi()
     {

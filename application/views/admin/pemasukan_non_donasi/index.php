@@ -152,8 +152,8 @@
                             <th class="text-primary" style=" text-align: center; ">Penanggung Jawab</th>
                             <th class="text-primary" style=" text-align: center; ">Tgl. Pemasukan</th>
                             <th class="text-primary" style=" text-align: center; ">Nominal</th>
-                            <th class="text-primary" style=" text-align: center; ">Terakhir di edit</th>
-                            <!-- <th class="text-primary">Keterangan</th> -->
+                            <!-- <th class="text-primary" style=" text-align: center; ">Terakhir di edit</th> -->
+                            <th class="text-primary">Keterangan</th>
                             <th class="text-primary" style=" text-align: center; ">Aksi</th>
                         </tr>
                     </thead>
@@ -171,7 +171,9 @@
                             <td style=" text-align: center; ">Rp
                                 <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
 
-                            <?php if ($dt->updated_at == NULL) : ?>
+                            <td style=" text-align: center;"><?= $dt->keterangan ?></td>
+
+                            <!-- <?php if ($dt->updated_at == NULL) : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Tidak pernah di edit</span>
                             </td>
@@ -179,7 +181,7 @@
                             <td>
                                 <?=  date('d-m-Y H:i:s', strtotime($dt->updated_at)); ?></td>
                             </td>
-                            <?php endif ?>
+                            <?php endif ?> -->
 
                             <td>
                                 <a class='btn btn-circle btn-primary'

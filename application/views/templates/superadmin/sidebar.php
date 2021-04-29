@@ -74,10 +74,28 @@ if (
     </li>
 
     <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('pengurus_akun') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/pengurus_akun') ?>">
+            <i class="fas fa-fw fa-user-tie"></i>
+            <span>Akun Pengurus</span></a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider mt-3">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Pengaturan Profil
+    </div>
+
+
+
+
+    <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('pengurus') ?>">
         <a class="nav-link pb-0" href="<?= base_url('superadmin/pengurus') ?>">
             <i class="fas fa-fw fa-user-tie"></i>
-            <span>Akun Pengurus</span></a>
+            <span>Pengurus</span></a>
     </li>
 
 
@@ -86,13 +104,6 @@ if (
             <i class="fas fa-fw fa-address-card"></i>
             <span>Jabatan</span></a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider mt-3">
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Pengaturan Profil
-    </div>
 
 
     <!-- Nav Item - Dashboard -->
@@ -108,6 +119,15 @@ if (
             <i class="fas fa-fw fa-newspaper"></i>
             <span>Berita Kegiatan</span></a>
     </li>
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('pengaturan') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/pengaturan') ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Profil</span></a>
+    </li>
+
 
     <li class="nav-item <?= activate_menu('tujuan') ?>">
         <a class="nav-link pb-0" href="<?= base_url('superadmin/tujuan') ?>">
@@ -129,13 +149,6 @@ if (
 
 
 
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= activate_menu('pengaturan') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('superadmin/pengaturan') ?>">
-            <i class="fas fa-fw fa-cogs"></i>
-            <span>Pengaturan</span></a>
-    </li>
 
 
 

@@ -9,7 +9,7 @@
         <h1 class="h3 mb-0 text-gray-800">Tujuan</h1>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("supersuperadmin/tujuan"); ?>">Tujuan</a>
+                    href="<?php echo base_url("superadmin/tujuan"); ?>">Tujuan</a>
             </div>
         </small>
     </div>
@@ -28,7 +28,7 @@
     <br>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data tujuan</h6>
         </div>
@@ -50,7 +50,7 @@
                         <tr>
                             <th class="text-primary">No.</th>
                             <th class="text-primary">Judul</th>
-                            <th class="text-primary" width="50px">Deskripsi</th>
+                            <th class="text-primary">Deskripsi</th>
                             <th class="text-primary">Tgl. Pembuatan</th>
                             <th class="text-primary">Terakhir di edit</th>
                             <th class="text-primary">Aksi</th>

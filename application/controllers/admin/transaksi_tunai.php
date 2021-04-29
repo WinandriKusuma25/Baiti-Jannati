@@ -54,7 +54,7 @@ class Transaksi_tunai extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
-    public function tambah()
+    public function tambah_coba()
     {
 
         $this->form_validation->set_rules('tgl_donasi', 'Tgl. Doanasi', 'required|trim');
@@ -102,7 +102,7 @@ class Transaksi_tunai extends CI_Controller
     }
 
 
-    public function tambah_coba()
+    public function tambah()
     {
 
         $this->form_validation->set_rules('id_user', 'Nama Donatur', 'required|trim');
@@ -128,28 +128,21 @@ class Transaksi_tunai extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/transaksi_tunai/tambahcoba', $data);
+            $this->load->view('admin/transaksi_tunai/tambah', $data);
             $this->load->view('templates/footer');
         } else {
 
-            $this->Transaksitunai_model->onInsertDataTransaksi();
-
-            // $upload = $this->Transaksitunai_model->upload();
-            // if ($upload['result'] == 'success') {
-                
-            //     $this->session->set_flashdata(
-            //         'message',
-            //         '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            //   Data berhasil di tambahkan ! 
-            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            //             <span aria-hidden="true">&times;</span>
-            //         </button>
-            //     </div>'
-            //     );
-            //     // redirect('admin/transaksi_tunai');
-            // } else {
-            //     echo $this->upload->display_errors();
-            // }
+            $this->Transaksitunai_model->onInsertDataTransaksi();       
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Data berhasil di tambahkan ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>'
+            );
+            redirect('admin/transaksi_tunai');
         }
     }
 
@@ -366,4 +359,59 @@ class Transaksi_tunai extends CI_Controller
             redirect('admin/transaksi_tunai');
         }
     }
+
+    public function hapus2($id_donasi)
+    {
+        if ($this->Transaksitunai_model->hapusTransaksiTunai($id_donasi) &&  $this->Transaksitunai_model->hapusDetailTransaksiTunai($id_donasi) == false) {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 Data tidak dapat dihapus, karena data digunakan !
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('admin/transaksi_tunai');
+        } else {
+            $this->load->library('session');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     Data berhasil di hapus !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            helper_log("hapus", "hapus kategori");
+            redirect('admin/transaksi_tunai', 'refresh');
+        }
+    }
+
+    public function hapus($id_donasi){
+		if($this->Transaksitunai_model->hapus($id_donasi) && $this->Transaksitunai_model->hapusDetail($id_donasi)){
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 Data tidak dapat dihapus, karena data digunakan !
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('admin/transaksi_tunai');
+		} else {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 Data tidak dapat dihapus, karena data digunakan !
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('admin/transaksi_tunai');
+		}
+	}
 }

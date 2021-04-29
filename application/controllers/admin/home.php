@@ -23,11 +23,12 @@ class Home extends CI_Controller
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['transaksi_donasi_tunai'] = $this->Pengeluarandonasi_model->count('transaksi_donasi_tunai');
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->count('pengeluaran_donasi');
+        $data['pengeluaran_donasi_limit'] = $this->Pengeluarandonasi_model->NominalLimit();
         $data['statistics'] = $this->Pengeluarandonasi_model->getStatistics();
         $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
         $data['chart'] = $this->Pengeluarandonasi_model->getDateforChart();
         $data['month'] = $this->Pengeluarandonasi_model->getMonth();
-        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
+        $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
         $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasiLimit();
         $data['statistics2'] = $this->Pemasukannondonasi_model->getStatistics();
         $data['char2'] = $this->Pemasukannondonasi_model->getDateforChart();
@@ -35,7 +36,7 @@ class Home extends CI_Controller
 
         //menghitung sisa saldo
         $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
-        $data['transaksi_midtrans_hitung'] = $this->Midtrans_model->showTransaksiMidtransAll();
+        $data['transaksi_midtrans_hitung'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
         $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
         $data['pemasukan_non_donasi_hitung'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
 

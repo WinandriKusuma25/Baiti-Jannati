@@ -13,6 +13,14 @@ class Midtrans_model extends CI_Model
         return $this->db->get_where('transaksi_midtrans')->result();
     }
 
+    public function showTransaksiMidtransPendingAll()
+    {
+
+        $this->db->select('transaksi_midtrans.*, user.*');
+        $this->db->join('user', 'transaksi_midtrans.id_user = user.id_user');
+        return $this->db->get_where('transaksi_midtrans', ['status_code' => '200'])->result();
+    }
+
     public function showTransaksiMidtrans($email)
     {
 

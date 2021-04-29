@@ -62,7 +62,7 @@ class Transaksitunai_model extends CI_Model
         // insert batch
         $this->db->insert_batch('detail_donasi_tunai', $detail_donasi_tunai);
         
-        redirect('admin/transaksi_tunai');
+   
     }
 
 
@@ -281,4 +281,43 @@ class Transaksitunai_model extends CI_Model
         // $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
         return $this->db->get_where('detail_donasi_tunai', ['id_detail_donasi' => $id_detail_donasi])->result();
     }
+
+    // public function hapusTransaksiTunai($id_donasi)
+    // {
+    //     $this->db->where('id_donasi', $id_donasi);
+    //     if (
+    //         $this->db->delete('transaksi_donasi_tunai')
+    //     ) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    
+    // public function hapusDetailTransaksiTunai($id_donasi)
+    // {
+    //     $this->db->where('id_donasi', $id_donasi);
+    //     if (
+    //         $this->db->delete('detail_donasi_tunai')
+    //     ) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    protected $_table = 'transaksi_donasi_tunai';
+    protected $_table2 = 'detail_donasi_tunai';
+
+    public function hapus($id_donasi){
+		return $this->db->delete($this->_table, ['id_donasi' => $id_donasi]);
+	}
+
+    public function hapusDetail($id_donasi){
+		return $this->db->delete($this->_table2, ['id_donasi' => $id_donasi]);
+	}
+
+
+
 }

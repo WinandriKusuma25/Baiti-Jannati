@@ -29,7 +29,7 @@ class Laporan extends CI_Controller
             $data['title'] = 'Baiti Jannati | Laporan';
             $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
             $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
-            $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransAll();
+            $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
             $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
             $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
             $this->load->view('templates/header', $data);
@@ -98,7 +98,7 @@ class Laporan extends CI_Controller
                 // $pdf->Ln();
                 $pdf->SetFont('Arial', '', 10);
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-                $pdf->Cell(25, 7, $d['nama_pengurus'], 1, 0, 'C');
+                $pdf->Cell(25, 7, $d['name'], 1, 0, 'C');
                 $pdf->Cell(35, 7, $d['tgl_donasi'], 1, 0, 'C');
                 $pdf->Cell(95, 7, $d['nominal'], 1, 0, 'L');
                 $pdf->Cell(95, 7, $d['keterangan'], 1, 0, 'L');
@@ -116,8 +116,8 @@ class Laporan extends CI_Controller
             foreach ($data as $d) {
                 $pdf->SetFont('Arial', '', 10);
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-                $pdf->Cell(35, 7, $d['nama_pengurus'], 1, 0, 'C');
-                $pdf->Cell(35, 7, $d['tgl_pengeluaran'], 1, 0, 'C');
+                $pdf->Cell(35, 7, $d['name'], 1, 0, 'C');
+                $pdf->Cell(35, 7, $d['created_at'], 1, 0, 'C');
                 $pdf->Cell(35, 7, $d['nominal'], 1, 0, 'L');
                 $pdf->Cell(70, 7, $d['keterangan'], 1, 0, 'L');
                 $pdf->Ln();

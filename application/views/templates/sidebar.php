@@ -109,25 +109,40 @@ if (
             <span>Donatur</span></a>
     </li>
 
-    <!-- Nav Item - Dashboard -->
-    <!-- <li class="nav-item <?= activate_menu('anak_didik') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/anak_didik') ?>">
-            <i class="fas fa-fw fa-child"></i>
-            <span>Anak Didik</span></a>
-    </li> -->
+    <!-- Divider -->
+    <hr class="sidebar-divider  mt-3">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Manajemen Laporan
+    </div>
+
 
     <!-- Nav Item - Dashboard -->
-    <!-- <li class="nav-item <?= activate_menu('pengurus') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/pengurus') ?>">
-            <i class="fas fa-fw fa-user-tie"></i>
-            <span>Pengurus</span></a>
-    </li> -->
-    <!-- 
-    <li class="nav-item <?= activate_menu('jabatan') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/jabatan') ?>">
-            <i class="fas fa-fw fa-address-card"></i>
-            <span>Jabatan</span></a>
-    </li> -->
+    <li class="nav-item <?= activate_menu('laporan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pemasukan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pemasukan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pemasukan</span></a>
+    </li>
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pengeluaran') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pengeluran') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pengeluaran</span></a>
+    </li>
+
+
+
+
+
 
 
     <!-- Divider -->

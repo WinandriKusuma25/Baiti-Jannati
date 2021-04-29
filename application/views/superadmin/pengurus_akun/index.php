@@ -4,10 +4,10 @@
     </script>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Donatur</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pengurus</h1>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("superadmin/users"); ?>">Donatur</a>
+                    href="<?php echo base_url("superadmin/pengurus"); ?>">Pengurus</a>
             </div>
         </small>
     </div>
@@ -20,29 +20,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Donatur Anonim</div>
+                                Jumlah Pengurus</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('role' => 'donatur', 'name' => 'Hamba Allah'))->num_rows() ?>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Donatur</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php echo $this->db->get_where('user', array('role' => 'donatur'))->num_rows() ?>
+                                <?php echo $this->db->get_where('user', array('role' => 'admin'))->num_rows() ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -95,13 +75,13 @@
 
     </div>
     <!-- DataTales Example -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data donatur di Baiti Jannati</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data pengurus di Baiti Jannati</h6>
         </div>
         <div class="card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
-            <a class='btn btn-success' href="users/tambah">
+            <a class='btn btn-success' href="pengurus_akun/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>
                     Tambah
@@ -119,6 +99,7 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Nama</th>
                             <th class="text-primary">Email</th>
+                            <!-- <th class="text-primary">Picture</th> -->
                             <th class="text-primary">Status</th>
                             <th class="text-primary">Terakhir Login</th>
                             <th class="text-primary">Aksi</th>
@@ -126,7 +107,7 @@
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        foreach ($users as $usr) : ?>
+                        foreach ($pengurus as $usr) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $usr->name ?></td>
@@ -137,10 +118,9 @@
                             </td>
                             <?php else : ?>
                             <td class="project-state">
-                                <span class="badge badge-danger">Belum Aktif</span>
+                                <span class="badge badge-danger">Belum aktif</span>
                             </td>
                             <?php endif ?>
-
                             <?php if ($usr->last_login == NULL) : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Belum Pernah Login</span>
@@ -153,13 +133,13 @@
 
                             <td>
                                 <a class='btn btn-primary btn-circle'
-                                    href='<?= base_url() . 'superadmin/users/detail/' . $usr->id_user ?>'
+                                    href='<?= base_url() . 'superadmin/pengurus_akun/detail/' . $usr->id_user ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
 
                                 <a class='btn btn-warning btn-circle'
-                                    href="<?= base_url() . 'superadmin/users/edit/' . $usr->id_user ?>">
+                                    href="<?= base_url() . 'superadmin/pengurus_akun/edit/' . $usr->id_user ?>">
                                     <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 
@@ -180,7 +160,7 @@
 </div>
 <!-- Modal -->
 <?php $no = 0;
-foreach ($users as $usr) : $no++ ?>
+foreach ($pengurus as $usr) : $no++ ?>
 <div class="modal fade" id="modalDetail  <?= $usr->id_user ?>" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

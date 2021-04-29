@@ -9,7 +9,7 @@
         <h1 class="h3 mb-0 text-gray-800">Jabatan</h1>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("supersuperadmin/jabatan"); ?>">Jabatan</a>
+                    href="<?php echo base_url("superadmin/jabatan"); ?>">Jabatan</a>
             </div>
         </small>
     </div>

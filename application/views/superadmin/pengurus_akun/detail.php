@@ -52,7 +52,7 @@
                         <?php endforeach ?>
                         <hr>
                     <p>
-                        <a href="<?php echo base_url("superadmin/pengurus"); ?>" class="btn btn-primary"> <i
+                        <a href="<?php echo base_url("superadmin/pengurus_akun"); ?>" class="btn btn-primary"> <i
                                 class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
                     </p>
                 </div>

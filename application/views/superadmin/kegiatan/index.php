@@ -9,7 +9,7 @@
         <h1 class="h3 mb-0 text-gray-800">Kegiatan</h1>
         <small>
             <div class="text-muted">Pengaturan Profil &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("supersuperadmin/kegiatan"); ?>">Kegiatan</a>
+                    href="<?php echo base_url("superadmin/kegiatan"); ?>">Kegiatan</a>
             </div>
         </small>
     </div>
@@ -28,11 +28,11 @@
     <br>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data kegiatan</h6>
         </div>
-        <div class="card-body border-bottom-primary">
+        <div class="card-body shadow-sm border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
             <a class='btn btn-success' href="kegiatan/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
                             <th class="text-primary">Foto</th>
                             <th class="text-primary">Tgl. Pembuatan</th>
                             <th class="text-primary">Terakhir di edit</th>
-                            <th class="text-primary">Aksi</th>
+                            <th class="text-primary" width="15%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

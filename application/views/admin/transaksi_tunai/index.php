@@ -109,24 +109,23 @@
 
         <div class=" card-body border-bottom-primary">
             <?= $this->session->flashdata('message'); ?>
-            <a class='btn btn-primary' href="transaksi_tunai/tambah_coba">
+            <a class='btn btn-primary' href="transaksi_tunai/tambah">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>
                     Tambah
                 </span>
             </a>
-            <p>
-                <br>
 
 
 
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah
-                </button>
+                </button> -->
 
-                <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -238,13 +237,13 @@
                             <!-- <a class='btn btn-circle btn-warning'
                                 href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_donasi ?>">
                                 <i class="fas fa-edit" aria-hidden="true"></i>
-                            </a>
+                            </a> -->
 
                             <a href="#modalDelete" data-toggle="modal"
                                 onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_tunai/hapus/' . $dnk->id_donasi) ?>')"
                                 class='btn btn-circle btn-danger'>
                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a> -->
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach ?>

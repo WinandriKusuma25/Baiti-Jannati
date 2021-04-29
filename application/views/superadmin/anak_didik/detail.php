@@ -11,7 +11,8 @@
         foreach ($anak_didik as $ad) : ?>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; Anak Didik&nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'superadmin/users/detail/' . $ad->id_anak_didik ?>">Detail Anak Didik</a>
+                    href="<?= base_url() . 'superadmin/anak_didik/detail/' . $ad->id_anak_didik ?>">Detail Anak
+                    Didik</a>
             </div>
         </small>
         <?php endforeach ?>

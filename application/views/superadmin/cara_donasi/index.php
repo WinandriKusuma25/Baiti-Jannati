@@ -9,26 +9,26 @@
         <h1 class="h3 mb-0 text-gray-800">Cara Donasi</h1>
         <small>
             <div class="text-muted"> Manajemen Pengguna &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("supersuperadmin/cara_donasi"); ?>">Cara donasi</a>
+                    href="<?php echo base_url("superadmin/cara_donasi"); ?>">Cara donasi</a>
             </div>
         </small>
     </div>
 
-    <div class="card   shadow border-bottom-primary">
+    <div class="card   shadow-sm border-bottom-primary">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Rekap Cara Donasi</h6>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b> <i class="fas fa-fw fa-user-tie"></i>&nbsp;Jumlah Cara Donasi:
-                    <?php echo $this->db->get_where('cara_donasi')->num_rows() ?></b>
-                <hr>
-
+            <div class="text-primary">
+                <li class="list-group-item"><b> <i class="fas fa-fw fa-user-tie"></i>&nbsp;Jumlah Cara Donasi:
+                        <?php echo $this->db->get_where('cara_donasi')->num_rows() ?></b>
+            </div>
         </ul>
     </div>
     <br>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data Cara Donasi</h6>
         </div>
@@ -49,11 +49,11 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No.</th>
-                            <th class="text-primary">Pertanyaan</th>
-                            <th class="text-primary">Jawaban</th>
+                            <th class="text-primary" width="40%">Pertanyaan</th>
+                            <th class="text-primary" width="40%">Jawaban</th>
                             <th class="text-primary">Tgl. Pembuatan</th>
                             <th class="text-primary">Terakhir di edit</th>
-                            <th class="text-primary">Aksi</th>
+                            <th class="text-primary" width="20%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
