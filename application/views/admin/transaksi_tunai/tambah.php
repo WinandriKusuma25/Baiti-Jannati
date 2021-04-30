@@ -92,7 +92,7 @@
                                     <select name="id_kategori" id="id_kategori" class="custom-select">
                                         <option value="" selected disabled>Pilih Kategori</option>
                                         <?php foreach ($kategori as $p) : ?>
-                                        <option value="<?= $p->id_kategori?>"><?= $p->nama_kategori ?></option>
+                                        <option value="<?= $p->id_kategori.'-'.$p->nama_kategori?>"><?= $p->nama_kategori ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="input-group-append">
@@ -111,20 +111,19 @@
 
                         <div class="form-row">
 
-                            <div class=" form-group col-6">
+                            <!-- <div class=" form-group col-6">
                                 <label for="foto">Bukti</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="foto" name="foto" autofocus>
                                     <label class="custom-file-label" for="customFile">Choose file</label>
-                                    <!-- <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                    <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
                                 <textarea name="keterangan" id="keterangan-nk" cols="50" rows="" class="form-control"
-                                    value="<?= set_value('keterangan')  ?>"></textarea>
-                                <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    ></textarea>
                             </div>
 
                             <div class="form-group col-1">
@@ -154,9 +153,8 @@
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
                                 <textarea id="keterangan-k" cols="50" rows="" class="form-control"
-                                    value="<?= set_value('keterangan')  ?>"></textarea>
-                                <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
+                                    ></textarea>
+                                                            </div>
 
                             <div class="form-group col-1">
                                 <label for="">&nbsp;</label>
@@ -182,7 +180,7 @@
                                             <th class="text-primary" width="15%">Kategori</th>
                                             <th class="text-primary" width="15%">Nominal</th>
                                             <th class="text-primary" width="10%">Jumlah</th>
-                                            <th class="text-primary" width="10%">Bukti</th>
+                                            <th class="text-primary">Bukti</th>
                                             <th class="text-primary" width="10%">Keterangan</th>
                                             <th class="text-primary" width="10%">Aksi</th>
                                         </tr>
@@ -297,9 +295,11 @@ $('#tambah-non-keuangan').on('click', function() {
     // @TODO 2 : Ambil nilai dari masing" komponen 
     let $jenis = $('#jenis_non_keuangan').val();
     let $jumlah = $('#jumlah').val();
+    let $kategori = $('#id_kategori').val();
     let $keterangan = $('#keterangan-nk').val();
 
     let kondisiValidasi = 0;
+
 
     // cek dari masing" nilai
     if ($jumlah.length > 0) {
@@ -313,18 +313,24 @@ $('#tambah-non-keuangan').on('click', function() {
 
     if (kondisiValidasi == 1) {
 
+
+
         // membuat objek
+        let pemisahKategori = $kategori.split("-");
         let dataNonKeuangan = {
 
 
             jenis_donasi: $jenis,
-            id_kategori: "<?php echo $id_kategori_uang->id_kategori ?>",
-            kategori: "<?php echo $id_kategori_uang->nama_kategori ?>",
+            id_kategori: pemisahKategori[0],
+            kategori: pemisahKategori[1],
             nominal: 0,
             jumlah: $jumlah,
             image: "",
             keterangan: $keterangan
         };
+
+
+        console.log( dataNonKeuangan );
 
         // push data penyimpanan
         dataDonasi.push(dataNonKeuangan);
@@ -381,6 +387,13 @@ function showDataDonasi() {
 
         dataDonasi.forEach(function(item, index) {
 
+
+            let elementUpload = "-";
+            if ( item.kategori != "uang" ){
+
+                elementUpload = '<input type="file" name="foto[]" />'
+            }
+
             elementHTML += '<tr id="data-tr-' + index + '">' +
                 '<td>' + (parseInt(index) + 1) + '</td>' +
                 '<td>' + item.jenis_donasi + ' <input type="hidden" name="jenis[]" value="' + item
@@ -391,7 +404,7 @@ function showDataDonasi() {
                 '"> </td>' +
                 '<td>' + item.jumlah + ' <input type="hidden" name="jumlah[]" value="' + item.jumlah +
                 '"> </td>' +
-                '<td>' + item.image + ' <input type="hidden" name="image[]" value="' + item.image + '"></td>' +
+                '<td>'+ elementUpload +'</td>' +
                 '<td>' + item.keterangan + ' <input type="hidden" name="keterangan[]" value="' + item
                 .keterangan + '"></td>' +
                 '<td><a href="javascript:void(0)" id="hapus-donasi" data-index="' + index +

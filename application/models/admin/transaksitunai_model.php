@@ -18,6 +18,17 @@ class Transaksitunai_model extends CI_Model
     // trial
     function onInsertDataTransaksi() {
 
+
+        $config['upload_path']          = './assets/images/donasi_non_keuangan/';
+        $config['allowed_types']        = 'jpg|png|jpeg';
+        $config['max_size']             = 5000; // mb
+
+
+        $this->load->library('upload', $config);
+
+
+
+
         $donatur    = $this->input->post('id_user');
         
         // multiple data
@@ -43,7 +54,34 @@ class Transaksitunai_model extends CI_Model
 
 
         $detail_donasi_tunai = array(); 
+        $urutan_foto = 0;
         for ( $i = 0; $i < count($jenis); $i++ ) {
+
+
+            $gambar = null;
+            //pengecekan apakah jenis non keuangan
+
+            if ( $jenis[$i] == "Non Keuangan" ) {
+
+                $files = $_FILES['foto'];
+            
+                $_FILES['foto[]']['name'] = $files['name'][$urutan_foto];
+                $_FILES['foto[]']['type'] = $files['type'][$urutan_foto];
+                $_FILES['foto[]']['tmp_name'] = $files['tmp_name'][$urutan_foto];
+                $_FILES['foto[]']['error'] = $files['error'][$urutan_foto];
+                $_FILES['foto[]']['size'] = $files['size'][$urutan_foto];
+
+                if ( $this->upload->do_upload('foto[]') ) {
+
+                    $gambar = $this->upload->data('file_name');
+                } else {
+
+                    $gambar = null;
+                }
+
+                $urutan_foto++;
+            }   
+
 
             // push  
             array_push( $detail_donasi_tunai, array(
@@ -53,7 +91,7 @@ class Transaksitunai_model extends CI_Model
                 'jenis_donasi'  => $jenis[$i],
                 'nominal'   => $nominal[$i],
                 'jumlah'    => $jumlah[$i],
-                'image'     => null,
+                'image'     => $gambar,
                 'keterangan' => $keterangan[$i]
             ) );
         } 
@@ -61,7 +99,6 @@ class Transaksitunai_model extends CI_Model
 
         // insert batch
         $this->db->insert_batch('detail_donasi_tunai', $detail_donasi_tunai);
-        
    
     }
 
@@ -317,6 +354,18 @@ class Transaksitunai_model extends CI_Model
     public function hapusDetail($id_donasi){
 		return $this->db->delete($this->_table2, ['id_donasi' => $id_donasi]);
 	}
+
+
+
+    // hapus data donasi
+    function onDelete( $id_donasi ) {
+
+        // child
+        $this->db->where('id_donasi', $id_donasi)->delete('detail_donasi_tunai');
+
+        // parent
+        $this->db->where('id_donasi', $id_donasi)->delete('transaksi_donasi_tunai');
+    }
 
 
 

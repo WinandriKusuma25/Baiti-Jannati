@@ -76,7 +76,8 @@
                                 <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                             <td><?= $dnk->jumlah ?></td>
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
-                                    class="img-thumbnail" width="20%"></td>
+                                    class="img-thumbnail" width="20%">
+                                    </td>
                             <td><?= $dnk->keterangan ?></td>
                             <td>
                                 <!-- <a class='btn btn-circle btn-primary'
@@ -86,7 +87,7 @@
                                 </a> -->
 
                                 <a class='btn btn-circle btn-warning'
-                                    href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_donasi ?>">
+                                    href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_detail_donasi ?>">
                                     <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 

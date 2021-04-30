@@ -27,6 +27,8 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="id_detail_donasi" name="id_detail_donasi"
                             value="<?= $b->id_detail_donasi; ?>">
+                        <input type="text" id="id_donasi" name="id_donasi"
+                            value="<?= $b->id_donasi; ?>">
 
                         <div class="form-group">
 
