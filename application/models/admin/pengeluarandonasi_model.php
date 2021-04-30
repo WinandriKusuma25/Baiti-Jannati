@@ -156,7 +156,7 @@ class Pengeluarandonasi_model extends CI_Model
         $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
         $this->db->order_by('created_at', "DESC");
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-            $this->db->where("pengeluaran_donasi.created_at BETWEEN ' $stSession 'AND' $enSession'");
+            $this->db->where("DATE(pengeluaran_donasi.created_at) BETWEEN ' $stSession 'AND' $enSession'");
         } else {
             $this->db->where("pengeluaran_donasi.created_at BETWEEN '$start 'AND' $end'");
         }
@@ -231,7 +231,7 @@ class Pengeluarandonasi_model extends CI_Model
     
     public function filterbytanggal( $tanggalawal, $tanggalakhir){
         $query = $this->db->query("SELECT * FROM pengeluaran_donasi INNER JOIN user ON pengeluaran_donasi.id_user = user.id_user
-         WHERE created_at 
+         WHERE DATE(created_at) 
             BETWEEN '$tanggalawal' AND '$tanggalakhir' ORDER BY created_at ASC");
         return $query->result();
     }
