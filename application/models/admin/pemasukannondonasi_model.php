@@ -129,7 +129,7 @@ class Pemasukannondonasi_model extends CI_Model
         $this->db->join('user', 'pemasukan_non_donasi.id_user = user.id_user');
         $this->db->order_by('created_at', "asc");
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-            $this->db->where("pemasukan_non_donasi.created_at BETWEEN ' $stSession 'AND' $enSession'");
+            $this->db->where("DATE(pemasukan_non_donasi.created_at) BETWEEN ' $stSession 'AND' $enSession'");
         } else {
             $this->db->where("pemasukan_non_donasi.created_at BETWEEN '$start 'AND' $end'");
         }

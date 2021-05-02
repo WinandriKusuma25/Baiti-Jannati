@@ -206,7 +206,6 @@
 
 
 
-
         <div class="table-responsive">
             <table class="table table-bordered table-striped text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -280,55 +279,3 @@
         </div>
     </div>
 </div>
-
-
-
-<script src="<?= base_url(); ?>assets/js/sf.js"></script>
-<!-- <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script> -->
-<!-- <script src="<?= base_url(); ?>assets/js/daterangepicker.min.js"></script>
-<link href="<?= base_url(); ?>assets/js/daterangepicker.css" rel="stylesheet"> -->
-<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script> -->
-
-<!-- Datepicker -->
-<!-- <script src="<?= base_url(); ?>assets/vendor/daterangepicker/moment.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendor/daterangepicker/daterangepicker.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendor/gijgo/js/gijgo.min.js"></script>
-<link href="<?= base_url(); ?>assets/vendor/gijgo/css/gijgo.min.css" rel="stylesheet">
-<link href="<?= base_url(); ?>assets/vendor/daterangepicker/daterangepicker.css" rel="stylesheet"> -->
-
-<!-- 
-<script type="text/javascript">
-$(function() {
-    $('.date').datepicker({
-        uiLibrary: 'bootstrap4',
-        format: 'yyyy-mm-dd'
-    });
-
-    var start = moment().subtract(29, 'days');
-    var end = moment();
-
-    function cb(start, end) {
-        $('#tangal').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
-    }
-
-    $('#tanggal').daterangepicker({
-        startDate: start,
-        endDate: end,
-        ranges: {
-            'Hari ini': [moment(), moment()],
-            'Kemarin': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            '7 hari terakhir': [moment().subtract(6, 'days'), moment()],
-            '30 hari terakhir': [moment().subtract(29, 'days'), moment()],
-            'Bulan ini': [moment().startOf('month'), moment().endOf('month')],
-            'Bulan lalu': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                'month').endOf('month')],
-            'Tahun ini': [moment().startOf('year'), moment().endOf('year')],
-            'Tahun lalu': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1,
-                'year').endOf('year')]
-        }
-    }, cb);
-
-    cb(start, end);
-});
-</script> -->

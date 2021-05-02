@@ -23,7 +23,27 @@ class Transaksi_tunai extends CI_Controller
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Tunai';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
-        // $data['transaksi_tunai'] = $this->Transaksitunai_model->filter();
+        $data['transaksi_tunai_hari'] = $this->Transaksitunai_model->countHari();
+        $data['transaksi_tunai_bulan'] = $this->Transaksitunai_model->countBulan();
+        $data['transaksi_tunai_tahun'] = $this->Transaksitunai_model->countTahun();
+        $data['nominal_hari'] = $this->Transaksitunai_model->nominalHari();
+        $data['nominal_bulan'] = $this->Transaksitunai_model->nominalBulan();
+        $data['nominal_tahun'] = $this->Transaksitunai_model->nominalTahun();
+        $data['nominal_all'] = $this->Transaksitunai_model->nominalAll();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/transaksi_tunai/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function filter()
+    {
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
+        $data['title'] = 'Baiti Jannati | Transaksi Tunai Donasi ';
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->filter();
         $data['transaksi_tunai_hari'] = $this->Transaksitunai_model->countHari();
         $data['transaksi_tunai_bulan'] = $this->Transaksitunai_model->countBulan();
         $data['transaksi_tunai_tahun'] = $this->Transaksitunai_model->countTahun();
@@ -266,30 +286,7 @@ class Transaksi_tunai extends CI_Controller
         return $images;
     }
 
-    public function filter()
-    {
-        $this->form_validation->set_rules('startdate', 'startdate', 'required|trim');
-        $this->form_validation->set_rules('enddate', 'enddate', 'required|trim');
-        $startdate = $this->input->get('startdate', TRUE);
-        $enddate = $this->input->get('enddate', TRUE);
-        // die($startdate . "===" . $enddate);
-        $data['title'] = 'Baiti Jannati | Transaksi Tunai Donasi ';
-        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
-        // $data['nominal_terbesar'] = $this->Transaksitunai_model->nominalTerbesar();
-        $data['transaksi_tunai'] = $this->Transaksitunai_model->filter();
-        $data['transaksi_tunai_hari'] = $this->Transaksitunai_model->countHari();
-        $data['transaksi_tunai_bulan'] = $this->Transaksitunai_model->countBulan();
-        $data['transaksi_tunai_tahun'] = $this->Transaksitunai_model->countTahun();
-        $data['nominal_hari'] = $this->Transaksitunai_model->nominalHari();
-        $data['nominal_bulan'] = $this->Transaksitunai_model->nominalBulan();
-        $data['nominal_tahun'] = $this->Transaksitunai_model->nominalTahun();
-        $data['nominal_all'] = $this->Transaksitunai_model->nominalAll();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/transaksi_tunai/index', $data);
-        $this->load->view('templates/footer');
-    }
+
 
     public function edit($id_detail_donasi)
     {

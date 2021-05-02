@@ -36,8 +36,8 @@ class Transaksi_non_tunai extends CI_Controller
 
     public function filter()
     {
-        $this->session->unset_userdata('startSession');
-        $this->session->unset_userdata('endSession');
+        $this->session->unset_userdata('startdate');
+        $this->session->unset_userdata('enddate');
         $data['title'] = 'Baiti Jannati | Transaksi Donasi Non Tunai';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->Midtrans_model->filter();

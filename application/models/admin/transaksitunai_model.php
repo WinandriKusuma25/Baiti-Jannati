@@ -246,6 +246,37 @@ class Transaksitunai_model extends CI_Model
     //     return $this->db->get('transaksi_donasi_tunai')->result();
     // }
 
+    // public function filter()
+    // {
+    //     $start = $this->input->post('start');
+    //     $end = $this->input->post('end');
+    //     if ($this->session->userdata('startSession') == null && $this->session->userdata('endSession') == null) {
+    //         $this->session->set_userdata('startSession', $start);
+    //         $this->session->set_userdata('endSession', $end);
+    //     } else if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null && $start != null && $end != null) {
+    //         $this->session->set_userdata('startSession', $start);
+    //         $this->session->set_userdata('endSession', $end);
+    //     }
+    //     $stSession = $this->session->userdata('startSession');
+    //     $enSession =  $this->session->userdata('endSession');
+    //     // $this->db->select('*');
+    //     // $this->db->from('transaksi_donasi_tunai');
+    //     // $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+    //     // $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+
+    //     $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus');
+    //     $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+    //     $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+    //     $this->db->order_by('tgl_donasi', "asc");
+    //     return $this->db->get('transaksi_donasi_tunai')->result();
+    //     if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
+    //         $this->db->where("DATE(transaksi_donasi_tunai.tgl_donasi) BETWEEN ' $stSession 'AND' $enSession'");
+    //     } else {
+    //         $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN '$start 'AND' $end'");
+    //     }
+    //     return $this->db->get()->result();
+    // }
+
     public function filter()
     {
         $start = $this->input->post('start');
@@ -259,17 +290,18 @@ class Transaksitunai_model extends CI_Model
         }
         $stSession = $this->session->userdata('startSession');
         $enSession =  $this->session->userdata('endSession');
-        $this->db->select('*');
-        $this->db->from('transaksi_donasi_tunai');
+    
+        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
-        $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
-        $this->db->order_by('tgl_donasi', "asc");
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        $this->db->order_by('tgl_donasi', "DESC");
+    
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-            $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN ' $stSession 'AND' $enSession'");
+            $this->db->where("DATE(transaksi_donasi_tunai.tgl_donasi) BETWEEN ' $stSession 'AND' $enSession'");
         } else {
             $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN '$start 'AND' $end'");
         }
-        return $this->db->get()->result();
+         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
     public function count($table)
@@ -318,44 +350,6 @@ class Transaksitunai_model extends CI_Model
         // $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
         return $this->db->get_where('detail_donasi_tunai', ['id_detail_donasi' => $id_detail_donasi])->result();
     }
-
-    // public function hapusTransaksiTunai($id_donasi)
-    // {
-    //     $this->db->where('id_donasi', $id_donasi);
-    //     if (
-    //         $this->db->delete('transaksi_donasi_tunai')
-    //     ) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-    
-    // public function hapusDetailTransaksiTunai($id_donasi)
-    // {
-    //     $this->db->where('id_donasi', $id_donasi);
-    //     if (
-    //         $this->db->delete('detail_donasi_tunai')
-    //     ) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-    protected $_table = 'transaksi_donasi_tunai';
-    protected $_table2 = 'detail_donasi_tunai';
-
-    public function hapus($id_donasi){
-		return $this->db->delete($this->_table, ['id_donasi' => $id_donasi]);
-	}
-
-    public function hapusDetail($id_donasi){
-		return $this->db->delete($this->_table2, ['id_donasi' => $id_donasi]);
-	}
-
-
 
     // hapus data donasi
     function onDelete( $id_donasi ) {

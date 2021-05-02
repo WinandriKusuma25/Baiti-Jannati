@@ -63,7 +63,7 @@ class Midtrans_model extends CI_Model
         $this->db->join('user', 'transaksi_midtrans.id_user = user.id_user');
         $this->db->order_by('transaction_time', "asc");
         if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-            $this->db->where("transaksi_midtrans.transaction_time BETWEEN ' $stSession 'AND' $enSession'");
+            $this->db->where("DATE(transaksi_midtrans.transaction_time) BETWEEN ' $stSession 'AND' $enSession'");
         } else {
             $this->db->where("transaksi_midtrans.transaction_time BETWEEN '$start 'AND' $end'");
         }
