@@ -21,6 +21,15 @@ class Midtrans_model extends CI_Model
         return $this->db->get_where('transaksi_midtrans', ['status_code' => '200'])->result();
     }
 
+    public function showTransaksiMidtransLimit()
+    {
+
+        $this->db->select('transaksi_midtrans.*, user.*');
+        $this->db->join('user', 'transaksi_midtrans.id_user = user.id_user');
+        $this->db->limit(5);
+        return $this->db->get_where('transaksi_midtrans', ['status_code' => '200'])->result();
+    }
+
     public function showTransaksiMidtrans($email)
     {
 
@@ -115,5 +124,36 @@ class Midtrans_model extends CI_Model
         $query = $this->db->query("SELECT * FROM transaksi_midtrans where 
             YEAR(transaction_time) = YEAR(NOW())  AND status_code = 200");
         return $query->result();
+    }
+
+
+    public function getDateforChart()
+    {
+        $this->db->select('MONTHNAME(transaction_time) as month, 
+        SUM(IF(MONTH(transaction_time)=MONTH(transaction_time) , gross_amount, 0)) as revenue');
+        $this->db->from('transaksi_midtrans');
+        $this->db->group_by('transaction_time');
+        $this->db->order_by('transaction_time', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getMonth()
+    {
+        $this->db->select('MONTHNAME(transaction_time) as month');
+        $this->db->from('transaksi_midtrans');
+        $this->db->group_by('transaction_time');
+        $this->db->order_by('order_id', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getStatistics()
+    {
+        $this->db->select('SUM(IF(DAY(transaction_time)=(DAY(CURRENT_DATE()) -1), gross_amount, 0)) as lastDay,
+        SUM(IF(DAY(transaction_time)=DAY(CURRENT_DATE()), gross_amount, 0)) as daily, 
+        SUM(IF(MONTH(transaction_time)=(MONTH(CURRENT_DATE()) -1), gross_amount, 0)) as lastMonth,
+        SUM(IF(MONTH(transaction_time)=MONTH(CURRENT_DATE()), gross_amount, 0)) as monthly, 
+            COUNT(order_id) amount, SUM(gross_amount) gross_amount');
+        $this->db->from('transaksi_midtrans');
+        return $this->db->get()->row_array();
     }
 }

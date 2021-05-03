@@ -114,6 +114,17 @@ class Transaksitunai_model extends CI_Model
         return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'keuangan' ])->result();
     }
 
+    public function showTransaksiTunaiLimit()
+    {
+
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*,');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
+        $this->db->limit(5);
+        return $this->db->get_where('transaksi_donasi_tunai')->result();
+    }
+
     public function getDonasiTransaksiTunaiKategori()
     {
         $this->db->select('detail_donasi_tunai.*, kategori.nama_kategori');

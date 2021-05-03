@@ -24,12 +24,27 @@ class Home extends CI_Controller
         $data['transaksi_donasi_tunai'] = $this->Pengeluarandonasi_model->count('transaksi_donasi_tunai');
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->count('pengeluaran_donasi');
         $data['pengeluaran_donasi_limit'] = $this->Pengeluarandonasi_model->NominalLimit();
-        $data['statistics'] = $this->Pengeluarandonasi_model->getStatistics();
         $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
+
+        //chart pengeluaran
+        $data['statistics_pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->getStatistics();
+        $data['chart_pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->getDateforChart();
+        $data['month_pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->getMonth();
+
+        //chart Pemasukan Non Donasi
+        $data['statistics'] = $this->Pengeluarandonasi_model->getStatistics();
         $data['chart'] = $this->Pengeluarandonasi_model->getDateforChart();
         $data['month'] = $this->Pengeluarandonasi_model->getMonth();
+
+         //chart Pemasukan Non Donasi
+         $data['statistics_transfer'] = $this->Midtrans_model->getStatistics();
+         $data['chart_transfer'] = $this->Midtrans_model->getDateforChart();
+         $data['month_transfer'] = $this->Midtrans_model->getMonth();
+
         $data['pengeluaran_donasi_limit'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
         $data['pemasukan_non_donasi_limit'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasiLimit();
+        $data['pemasukan_transfer_limit'] = $this->Midtrans_model->showTransaksiMidtransLimit();
+        $data['pemasukan_tunai_limit'] = $this->Transaksitunai_model->showTransaksiTunaiLimit();
         $data['statistics2'] = $this->Pemasukannondonasi_model->getStatistics();
         $data['char2'] = $this->Pemasukannondonasi_model->getDateforChart();
         $data['month2'] = $this->Pemasukannondonasi_model->getMonth();

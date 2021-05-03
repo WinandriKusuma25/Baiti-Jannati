@@ -171,7 +171,8 @@
                             <td><?= $j->name ?></td>
                             <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <td><?= $j->payment_type ?></td>
-                            <td><?= $j->transaction_time ?></td>
+                            <td>
+                                <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                             <td><?= $j->bank ?></td>
                             <td><?= $j->va_number ?></td>
                             <?php if ($j->status_code == "200") : ?>
