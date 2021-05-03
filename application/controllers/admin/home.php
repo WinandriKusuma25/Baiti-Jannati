@@ -28,17 +28,18 @@ class Home extends CI_Controller
         $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
         $data['chart'] = $this->Pengeluarandonasi_model->getDateforChart();
         $data['month'] = $this->Pengeluarandonasi_model->getMonth();
-        $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
-        $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasiLimit();
+        $data['pengeluaran_donasi_limit'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
+        $data['pemasukan_non_donasi_limit'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasiLimit();
         $data['statistics2'] = $this->Pemasukannondonasi_model->getStatistics();
         $data['char2'] = $this->Pemasukannondonasi_model->getDateforChart();
         $data['month2'] = $this->Pemasukannondonasi_model->getMonth();
-
+        
         //menghitung sisa saldo
         $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
         $data['transaksi_midtrans_hitung'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
         $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
         $data['pemasukan_non_donasi_hitung'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
+        $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiKeuangan();
 
 
 

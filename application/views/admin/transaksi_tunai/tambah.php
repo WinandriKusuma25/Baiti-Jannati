@@ -92,11 +92,12 @@
                                     <select name="id_kategori" id="id_kategori" class="custom-select">
                                         <option value="" selected disabled>Pilih Kategori</option>
                                         <?php foreach ($kategori as $p) : ?>
-                                        <option value="<?= $p->id_kategori.'-'.$p->nama_kategori?>"><?= $p->nama_kategori ?></option>
+                                        <option value="<?= $p->id_kategori.'-'.$p->nama_kategori?>">
+                                            <?= $p->nama_kategori ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="input-group-append">
-                                        <a class="btn btn-primary" href="<?= base_url('admin/kategori/tambah'); ?>"><i
+                                        <a class="btn btn-info" href="<?= base_url('admin/kategori/tambah'); ?>"><i
                                                 class="fa fa-plus"></i></a>
                                     </div>
                                 </div>
@@ -122,8 +123,8 @@
 
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
-                                <textarea name="keterangan" id="keterangan-nk" cols="50" rows="" class="form-control"
-                                    ></textarea>
+                                <textarea name="keterangan" id="keterangan-nk" cols="50" rows=""
+                                    class="form-control"></textarea>
                             </div>
 
                             <div class="form-group col-1">
@@ -152,9 +153,8 @@
 
                             <div class=" form-group col-5">
                                 <label for="keterangan">keterangan</label>
-                                <textarea id="keterangan-k" cols="50" rows="" class="form-control"
-                                    ></textarea>
-                                                            </div>
+                                <textarea id="keterangan-k" cols="50" rows="" class="form-control"></textarea>
+                            </div>
 
                             <div class="form-group col-1">
                                 <label for="">&nbsp;</label>
@@ -264,7 +264,7 @@ $('#tambah-keuangan').on('click', function() {
             id_kategori: "<?php echo $id_kategori_uang->id_kategori ?>",
             kategori: "<?php echo $id_kategori_uang->nama_kategori ?>",
             nominal: $nominal,
-            jumlah: 0,
+            jumlah: "",
             image: "",
             keterangan: $keterangan
         };
@@ -323,14 +323,14 @@ $('#tambah-non-keuangan').on('click', function() {
             jenis_donasi: $jenis,
             id_kategori: pemisahKategori[0],
             kategori: pemisahKategori[1],
-            nominal: 0,
+            nominal: "kosong",
             jumlah: $jumlah,
             image: "",
             keterangan: $keterangan
         };
 
 
-        console.log( dataNonKeuangan );
+        console.log(dataNonKeuangan);
 
         // push data penyimpanan
         dataDonasi.push(dataNonKeuangan);
@@ -389,7 +389,7 @@ function showDataDonasi() {
 
 
             let elementUpload = "-";
-            if ( item.kategori != "uang" ){
+            if (item.kategori != "uang") {
 
                 elementUpload = '<input type="file" name="foto[]" />'
             }
@@ -404,7 +404,7 @@ function showDataDonasi() {
                 '"> </td>' +
                 '<td>' + item.jumlah + ' <input type="hidden" name="jumlah[]" value="' + item.jumlah +
                 '"> </td>' +
-                '<td>'+ elementUpload +'</td>' +
+                '<td>' + elementUpload + '</td>' +
                 '<td>' + item.keterangan + ' <input type="hidden" name="keterangan[]" value="' + item
                 .keterangan + '"></td>' +
                 '<td><a href="javascript:void(0)" id="hapus-donasi" data-index="' + index +

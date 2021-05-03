@@ -26,10 +26,10 @@ class Transaksi_tunai extends CI_Controller
         $data['transaksi_tunai_hari'] = $this->Transaksitunai_model->countHari();
         $data['transaksi_tunai_bulan'] = $this->Transaksitunai_model->countBulan();
         $data['transaksi_tunai_tahun'] = $this->Transaksitunai_model->countTahun();
-        $data['nominal_hari'] = $this->Transaksitunai_model->nominalHari();
-        $data['nominal_bulan'] = $this->Transaksitunai_model->nominalBulan();
-        $data['nominal_tahun'] = $this->Transaksitunai_model->nominalTahun();
-        $data['nominal_all'] = $this->Transaksitunai_model->nominalAll();
+        // $data['nominal_hari'] = $this->Transaksitunai_model->nominalHari();
+        // $data['nominal_bulan'] = $this->Transaksitunai_model->nominalBulan();
+        // $data['nominal_tahun'] = $this->Transaksitunai_model->nominalTahun();
+        // $data['nominal_all'] = $this->Transaksitunai_model->nominalAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -393,36 +393,38 @@ class Transaksi_tunai extends CI_Controller
     public function hapus($id_donasi = null){
 
         if ( $id_donasi ) {
-
             $this->Transaksitunai_model->onDelete($id_donasi);
-
+            $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     Data Berhasil di hapus !
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>'
+                    );
+                    redirect('admin/transaksi_tunai');
         } else {
 
             echo "Data donasi tidak ditemukan";
         }
 
-		// if($this->Transaksitunai_model->hapus($id_donasi) && $this->Transaksitunai_model->hapusDetail($id_donasi)){
-        //     $this->session->set_flashdata(
-        //         'message',
-        //         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        //          Data tidak dapat dihapus, karena data digunakan !
-        //          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //              <span aria-hidden="true">&times;</span>
-        //         </button>
-        //         </div>'
-        //     );
-        //     redirect('admin/transaksi_tunai');
-		// } else {
-        //     $this->session->set_flashdata(
-        //         'message',
-        //         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        //          Data tidak dapat dihapus, karena data digunakan !
-        //          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //              <span aria-hidden="true">&times;</span>
-        //         </button>
-        //         </div>'
-        //     );
-        //     redirect('admin/transaksi_tunai');
-		// }
 	}
+
+
+    public function tampilSemua()
+    {
+        $data['title'] = 'Baiti Jannati | Transaksi Donasi Tunai';
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiKeuangan();
+        $data['nominal_hari'] = $this->Transaksitunai_model->nominalHari();
+        $data['nominal_bulan'] = $this->Transaksitunai_model->nominalBulan();
+        $data['nominal_tahun'] = $this->Transaksitunai_model->nominalTahun();
+        $data['nominal_all'] = $this->Transaksitunai_model->nominalAll();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/transaksi_tunai/tampil_semua', $data);
+        $this->load->view('templates/footer');
+    }
 }

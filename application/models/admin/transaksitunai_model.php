@@ -104,15 +104,23 @@ class Transaksitunai_model extends CI_Model
 
 
 
-    public function showDonasiTransaksiTunaiAll()
+    public function showDonasiTransaksiTunaiKeuangan()
     {
 
-        $this->db->select('transaksi_donasi_tunai.*, user.name, pengurus.nama_pengurus, detail_donasi_tunai.*');
-        $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*,');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
-        return $this->db->get('transaksi_donasi_tunai')->result();
+        return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'keuangan' ])->result();
     }
+
+    public function getDonasiTransaksiTunaiKategori()
+    {
+        $this->db->select('detail_donasi_tunai.*, kategori.nama_kategori');
+        $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
+        return $this->db->get('detail_donasi_tunai')->result();
+    }
+
 
 
     public function showDonasiTransaksiTunai()
@@ -187,16 +195,16 @@ class Transaksitunai_model extends CI_Model
 
     public function NominalAll()
     {
-        // $this->db->select_sum('nominal');
-        return $this->db->get('transaksi_donasi_tunai')->result();
+        $this->db->select_sum('nominal');
+        return $this->db->get('detail_donasi_tunai')->result();
     }
 
 
     // 123
     public function countHari()
     {
-        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai where tgl_donasi = CURDATE() 
-         ");
+        $query = $this->db->query("SELECT COUNT(*) FROM transaksi_donasi_tunai  where  
+        DAY(tgl_donasi) = DAY(NOW()) ");
         return $query->row();
     }
 
@@ -216,20 +224,20 @@ class Transaksitunai_model extends CI_Model
 
     public function nominalHari()
     {
-        $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where tgl_donasi = CURDATE()");
+        $query = $this->db->query("SELECT * FROM detail_donasi_tunai INNER JOIN transaksi_donasi_tunai ON detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_donasi  where DAY(tgl_donasi) = DAY(NOW()) ");
         return $query->result();
     }
 
     public function nominalBulan()
     {
-        $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where 
+        $query = $this->db->query("SELECT * FROM detail_donasi_tunai INNER JOIN transaksi_donasi_tunai ON detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_donasi where 
             MONTH(tgl_donasi) = MONTH(NOW())");
         return $query->result();
     }
 
     public function nominalTahun()
     {
-        $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai where 
+        $query = $this->db->query("SELECT * FROM detail_donasi_tunai INNER JOIN transaksi_donasi_tunai ON detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_donasi where 
             YEAR(tgl_donasi) = YEAR(NOW())");
         return $query->result();
     }
@@ -246,36 +254,7 @@ class Transaksitunai_model extends CI_Model
     //     return $this->db->get('transaksi_donasi_tunai')->result();
     // }
 
-    // public function filter()
-    // {
-    //     $start = $this->input->post('start');
-    //     $end = $this->input->post('end');
-    //     if ($this->session->userdata('startSession') == null && $this->session->userdata('endSession') == null) {
-    //         $this->session->set_userdata('startSession', $start);
-    //         $this->session->set_userdata('endSession', $end);
-    //     } else if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null && $start != null && $end != null) {
-    //         $this->session->set_userdata('startSession', $start);
-    //         $this->session->set_userdata('endSession', $end);
-    //     }
-    //     $stSession = $this->session->userdata('startSession');
-    //     $enSession =  $this->session->userdata('endSession');
-    //     // $this->db->select('*');
-    //     // $this->db->from('transaksi_donasi_tunai');
-    //     // $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
-    //     // $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
-
-    //     $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus');
-    //     $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
-    //     $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
-    //     $this->db->order_by('tgl_donasi', "asc");
-    //     return $this->db->get('transaksi_donasi_tunai')->result();
-    //     if ($this->session->userdata('startSession') != null && $this->session->userdata('endSession') != null) {
-    //         $this->db->where("DATE(transaksi_donasi_tunai.tgl_donasi) BETWEEN ' $stSession 'AND' $enSession'");
-    //     } else {
-    //         $this->db->where("transaksi_donasi_tunai.tgl_donasi BETWEEN '$start 'AND' $end'");
-    //     }
-    //     return $this->db->get()->result();
-    // }
+   
 
     public function filter()
     {

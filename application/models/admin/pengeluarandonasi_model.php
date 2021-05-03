@@ -69,11 +69,7 @@ class Pengeluarandonasi_model extends CI_Model
         $this->db->update('pengeluaran_donasi', $data);
     }
 
-    public function NominalAll()
-    {
-        $this->db->select_sum('nominal');
-        return $this->db->get('pengeluaran_donasi')->result();
-    }
+  
 
     public function countHari()
     {
@@ -96,6 +92,12 @@ class Pengeluarandonasi_model extends CI_Model
         return $query->row();
     }
 
+    public function NominalAll()
+    {
+        $this->db->select_sum('nominal');
+        return $this->db->get('pengeluaran_donasi')->result();
+    }
+
     public function nominalHari()
     {
         $query = $this->db->query("SELECT * FROM pengeluaran_donasi where DAY(created_at) = DAY(NOW()) ");
@@ -116,15 +118,15 @@ class Pengeluarandonasi_model extends CI_Model
         return $query->result();
     }
 
-    public function showPengeluaranDonasiFilter($daterange)
-    {
+    // public function showPengeluaranDonasiFilter($daterange)
+    // {
 
-        $this->db->select('pengeluaran_donasi.*, user.name');
-        $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
-        $this->db->where('created_at >=', $daterange[0]);
-        $this->db->where('created_at <=',  $daterange[1]);
-        return $this->db->get('pengeluaran_donasi')->result();
-    }
+    //     $this->db->select('pengeluaran_donasi.*, user.name');
+    //     $this->db->join('user', 'pengeluaran_donasi.id_user = user.id_user');
+    //     $this->db->where('created_at >=', $daterange[0]);
+    //     $this->db->where('created_at <=',  $daterange[1]);
+    //     return $this->db->get('pengeluaran_donasi')->result();
+    // }
 
     public function hapusPengeluaranDonasi($id_pengeluaran)
     {

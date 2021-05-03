@@ -72,30 +72,55 @@
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->jenis_donasi ?></td>
                             <td><?= $dnk->nama_kategori ?></td>
+
+
+
+                            <?php if ($dnk->nominal == 0) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
                             <td>Rp
                                 <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
-                            <td><?= $dnk->jumlah ?></td>
+                            <?php endif ?>
+
+
+                            <?php if ($dnk->jumlah == 0) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
+                            <td><?= $dnk->jumlah ?>
+                            </td>
+                            <?php endif ?>
+
+
+                            <?php if ($dnk->image == null) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Tidak Perlu</span>
+                            </td>
+                            <?php else : ?>
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
                                     class="img-thumbnail" width="20%">
-                                    </td>
-                            <td><?= $dnk->keterangan ?></td>
-                            <td>
-                                <!-- <a class='btn btn-circle btn-primary'
-                                    href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'
-                                    class='btn btn-biru'>
-                                    <i class="fas fa-eye" aria-hidden="true"></i>
-                                </a> -->
+                            </td>
+                            <?php endif ?>
 
+
+                            <?php if ($dnk->keterangan == null) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
+                            <td><?= $dnk->keterangan ?></td>
+                            <?php endif ?>
+
+
+                            <td>
                                 <a class='btn btn-circle btn-warning'
                                     href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_detail_donasi ?>">
                                     <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="#modalDelete" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_tunai/hapus/' . $dnk->id_donasi) ?>')"
-                                    class='btn btn-circle btn-danger'>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
                             </td>
                         </tr>
                         <?php endforeach ?>

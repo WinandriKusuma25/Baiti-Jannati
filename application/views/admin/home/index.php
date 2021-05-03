@@ -39,7 +39,10 @@
                     foreach ($pemasukan_non_donasi_hitung as $total_non_masuk) {
                         $nominal_non_masuk += $total_non_masuk->nominal;
                     }
-                    $nominal = $nominal_non_masuk + $nominal_masuk - $nominal_keluar;
+                    foreach ($transaksi_tunai_hitung as $total_masuk_tunai) {
+                        $nominal_masuk_tunai += $total_masuk_tunai->nominal;
+                    }
+                    $nominal = $nominal_masuk_tunai + $nominal_non_masuk + $nominal_masuk - $nominal_keluar;
                     ?>
 
 
@@ -262,7 +265,7 @@
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($pengeluaran_donasi_hitung as $ad) : ?>
+                            foreach ($pengeluaran_donasi_limit as $ad) : ?>
                             <tr>
                                 <td><strong><?= $ad->name ?></strong></td>
                                 <td>
@@ -276,12 +279,10 @@
                         </tbody>
 
                         <!-- total pengeluaran -->
-                        <?php foreach ($pengeluaran_donasi_limit as $na) : ?>
+                        <!-- <?php foreach ($pengeluaran_donasi_limit as $na) : ?>
 
-                        <?php endforeach ?>
-
-                        ?>
-                        <tr>
+                        <?php endforeach ?> -->
+                        <!-- <tr>
                             <th colspan="2" scope="col" class="text-primary">Total Pengeluaran
                             </th>
 
@@ -290,8 +291,7 @@
                                 </div>
                             </th>
 
-                            <!-- <th scope=" col">&nbsp;</th> -->
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th colspan="2" scope="col" class="text-primary">Lihat Detail
@@ -331,7 +331,7 @@
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($pemasukan_non_donasi as $ad) : ?>
+                            foreach ($pemasukan_non_donasi_limit as $ad) : ?>
                             <tr>
                                 <td><strong><?= $ad->name ?></strong></td>
                                 <td>
@@ -343,9 +343,9 @@
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
-                        <?php
+                        <!-- <?php
                     error_reporting(0);
-                    foreach ($pemasukan_non_donasi as $total_masuk) {
+                    foreach ($pemasukan_non_donasi_limit as $total_masuk) {
                         $nominal_masuk += $total_masuk->nominal;
                     }
                     ?>
@@ -358,8 +358,7 @@
                                 </div>
                             </th>
 
-                            <!-- <th scope=" col">&nbsp;</th> -->
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th colspan="2" scope="col" class="text-primary">Lihat Detail
