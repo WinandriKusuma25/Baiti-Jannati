@@ -114,6 +114,17 @@ class Transaksitunai_model extends CI_Model
         return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'keuangan' ])->result();
     }
 
+    public function showDonasiTransaksiTunaiNonKeuangan()
+    {
+
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        // $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
+        $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
+        return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'non keuangan' ])->result();
+    }
+
     public function showTransaksiTunaiLimit()
     {
 
@@ -253,17 +264,19 @@ class Transaksitunai_model extends CI_Model
         return $query->result();
     }
 
+    public function gettahun(){
+        $query = $this->db->query("SELECT YEAR(tgl_donasi) AS tahun FROM 
+            transaksi_donasi_tunai  GROUP BY YEAR(tgl_donasi) ORDER BY YEAR(tgl_donasi)
+            ASC");
+        return $query->result();
+    }
 
-    // public function showTransaksiTunaiFilter($daterange)
-    // {
+    public function filterbytahun($tahun2){
+        $query = $this->db->query("SELECT * FROM detail_donasi_tunai  INNER JOIN transaksi_donasi_tunai ON detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_user WHERE  YEAR(tgl_donasi) = 
+            '$tahun2' ORDER BY tgl_donasi ASC");
+        return $query->result();
+    }
 
-    //     $this->db->select('transaksi_donasi_tunai.*, pengurus.nama_pengurus, user.*');
-    //     $this->db->join('pengurus', 'transaksi_donasi_tunai.id_pengurus = pengurus.id_pengurus');
-    //     $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
-    //     $this->db->where('tgl_donasi >=', $daterange[0]);
-    //     $this->db->where('tgl_donasi <=',  $daterange[1]);
-    //     return $this->db->get('transaksi_donasi_tunai')->result();
-    // }
 
    
 
@@ -336,8 +349,8 @@ class Transaksitunai_model extends CI_Model
     
     public function getDetailTransaksiTunai($id_detail_donasi)
     {
-        $this->db->select('detail_donasi_tunai.*');
-        // $this->db->join('pengurus', 'berita.id_pengurus = pengurus.id_pengurus');
+        $this->db->select('detail_donasi_tunai.*, kategori.nama_kategori');
+        $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
         return $this->db->get_where('detail_donasi_tunai', ['id_detail_donasi' => $id_detail_donasi])->result();
     }
 

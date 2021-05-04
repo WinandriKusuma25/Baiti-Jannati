@@ -4,11 +4,11 @@
     </script>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Riwayat Donasi Tunai</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi Donasi Tunai</h1>
         <small>
-            <div class="text-muted">Donasi&nbsp;&nbsp;/&nbsp; <a
+            <div class="text-muted"> Manajemen Donasi&nbsp;/&nbsp; <a
                     href="<?php echo base_url("member/riwayat_donasi_tunai"); ?>">
-                    Detail Riwayat Donasi Tunai </a>
+                    Detail Transaksi Donasi Tunai </a>
             </div>
         </small>
     </div>
@@ -16,7 +16,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data detail riwayat donasi tunai</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data detail transaksi donasi tunai</h6>
         </div>
         <p>
         <div class="col-xl-6 col-md-6 mb-4">
@@ -29,15 +29,15 @@
                         <?php foreach ($users as $dt) : ?>
                         Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                         <?= $dt->id_user ?>
-
+                        <?php endforeach ?>
                         <br>
-                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php foreach ($users as $dt) : ?>
                         <?= $dt->id_user_pengurus ?>
                         <?php endforeach ?>
                         <br>
                         <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
-                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <td>
-                            <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?></td>
+                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                        <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?>
                         <?php endforeach ?>
                         <br>
                     </div>
@@ -58,10 +58,11 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Jenis Donasi</th>
                             <th class="text-primary">Kategori</th>
-                            <!-- <th class="text-primary">Nominal</th> -->
+                            <th class="text-primary">Nominal</th>
                             <th class="text-primary">Jumlah</th>
-                            <th class="text-primary">Bukti</th>
+                            <th class="text-primary" width="300px">Bukti</th>
                             <th class="text-primary">Keterangan</th>
+                            <th class="text-primary">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,14 +72,60 @@
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->jenis_donasi ?></td>
                             <td><?= $dnk->nama_kategori ?></td>
-                            <!-- <td><?= $dnk->nominal ?></td> -->
-                            <td><?= $dnk->jumlah ?></td>
+
+
+
+                            <?php if ($dnk->nominal == 0) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
+                            <td>Rp
+                                <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                            <?php endif ?>
+
+
+                            <?php if ($dnk->jumlah == 0) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
+                            <td><?= $dnk->jumlah ?>
+                            </td>
+                            <?php endif ?>
+
+
+                            <?php if ($dnk->image == null) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Tidak Perlu</span>
+                            </td>
+                            <?php else : ?>
                             <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
-                                    class="img-thumbnail" width="20%"></td>
+                                    class="img-thumbnail" width="20%">
+                            </td>
+                            <?php endif ?>
+
+
+                            <?php if ($dnk->keterangan == null) : ?>
+                            <td class="project-state">
+                                <span class="badge badge-danger">Kosong</span>
+                            </td>
+                            <?php else : ?>
                             <td><?= $dnk->keterangan ?></td>
+                            <?php endif ?>
+
+
+                            <td>
+                                <a class='btn btn-circle btn-warning'
+                                    href="<?= base_url() . 'member/transaksi_tunai/edit/' . $dnk->id_detail_donasi ?>">
+                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                </a>
+
+                            </td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
+
                 </table>
                 <a href="<?php echo base_url("member/riwayat_donasi_tunai"); ?>" class="btn btn-primary"> <i
                         class="fas fa-arrow-left"></i>&nbsp;Kembali </a>

@@ -156,4 +156,18 @@ class Midtrans_model extends CI_Model
         $this->db->from('transaksi_midtrans');
         return $this->db->get()->row_array();
     }
+
+    public function gettahun(){
+        $query = $this->db->query("SELECT YEAR(transaction_time) AS tahun FROM 
+            transaksi_midtrans GROUP BY YEAR(transaction_time) ORDER BY YEAR(transaction_time)
+            ASC");
+        return $query->result();
+    }
+
+    public function filterbytahun($tahun2){
+        $query = $this->db->query("SELECT * FROM transaksi_midtrans  INNER JOIN user ON transaksi_midtrans.id_user = user.id_user WHERE  YEAR(transaction_time) = 
+            '$tahun2'  AND status_code = 200 ORDER BY transaction_time ASC ");
+
+        return $query->result();
+    }
 }

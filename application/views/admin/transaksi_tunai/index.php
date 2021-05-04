@@ -189,9 +189,13 @@
                     </tbody>
                 </table>
 
-                <a href="<?php echo base_url('admin/transaksi_tunai/tampilSemua') ?>"
+                <a href="<?php echo base_url('admin/transaksi_tunai/tampilKeuangan') ?>"
                     class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-eye"></i>
                     Rekap Keuangan Transaksi Donasi Tunai</a>
+
+                <a href="<?php echo base_url('admin/transaksi_tunai/tampilNonKeuangan') ?>"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-eye"></i>
+                    Rekap Non Keuangan Transaksi Donasi Tunai</a>
             </div>
         </div>
     </div>

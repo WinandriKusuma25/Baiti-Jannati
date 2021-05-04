@@ -16,7 +16,7 @@
 
     <div class="card   shadow border-bottom-primary">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Rekap Pengurus</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Rekap Kategori</h6>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><b> <i class="fas fa-fw fa-user-tie"></i>&nbsp;Jumlah Kategori:

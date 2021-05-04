@@ -7,6 +7,15 @@ class Kategori_model extends CI_Model
     public function showKategori()
     {
 
+      
+        return $this->db->get('kategori')->result();
+    }
+
+    public function showKategoriKeuangan()
+    {
+
+        $this->db->select('kategori.*');
+        $this->db->where('nama_kategori !=', 'uang');
         return $this->db->get('kategori')->result();
     }
 

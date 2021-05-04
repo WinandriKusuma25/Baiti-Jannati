@@ -214,4 +214,17 @@ class Pemasukannondonasi_model extends CI_Model
         $this->db->select_max('nominal');
         return $this->db->get('pemasukan_non_donasi')->result();
     }
+
+    public function gettahun(){
+        $query = $this->db->query("SELECT YEAR(created_at) AS tahun FROM 
+            pemasukan_non_donasi GROUP BY YEAR(created_at) ORDER BY YEAR(created_at)
+            ASC");
+        return $query->result();
+    }
+
+    public function filterbytahun($tahun2){
+        $query = $this->db->query("SELECT * FROM pemasukan_non_donasi  INNER JOIN user ON pemasukan_non_donasi.id_user = user.id_user WHERE  YEAR(created_at) = 
+            '$tahun2' ORDER BY created_at ASC");
+        return $query->result();
+    }
 }

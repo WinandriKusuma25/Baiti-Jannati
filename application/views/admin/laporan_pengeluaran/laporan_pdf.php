@@ -83,6 +83,21 @@ table {
 
             </tbody>
 
+            <thead>
+                <?php
+                error_reporting(0);
+                foreach ($filter_pengeluaran_donasi as $total_pengeluaran) {
+                    $nominal_masuk += $total_pengeluaran->nominal;
+                }
+                $nominal = $nominal_masuk;
+                ?>
+                <tr>
+                    <th colspan="4" scope="col">Total Pengeluaran</th>
+                    <th scope="col">Rp. <?= number_format($nominal, 2, ',', '.'); ?></th>
+                    <!-- <th scope="col">&nbsp;</th> -->
+                </tr>
+            </thead>
+
 
         </table>
 
