@@ -36,6 +36,7 @@ class Pengurus_model extends CI_Model
     {
         $data = [
             'id_pengurus' => $this->input->post('id_pengurus', true),
+            'id_user' =>  $this->session->userdata('id_user'),
             'id_jabatan' => $this->input->post('id_jabatan', true),
             'nama_pengurus' => $this->input->post('nama_pengurus', true),
             'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
@@ -48,6 +49,7 @@ class Pengurus_model extends CI_Model
     {
         $data = [
             'id_pengurus' => $this->input->post('id_pengurus', true),
+            'id_user' =>  $this->session->userdata('id_user'),
             'nama_pengurus' => $this->input->post('nama_pengurus', true),
             'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
             'id_jabatan' => $this->input->post('id_jabatan', true),

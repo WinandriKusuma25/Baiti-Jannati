@@ -58,7 +58,7 @@
 
                         <h5 class="card-title text-dark"><b>Penanggung
                                 Jawab :
-                            </b>&nbsp;: <?= $ad->name ?></h5>
+                            </b>&nbsp; <?= $ad->nama_pengurus ?></h5>
                         <hr>
 
 

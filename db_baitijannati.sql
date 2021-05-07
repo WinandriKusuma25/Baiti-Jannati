@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 02:19 AM
+-- Generation Time: May 07, 2021 at 06:31 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `anak_didik` (
   `id_anak_didik` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_pengurus` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
   `tempat_lahir` varchar(128) NOT NULL,
@@ -43,15 +43,16 @@ CREATE TABLE `anak_didik` (
 -- Dumping data for table `anak_didik`
 --
 
-INSERT INTO `anak_didik` (`id_anak_didik`, `id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `nama_wali`, `foto`) VALUES
-(10, 4, 'Ilham Arifin', 'L', 'Malang', '2007-01-01', 'RT. 04 RW. 04\r\n', 'Bhakti Waluyo', 'Ilham_Arifin1.jpg'),
-(11, 4, 'Steven Andra Kusuma', 'L', 'Malang', '2008-12-17', 'RT. 01 RW. 04\r\n', 'Kusnan', 'Steven_Andra_Kusuma1.jpg'),
-(14, 4, 'Dwica Indah Ramayanti', 'P', 'Malang', '2007-07-11', 'RT. 04 RW. 01\r\n', 'Supardi', 'Dwica_Indah_Ramayanti.jpg'),
-(15, 4, 'Mochammad Faril Kurniawan', 'L', 'Malang', '2006-11-11', 'RT. 01\r\nRW. 02\r\n', 'M.Yusuf S', 'Mochammad_Faril_Kurniawan.jpg'),
-(16, 4, 'Mohammad Haidhor Alawy', 'L', 'Malang', '2006-11-11', 'RT. 01 RW. 02\r\n', 'Syamsul Arifin ', 'Mohammad_Haidhor_Alawy.jpg'),
-(17, 4, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', 'Rudi', 'Aisyah_Rohmatul_Faizah.jpg'),
-(18, 4, 'M. Nazril Habibi', 'L', 'Malang', '2010-11-11', 'RT. 03 RW. 02\r\n', 'Anton Hilmi', 'aaa.jpg'),
-(23, 26, 'sadas', 'L', 'sadas', '2021-04-23', 'asdasdas', 'sadas', 'sadas1.jpg');
+INSERT INTO `anak_didik` (`id_anak_didik`, `id_pengurus`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `nama_wali`, `foto`) VALUES
+(10, 2, 'Ilham Arifin', 'L', 'Malang', '2007-01-01', 'RT. 04 RW. 04\r\n', 'Bhakti Waluyo', 'Ilham_Arifin1.jpg'),
+(11, 2, 'Steven Andra Kusuma', 'L', 'Malang', '2008-12-17', 'RT. 01 RW. 04\r\n', 'Kusnan', 'Steven_Andra_Kusuma1.jpg'),
+(14, 2, 'Dwica Indah Ramayanti', 'P', 'Malang', '2007-07-11', 'RT. 04 RW. 01\r\n', 'Supardi', 'Dwica_Indah_Ramayanti.jpg'),
+(15, 2, 'Mochammad Faril Kurniawan', 'L', 'Malang', '2006-11-11', 'RT. 01\r\nRW. 02\r\n', 'M.Yusuf S', 'Mochammad_Faril_Kurniawan.jpg'),
+(16, 2, 'Mohammad Haidhor Alawy', 'L', 'Malang', '2006-11-11', 'RT. 01 RW. 02\r\n', 'Syamsul Arifin ', 'Mohammad_Haidhor_Alawy.jpg'),
+(17, 2, 'Aisyah Rohmatul Faizah', 'P', 'Malang', '2010-05-04', 'RT. 01  RW. 04\r\n', 'Rudi', 'Aisyah_Rohmatul_Faizah.jpg'),
+(18, 2, 'M. Nazril Habibi', 'L', 'Malang', '2010-11-11', 'RT. 03 RW. 02\r\n', 'Anton Hilmi', 'aaa.jpg'),
+(23, 2, 'sadas', 'L', 'sadas', '2021-04-23', 'asdasdas', 'sadas', 'sadas1.jpg'),
+(25, 2, 'tes', 'L', 'tes', '2021-05-07', 'tes', 'tes', 'Foto_Dapur1.jpeg');
 
 -- --------------------------------------------------------
 
@@ -118,7 +119,7 @@ CREATE TABLE `detail_donasi_tunai` (
   `nominal` int(11) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
   `image` varchar(256) DEFAULT NULL,
-  `keterangan` varchar(256) NOT NULL
+  `keterangan` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -126,15 +127,9 @@ CREATE TABLE `detail_donasi_tunai` (
 --
 
 INSERT INTO `detail_donasi_tunai` (`id_detail_donasi`, `id_donasi`, `id_kategori`, `jenis_donasi`, `nominal`, `jumlah`, `image`, `keterangan`) VALUES
-(20, 16, 1, 'non keuangan', NULL, 2, 'mi.jpg', 'Donasi 2 kardus mie'),
-(24, 18, 1, 'keuangan', 10000, 0, NULL, 'Andi'),
-(25, 18, 1, 'keuangan', 90000, 0, NULL, 'joko'),
-(26, 18, 1, 'keuangan', 25000, 0, NULL, 'budi'),
-(27, 19, 17, 'keuangan', 1000, 0, NULL, 'K'),
-(28, 19, 17, 'keuangan', 2000, 0, NULL, 'B'),
-(29, 19, 17, 'keuangan', 3000, 0, NULL, 'C'),
-(30, 20, 17, 'keuangan', 10000, 0, NULL, 'coba'),
-(31, 21, 17, 'keuangan', 1000, 0, NULL, 'semoga berkah');
+(44, 35, 17, 'keuangan', 10000, 0, NULL, 'semoga berkah'),
+(45, 35, 15, 'non keuangan', NULL, 8, 'Foto_Kamar_Mandi.jpeg', 'minuman sebanyak 11 kardus1'),
+(46, 40, 17, 'keuangan', 20000, NULL, NULL, 'coba1');
 
 -- --------------------------------------------------------
 
@@ -226,14 +221,9 @@ CREATE TABLE `pemasukan_non_donasi` (
 --
 
 INSERT INTO `pemasukan_non_donasi` (`id_pemasukan`, `id_user`, `nominal`, `keterangan`, `created_at`, `updated_at`) VALUES
-(3, 4, 2021, '<p>baju celana sarung</p>', '2021-04-23 23:27:27', '2021-04-23 23:27:55'),
-(4, 4, 2021, '<p>aaa</p>', '2021-04-23 23:27:27', '2021-04-23 23:27:59'),
-(5, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:03'),
-(6, 4, 9000, '<p>asd</p>', '2021-04-23 23:27:27', '2021-04-23 23:28:06'),
-(11, 4, 12345, '<p>sdsadsasadsadas</p>', '2021-04-23 23:38:27', '2021-04-23 23:42:47'),
-(12, 4, 21312, '<p>asdasdas</p>', '2021-04-24 23:08:30', NULL),
-(13, 26, 111, '<p>sada</p>', '2021-04-25 00:29:44', NULL),
-(14, 4, 700000, '<p>aaa</p>', '2021-04-25 22:42:58', NULL);
+(15, 4, 700000, '<p>Penjualan baju bekas</p>', '2021-04-30 00:07:26', NULL),
+(16, 4, 300000, '<p>Jual Takjil Berbuka</p>', '2021-04-30 00:08:51', NULL),
+(17, 4, 70000, '<p>sadassda</p>', '2021-05-03 02:26:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -283,18 +273,12 @@ CREATE TABLE `pengeluaran_donasi` (
 --
 
 INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_user`, `nominal`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 4, 9000, '<p>Untuk Pembangunan</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:18'),
-(4, 4, 90000, '<p>untuk pembangunan</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:22'),
-(5, 4, 10000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:25'),
-(6, 4, 10000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:28'),
-(7, 4, 80000, '<p>a</p>', '2021-04-23 21:43:04', '2021-04-23 21:43:31'),
-(9, 4, 9000, '<p>untuk santunan anak yatim</p>', '2021-04-23 22:04:28', '2021-04-23 22:54:21'),
-(11, 4, 1091, '<p>cccc</p>', '2021-04-23 22:56:55', '2021-04-23 23:01:01'),
-(14, 4, 11111, '<p>sadasads</p>', '2021-04-24 23:01:02', NULL),
-(15, 4, 100000, '<p>sadas</p>', '2021-04-24 23:07:50', NULL),
-(16, 4, 1, '<p>asdas</p>', '2021-04-25 00:17:45', NULL),
-(17, 4, 1221, '<p>asdas</p>', '2021-04-25 00:21:55', NULL),
-(18, 4, 100000, '<p>asda</p>', '2021-04-25 00:25:25', '2021-04-26 01:45:27');
+(21, 4, 100000, '<p>Beli bahan bangunan</p>', '2021-04-30 00:07:56', NULL),
+(25, 4, 10000, '<p>aa</p>', '2020-04-30 05:39:46', '2021-04-30 05:40:15'),
+(26, 4, 80000, '<p>coba</p>', '2021-05-03 02:25:50', NULL),
+(27, 4, 40000, '<p>aaa</p>', '2021-05-03 03:22:52', NULL),
+(28, 4, 40000, '<p>aaa</p>', '2021-05-03 03:23:03', NULL),
+(29, 4, 10000, '<p>aasasdsa</p>', '2021-05-03 03:24:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -304,10 +288,10 @@ INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `id_user`, `nominal`, `keter
 
 CREATE TABLE `pengurus` (
   `id_pengurus` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_jabatan` int(11) NOT NULL,
   `nama_pengurus` varchar(128) NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
-  `jabatan` enum('ketua','wakil','sekretaris','bendahara','anggota aktif','anggota pasif') NOT NULL,
   `no_telp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -315,11 +299,11 @@ CREATE TABLE `pengurus` (
 -- Dumping data for table `pengurus`
 --
 
-INSERT INTO `pengurus` (`id_pengurus`, `id_jabatan`, `nama_pengurus`, `jenis_kelamin`, `jabatan`, `no_telp`) VALUES
-(2, 1, 'Sandi Cahyadi', 'L', 'ketua', '08383229874'),
-(5, 6, 'Khoirul Warisin', 'L', 'anggota aktif', '089765234123'),
-(9, 2, 'Mas\'udi Faris', 'L', 'ketua', '087654312345'),
-(11, 3, 'Ram Alif Pramana', 'L', 'ketua', '083832298748');
+INSERT INTO `pengurus` (`id_pengurus`, `id_user`, `id_jabatan`, `nama_pengurus`, `jenis_kelamin`, `no_telp`) VALUES
+(2, 21, 1, 'Sandi Cahyadi', 'L', '08383229874'),
+(5, 21, 6, 'Khoirul Warisin', 'L', '089765234123'),
+(9, 21, 2, 'Mas\'udi Faris', 'L', '087654312345'),
+(11, 21, 3, 'Ram Alif Pramana', 'L', '083832298748');
 
 -- --------------------------------------------------------
 
@@ -340,7 +324,6 @@ CREATE TABLE `tabel_log` (
 --
 
 INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc`) VALUES
-(9, '2021-04-23 22:58:45', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
 (10, '2021-04-23 23:00:30', 'Sandi Cahyadi', 'hapus', 'hapus pengeluaran donasi'),
 (11, '2021-04-23 23:01:01', 'Sandi Cahyadi', 'edit', 'edit pengeluaran donasi'),
 (13, '2021-04-23 23:13:02', 'Sandi Cahyadi', 'hapus', 'hapus kategori'),
@@ -367,7 +350,20 @@ INSERT INTO `tabel_log` (`log_id`, `log_time`, `log_user`, `log_tipe`, `log_desc
 (40, '2021-04-25 00:25:26', 'Misbaqul ulum', 'tambah', 'tambah pengeluaran donasi'),
 (41, '2021-04-25 00:29:44', 'Misbaqul ulum', 'tambah', 'tambah pemasukan non donasi'),
 (42, '2021-04-25 22:42:58', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
-(43, '2021-04-26 01:45:27', 'Sandi Cahyadi', 'edit', 'edit pengeluaran donasi');
+(43, '2021-04-26 01:45:27', 'Sandi Cahyadi', 'edit', 'edit pengeluaran donasi'),
+(44, '2021-04-29 18:32:42', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(45, '2021-04-29 18:33:18', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(46, '2021-04-30 00:07:26', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
+(47, '2021-04-30 00:07:56', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(48, '2021-04-30 00:08:51', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
+(49, '2021-04-30 00:10:01', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(50, '2021-04-30 01:39:29', 'Sandi Cahyadi', 'hapus', 'hapus pengeluaran donasi'),
+(51, '2021-04-30 05:39:46', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(52, '2021-05-03 02:25:50', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(53, '2021-05-03 02:26:44', 'Sandi Cahyadi', 'tambah', 'tambah pemasukan non donasi'),
+(54, '2021-05-03 03:22:52', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(55, '2021-05-03 03:23:04', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi'),
+(56, '2021-05-03 03:24:04', 'Sandi Cahyadi', 'tambah', 'tambah pengeluaran donasi');
 
 -- --------------------------------------------------------
 
@@ -387,11 +383,8 @@ CREATE TABLE `transaksi_donasi_tunai` (
 --
 
 INSERT INTO `transaksi_donasi_tunai` (`id_donasi`, `id_user`, `id_user_pengurus`, `tgl_donasi`) VALUES
-(16, 5, 4, '2021-04-25 21:16:58'),
-(18, 20, 4, '2021-04-26 13:50:13'),
-(19, 5, 4, '2021-04-26 14:04:19'),
-(20, 5, 4, '2021-04-27 12:57:41'),
-(21, 20, 4, '2021-04-27 20:16:11');
+(35, 5, 4, '2021-05-03 04:49:08'),
+(40, 5, 4, '2020-06-03 05:58:39');
 
 -- --------------------------------------------------------
 
@@ -407,6 +400,8 @@ CREATE TABLE `transaksi_midtrans` (
   `transaction_time` varchar(20) NOT NULL,
   `bank` varchar(20) DEFAULT NULL,
   `va_number` varchar(30) DEFAULT NULL,
+  `bill_key` varchar(128) DEFAULT NULL,
+  `biller_code` varchar(128) DEFAULT NULL,
   `pdf_url` varchar(512) DEFAULT NULL,
   `status_code` char(3) NOT NULL,
   `keterangan` text NOT NULL
@@ -416,8 +411,11 @@ CREATE TABLE `transaksi_midtrans` (
 -- Dumping data for table `transaksi_midtrans`
 --
 
-INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`, `keterangan`) VALUES
-(1913193508, 20, 10000, 'bank_transfer', '2021-04-20 14:22:10', 'bca', '67788421591', 'https://app.sandbox.midtrans.com/snap/v1/transactions/99b1dc47-761f-4f25-af73-19e9f198598b/pdf', '201', ' semoga berkah');
+INSERT INTO `transaksi_midtrans` (`order_id`, `id_user`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `bill_key`, `biller_code`, `pdf_url`, `status_code`, `keterangan`) VALUES
+(663333755, 5, 900000, 'bank_transfer', '2021-04-29 02:13:58', 'bca', '67788433842', '', '', 'https://app.sandbox.midtrans.com/snap/v1/transactions/068d197a-3763-4373-9209-aec44f4ab423/pdf', '200', ' aa'),
+(1220785475, 5, 9000, 'bank_transfer', '2021-04-29 19:04:19', NULL, NULL, '', '', 'https://app.sandbox.midtrans.com/snap/v1/transactions/cafd181a-8f50-4995-be8e-89f45bda6fad/pdf', '201', ' aa'),
+(1343753910, 5, 90000, 'bank_transfer', '2021-05-03 08:36:34', 'bni', '9886778842729467', NULL, NULL, 'https://app.sandbox.midtrans.com/snap/v1/transactions/21aeff1e-338d-4d3c-9b6b-071940a47f40/pdf', '201', ' sadsa'),
+(1913193508, 20, 10000, 'bank_transfer', '2021-04-20 14:22:10', 'bca', '67788421591', '', '', 'https://app.sandbox.midtrans.com/snap/v1/transactions/99b1dc47-761f-4f25-af73-19e9f198598b/pdf', '201', ' semoga berkah');
 
 -- --------------------------------------------------------
 
@@ -468,10 +466,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role`, `is_active`, `date_created`, `last_login`) VALUES
-(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-04-27 13:49:16'),
-(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-04-25 15:41:10'),
-(20, 'Hamba Allah', 'winandrikusuma25@gmail.com', 'default.png', '$2y$10$/V4eDddSoPd9feEGABl0.O71E72LMPccf1MG7a7AvYFmCE8ScCaXW', 'donatur', 'aktif', 1618902988, '2021-04-20 21:21:29'),
-(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-04-27 22:25:22'),
+(4, 'Sandi Cahyadi', 'andri@gmail.com', 'p_winandri.jpeg', '$2y$10$AmLssCT/Z4GPXEOaNPQbIuG5iWxASTHOMDjnH6x3LwapTqCkQQbTa', 'pengurus', 'aktif', 1604837683, '2021-05-07 04:20:35'),
+(5, 'Hamba Allah', 'mamat@gmail.com', 'default.png', '$2y$10$y0ozTRDve45SeNN5cUpK0O9QwJRUvIzlQakv81xhU2h34ttCsKmLS', 'donatur', 'aktif', 1605162134, '2021-05-04 23:06:25'),
+(20, 'Hamba Allah', 'winandrikusuma25@gmail.com', 'default.png', '$2y$10$7BL.cHlDH1GwmSv/gu2MLuL2AX54rpG0068VxPJHcQBdAZgmQLD2K', 'donatur', 'aktif', 1618902988, '2021-04-29 15:04:36'),
+(21, 'Superadmin', 'superadmin@gmail.com', 'foto_fandi.jpg', '$2y$10$sEN1Lvbb0upbt9lKk5SXmeM.ACKeeG8wBE4ESuw0pTfVC2cajJpDC', 'admin', 'aktif', 1618934725, '2021-05-07 04:29:32'),
 (26, 'Misbaqul ulum', '1234@gmail.com', 'default.png', '$2y$10$6ipPjRWEoo8ARReKRc7e5OU8kdn1ZaJgog44GpxI67KrmBnJ5Pv1.', 'pengurus', 'aktif', 1619119520, '2021-04-24 17:47:25');
 
 -- --------------------------------------------------------
@@ -514,7 +512,7 @@ INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 --
 ALTER TABLE `anak_didik`
   ADD PRIMARY KEY (`id_anak_didik`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_pengurus` (`id_pengurus`);
 
 --
 -- Indexes for table `berita`
@@ -583,7 +581,8 @@ ALTER TABLE `pengeluaran_donasi`
 --
 ALTER TABLE `pengurus`
   ADD PRIMARY KEY (`id_pengurus`),
-  ADD KEY `id _jabatan` (`id_jabatan`);
+  ADD KEY `id _jabatan` (`id_jabatan`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tabel_log`
@@ -633,7 +632,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `anak_didik`
 --
 ALTER TABLE `anak_didik`
-  MODIFY `id_anak_didik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_anak_didik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `berita`
@@ -651,7 +650,7 @@ ALTER TABLE `cara_donasi`
 -- AUTO_INCREMENT for table `detail_donasi_tunai`
 --
 ALTER TABLE `detail_donasi_tunai`
-  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_detail_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -675,7 +674,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT for table `pemasukan_non_donasi`
 --
 ALTER TABLE `pemasukan_non_donasi`
-  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pemasukan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `pengaturan`
@@ -687,31 +686,31 @@ ALTER TABLE `pengaturan`
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tabel_log`
 --
 ALTER TABLE `tabel_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `transaksi_donasi_tunai`
 --
 ALTER TABLE `transaksi_donasi_tunai`
-  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `transaksi_midtrans`
 --
 ALTER TABLE `transaksi_midtrans`
-  MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1913193509;
+  MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1937164313;
 
 --
 -- AUTO_INCREMENT for table `tujuan`
@@ -729,11 +728,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `anak_didik`
+--
+ALTER TABLE `anak_didik`
+  ADD CONSTRAINT `anak_didik_ibfk_1` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
 
 --
 -- Constraints for table `cara_donasi`
@@ -776,7 +781,8 @@ ALTER TABLE `pengeluaran_donasi`
 -- Constraints for table `pengurus`
 --
 ALTER TABLE `pengurus`
-  ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `jabatan` (`id_jabatan`);
+  ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `jabatan` (`id_jabatan`),
+  ADD CONSTRAINT `pengurus_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `transaksi_donasi_tunai`

@@ -44,7 +44,7 @@ class Anak_Didik extends CI_Controller
         // $this->form_validation->set_rules('foto', 'Foto', 'required|trim');
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['anak_didik'] = $this->Anakdidik_model->showAnakDidik();
-        $data['pengurus'] = $this->User_model->tampilPengurusSaja();
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Baiti Jannati | Tambah Anak Didik';
@@ -143,7 +143,7 @@ class Anak_Didik extends CI_Controller
         foreach ($data['anak_didik'] as $ad) {
             $object->getActiveSheet()->setCellValue('A' . $baris, $no++);
             $object->getActiveSheet()->setCellValue('B' . $baris, $ad->nama);
-            $object->getActiveSheet()->setCellValue('C' . $baris, $ad->name);
+            $object->getActiveSheet()->setCellValue('C' . $baris, $ad->nama_pengurus);
             $object->getActiveSheet()->setCellValue('D' . $baris, $ad->jenis_kelamin);
             $object->getActiveSheet()->setCellValue('E' . $baris, $ad->tempat_lahir);
             $object->getActiveSheet()->setCellValue('E' . $baris, $ad->tgl_lahir);
@@ -183,7 +183,7 @@ class Anak_Didik extends CI_Controller
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['anak_didik'] = $this->Anakdidik_model->getAnakDidik($id_anak_didik);
-        $data['pengurus'] = $this->User_model->tampilPengurusSaja();
+        $data['pengurus'] = $this->Pengurus_model->showPengurus();
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
         // $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required|trim');
         // $this->form_validation->set_rules('tempat_lahir', 'tempat_lahir', 'required|trim');
@@ -221,7 +221,7 @@ class Anak_Didik extends CI_Controller
 
 
             $id_anak_didik = $this->input->post('id_anak_didik');
-            $id_user = $this->input->post('id_user');
+            $id_pengurus = $this->input->post('id_pengurus');
             $nama = $this->input->post('nama');
             $jenis_kelamin = $this->input->post('jenis_kelamin');
             $tempat_lahir = $this->input->post('tempat_lahir');
@@ -229,7 +229,7 @@ class Anak_Didik extends CI_Controller
             $alamat = $this->input->post('alamat');
             $nama_wali = $this->input->post('nama_wali');
 
-            $this->db->set('id_user', $id_user);
+            $this->db->set('id_pengurus', $id_pengurus);
             $this->db->set('nama', $nama);
             $this->db->set('jenis_kelamin', $jenis_kelamin);
             $this->db->set('tempat_lahir', $tempat_lahir);

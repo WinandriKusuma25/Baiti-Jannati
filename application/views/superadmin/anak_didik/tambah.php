@@ -90,15 +90,15 @@
                         <div class=" form-group">
                             <label class="" for="pengurus">Penanggung Jawab</label>
                             <div class="input-group">
-                                <select name="id_user" id="id_user"
+                                <select name="id_pengurus" id="id_pengurus"
                                     class="js-example-placeholder-multiple js-states form-control" style="width: 100%">
                                     <option value="" selected disabled>Pilih pengurus</option>
                                     <?php foreach ($pengurus as $p) : ?>
-                                    <option value="<?= $p->id_user ?>"><?= $p->name?></option>
+                                    <option value="<?= $p->id_pengurus ?>"><?= $p->nama_pengurus?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
-                            <?= form_error('id_user', '<small class="text-danger">', '</small>'); ?>
+                            <?= form_error('id_pengurus', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <br>
 
