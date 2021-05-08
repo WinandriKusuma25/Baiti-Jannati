@@ -22,7 +22,7 @@ class Laporan_pemasukan extends CI_Controller
     {
 
 
-        $data['title'] = 'Baiti Jannati | Pengeluaran Donasi';
+        $data['title'] = 'Baiti Jannati | Pemasukan Keuangan';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['pemasukan_transfer'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
         $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
@@ -48,28 +48,29 @@ class Laporan_pemasukan extends CI_Controller
 
 
         if ($nilaifilter == 1) {
-            $data['title'] = "Laporan Keuangan Filter Berdasrkan Tanggal";
-            $this->load->model('admin/Pengeluarandonasi_model');
+            $data['title'] = "Laporan Keuangan Filter Berdasarkan Tanggal";
             $data['subtitle'] = "Dari tanggal : ".$tanggalawal.' Sampai tanggal : '.$tanggalakhir;
-            $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbytanggal($tanggalawal,$tanggalakhir);
+            $data['pemasukan_transfer'] = $this->Midtrans_model->filterbytanggal($tanggalawal,$tanggalakhir);
+            $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->filterbytanggal($tanggalawal,$tanggalakhir);
+            $data['pemasukan_tunai'] = $this->Transaksitunai_model->filterbytanggal($tanggalawal,$tanggalakhir);
             $this->pdf->set_option('isRemoteEnabled', true);
-            // $data['datafilter2'] = $this->pengeluaran_model->filterbytanggal( $tanggalawal,$tanggalakhir);
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->filename = "Laporan Pemasukan keuangan.pdf";
+            $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 2) {
             
-            $data['title'] = "Laporan Keuangan Filter Bulan";
-            $this->load->model('admin/Pengeluarandonasi_model');
+            $data['title'] = "Laporan Pemasukan Keuangan Filter Bulan";
             $data['subtitle'] = "Dari bulan : ".$bulanawal.' Sampai bulan : '.$bulanakhir.' Tahun : '.$tahun1;
-            $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbybulan($tahun1,$bulanawal,$bulanakhir);
+            $data['pemasukan_transfer'] = $this->Midtrans_model->filterbybulan($tahun1,$bulanawal,$bulanakhir);
+            $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->filterbybulan($tahun1,$bulanawal,$bulanakhir);
+            $data['pemasukan_tunai'] = $this->Transaksitunai_model->filterbybulan($tahun1,$bulanawal,$bulanakhir);
             $this->load->library('pdf');
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->filename = "Laporan Pemasukan keuangan.pdf";
+            $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 3) {
             
@@ -81,7 +82,7 @@ class Laporan_pemasukan extends CI_Controller
             $this->load->library('pdf');
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pemasukan keuangan.pdf";
+            $this->pdf->filename = "Laporan Pemasukan Keuangan.pdf";
             $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
 
         }

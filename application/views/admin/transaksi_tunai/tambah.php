@@ -199,8 +199,9 @@
                         <p>
                         <p>
 
-                            <button type="submit" class=" btn btn-primary"><i
-                                    class="fas fa-save"></i>&nbsp;Simpan</button>
+                            <span id="btn-submit"></span>
+                            <!-- <button type="submit" class=" btn btn-primary" id="btn-submit"><i
+                                    class="fas fa-save"></i>&nbsp;Simpan</button> -->
 
                             <!-- <button type="reset" name="reset" class="btn btn-dark "><i
                                     class="fas fa-sync-alt"></i>&nbsp;Reset</button> -->
@@ -225,6 +226,7 @@ CKEDITOR.replace('keterangan');
 // inisialisasi nilai variabel data untuk penampungan sementara
 var dataDonasi = new Array();
 
+showDataDonasi();
 /**
  * 
  *  To Do List 
@@ -382,8 +384,13 @@ function showDataDonasi() {
 
     var elementHTML = "";
 
+    var elementButton = "";
+
     // apabila data donasi memiliki nilai atau isi
     if (dataDonasi.length > 0) {
+
+        elementButton =
+            '<button type="submit" class=" btn btn-primary" id="btn-submit"><i class="fas fa-save"></i>&nbsp;Simpan</button>';
 
         dataDonasi.forEach(function(item, index) {
 
@@ -415,10 +422,15 @@ function showDataDonasi() {
 
     } else {
 
-        alert("Mohon ditambahkan salah satu Non keuangan / Keuangan");
+        elementButton =
+            '<button type="button" class=" btn btn-primary" id="btn-submit" disabled><i class="fas fa-save"></i>&nbsp;Simpan</button>';
+        // alert("Mohon ditambahkan salah satu Non keuangan / Keuangan");
     }
     // buat element baris
     $('#table-donasi tbody').html(elementHTML).hide().fadeIn();
+
+    // buat button 
+    $('#btn-submit').html(elementButton);
 
 }
 </script>

@@ -145,7 +145,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tanggal</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pengeluaran/filter"); ?>" method="POST"
+                        <form action="<?php echo base_url("admin/laporan_pemasukan/filter"); ?>" method="POST"
                             target='_blank'>
                             <input type="hidden" name="nilaifilter" value="1">
                             <input name="valnilai" type="hidden">

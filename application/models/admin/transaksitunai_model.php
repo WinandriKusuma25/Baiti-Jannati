@@ -117,11 +117,11 @@ class Transaksitunai_model extends CI_Model
     public function showDonasiTransaksiTunaiNonKeuangan()
     {
 
-        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*');
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*, kategori.nama_kategori');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
-        // $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
         $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
+        $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
         return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'non keuangan' ])->result();
     }
 
@@ -271,10 +271,61 @@ class Transaksitunai_model extends CI_Model
         return $query->result();
     }
 
+    public function filterbytanggal($tanggalawal, $tanggalakhir){
+        $sql = "SELECT 
+        transaksi_donasi_tunai.tgl_donasi, 
+        detail_donasi_tunai.*, 
+        user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        
+        
+         WHERE DATE(tgl_donasi) 
+            BETWEEN '$tanggalawal' AND '$tanggalakhir' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC";
+       return $this->db->query( $sql )->result();
+    }
+
+    public function filterbybulan($tahun1, $bulanawal, $bulanakhir){
+        $sql = "SELECT 
+                    transaksi_donasi_tunai.tgl_donasi, 
+                    detail_donasi_tunai.*, 
+                    user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+            FROM transaksi_donasi_tunai 
+            JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+            JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+            JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+    
+        
+            WHERE YEAR(tgl_donasi) = 
+            '$tahun1' AND MONTH(tgl_donasi) BETWEEN '$bulanawal' AND '$bulanakhir' AND jenis_donasi = 'keuangan'
+            ORDER BY tgl_donasi ASC";
+        return $this->db->query( $sql )->result();
+        
+    }
+
     public function filterbytahun($tahun2){
-        $query = $this->db->query("SELECT * FROM detail_donasi_tunai  INNER JOIN transaksi_donasi_tunai ON detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_user WHERE  YEAR(tgl_donasi) = 
-            '$tahun2' ORDER BY tgl_donasi ASC");
-        return $query->result();
+        // $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai 
+        // JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        // JOIN user  ON transaksi_donasi_tunai.id_user = user.id_user 
+        // JOIN user AS user2  ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        // WHERE  YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC");
+        // return $query->result();
+
+
+        $sql = "SELECT 
+                    transaksi_donasi_tunai.tgl_donasi, 
+                    detail_donasi_tunai.*, 
+                    user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+            FROM transaksi_donasi_tunai 
+            JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+            JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+            JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+            
+            WHERE YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC ";
+
+        return $this->db->query( $sql )->result();
     }
 
 

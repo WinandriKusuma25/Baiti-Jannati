@@ -83,7 +83,7 @@
                             <br>
                             &nbsp; &nbsp;<b>Alamat</b> :&nbsp;<?= $ad->alamat ?>
                             <br>
-                            &nbsp; &nbsp;<b>Penanggung Jawab</b>&nbsp;:&nbsp; <?= $ad->name ?>
+                            &nbsp; &nbsp;<b>Penanggung Jawab</b>&nbsp;:&nbsp; <?= $ad->nama_pengurus ?>
                             &nbsp;
                             <br>
                         </div>

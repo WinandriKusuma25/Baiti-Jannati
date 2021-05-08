@@ -222,9 +222,25 @@ class Pemasukannondonasi_model extends CI_Model
         return $query->result();
     }
 
+    public function filterbytanggal($tanggalawal, $tanggalakhir){
+        $query = $this->db->query("SELECT * FROM pemasukan_non_donasi INNER JOIN user ON pemasukan_non_donasi.id_user = user.id_user
+         WHERE DATE(created_at) 
+            BETWEEN '$tanggalawal' AND '$tanggalakhir' ORDER BY created_at ASC");
+        return $query->result();
+    }
+
+    public function filterbybulan($tahun1, $bulanawal, $bulanakhir){
+        $query = $this->db->query("SELECT * FROM pemasukan_non_donasi INNER JOIN user ON pemasukan_non_donasi.id_user = user.id_user WHERE YEAR(created_at) = 
+            '$tahun1' AND MONTH(created_at) BETWEEN '$bulanawal' AND '$bulanakhir'
+            ORDER BY created_at ASC");
+        return $query->result();
+    }
+
     public function filterbytahun($tahun2){
         $query = $this->db->query("SELECT * FROM pemasukan_non_donasi  INNER JOIN user ON pemasukan_non_donasi.id_user = user.id_user WHERE  YEAR(created_at) = 
             '$tahun2' ORDER BY created_at ASC");
         return $query->result();
     }
+
+   
 }

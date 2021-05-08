@@ -164,10 +164,25 @@ class Midtrans_model extends CI_Model
         return $query->result();
     }
 
+    public function filterbytanggal($tanggalawal, $tanggalakhir){
+        $query = $this->db->query("SELECT * FROM transaksi_midtrans INNER JOIN user ON transaksi_midtrans.id_user = user.id_user
+         WHERE DATE(transaction_time) 
+            BETWEEN '$tanggalawal' AND '$tanggalakhir'  AND status_code = 200 ORDER BY transaction_time ASC");
+        return $query->result();
+    }
+
+    public function filterbybulan($tahun1, $bulanawal, $bulanakhir){
+        $query = $this->db->query("SELECT * FROM transaksi_midtrans INNER JOIN user ON transaksi_midtrans.id_user = user.id_user WHERE YEAR(transaction_time) = 
+            '$tahun1' AND MONTH(transaction_time) BETWEEN '$bulanawal' AND '$bulanakhir' AND status_code = 200
+            ORDER BY transaction_time ASC");
+        return $query->result();
+    }
+
     public function filterbytahun($tahun2){
         $query = $this->db->query("SELECT * FROM transaksi_midtrans  INNER JOIN user ON transaksi_midtrans.id_user = user.id_user WHERE  YEAR(transaction_time) = 
             '$tahun2'  AND status_code = 200 ORDER BY transaction_time ASC ");
-
         return $query->result();
     }
+
+    
 }
