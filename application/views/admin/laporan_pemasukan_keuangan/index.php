@@ -8,7 +8,7 @@
         <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan</h1>
         <small>
             <div class="text-muted"> Manajemen Laporan &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/laporan_pemasukan"); ?>">Laporan Pemasukan</a>
+                    href="<?php echo base_url("admin/laporan_pemasukan_keuangan"); ?>">Laporan Pemasukan</a>
             </div>
         </small>
     </div>
@@ -145,7 +145,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tanggal</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan/filter"); ?>" method="POST"
+                        <form action="<?php echo base_url("admin/laporan_pemasukan_keuangan/filter"); ?>" method="POST"
                             target='_blank'>
                             <input type="hidden" name="nilaifilter" value="1">
                             <input name="valnilai" type="hidden">
@@ -187,7 +187,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Bulan</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan/filter"); ?>" method="POST"
+                        <form action="<?php echo base_url("admin/laporan_pemasukan_keuangan/filter"); ?>" method="POST"
                             target='_blank'>
                             <input type="hidden" name="nilaifilter" value="2">
                             <input name="valnilai" type="hidden">
@@ -268,7 +268,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tahun</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan/filter"); ?>" method="POST"
+                        <form action="<?php echo base_url("admin/laporan_pemasukan_keuangan/filter"); ?>" method="POST"
                             target='_blank'>
                             <input name="valnilai" type="hidden">
                             <input type="hidden" name="nilaifilter" value="3">

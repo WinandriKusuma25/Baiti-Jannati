@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Laporan_pemasukan extends CI_Controller
+class laporan_pemasukan_keuangan extends CI_Controller
 {
 
     public function __construct()
@@ -33,7 +33,7 @@ class Laporan_pemasukan extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/laporan_pemasukan/index', $data);
+        $this->load->view('admin/laporan_pemasukan_keuangan/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -57,7 +57,7 @@ class Laporan_pemasukan extends CI_Controller
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pemasukan keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
+            $this->pdf->load_view('admin/laporan_pemasukan_keuangan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 2) {
             
@@ -70,7 +70,7 @@ class Laporan_pemasukan extends CI_Controller
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pemasukan keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
+            $this->pdf->load_view('admin/laporan_pemasukan_keuangan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 3) {
             
@@ -83,7 +83,7 @@ class Laporan_pemasukan extends CI_Controller
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pemasukan Keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pemasukan/laporan_pdf', $data);
+            $this->pdf->load_view('admin/laporan_pemasukan_keuangan/laporan_pdf', $data);
 
         }
     }        

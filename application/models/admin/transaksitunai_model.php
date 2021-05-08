@@ -271,62 +271,82 @@ class Transaksitunai_model extends CI_Model
         return $query->result();
     }
 
+    //untuk menampilkan laporan pdf pemasukan keuangan berdasarkan range tanggal
     public function filterbytanggal($tanggalawal, $tanggalakhir){
-        $sql = "SELECT 
-        transaksi_donasi_tunai.tgl_donasi, 
-        detail_donasi_tunai.*, 
-        user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
         FROM transaksi_donasi_tunai 
         JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
         JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
         JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
-        
-        
-         WHERE DATE(tgl_donasi) 
-            BETWEEN '$tanggalawal' AND '$tanggalakhir' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC";
-       return $this->db->query( $sql )->result();
+        WHERE DATE(tgl_donasi) 
+        BETWEEN '$tanggalawal' AND '$tanggalakhir' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC";
+        return $this->db->query( $sql )->result();
     }
 
+    //untuk menampilkan laporan pdf pemasukan keuangan berdasarkan range bulan dan tahun
     public function filterbybulan($tahun1, $bulanawal, $bulanakhir){
-        $sql = "SELECT 
-                    transaksi_donasi_tunai.tgl_donasi, 
-                    detail_donasi_tunai.*, 
-                    user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
-            FROM transaksi_donasi_tunai 
-            JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
-            JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
-            JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
-    
-        
-            WHERE YEAR(tgl_donasi) = 
-            '$tahun1' AND MONTH(tgl_donasi) BETWEEN '$bulanawal' AND '$bulanakhir' AND jenis_donasi = 'keuangan'
-            ORDER BY tgl_donasi ASC";
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        WHERE YEAR(tgl_donasi) = 
+        '$tahun1' AND MONTH(tgl_donasi) BETWEEN '$bulanawal' AND '$bulanakhir' AND jenis_donasi = 'keuangan'
+        ORDER BY tgl_donasi ASC";
         return $this->db->query( $sql )->result();
-        
     }
 
+     //untuk menampilkan laporan pdf pemasukan keuangan berdasarkan tahun
     public function filterbytahun($tahun2){
-        // $query = $this->db->query("SELECT * FROM transaksi_donasi_tunai 
-        // JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
-        // JOIN user  ON transaksi_donasi_tunai.id_user = user.id_user 
-        // JOIN user AS user2  ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
-        // WHERE  YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC");
-        // return $query->result();
-
-
-        $sql = "SELECT 
-                    transaksi_donasi_tunai.tgl_donasi, 
-                    detail_donasi_tunai.*, 
-                    user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
-            FROM transaksi_donasi_tunai 
-            JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
-            JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
-            JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
-            
-            WHERE YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC ";
-
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab 
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        WHERE YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'keuangan' ORDER BY tgl_donasi ASC ";
         return $this->db->query( $sql )->result();
     }
+
+     //untuk menampilkan laporan pdf pemasukan non keuangan berdasarkan range tanggal
+     public function filterbytanggalnonkeuangan($tanggalawal, $tanggalakhir){
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab , kategori.nama_kategori
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        JOIN kategori ON detail_donasi_tunai.id_kategori = kategori.id_kategori 
+        WHERE DATE(tgl_donasi) 
+        BETWEEN '$tanggalawal' AND '$tanggalakhir' AND jenis_donasi = 'non keuangan' ORDER BY tgl_donasi ASC";
+        return $this->db->query( $sql )->result();
+    }
+
+     //untuk menampilkan laporan pdf pemasukan non keuangan berdasarkan range bulan dan tahun
+        public function filterbybulannonkeuangan($tahun1, $bulanawal, $bulanakhir){
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab , kategori.nama_kategori
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        JOIN kategori ON detail_donasi_tunai.id_kategori = kategori.id_kategori 
+        WHERE YEAR(tgl_donasi) = 
+        '$tahun1' AND MONTH(tgl_donasi) BETWEEN '$bulanawal' AND '$bulanakhir' AND jenis_donasi = 'non keuangan'
+        ORDER BY tgl_donasi ASC";
+        return $this->db->query( $sql )->result();
+    }
+
+
+      //untuk menampilkan laporan pdf pemasukan non keuangan berdasarkan tahun
+      public function filterbytahunnonkeuangan($tahun2){
+        $sql = "SELECT transaksi_donasi_tunai.tgl_donasi, detail_donasi_tunai.*, user.name AS nama_donatur, user2.name AS nama_penanggungjawab , kategori.nama_kategori
+        FROM transaksi_donasi_tunai 
+        JOIN detail_donasi_tunai ON transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi 
+        JOIN user ON transaksi_donasi_tunai.id_user = user.id_user 
+        JOIN user AS user2 ON transaksi_donasi_tunai.id_user_pengurus = user2.id_user 
+        JOIN kategori ON detail_donasi_tunai.id_kategori = kategori.id_kategori 
+        WHERE YEAR(tgl_donasi) = '$tahun2' AND jenis_donasi = 'non keuangan' ORDER BY tgl_donasi ASC ";
+        return $this->db->query( $sql )->result();
+    }
+
 
 
    

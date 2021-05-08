@@ -76,7 +76,7 @@ if (
     <li class="nav-item <?= activate_menu('pengeluaran_donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('admin/pengeluaran_donasi') ?>">
             <i class="fas fa-fw fa-funnel-dollar"></i>
-            <span>Pengeluaran Donasi</span></a>
+            <span>Pengeluaran Keuangan</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->
@@ -116,10 +116,17 @@ if (
     </li>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= activate_menu('laporan_pemasukan') ?>">
-        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pemasukan') ?>">
+    <li class="nav-item <?= activate_menu('laporan_pemasukan_keuangan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pemasukan_keuangan') ?>">
             <i class="fas fa-fw fa-print"></i>
-            <span>Laporan Pemasukan</span></a>
+            <span>Laporan Pemasukan Keuangan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pemasukan_nonkeuangan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pemasukan_nonkeuangan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pemasukan Non Keuangan</span></a>
     </li>
 
 
@@ -127,7 +134,7 @@ if (
     <li class="nav-item <?= activate_menu('laporan_pengeluaran') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('admin/laporan_pengeluaran') ?>">
             <i class="fas fa-fw fa-print"></i>
-            <span>Laporan Pengeluaran</span></a>
+            <span>Laporan Pengeluaran Keuangan</span></a>
     </li>
 
 
