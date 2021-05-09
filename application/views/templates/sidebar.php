@@ -112,7 +112,7 @@ if (
     <li class="nav-item <?= activate_menu('laporan') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('admin/laporan') ?>">
             <i class="fas fa-fw fa-print"></i>
-            <span>Laporan</span></a>
+            <span>Laporan Pemasukan dan Pengeluaran Keuangan</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->

@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan Keuangan</h1>
         <small>
             <div class="text-muted"> Manajemen Laporan &nbsp;/&nbsp; <a
                     href="<?php echo base_url("admin/laporan_pemasukan_keuangan"); ?>">Laporan Pemasukan</a>
@@ -26,7 +26,8 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                             src="<?= base_url(); ?>assets/images/date.svg" alt="">
                     </div>
-                    <center> Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pemasukan Keuangan
+                    <center>
+                        Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pemasukan Keuangan
                             Donasi</b>
                     </center>
                 </div>
