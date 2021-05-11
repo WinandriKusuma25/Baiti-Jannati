@@ -1,16 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Laporan_pengeluaran extends CI_Controller
+class laporan_pemasukan_nonkeuangan extends CI_Controller
 {
 
     public function __construct()
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        is_logged_in();
-        $this->load->model('admin/Pengeluarandonasi_model');
-        $this->load->model('admin/Pengurus_model');
+        // is_logged_in();
+        $this->load->model('admin/Transaksitunai_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
         // $this->load->library('pdf');
@@ -20,14 +19,14 @@ class Laporan_pengeluaran extends CI_Controller
     {
 
 
-        $data['title'] = 'Baiti Jannati | Pengeluaran Donasi';
+        $data['title'] = 'Baiti Jannati | Pemasukan Keuangan';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
-        $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
-        $data['tahun'] = $this->Pengeluarandonasi_model->gettahun();
+        $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiNonKeuangan();
+        $data['tahun_tunai'] = $this->Transaksitunai_model->gettahun();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/laporan_pengeluaran/index', $data);
+        $this->load->view('laporan_pemasukan_nonkeuangan/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -42,40 +41,36 @@ class Laporan_pengeluaran extends CI_Controller
 
 
         if ($nilaifilter == 1) {
-            $data['title'] = "Laporan Keuangan Filter Berdasrkan Tanggal";
-            $this->load->model('admin/Pengeluarandonasi_model');
+            $data['title'] = "Laporan Non Keuangan Filter Berdasarkan Tanggal";
             $data['subtitle'] = "Dari tanggal : ".$tanggalawal.' Sampai tanggal : '.$tanggalakhir;
-            $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbytanggal($tanggalawal,$tanggalakhir);
+            $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->filterbytanggalnonkeuangan($tanggalawal,$tanggalakhir);
             $this->pdf->set_option('isRemoteEnabled', true);
-            // $data['datafilter2'] = $this->pengeluaran_model->filterbytanggal( $tanggalawal,$tanggalakhir);
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->filename = "Laporan Pemasukan Non keuangan.pdf";
+            $this->pdf->load_view('admin/laporan_pemasukan_nonkeuangan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 2) {
             
-            $data['title'] = "Laporan Keuangan Filter Bulan";
-            $this->load->model('admin/Pengeluarandonasi_model');
+            $data['title'] = "Laporan Pemasukan Non Keuangan Filter Bulan";
             $data['subtitle'] = "Dari bulan : ".$bulanawal.' Sampai bulan : '.$bulanakhir.' Tahun : '.$tahun1;
-            $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbybulan($tahun1,$bulanawal,$bulanakhir);
+            $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->filterbybulannonkeuangan($tahun1,$bulanawal,$bulanakhir);
             $this->load->library('pdf');
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->filename = "Laporan Pemasukan Non keuangan.pdf";
+            $this->pdf->load_view('admin/laporan_pemasukan_nonkeuangan/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 3) {
             
-            $data['title'] = "Laporan Pengeluaran Keuangan Filter Tahun";
-            $this->load->model('admin/Pengeluarandonasi_model');
+            $data['title'] = "Laporan Pemasukan Non Keuangan Filter Tahun";
             $data['subtitle'] = ' Tahun : '.$tahun2;
-            $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbytahun($tahun2);
+            $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->filterbytahunnonkeuangan($tahun2);
             $this->load->library('pdf');
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
-            $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->filename = "Laporan Pemasukan Non Keuangan.pdf";
+            $this->pdf->load_view('admin/laporan_pemasukan_nonkeuangan/laporan_pdf', $data);
 
         }
     }        

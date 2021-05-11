@@ -8,7 +8,7 @@ class laporan_pemasukan_keuangan extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        is_logged_in();
+        // is_logged_in();
         $this->load->model('admin/Pengeluarandonasi_model');
         $this->load->model('admin/Midtrans_model');
         $this->load->model('admin/Transaksitunai_model');
@@ -33,7 +33,7 @@ class laporan_pemasukan_keuangan extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/laporan_pemasukan_keuangan/index', $data);
+        $this->load->view('laporan_pemasukan_keuangan/index', $data);
         $this->load->view('templates/footer');
     }
 

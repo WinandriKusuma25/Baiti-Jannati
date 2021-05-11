@@ -8,7 +8,7 @@ class Laporan_pengeluaran extends CI_Controller
     {
         //memanggil method kosntrukter di CI Controller
         parent::__construct();
-        is_logged_in();
+        // is_logged_in();
         $this->load->model('admin/Pengeluarandonasi_model');
         $this->load->model('admin/Pengurus_model');
         $this->load->model('admin/User_model');
@@ -27,7 +27,7 @@ class Laporan_pengeluaran extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/laporan_pengeluaran/index', $data);
+        $this->load->view('laporan_pengeluaran/index', $data);
         $this->load->view('templates/footer');
     }
 
