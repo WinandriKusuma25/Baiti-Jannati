@@ -23,11 +23,9 @@ class laporan_pemasukan_nonkeuangan extends CI_Controller
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiNonKeuangan();
         $data['tahun_tunai'] = $this->Transaksitunai_model->gettahun();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('laporan_pemasukan_nonkeuangan/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('template/header', $data);
+        $this->load->view('laporan_pemasukan_nonkeuangan', $data);
+        $this->load->view('template/footer', $data);   
     }
 
     public function filter(){

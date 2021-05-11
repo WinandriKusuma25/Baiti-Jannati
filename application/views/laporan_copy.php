@@ -1,8 +1,6 @@
 <!-- Begin Page Content -->
 <body>    
-    <main>
-        <!-- <div class="position-realive bg-image"
-            style="background-image: url(<?= base_url(); ?>assets/user/img/pattern_2.svg);"> -->
+<div class="bg-light">
         <div class="page-hero-section bg-image hero-mini"
             style="background-image: url(<?= base_url(); ?>assets/user/img/hero_mini.svg);">
             <div class="hero-caption">
@@ -12,9 +10,8 @@
                             <h3 class="mb-4 fw-medium">Laporan Pemasukan dan Pengeluaran Keuangan</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-dark justify-content-center bg-transparent">
-                                    <li class="breadcrumb-item"><a href="<?= base_url('beranda') ?>">Beranda</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Laporan Pemasukan dan Pengeluaran</li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url('beranda') ?>">Beranda</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Laporan</li>
                                 </ol>
                             </nav>
                         </div>
@@ -22,8 +19,9 @@
                 </div>
             </div>
         </div>
+        
 
-
+    </main>
     <!--Content -->
     <div class="content" id="tanggalfilter">
 
@@ -183,6 +181,6 @@
         </div>
         <!-- End of Main Content -->
     </div>
+
 </div>
-<br>
 </body>

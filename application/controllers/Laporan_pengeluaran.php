@@ -24,11 +24,9 @@ class Laporan_pengeluaran extends CI_Controller
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
         $data['tahun'] = $this->Pengeluarandonasi_model->gettahun();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('laporan_pengeluaran/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('template/header', $data);
+        $this->load->view('laporan_pengeluaran', $data);
+        $this->load->view('template/footer', $data);   
     }
 
     public function filter(){

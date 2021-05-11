@@ -30,11 +30,9 @@ class laporan_pemasukan_keuangan extends CI_Controller
         $data['tahun_transfer'] = $this->Midtrans_model->gettahun();
         $data['tahun_non_donasi'] = $this->Pemasukannondonasi_model->gettahun();
         $data['tahun_tunai'] = $this->Transaksitunai_model->gettahun();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('laporan_pemasukan_keuangan/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('template/header', $data);
+        $this->load->view('laporan_pemasukan_keuangan', $data);
+        $this->load->view('template/footer', $data);   
     }
 
     public function filter(){

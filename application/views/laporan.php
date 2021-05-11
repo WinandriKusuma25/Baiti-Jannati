@@ -39,7 +39,7 @@
                                 <center>
 
                                     <img style="width: 5%" src="<?= base_url(); ?>assets/images/pdf.png" alt="">
-                                    <a href="<?= base_url('laporan_pemasukan_keuangan') ?>">
+                                    <a href="<?= base_url('Laporan_pemasukan_keuangan') ?>">
                                         <i class="fas fa-download"></i> Laporan Pemasukan Keuangan
                                     </a>
 
@@ -47,7 +47,7 @@
 
 
                                     <img style="width: 5%" src="<?= base_url(); ?>assets/images/pdf.png" alt="">
-                                    <a href="<?= base_url('laporan_pengeluaran') ?>">
+                                    <a href="<?= base_url('Laporan_pengeluaran') ?>">
                                         <i class="fas fa-download"></i> Laporan Pengeluaran Keuangan
                                     </a>
 
@@ -57,12 +57,12 @@
 
                                     <center>
                                         <img style="width: 5%" src="<?= base_url(); ?>assets/images/pdf.png" alt="">
-                                        <a href="<?= base_url('laporan_copy') ?>">
+                                        <a href="<?= base_url('Laporan_copy') ?>">
                                             <i class="fas fa-download"></i> Laporan Pemasukan dan Pengeluaran Keuangan
                                         </a>
 
                                         <img style="width: 5%" src="<?= base_url(); ?>assets/images/pdf.png" alt="">
-                                        <a href="<?= base_url('profile') ?>">
+                                        <a href="<?= base_url('Laporan_pemasukan_nonkeuangan') ?>">
                                             <i class="fas fa-download"></i> Laporan Pemasukan Donasi Non Keuangan
                                         </a>
                                     </center>
