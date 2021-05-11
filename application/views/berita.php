@@ -19,6 +19,27 @@
             </div>
         </div>
 
+        <div class="page-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="card-page">
+                            <h5 class="fg-primary">Berita Kegiatan Baiti Jannati</h5>
+                            <hr>
+                            <center>
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                    src="<?= base_url(); ?>assets/images/news.svg" alt="">
+                            </center>
+                            <center> Berikut Merupakan Halaman Berita Kegiatan <b>Baiti
+                                    Jannati</b>
+                            </center>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="container mr-12  wow fadeInUp">
             <div class="row justify-content-center">

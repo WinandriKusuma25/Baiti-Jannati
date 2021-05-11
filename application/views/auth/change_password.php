@@ -20,18 +20,18 @@
                                 <br>
                                 <form class="user" method="post" action="<?= base_url('auth/changePassword'); ?>">
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password1"
+                                        <input type="password" class="form-control form-control" id="password1"
                                             name="password1" placeholder="Password Baru">
                                         <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password2"
+                                        <input type="password" class="form-control form-control" id="password2"
                                             name="password2" placeholder="Konfirmasi Password">
                                         <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-block">
                                         Ubah Password
                                     </button>
                                 </form>
