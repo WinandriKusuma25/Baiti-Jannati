@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Laporan_copy extends CI_Controller
+class Laporan_pemasukan_pengeluaran extends CI_Controller
 {
 
 
@@ -35,7 +35,7 @@ class Laporan_copy extends CI_Controller
         // $this->load->view('templates/sidebar', $data);
         
         $this->load->view('template/header', $data);
-        $this->load->view('laporan_copy', $data);
+        $this->load->view('laporan_pemasukan_pengeluaran', $data);
         $this->load->view('template/footer', $data);   
     }
     

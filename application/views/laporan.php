@@ -57,7 +57,7 @@
 
                                     <center>
                                         <img style="width: 5%" src="<?= base_url(); ?>assets/images/pdf.png" alt="">
-                                        <a href="<?= base_url('Laporan_copy') ?>">
+                                        <a href="<?= base_url('Laporan_pemasukan_pengeluaran') ?>">
                                             <i class="fas fa-download"></i> Laporan Pemasukan dan Pengeluaran Keuangan
                                         </a>
 
