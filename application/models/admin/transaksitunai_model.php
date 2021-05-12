@@ -179,6 +179,27 @@ class Transaksitunai_model extends CI_Model
         return $this->db->get('detail_donasi_tunai')->result();
     }
 
+    public function getDonasiTransaksiTunaiKeuangan($id)
+    {
+        $this->db->select('detail_donasi_tunai.*, user.name,  transaksi_donasi_tunai.*, kategori.nama_kategori');
+        $this->db->join('transaksi_donasi_tunai', 'detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_donasi');
+        $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->where('detail_donasi_tunai.id_donasi', $id);
+        return $this->db->get_where('detail_donasi_tunai', ['jenis_donasi' => 'keuangan' ])->result();
+    }
+
+    public function getDonasiTransaksiTunaiNonKeuangan($id)
+    {
+        $this->db->select('detail_donasi_tunai.*, user.name,  transaksi_donasi_tunai.*, kategori.nama_kategori');
+        $this->db->join('transaksi_donasi_tunai', 'detail_donasi_tunai.id_donasi = transaksi_donasi_tunai.id_donasi');
+        $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->where('detail_donasi_tunai.id_donasi', $id);
+        return $this->db->get_where('detail_donasi_tunai', ['jenis_donasi' => 'non keuangan' ])->result();
+    }
+
+
 
     //untuk menampilkan data penerima donatur dan donatur
     public function getTransaksiTunaiUser($id)

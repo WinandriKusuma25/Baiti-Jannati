@@ -173,10 +173,11 @@
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <!-- <a class='btn btn-circle btn-warning'
-                                href="<?= base_url() . 'admin/transaksi_tunai/edit/' . $dnk->id_donasi ?>">
-                                <i class="fas fa-edit" aria-hidden="true"></i>
-                            </a> -->
+                                <a class='btn btn-circle btn-success'
+                                    href="<?= base_url() . 'admin/transaksi_tunai/cetak/' . $dnk->id_donasi ?> "
+                                    target='_blank'>
+                                    <i class="fas fa-print" aria-hidden="true"></i>
+                                </a>
 
                                 <a href="#modalDelete" data-toggle="modal"
                                     onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_tunai/hapus/' . $dnk->id_donasi) ?>')"

@@ -14,6 +14,7 @@ class Transaksi_tunai extends CI_Controller
         $this->load->model('admin/User_model');
         $this->load->model('admin/Kategori_model');
         $this->load->library('form_validation');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -356,5 +357,17 @@ class Transaksi_tunai extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/transaksi_tunai/tampil_nonkeuangan', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function cetak($id)
+    {
+        $data['users'] = $this->Transaksitunai_model->getTransaksiTunaiUser($id);
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->getDonasiTransaksiTunaiKeuangan($id);
+        $data['transaksi_tunai_non'] = $this->Transaksitunai_model->getDonasiTransaksiTunaiNonKeuangan($id);
+        $data['transaksi_tunai_tgl'] = $this->Transaksitunai_model->getTransaksiTunaiTglDonasi($id);
+        $this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "Invoice Donasi Tunai Baiti jannati.pdf"; 
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->load_view('admin/transaksi_tunai/invoice_pdf', $data);	
     }
 }
