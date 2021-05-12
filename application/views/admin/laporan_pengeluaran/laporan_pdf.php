@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <!-- <head>
     <title></title>
     <h6 style="font-size:3rem;text-align:center;margin:0;padding:0">Baiti Jannati</h6><br>
@@ -60,9 +61,8 @@ table {
                     <th class="text-primary" style=" text-align: center; ">No</th>
                     <th class="text-primary" style=" text-align: center; ">Penanggung Jawab</th>
                     <th class="text-primary" style=" text-align: center; ">Tgl. Pengeluaran</th>
-                    <th class="text-primary" style=" text-align: center; ">Nominal</th>
-                    <!-- <th class="text-primary" style=" text-align: center; ">Terakhir di edit</th> -->
                     <th class="text-primary" style=" text-align: center; ">Keterangan</th>
+                    <th class="text-primary" style=" text-align: center; ">Nominal</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,11 +72,12 @@ table {
                     <td style=" text-align: center;"><?= $no++ ?></td>
                     <td style=" text-align: center;"><?= $dt->name ?></td>
                     <td style=" text-align: center;">
-                        <?=  date('d-m-Y', strtotime($dt->created_at)); ?></td>
+                        <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
                     </td>
+                    <td style=" text-align: center;"><?= $dt->keterangan ?></td>
                     <td style=" text-align: center; ">Rp
                         <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
-                    <td style=" text-align: center;"><?= $dt->keterangan ?></td>
+
                 </tr>
 
                 <?php endforeach ?>

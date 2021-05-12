@@ -15,7 +15,7 @@ class laporan_pemasukan_keuangan extends CI_Controller
         $this->load->model('admin/Pemasukannondonasi_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
-        // $this->load->library('pdf');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -27,9 +27,9 @@ class laporan_pemasukan_keuangan extends CI_Controller
         $data['pemasukan_transfer'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
         $data['pemasukan_non_donasi'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
         $data['pemasukan_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiKeuangan();
-        $data['tahun_transfer'] = $this->Midtrans_model->gettahun();
-        $data['tahun_non_donasi'] = $this->Pemasukannondonasi_model->gettahun();
-        $data['tahun_tunai'] = $this->Transaksitunai_model->gettahun();
+        $data['tahun'] = $this->Midtrans_model->gettahun();
+        $data['tahun'] = $this->Pemasukannondonasi_model->gettahun();
+        $data['tahun'] = $this->Transaksitunai_model->gettahun();
         $this->load->view('template/header', $data);
         $this->load->view('laporan_pemasukan_keuangan', $data);
         $this->load->view('template/footer', $data);   

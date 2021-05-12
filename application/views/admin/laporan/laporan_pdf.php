@@ -55,9 +55,9 @@
                 <th class="text-primary">No</th>
                 <th class="text-primary">Tanggal</th>
                 <th class="text-primary">Jenis</th>
-                <th class="text-primary">Nominal</th>
                 <th class="text-primary">Keterangan</th>
                 <th class="text-primary">Detail</th>
+                <th class="text-primary">Nominal</th>
             </tr>
         </thead>
         <tbody>
@@ -69,11 +69,11 @@
                             <td>--</td> -->
                 <td style=" text-align: center;"> <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                 <td style=" text-align: center;"><b>Pemasukan Transfer</b></td>
-                <td style=" text-align: center;">Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                 <td style=" text-align: center;"><?= $j->keterangan ?></td>
                 <td style=" text-align: center;">Dari
                     <?= $j->name ?>, Transfer Bank <?= $j->bank ?>
                 </td>
+                <td style=" text-align: center;">Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
             </tr>
             <?php endforeach ?>
             <?php
@@ -84,11 +84,11 @@
                             <td><?= $dnk->id_user_pengurus ?></td> -->
                 <td style=" text-align: center;"> <?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
                 <td style=" text-align: center;"><b>Pemasukan Donasi Tunai</b></td>
-                <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                 <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
                 <td style=" text-align: center;"> Dari <?= $dnk->nama_donatur ?>, Penanggung Jawab
                     <?= $dnk->nama_penanggungjawab ?>
                 </td>
+                <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
             </tr>
             <?php endforeach ?>
             <?php
@@ -97,11 +97,11 @@
                 <td style=" text-align: center;"><?= $no++ ?></td>
                 <td style=" text-align: center;"> <?=  date('d-m-Y H:i:s', strtotime($dnk->created_at)); ?></td>
                 <td style=" text-align: center;"><b>Pemasukan Non Donasi</b></td>
-                <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                 <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
                 <td style=" text-align: center;">Penanggung Jawab
                     <?= $dnk->name ?>
                 </td>
+                <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
             </tr>
             <?php endforeach ?>
             <?php 
@@ -112,14 +112,12 @@
                     <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
                 </td>
                 <td style=" text-align: center;"><b>Pengeluaran Keuangan</b></td>
-                <td style=" text-align: center; ">Rp
-                    <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
                 <td style=" text-align: center;"><?= $dt->keterangan ?></td>
                 <td style=" text-align: center;">Penanggung Jawab
                     <?= $dnk->name ?>
                 </td>
-
-
+                <td style=" text-align: center; ">Rp
+                    <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
                 <?php endforeach ?>
 
 

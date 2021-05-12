@@ -31,7 +31,7 @@
                                         <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" class="btn btn-primary btn-block rounded-pill">
                                         Ubah Password
                                     </button>
                                 </form>

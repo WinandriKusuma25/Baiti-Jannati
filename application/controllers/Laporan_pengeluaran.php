@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class Laporan_pengeluaran extends CI_Controller
 {
 
@@ -13,7 +14,7 @@ class Laporan_pengeluaran extends CI_Controller
         $this->load->model('admin/Pengurus_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
-        // $this->load->library('pdf');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -63,18 +64,15 @@ class Laporan_pengeluaran extends CI_Controller
             $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
             $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
 
-        }elseif ($nilaifilter == 3) {
-            
+        }elseif ($nilaifilter == 3) { 
             $data['title'] = "Laporan Pengeluaran Keuangan Filter Tahun";
             $this->load->model('admin/Pengeluarandonasi_model');
             $data['subtitle'] = ' Tahun : '.$tahun2;
             $data['filter_pengeluaran_donasi'] = $this->Pengeluarandonasi_model->filterbytahun($tahun2);
-            $this->load->library('pdf');
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
             $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
-
         }
     }        
 

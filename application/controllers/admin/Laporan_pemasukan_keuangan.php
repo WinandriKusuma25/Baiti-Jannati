@@ -15,7 +15,7 @@ class laporan_pemasukan_keuangan extends CI_Controller
         $this->load->model('admin/Pemasukannondonasi_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
-        // $this->load->library('pdf');
+        $this->load->library('pdf');
     }
 
     public function index()

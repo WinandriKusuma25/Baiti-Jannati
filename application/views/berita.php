@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="page-section">
+        <div class="container mr-12  wow fadeInUp">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col">
@@ -38,10 +38,10 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="container mr-12  wow fadeInUp">
+
+
             <div class="row justify-content-center">
                 <?php foreach ($berita as $ad) : ?>
                 <div class="card-page  mr-3 mb-3" style="width:340px; height:530px">

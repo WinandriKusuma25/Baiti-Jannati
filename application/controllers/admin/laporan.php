@@ -15,7 +15,7 @@ class Laporan extends CI_Controller
         $this->load->model('admin/Transaksitunai_model');
         $this->load->model('admin/Pengeluarandonasi_model');
         $this->load->model('admin/Pemasukannondonasi_model');
-        // $this->load->library('pdf');
+        $this->load->library('pdf');
         is_logged_in();
     }
 

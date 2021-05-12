@@ -53,7 +53,7 @@
                 <li class="nav-item <?= activate_menu('anak_didik') ?>">
                     <a class="nav-link" href="<?= base_url('anak_didik') ?>">Anak Didik</a>
                 </li>
-                <li class="nav-item <?= activate_menu('laporan') ?>">
+                <li class="nav-item <?= activate_menu('laporan') ?> ">
                     <a class="nav-link" href="<?= base_url('laporan') ?>">Laporan</a>
                 </li>
                 <li class="nav-item <?= activate_menu('kontak') ?>">

@@ -49,7 +49,7 @@
                                                         value="<?= set_value('email') ?>">
                                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                                <button type="submit" class="btn btn-primary rounded-pill">
                                                     Reset Password
                                                 </button>
                                             </form>

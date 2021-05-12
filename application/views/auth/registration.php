@@ -64,7 +64,7 @@
                                                     id="password2" name="password2" placeholder="Konfirmasi Password">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary rounded-pill">
                                             Register Akun
                                         </button>
                                     </form>

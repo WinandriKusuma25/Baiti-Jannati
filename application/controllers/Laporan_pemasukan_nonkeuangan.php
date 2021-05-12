@@ -12,7 +12,7 @@ class laporan_pemasukan_nonkeuangan extends CI_Controller
         $this->load->model('admin/Transaksitunai_model');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
-        // $this->load->library('pdf');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -22,7 +22,7 @@ class laporan_pemasukan_nonkeuangan extends CI_Controller
         $data['title'] = 'Baiti Jannati | Pemasukan Keuangan';
         $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
         $data['transaksi_non_keuangan'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiNonKeuangan();
-        $data['tahun_tunai'] = $this->Transaksitunai_model->gettahun();
+        $data['tahun'] = $this->Transaksitunai_model->gettahun();
         $this->load->view('template/header', $data);
         $this->load->view('laporan_pemasukan_nonkeuangan', $data);
         $this->load->view('template/footer', $data);   

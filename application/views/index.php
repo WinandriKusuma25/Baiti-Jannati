@@ -16,8 +16,8 @@
 
                     </div>
                     <div class="col-lg-6 d-none d-lg-block wow zoomIn">
-                        <div class="img-place shadow floating-animate">
-                            <img src="<?= base_url(); ?>assets/user/img/gambar.png" alt="">
+                        <div class="img-place">
+                            <img src="<?= base_url(); ?>assets/images/background.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-5 py-3">
                     <div class="img-place wow zoomIn">
-                        <img src="<?= base_url(); ?>assets/user/img/gambar5.png" alt="" width="50px">
+                        <img src="<?= base_url(); ?>assets/images/tujuan.svg" alt="" width="50px">
                     </div>
                 </div>
                 <?php endforeach ?>
