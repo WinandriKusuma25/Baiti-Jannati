@@ -153,6 +153,7 @@
                             <th class="text-primary">No</th>
                             <th class="text-primary">Penerima</th>
                             <th class="text-primary">Nama Donatur</th>
+                            <th class="text-primary">Email</th>
                             <th class="text-primary">Tgl Donasi</th>
                             <th class="text-primary">Aksi</th>
                         </tr>
@@ -164,6 +165,7 @@
                             <td><?= $no++ ?></td>
                             <td><?= $dnk->id_user_pengurus?></td>
                             <td><?= $dnk->id_user ?></td>
+                            <td><?= $dnk->email ?></td>
                             <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
                             <td><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
                             <td>
@@ -171,6 +173,12 @@
                                     href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
+                                </a>
+
+                                <a class='btn btn-circle btn-warning'
+                                    href='<?= base_url() . 'admin/transaksi_tunai/editDonatur/' . $dnk->id_donasi ?>'
+                                    class='btn btn-warning'>
+                                    <i class="fas fa-pen" aria-hidden="true"></i>
                                 </a>
 
                                 <a class='btn btn-circle btn-success'

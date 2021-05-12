@@ -115,6 +115,40 @@ class Transaksi_tunai extends CI_Controller
         }
     }
 
+    
+
+    public function editDonatur($id_donasi)
+    {
+
+        $data['user'] = $this->User_model->getUser($this->session->userdata('email'));
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiOne($id_donasi);
+        $data['users'] = $this->User_model->tampilUserSaja();
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Baiti Jannati | Edit Donatur';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/transaksi_tunai/editDonatur', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->Transaksitunai_model->ubahDonatur();
+            $this->load->library('session');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Data berhasil diedit ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>'
+            );
+            redirect('admin/transaksi_tunai', 'refresh');
+        }
+    }
+
+
+
     // public function prosestambah()
     // {
 
@@ -308,6 +342,7 @@ class Transaksi_tunai extends CI_Controller
                 redirect('admin/transaksi_tunai/detail/'. $id_donasi);
          }
     }
+
 
     public function hapus($id_donasi = null){
 

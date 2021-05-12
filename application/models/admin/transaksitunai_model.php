@@ -148,10 +148,21 @@ class Transaksitunai_model extends CI_Model
     public function showDonasiTransaksiTunai()
     {
 
-        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus');
+        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus, user.email');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->order_by('tgl_donasi', 'DESC');
+        return $this->db->get('transaksi_donasi_tunai')->result();
+    }
+
+    public function showDonasiTransaksiTunaiOne($id_donasi)
+    {
+
+        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus, user.email');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        $this->db->order_by('id_donasi', 'DESC');
+        $this->db->where('id_donasi', $id_donasi);
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
@@ -204,7 +215,7 @@ class Transaksitunai_model extends CI_Model
     //untuk menampilkan data penerima donatur dan donatur
     public function getTransaksiTunaiUser($id)
     {
-        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus');
+        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus, user.email');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->where('id_donasi', $id);

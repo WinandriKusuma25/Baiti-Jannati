@@ -29,17 +29,25 @@
                         <?php foreach ($users as $dt) : ?>
                         Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                         <?= $dt->id_user ?>
-                        <?php endforeach ?>
-                        <br>
-                        Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php foreach ($users as $dt) : ?>
-                        <?= $dt->id_user_pengurus ?>
-                        <?php endforeach ?>
-                        <br>
-                        <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
-                        Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                        <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?>
-                        <?php endforeach ?>
-                        <br>
+
+                        <p>
+                            Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                            <?= $dt->email ?>
+
+
+                            <?php endforeach ?>
+
+
+                            <br>
+                            Penerima&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php foreach ($users as $dt) : ?>
+                            <?= $dt->id_user_pengurus ?>
+                            <?php endforeach ?>
+                            <br>
+                            <?php foreach ($transaksi_tunai_tgl as $dt) : ?>
+                            Tgl. Donasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                            <?=  date('d-m-Y H:i:s', strtotime($dt->tgl_donasi)); ?>
+                            <?php endforeach ?>
+                            <br>
                     </div>
                 </div>
             </div>

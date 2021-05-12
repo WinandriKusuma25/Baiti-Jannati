@@ -95,7 +95,7 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('is_active', 'is_active', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Kominfo Batu | Edit Status User';
+            $data['title'] = 'Baiti Jannati| Edit Status User';
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
