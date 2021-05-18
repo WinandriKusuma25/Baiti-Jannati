@@ -5,12 +5,10 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan Non Keuangan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan Keuangan</h1>
         <small>
             <div class="text-muted"> Manajemen Laporan &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan"); ?>">Laporan Pemasukan
-                    Non
-                    Keuangan</a>
+                    href="<?php echo base_url("superadmin/laporan_pemasukan_keuangan"); ?>">Laporan Pemasukan</a>
             </div>
         </small>
     </div>
@@ -28,7 +26,8 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                             src="<?= base_url(); ?>assets/images/date.svg" alt="">
                     </div>
-                    <center> Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pemasukan Non Keuangan
+                    <center>
+                        Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pemasukan Keuangan
                             Donasi</b>
                     </center>
                 </div>
@@ -40,80 +39,85 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data Pemasukan Donasi Non Keuangan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data rekap laporan Pemasukan Keuangan</h6>
         </div>
-        <p>
-
         <div class=" card-body border-bottom-primary">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
+                    cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-primary" style=" text-align: center;">No</th>
-                            <th class="text-primary" style=" text-align: center;">Penerima</th>
-                            <th class="text-primary" style=" text-align: center;">Nama Donatur</th>
-                            <th class="text-primary" style=" text-align: center;">Tgl Donasi</th>
-                            <th class="text-primary" style=" text-align: center;">Jenis Donasi</th>
-                            <th class="text-primary">Kategori</th>
-                            <!-- <th class="text-primary" style=" text-align: center;">Nominal</th> -->
-                            <th class="text-primary">Jumlah</th>
-                            <th class="text-primary">Bukti</th>
-                            <th class="text-primary" style=" text-align: center;">Keterangan</th>
-
+                            <th class="text-primary">No</th>
+                            <th class="text-primary">Tanggal</th>
+                            <th class="text-primary">Jenis</th>
+                            <th class="text-primary">Keterangan</th>
+                            <th class="text-primary">Detail</th>
+                            <th class="text-primary" width="20%">Nominal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        foreach ($transaksi_non_keuangan as $dnk) : ?>
+                        foreach ($pemasukan_transfer as $j) : ?>
                         <tr>
-                            <td style=" text-align: center;"><?= $no++ ?></td>
-                            <td style=" text-align: center;"><?= $dnk->id_user_pengurus?></td>
-                            <td style=" text-align: center;"><?= $dnk->id_user ?></td>
-                            <td style=" text-align: center;"><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?>
+                            <td><?= $no++ ?></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Non Tunai</b></td>
+                            <td><?= $j->keterangan ?></td>
+                            <td>Dari
+                                <?= $j->name ?>, Transfer Bank <?= $j->bank ?>
                             </td>
-                            <td style=" text-align: center;"> <?= $dnk->jenis_donasi ?></td>
-
-
-                            <td><?= $dnk->nama_kategori ?></td>
-
-
-
-
-
-
-                            <?php if ($dnk->jumlah == 0) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Kosong</span>
-                            </td>
-                            <?php else : ?>
-                            <td><?= $dnk->jumlah ?>
-                            </td>
-                            <?php endif ?>
-
-
-                            <?php if ($dnk->image == null) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Tidak Perlu</span>
-                            </td>
-                            <?php else : ?>
-                            <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
-                                    class="img-thumbnail" width="50%">
-                            </td>
-                            <?php endif ?>
-
-
-                            <?php if ($dnk->keterangan == null) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Kosong</span>
-                            </td>
-                            <?php else : ?>
-                            <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
-                            <?php endif ?>
-
-
+                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach ?>
+                        <?php
+                                foreach ($pemasukan_tunai as $dnk) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Donasi Tunai</b></td>
+                            <td><?= $dnk->keterangan ?></td>
+                            <td>Dari <?= $dnk->id_user ?>, Penanggung Jawab
+                                <?= $dnk->id_user_pengurus ?>
+                            </td>
+                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                        </tr>
+                        <?php endforeach ?>
+                        <?php
+                                foreach ($pemasukan_non_donasi as $dnk) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->created_at)); ?></td>
+                            <td style="color : #4169E1"><b>Pemasukan Non Donasi</b></td>
+                            <td><?= $dnk->keterangan ?></td>
+                            <td>Penanggung Jawab
+                                <?= $dnk->name ?>
+                            </td>
+                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                        </tr>
+                        <?php endforeach ?>
+
+
                     </tbody>
+
+                    <?php
+                    error_reporting(0);
+                    foreach ($pemasukan_transfer as $total_masuk) {
+                        $nominal_masuk += $total_masuk->gross_amount;
+                    }
+                    foreach ($pemasukan_non_donasi as $total_non_masuk) {
+                        $nominal_non_masuk += $total_non_masuk->nominal;
+                    }
+                    foreach ($pemasukan_tunai as $total_masuk_tunai) {
+                        $nominal_masuk_tunai += $total_masuk_tunai->nominal;
+                    }
+                    $nominal = $nominal_non_masuk + $nominal_masuk + $nominal_masuk_tunai ;
+                    ?>
+                    <tr>
+                        <th colspan="5" scope="col">Total Pemasukan Keuangan
+                        </th>
+                        <th scope="col">Rp. <?= number_format($nominal, 2, ',', '.'); ?></th>
+                        <!-- <th scope=" col">&nbsp;</th> -->
+                    </tr>
                 </table>
             </div>
         </div>
@@ -132,7 +136,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tanggal</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
+                        <form action="<?php echo base_url("superadmin/laporan_pemasukan_keuangan/filter"); ?>"
                             method="POST" target='_blank'>
                             <input type="hidden" name="nilaifilter" value="1">
                             <input name="valnilai" type="hidden">
@@ -174,7 +178,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Bulan</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
+                        <form action="<?php echo base_url("superadmin/laporan_pemasukan_keuangan/filter"); ?>"
                             method="POST" target='_blank'>
                             <input type="hidden" name="nilaifilter" value="2">
                             <input name="valnilai" type="hidden">
@@ -255,7 +259,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tahun</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
+                        <form action="<?php echo base_url("superadmin/laporan_pemasukan_keuangan/filter"); ?>"
                             method="POST" target='_blank'>
                             <input name="valnilai" type="hidden">
                             <input type="hidden" name="nilaifilter" value="3">
@@ -297,3 +301,57 @@
 </div>
 <!-- End of Main Content -->
 </div>
+
+
+<script type="text/javascript">
+/*digunakan untuk menyembunyikan form tanggal, bulan dan tahun saat halaman di load */
+$(document).ready(function() {
+
+    $("#tanggalfilter").hide();
+    $("#tahunfilter").hide();
+    $("#bulanfilter").hide();
+
+});
+
+/*digunakan untuk menampilkan form tanggal, bulan dan tahun*/
+
+function prosesPeriode() {
+    var periode = $("[name='periode']").val();
+
+    if (periode == "tanggal") {
+        $("#btnproses").hide();
+        $("#tanggalfilter").show();
+        $("[name='valnilai']").val('tanggal');
+
+    } else if (periode == "bulan") {
+        $("#btnproses").hide();
+        $("[name='valnilai']").val('bulan');
+        $("#bulanfilter").show();
+
+    } else if (periode == "tahun") {
+        $("#btnproses").hide();
+        $("[name='valnilai']").val('tahun');
+        $("#tahunfilter").show();
+    }
+}
+
+/*digunakan untuk menytembunyikan form tanggal, bulan dan tahun*/
+
+function prosesReset() {
+    $("#btnproses").show();
+
+    $("#tanggalfilter").hide();
+    $("#tahunfilter").hide();
+    $("#bulanfilter").hide();
+
+    $("#periode").val('');
+    $("#tanggalawal").val('');
+    $("#tanggalakhir").val('');
+    $("#tahun1").val('');
+    $("#bulanawal").val('');
+    $("#bulanakhir").val('');
+    $("#tahun2").val('');
+
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>

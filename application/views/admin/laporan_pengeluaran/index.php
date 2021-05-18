@@ -35,6 +35,71 @@
     </div>
     <br>
 
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data pengeluaran donasi</h6>
+        </div>
+        <div class=" card-body border-bottom-primary">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-primary" style=" text-align: center; ">No</th>
+                            <th class="text-primary" style=" text-align: center; ">Penanggung Jawab</th>
+                            <th class="text-primary" style=" text-align: center; ">Tgl. Pengeluaran</th>
+                            <th class="text-primary" style=" text-align: center; ">Keterangan</th>
+                            <th class="text-primary" style=" text-align: center; ">Nominal</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($pengeluaran_donasi as $dt) : ?>
+                        <tr>
+                            <td style=" text-align: center;"><?= $no++ ?></td>
+                            <td style=" text-align: center;"><?= $dt->name ?></td>
+                            <td style=" text-align: center;">
+                                <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
+                            </td>
+
+                            <td style=" text-align: center;"><?= $dt->keterangan ?></td>
+                            <td style=" text-align: center; ">Rp
+                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
+
+
+                        </tr>
+
+                        <?php endforeach ?>
+
+                    </tbody>
+                    <thead>
+                        <?php
+                error_reporting(0);
+                foreach ($nominal_all as $total_pengeluaran) {
+                    $nominal_keluar += $total_pengeluaran->nominal;
+                }
+                $nominal = $nominal_keluar;
+                ?>
+                        <tr>
+                            <th colspan="4" scope="col" class="text-primary">Total Pengeluaran</th>
+                            <th scope="col" style=" text-align: center;">Rp.
+                                <?= number_format($nominal, 2, ',', '.'); ?></th>
+                            <!-- <th scope="col">&nbsp;</th> -->
+                        </tr>
+                    </thead>
+
+
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
     <!--Content -->
     <div class="content" id="tanggalfilter">
 

@@ -80,6 +80,81 @@ if (
             <span>Akun Pengurus</span></a>
     </li>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider mt-3">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Manajemen donasi
+    </div>
+
+    <li class="nav-item <?= activate_menu('transaksi_tunai') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_tunai') ?>">
+            <!-- <i class="fas fa-fw fa-balance-scale"></i> -->
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span>Pemasukan Transaksi Donasi Tunai</span>
+        </a>
+    </li>
+
+    <li class="nav-item <?= activate_menu('transaksi_non_tunai') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_non_tunai') ?>">
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span>Pemasukan Transaksi Donasi Transfer</span></a>
+    </li>
+
+    <li class="nav-item <?= activate_menu('pemasukan_non_donasi') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('admin/pemasukan_non_donasi') ?>">
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span>Pemasukan Non Donasi</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('pengeluaran_donasi') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/pengeluaran_donasi') ?>">
+            <i class="fas fa-fw fa-funnel-dollar"></i>
+            <span>Pengeluaran Keuangan</span></a>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider  mt-3">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Manajemen Laporan
+    </div>
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/laporan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pemasukan dan Pengeluaran Keuangan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pemasukan_keuangan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/laporan_pemasukan_keuangan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pemasukan Keuangan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pemasukan_nonkeuangan') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/laporan_pemasukan_nonkeuangan') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pemasukan Non Keuangan</span></a>
+    </li>
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('laporan_pengeluaran') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/laporan_pengeluaran') ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan Pengeluaran Keuangan</span></a>
+    </li>
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

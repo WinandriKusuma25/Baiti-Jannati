@@ -45,66 +45,61 @@
         </div>
         <div class=" card-body border-bottom-primary">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped text-center" id="dataTable" width="100%"
-                    cellspacing="0">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-primary">No</th>
-                            <th class="text-primary">Tanggal</th>
-                            <th class="text-primary">Jenis</th>
-                            <th class="text-primary">Nominal</th>
-                            <th class="text-primary">Keterangan</th>
-                            <th class="text-primary">Detail</th>
-
-
-
+                            <th class="text-primary" style=" text-align: center;">No</th>
+                            <th class="text-primary" style=" text-align: center;">Tanggal</th>
+                            <th class="text-primary" style=" text-align: center;">Jenis</th>
+                            <th class="text-primary" style=" text-align: center;">Keterangan</th>
+                            <th class="text-primary" style=" text-align: center;">Detail</th>
+                            <th class="text-primary" style=" text-align: center;" width="20%">Nominal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
                         foreach ($pemasukan_transfer as $j) : ?>
                         <tr>
-                            <td><?= $no++ ?></td>
-                            <!-- <td><?= $j->name ?></td>
-                            <td>--</td> -->
-                            <td> <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
+                            <td style=" text-align: center;"><?= $no++ ?></td>
+                            <td style=" text-align: center;">
+                                <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                             <td style="color : #1cc88a"><b>Pemasukan Non Tunai</b></td>
-                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                             <td style=" text-align: center;"><?= $j->keterangan ?></td>
-                            <!-- <td><?= $j->payment_type ?></td>
-
-                            <td><?= $j->bank ?></td> -->
-                            <td>Dari
+                            <td style=" text-align: center;">Dari
                                 <?= $j->name ?>, Transfer Bank <?= $j->bank ?>
                             </td>
-                        </tr>
-                        <?php endforeach ?>
-                        <?php
-                                foreach ($pemasukan_tunai as $dnk) : ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <!-- <td><?= $dnk->id_user ?></td>
-                            <td><?= $dnk->id_user_pengurus ?></td> -->
-                            <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
-                            <td style="color : #1cc88a"><b>Pemasukan Donasi Tunai</b></td>
-                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
-                            <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
-                            <td>Dari <?= $dnk->id_user ?>, Penerima
-                                <?= $dnk->id_user_pengurus ?>
+                            <td style=" text-align: center;">Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?>
                             </td>
                         </tr>
                         <?php endforeach ?>
+
+                        <?php
+                        foreach ($pemasukan_tunai as $dnk) : ?>
+                        <tr>
+                            <td style=" text-align: center;"><?= $no++ ?></td>
+                            <td style=" text-align: center;"> <?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?>
+                            </td>
+                            <td style="color : #1cc88a" style=" text-align: center;"><b>Pemasukan Donasi Tunai</b></td>
+                            <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
+                            <td style=" text-align: center;"> Dari <?= $dnk->id_user ?>, Penerima
+                                <?= $dnk->id_user_pengurus ?>
+                            </td>
+                            <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                        </tr>
+                        <?php endforeach ?>
+
                         <?php
                                 foreach ($pemasukan_non_donasi as $dnk) : ?>
                         <tr>
-                            <td><?= $no++ ?></td>
-                            <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->created_at)); ?></td>
-                            <td style="color : #1cc88a"><b>Pemasukan Non Donasi</b></td>
-                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                            <td style=" text-align: center;"><?= $no++ ?></td>
+                            <td style=" text-align: center;"> <?=  date('d-m-Y H:i:s', strtotime($dnk->created_at)); ?>
+                            </td>
+                            <td style="color : #1cc88a" style=" text-align: center;"><b>Pemasukan Non Donasi</b></td>
                             <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
-                            <td>Penanggung Jawab
+                            <td style=" text-align: center;"> Penanggung Jawab
                                 <?= $dnk->name ?>
                             </td>
+                            <td style=" text-align: center;">Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach ?>
                         <?php 
@@ -115,14 +110,12 @@
                                 <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
                             </td>
                             <td style="color : #e74a3b"><b>Pengeluaran Keuangan</b></td>
-                            <td style=" text-align: center; ">Rp
-                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
                             <td style=" text-align: center;"><?= $dt->keterangan ?></td>
                             <td>Penanggung Jawab
                                 <?= $dnk->name ?>
                             </td>
-
-
+                            <td style=" text-align: center; ">Rp
+                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
                             <?php endforeach ?>
 
 

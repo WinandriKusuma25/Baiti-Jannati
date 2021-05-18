@@ -25,11 +25,11 @@ class Laporan_pengeluaran extends CI_Controller
         $data['pengeluaran_donasi'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
         $data['nominal_all'] = $this->Pengeluarandonasi_model->nominalAll();
         $data['tahun'] = $this->Pengeluarandonasi_model->gettahun();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/laporan_pengeluaran/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/superadmin/header', $data);
+        $this->load->view('templates/superadmin/sidebar', $data);
+        $this->load->view('templates/superadmin/topbar', $data);
+        $this->load->view('superadmin/laporan_pengeluaran/index', $data);
+        $this->load->view('templates/superadmin/footer');
     }
 
     public function filter(){
@@ -52,7 +52,7 @@ class Laporan_pengeluaran extends CI_Controller
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->load_view('superadmin/laporan_pengeluaran/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 2) {
             
@@ -64,7 +64,7 @@ class Laporan_pengeluaran extends CI_Controller
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->load_view('superadmin/laporan_pengeluaran/laporan_pdf', $data);
 
         }elseif ($nilaifilter == 3) {
             
@@ -76,7 +76,7 @@ class Laporan_pengeluaran extends CI_Controller
             $this->pdf->set_option('isRemoteEnabled', true);
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Pengeluaran keuangan.pdf";
-            $this->pdf->load_view('admin/laporan_pengeluaran/laporan_pdf', $data);
+            $this->pdf->load_view('superadmin/laporan_pengeluaran/laporan_pdf', $data);
 
         }
     }        

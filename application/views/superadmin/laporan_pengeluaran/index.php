@@ -5,12 +5,10 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Laporan Pemasukan Non Keuangan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Laporan Pengeluaran Keuangan</h1>
         <small>
             <div class="text-muted"> Manajemen Laporan &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan"); ?>">Laporan Pemasukan
-                    Non
-                    Keuangan</a>
+                    href="<?php echo base_url("superadmin/laporan_pengeluaran"); ?>">Laporan Pengeluaran Keuangan</a>
             </div>
         </small>
     </div>
@@ -28,7 +26,7 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                             src="<?= base_url(); ?>assets/images/date.svg" alt="">
                     </div>
-                    <center> Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pemasukan Non Keuangan
+                    <center> Berikut Merupakan Halaman Manajemen Laporan pada bagian <b>Cetak Pengeluaran Keuangan
                             Donasi</b>
                     </center>
                 </div>
@@ -37,89 +35,70 @@
     </div>
     <br>
 
-
+    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data Pemasukan Donasi Non Keuangan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Berikut merupakan data pengeluaran donasi</h6>
         </div>
-        <p>
-
         <div class=" card-body border-bottom-primary">
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-primary" style=" text-align: center;">No</th>
-                            <th class="text-primary" style=" text-align: center;">Penerima</th>
-                            <th class="text-primary" style=" text-align: center;">Nama Donatur</th>
-                            <th class="text-primary" style=" text-align: center;">Tgl Donasi</th>
-                            <th class="text-primary" style=" text-align: center;">Jenis Donasi</th>
-                            <th class="text-primary">Kategori</th>
-                            <!-- <th class="text-primary" style=" text-align: center;">Nominal</th> -->
-                            <th class="text-primary">Jumlah</th>
-                            <th class="text-primary">Bukti</th>
-                            <th class="text-primary" style=" text-align: center;">Keterangan</th>
+                            <th class="text-primary" style=" text-align: center; ">No</th>
+                            <th class="text-primary" style=" text-align: center; ">Penanggung Jawab</th>
+                            <th class="text-primary" style=" text-align: center; ">Tgl. Pengeluaran</th>
+                            <th class="text-primary" style=" text-align: center; ">Keterangan</th>
+                            <th class="text-primary" style=" text-align: center; ">Nominal</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        foreach ($transaksi_non_keuangan as $dnk) : ?>
+                        foreach ($pengeluaran_donasi as $dt) : ?>
                         <tr>
                             <td style=" text-align: center;"><?= $no++ ?></td>
-                            <td style=" text-align: center;"><?= $dnk->id_user_pengurus?></td>
-                            <td style=" text-align: center;"><?= $dnk->id_user ?></td>
-                            <td style=" text-align: center;"><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?>
+                            <td style=" text-align: center;"><?= $dt->name ?></td>
+                            <td style=" text-align: center;">
+                                <?=  date('d-m-Y H:i:s', strtotime($dt->created_at)); ?></td>
                             </td>
-                            <td style=" text-align: center;"> <?= $dnk->jenis_donasi ?></td>
 
-
-                            <td><?= $dnk->nama_kategori ?></td>
-
-
-
-
-
-
-                            <?php if ($dnk->jumlah == 0) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Kosong</span>
-                            </td>
-                            <?php else : ?>
-                            <td><?= $dnk->jumlah ?>
-                            </td>
-                            <?php endif ?>
-
-
-                            <?php if ($dnk->image == null) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Tidak Perlu</span>
-                            </td>
-                            <?php else : ?>
-                            <td> <img src="<?= base_url('assets/images/donasi_non_keuangan/') . $dnk->image ?>"
-                                    class="img-thumbnail" width="50%">
-                            </td>
-                            <?php endif ?>
-
-
-                            <?php if ($dnk->keterangan == null) : ?>
-                            <td class="project-state">
-                                <span class="badge badge-danger">Kosong</span>
-                            </td>
-                            <?php else : ?>
-                            <td style=" text-align: center;"><?= $dnk->keterangan ?></td>
-                            <?php endif ?>
+                            <td style=" text-align: center;"><?= $dt->keterangan ?></td>
+                            <td style=" text-align: center; ">Rp
+                                <?= number_format($dt->nominal, 2, ',', '.'); ?></td>
 
 
                         </tr>
+
                         <?php endforeach ?>
+
                     </tbody>
+                    <thead>
+                        <?php
+                error_reporting(0);
+                foreach ($nominal_all as $total_pengeluaran) {
+                    $nominal_keluar += $total_pengeluaran->nominal;
+                }
+                $nominal = $nominal_keluar;
+                ?>
+                        <tr>
+                            <th colspan="4" scope="col" class="text-primary">Total Pengeluaran</th>
+                            <th scope="col" style=" text-align: center;">Rp.
+                                <?= number_format($nominal, 2, ',', '.'); ?></th>
+                            <!-- <th scope="col">&nbsp;</th> -->
+                        </tr>
+                    </thead>
+
+
                 </table>
+
+
+
+
             </div>
         </div>
     </div>
-
-
 
     <!--Content -->
     <div class="content" id="tanggalfilter">
@@ -132,8 +111,8 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tanggal</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
-                            method="POST" target='_blank'>
+                        <form action="<?php echo base_url("superadmin/laporan_pengeluaran/filter"); ?>" method="POST"
+                            target='_blank'>
                             <input type="hidden" name="nilaifilter" value="1">
                             <input name="valnilai" type="hidden">
                             <div class="form-group">
@@ -174,15 +153,15 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Bulan</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
-                            method="POST" target='_blank'>
+                        <form action="<?php echo base_url("superadmin/laporan_pengeluaran/filter"); ?>" method="POST"
+                            target='_blank'>
                             <input type="hidden" name="nilaifilter" value="2">
                             <input name="valnilai" type="hidden">
                             <div class="form-group">
                                 <label for="">Pilih Tahun</label>
                                 <select name="tahun1" required="" class="custom-select">
                                     <option value="" selected disabled>Pilih Tahun</option>
-                                    <?php foreach ($tahun_tunai as $th) : ?>
+                                    <?php foreach ($tahun as $th) : ?>
                                     <option value="<?php echo $th->tahun ?>">
                                         <?php echo $th->tahun ?>
                                     </option>
@@ -235,7 +214,7 @@
                             <button type="reset" name="reset" class="btn btn-dark "><i
                                     class="fas fa-sync-alt"></i>&nbsp;Reset</button>
                             <!-- <a href="<?php echo base_url("user/laporan"); ?>" class="btn btn-primary"> <i
-                                class="fas fa-arrow-left"></i>&nbsp;Kembali </a> -->
+                                          class="fas fa-arrow-left"></i>&nbsp;Kembali </a> -->
                         </form>
                     </div>
                 </div>
@@ -255,15 +234,15 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Filter Berdasarkan Tahun</h6>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url("admin/laporan_pemasukan_nonkeuangan/filter"); ?>"
-                            method="POST" target='_blank'>
+                        <form action="<?php echo base_url("superadmin/laporan_pengeluaran/filter"); ?>" method="POST"
+                            target='_blank'>
                             <input name="valnilai" type="hidden">
                             <input type="hidden" name="nilaifilter" value="3">
                             <div class="form-group">
                                 <label for="">Pilih Tahun</label>
                                 <select name="tahun2" required="" class="custom-select">
                                     <option value="" selected disabled>Pilih Tahun</option>
-                                    <?php foreach ($tahun_tunai as $th) : ?>
+                                    <?php foreach ($tahun as $th) : ?>
                                     <option value="<?php echo $th->tahun ?>">
                                         <?php echo $th->tahun ?>
                                     </option>
@@ -288,12 +267,60 @@
 
 
     </section>
-    <br>
-
-
-
-
-    <!-- /.container-fluid -->
+    <!-- section -->
 </div>
-<!-- End of Main Content -->
-</div>
+<p>
+    <!-- /.content-wrapper -->
+    </div>
+    <script type="text/javascript">
+    /*digunakan untuk menyembunyikan form tanggal, bulan dan tahun saat halaman di load */
+    $(document).ready(function() {
+
+        $("#tanggalfilter").hide();
+        $("#tahunfilter").hide();
+        $("#bulanfilter").hide();
+
+    });
+
+    /*digunakan untuk menampilkan form tanggal, bulan dan tahun*/
+
+    function prosesPeriode() {
+        var periode = $("[name='periode']").val();
+
+        if (periode == "tanggal") {
+            $("#btnproses").hide();
+            $("#tanggalfilter").show();
+            $("[name='valnilai']").val('tanggal');
+
+        } else if (periode == "bulan") {
+            $("#btnproses").hide();
+            $("[name='valnilai']").val('bulan');
+            $("#bulanfilter").show();
+
+        } else if (periode == "tahun") {
+            $("#btnproses").hide();
+            $("[name='valnilai']").val('tahun');
+            $("#tahunfilter").show();
+        }
+    }
+
+    /*digunakan untuk menytembunyikan form tanggal, bulan dan tahun*/
+
+    function prosesReset() {
+        $("#btnproses").show();
+
+        $("#tanggalfilter").hide();
+        $("#tahunfilter").hide();
+        $("#bulanfilter").hide();
+
+        $("#periode").val('');
+        $("#tanggalawal").val('');
+        $("#tanggalakhir").val('');
+        $("#tahun1").val('');
+        $("#bulanawal").val('');
+        $("#bulanakhir").val('');
+        $("#tahun2").val('');
+
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>

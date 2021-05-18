@@ -48,15 +48,11 @@
                     <thead>
                         <tr>
                             <th class="text-primary">No</th>
-                            <!-- <th class="text-primary">Nama Donatur </th>
-                            <th class="text-primary">Penanggung Jawab</th> -->
                             <th class="text-primary">Tanggal</th>
                             <th class="text-primary">Jenis</th>
-                            <th class="text-primary">Nominal</th>
+                            <th class="text-primary">Keterangan</th>
                             <th class="text-primary">Detail</th>
-
-                            <!-- <th class="text-primary">Keterangan</th> -->
-                            <!-- <th class="text-primary">Aksi</th> -->
+                            <th class="text-primary" width="20%">Nominal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,45 +60,39 @@
                         foreach ($pemasukan_transfer as $j) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <!-- <td><?= $j->name ?></td>
-                            <td>--</td> -->
                             <td> <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                             <td style="color : #4169E1"><b>Pemasukan Non Tunai</b></td>
-                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
-                            <!-- <td><?= $j->payment_type ?></td>
-
-                            <td><?= $j->bank ?></td> -->
+                            <td><?= $j->keterangan ?></td>
                             <td>Dari
                                 <?= $j->name ?>, Transfer Bank <?= $j->bank ?>
                             </td>
+                            <td>Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach ?>
                         <?php
                                 foreach ($pemasukan_tunai as $dnk) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <!-- <td><?= $dnk->id_user ?></td>
-                            <td><?= $dnk->id_user_pengurus ?></td> -->
                             <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
                             <td style="color : #4169E1"><b>Pemasukan Donasi Tunai</b></td>
-                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                            <td><?= $dnk->keterangan ?></td>
                             <td>Dari <?= $dnk->id_user ?>, Penanggung Jawab
                                 <?= $dnk->id_user_pengurus ?>
                             </td>
+                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach ?>
                         <?php
                                 foreach ($pemasukan_non_donasi as $dnk) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <!-- <td></td>
-                            <td><?= $dnk->name ?></td> -->
                             <td> <?=  date('d-m-Y H:i:s', strtotime($dnk->created_at)); ?></td>
                             <td style="color : #4169E1"><b>Pemasukan Non Donasi</b></td>
-                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
+                            <td><?= $dnk->keterangan ?></td>
                             <td>Penanggung Jawab
                                 <?= $dnk->name ?>
                             </td>
+                            <td>Rp <?= number_format($dnk->nominal, 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach ?>
 
@@ -123,7 +113,7 @@
                     $nominal = $nominal_non_masuk + $nominal_masuk + $nominal_masuk_tunai ;
                     ?>
                     <tr>
-                        <th colspan="4" scope="col">Total Pemasukan Keuangan
+                        <th colspan="5" scope="col">Total Pemasukan Keuangan
                         </th>
                         <th scope="col">Rp. <?= number_format($nominal, 2, ',', '.'); ?></th>
                         <!-- <th scope=" col">&nbsp;</th> -->
