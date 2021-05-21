@@ -89,7 +89,7 @@ if (
     </div>
 
     <li class="nav-item <?= activate_menu('transaksi_tunai') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_tunai') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/transaksi_tunai') ?>">
             <!-- <i class="fas fa-fw fa-balance-scale"></i> -->
             <i class="fas fa-fw fa-hand-holding-heart"></i>
             <span>Pemasukan Transaksi Donasi Tunai</span>
@@ -97,20 +97,20 @@ if (
     </li>
 
     <li class="nav-item <?= activate_menu('transaksi_non_tunai') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_non_tunai') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/transaksi_non_tunai') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
             <span>Pemasukan Transaksi Donasi Transfer</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('pemasukan_non_donasi') ?>">
-        <a class="nav-link pb-0" href="<?= base_url('admin/pemasukan_non_donasi') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('superadmin/pemasukan_non_donasi') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
             <span>Pemasukan Non Donasi</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= activate_menu('pengeluaran_donasi') ?>">
-        <a class="nav-link pb-0" href=" <?= base_url('admin/pengeluaran_donasi') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('superadmin/pengeluaran_donasi') ?>">
             <i class="fas fa-fw fa-funnel-dollar"></i>
             <span>Pengeluaran Keuangan</span></a>
     </li>
