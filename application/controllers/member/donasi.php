@@ -135,20 +135,38 @@ class Donasi extends CI_Controller
 
         $keterangan = $this->input->post('keterangan');
         $nama = $this->session->userdata('id_user');
-        $data = [
-            'order_id' => $result['order_id'],
-            'gross_amount' => $result['gross_amount'],
-            'payment_type' => $result['payment_type'],
-            'transaction_time' => $result['transaction_time'],
-            'bank' => $result['va_numbers'][0]['bank'],
-            'va_number' => $result['va_numbers'][0]['va_number'],
-            'pdf_url' => $result['pdf_url'],
-            'status_code' => $result['status_code'],
-            'bill_key' => $result['bill_key'],
-            'biller_code' => $result['biller_code'],
-            'keterangan' => $keterangan,
-            'id_user' => $nama
-        ];
+        if ($result['payment_type'] == 'echannel'){
+            $data = [
+                'order_id' => $result['order_id'],
+                'gross_amount' => $result['gross_amount'],
+                'payment_type' => $result['payment_type'],
+                'transaction_time' => $result['transaction_time'],
+                // 'bank' => $result['va_numbers'][0]['bank'],
+                // 'va_number' => $result['va_numbers'][0]['va_number'],
+                'pdf_url' => $result['pdf_url'],
+                'status_code' => $result['status_code'],
+                'bill_key' => $result['bill_key'],
+                'biller_code' => $result['biller_code'],
+                'keterangan' => $keterangan,
+                'id_user' => $nama
+            ];
+        }else{
+            $data = [
+                'order_id' => $result['order_id'],
+                'gross_amount' => $result['gross_amount'],
+                'payment_type' => $result['payment_type'],
+                'transaction_time' => $result['transaction_time'],
+                'bank' => $result['va_numbers'][0]['bank'],
+                'va_number' => $result['va_numbers'][0]['va_number'],
+                'pdf_url' => $result['pdf_url'],
+                'status_code' => $result['status_code'],
+                // 'bill_key' => $result['bill_key'],
+                // 'biller_code' => $result['biller_code'],
+                'keterangan' => $keterangan,
+                'id_user' => $nama
+            ];
+        }
+       
         $simpan = $this->db->insert('transaksi_midtrans', $data);
         if ($simpan) {
             $this->session->set_flashdata(

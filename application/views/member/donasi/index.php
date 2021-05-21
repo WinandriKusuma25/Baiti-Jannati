@@ -1,3 +1,6 @@
+<?php
+error_reporting(E_ALL);
+?>
 <head>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SB-Mid-client-N-Aj7Rb36USfRJcC"></script>
