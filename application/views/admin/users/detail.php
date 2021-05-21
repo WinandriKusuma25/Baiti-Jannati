@@ -50,8 +50,6 @@
                     </h5>
                     <p class="card-text "><small
                             class="text-muted">Pembuatan,&nbsp;<?= date('d  F Y H:i:s', ($usr->date_created)); ?></small>
-                    <p class="card-text "><small class="text-muted">Terakhir
-                            login,&nbsp; <?=  date('d-m-Y H:i:s', strtotime($usr->last_login)); ?></small>
                         <?php endforeach ?>
 
 

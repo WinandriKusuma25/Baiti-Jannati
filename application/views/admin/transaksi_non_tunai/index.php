@@ -9,7 +9,7 @@
         <h1 class="h3 mb-0 text-gray-800">Transaksi Transfer</h1>
         <small>
             <div class="text-muted"> Manajemen Donasi &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/riwayat_donasi"); ?>">Transaksi Transfer</a>
+                    href="<?php echo base_url("admin/transaksi_non_tunai"); ?>">Transaksi Transfer</a>
             </div>
         </small>
     </div>
@@ -159,7 +159,7 @@
                             <th class="text-primary" style=" text-align: center;">Bank</th>
                             <th class="text-primary" style=" text-align: center;">Va Number</th>
                             <th class="text-primary" style=" text-align: center;">Status</th>
-                            <th class="text-primary" style=" text-align: center;">Detail</th>
+                            <th class="text-primary" style=" text-align: center;" width="15%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -197,6 +197,13 @@
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
+
+                                <a href="#modalDelete" data-toggle="modal"
+                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_non_tunai/hapus/' . $j->order_id) ?>')"
+                                    class='btn btn-circle btn-danger'>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+
                             </td>
                         </tr>
                         <?php endforeach ?>

@@ -178,7 +178,7 @@
                                 <a class='btn btn-circle btn-warning'
                                     href='<?= base_url() . 'admin/transaksi_tunai/editDonatur/' . $dnk->id_donasi ?>'
                                     class='btn btn-warning'>
-                                    <i class="fas fa-pen" aria-hidden="true"></i>
+                                    <i class="fas fa-edit" aria-hidden="true"></i>
                                 </a>
 
                                 <a class='btn btn-circle btn-success'

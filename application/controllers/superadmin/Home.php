@@ -12,6 +12,10 @@ class Home extends CI_Controller
         $this->load->model('admin/M_log');
         $this->load->helper('file');
         $this->load->helper('download');
+        $this->load->model('admin/Pengeluarandonasi_model');
+        $this->load->model('admin/Pemasukannondonasi_model');
+        $this->load->model('admin/Midtrans_model');
+        $this->load->model('admin/Transaksitunai_model');
         $this->load->library('zip');
         is_logged_in();
     }
@@ -21,6 +25,12 @@ class Home extends CI_Controller
         $data['title'] = 'Baiti Jannati | Beranda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['log'] = $this->M_log->getAll();
+            //menghitung sisa saldo
+        $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
+        $data['transaksi_midtrans_hitung'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
+        $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
+        $data['pemasukan_non_donasi_hitung'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
+        $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiKeuangan();
         $this->load->view('templates/superadmin/header', $data);
         $this->load->view('templates/superadmin/sidebar', $data);
         $this->load->view('templates/superadmin/topbar', $data);

@@ -185,4 +185,17 @@ class Midtrans_model extends CI_Model
     }
 
     
+    public function hapusTransaksiNonTunai($order_id)
+    {
+        $this->db->where('order_id', $order_id);
+        if (
+            $this->db->delete('transaksi_midtrans')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
 }
