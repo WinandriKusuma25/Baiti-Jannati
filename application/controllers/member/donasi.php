@@ -141,8 +141,6 @@ class Donasi extends CI_Controller
                 'gross_amount' => $result['gross_amount'],
                 'payment_type' => $result['payment_type'],
                 'transaction_time' => $result['transaction_time'],
-                // 'bank' => $result['va_numbers'][0]['bank'],
-                // 'va_number' => $result['va_numbers'][0]['va_number'],
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
                 'bill_key' => $result['bill_key'],
@@ -150,7 +148,20 @@ class Donasi extends CI_Controller
                 'keterangan' => $keterangan,
                 'id_user' => $nama
             ];
-        }else{
+        }elseif ($result['payment_type'] == 'cstore'){
+            $data = [
+                'order_id' => $result['order_id'],
+                'gross_amount' => $result['gross_amount'],
+                'payment_type' => $result['payment_type'],
+                'transaction_time' => $result['transaction_time'],
+                'payment_code' => $result['payment_code'],
+                'pdf_url' => $result['pdf_url'],
+                'status_code' => $result['status_code'],
+                'keterangan' => $keterangan,
+                'id_user' => $nama
+            ];
+        }
+        else{
             $data = [
                 'order_id' => $result['order_id'],
                 'gross_amount' => $result['gross_amount'],
@@ -160,8 +171,6 @@ class Donasi extends CI_Controller
                 'va_number' => $result['va_numbers'][0]['va_number'],
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
-                // 'bill_key' => $result['bill_key'],
-                // 'biller_code' => $result['biller_code'],
                 'keterangan' => $keterangan,
                 'id_user' => $nama
             ];

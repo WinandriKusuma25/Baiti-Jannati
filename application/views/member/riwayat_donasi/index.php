@@ -52,8 +52,8 @@ error_reporting(E_ALL);
                             <th class="text-primary">Nominal</th>
                             <th class="text-primary">Tipe Payment</th>
                             <th class="text-primary">Tgl. Transaksi</th>
-                            <th class="text-primary">Bank</th>
-                            <th class="text-primary">Va Number</th>
+                            <!-- <th class="text-primary">Bank</th>
+                            <th class="text-primary">Va Number</th> -->
                             <th class="text-primary">Status</th>
                             <th class="text-primary">Detail</th>
                         </tr>
@@ -70,8 +70,8 @@ error_reporting(E_ALL);
                             <!-- <td><?= $j->transaction_time ?></td> -->
                             <td><?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
                             <!-- <?php echo format_indo(date('Y-m-d H:i:s'));?> -->
-                            <td><?= $j->bank ?></td>
-                            <td><?= $j->va_number ?></td>
+                            <!-- <td><?= $j->bank ?></td>
+                            <td><?= $j->va_number ?></td> -->
                             <?php if ($j->status_code == "200") : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Sukses</span>

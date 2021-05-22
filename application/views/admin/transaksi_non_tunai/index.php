@@ -156,10 +156,8 @@
                             <th class="text-primary" style=" text-align: center;">Nominal</th>
                             <th class="text-primary" style=" text-align: center;">Tipe Payment</th>
                             <th class="text-primary" style=" text-align: center;">Tgl. Transaksi</th>
-                            <th class="text-primary" style=" text-align: center;">Bank</th>
-                            <th class="text-primary" style=" text-align: center;">Va Number</th>
                             <th class="text-primary" style=" text-align: center;">Status</th>
-                            <th class="text-primary" style=" text-align: center;" width="15%">Aksi</th>
+                            <th class="text-primary" style=" text-align: center;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -173,8 +171,6 @@
                             <td><?= $j->payment_type ?></td>
                             <td>
                                 <?=  date('d-m-Y H:i:s', strtotime($j->transaction_time)); ?></td>
-                            <td><?= $j->bank ?></td>
-                            <td><?= $j->va_number ?></td>
                             <?php if ($j->status_code == "200") : ?>
                             <td class="project-state">
                                 <span class="badge badge-success">Sukses</span>
@@ -191,12 +187,12 @@
 
 
 
-                            <td>
-                                <a class=' btn-circle btn-primary'
+                            <td style=" text-align: center;">
+                                <!-- <a class=' btn-circle btn-primary'
                                     href='<?= base_url() . 'admin/transaksi_non_tunai/detail/' . $j->order_id ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
-                                </a>
+                                </a> -->
 
                                 <a href="#modalDelete" data-toggle="modal"
                                     onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_non_tunai/hapus/' . $j->order_id) ?>')"
@@ -240,32 +236,32 @@
 
 
                         <tr>
-                            <th colspan="9" style="color : #4169E1">Rekap pemasukan Keuangan Donasi Keuangan Transfer
+                            <th colspan="8" style="color : #4169E1">Rekap pemasukan Keuangan Donasi Keuangan Transfer
                         </tr>
 
                         <tr>
-                            <th colspan="7" style="color : #4169E1">Pemasukan Hari ini
+                            <th colspan="6" style="color : #4169E1">Pemasukan Hari ini
                             </th>
                             <th scope="col" colspan="2" style="color: #1cc88a;">Rp.
                                 <?= number_format($total_hari, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="7" style="color : #4169E1">Pemasukan Bulan ini
+                            <th colspan="6" style="color : #4169E1">Pemasukan Bulan ini
                             </th>
                             <th scope="col" colspan="2" style="color:#1cc88a">Rp.
                                 <?= number_format($total_bulan, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="7" style="color : #4169E1">Pemasukan Tahun ini
+                            <th colspan="6" style="color : #4169E1">Pemasukan Tahun ini
                             </th>
                             <th scope="col" colspan="2" style="color:#1cc88a">Rp.
                                 <?= number_format($total_tahun, 2, ',', '.'); ?>
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="7" style="color : #4169E1">Total pemasukan
+                            <th colspan="6" style="color : #4169E1">Total pemasukan
                             </th>
                             <th scope="col" colspan="2" style="color:#1cc88a"> Rp.
                                 <?= number_format($na->gross_amount, 2, ',', '.'); ?>

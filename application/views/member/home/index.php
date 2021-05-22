@@ -11,7 +11,7 @@
 
 
     <div class="row  justify-content-center">
-        <div class="col-8">
+        <div class="col">
 
             <!-- Illustrations -->
             <div class="card shadow mb-4 border-bottom-primary">
