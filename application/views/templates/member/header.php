@@ -1,13 +1,14 @@
 <link rel="icon" href="<?php echo base_url() . 'assets/images/logo.png' ?>">
 <!DOCTYPE html>
+<html lang="en">
 
 
 <head>
-    <!-- <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content=""> -->
+    <meta name="author" content="">
 
     <title><?= $title ?></title>
 
@@ -22,8 +23,10 @@
 
     <!-- Custom styles for this page -->
     <link href="<?= base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 </head>
+
 
 <body id="page-top">
 

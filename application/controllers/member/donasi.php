@@ -13,6 +13,7 @@ class Donasi extends CI_Controller
         $this->load->helper('url');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
 
     public function index()
@@ -134,7 +135,7 @@ class Donasi extends CI_Controller
         $result = json_decode($this->input->post('result_data'), true);
 
         $keterangan = $this->input->post('keterangan');
-        $nama = $this->session->userdata('id_user');
+        $nama = $this->session->userdata('name');
         if ($result['payment_type'] == 'echannel'){
             $data = [
                 'order_id' => $result['order_id'],
@@ -146,7 +147,7 @@ class Donasi extends CI_Controller
                 'bill_key' => $result['bill_key'],
                 'biller_code' => $result['biller_code'],
                 'keterangan' => $keterangan,
-                'id_user' => $nama
+                'name' => $nama
             ];
         }elseif ($result['payment_type'] == 'cstore'){
             $data = [
@@ -158,7 +159,7 @@ class Donasi extends CI_Controller
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
                 'keterangan' => $keterangan,
-                'id_user' => $nama
+                'name' => $nama
             ];
         }
         else{
@@ -172,7 +173,7 @@ class Donasi extends CI_Controller
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
                 'keterangan' => $keterangan,
-                'id_user' => $nama
+                'name' => $nama
             ];
         }
        

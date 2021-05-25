@@ -261,6 +261,36 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Area Chart -->
+        <div class="col-xl-6 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header bg-primary py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-white">Grafik Pemasukan Keuangan Donasi Tunai Perbulan pada
+                        Tahun
+                        <?= date('Y'); ?>
+                    </h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                                <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class=""></div>
+                            </div>
+                        </div>
+                        <canvas id="myAreaChart4" width="669" height="450" class="chartjs-render-monitor"
+                            style="display: block; width: 669px; height: 320px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -785,6 +815,90 @@ var myChart = new Chart(ctx, {
             data: [
                 <?php
                         foreach ($chart_transfer as $value) {
+                            echo "'" . $value['revenue'] . "', ";
+                        }
+                        ?>
+            ],
+        }],
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                time: {
+                    unit: 'date'
+                },
+                gridLines: {
+                    display: true,
+                    drawBorder: true
+                },
+                ticks: {
+                    maxTicksLimit: 7
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    maxTicksLimit: 5,
+                    padding: 10,
+                },
+                gridLines: {
+                    color: "rgb(234, 236, 244)",
+                    zeroLineColor: "rgb(234, 236, 244)",
+                    drawBorder: false
+                }
+            }],
+        },
+    },
+    legend: {
+        display: true
+    },
+    tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        titleMarginBottom: 10,
+        titleFontColor: '#6e707e',
+        titleFontSize: 14,
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        intersect: false,
+        caretPadding: 10,
+    }
+});
+</script>
+
+<!-- Pemasukan Tunai -->
+<script>
+var ctx = document.getElementById('myAreaChart4').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: [
+            <?php foreach ($month_tunai as $m) :
+                        echo "'" . substr($m['month'], 0, 3) . "', "; ?>
+            <?php endforeach ?>
+
+
+        ],
+
+        datasets: [{
+            label: "Pemasukan Donasi Tunai",
+            lineTension: 0.3,
+            backgroundColor: "rgba(78, 115, 223, 0.05)",
+            borderColor: "rgba(78, 115, 223, 1)",
+            pointRadius: 3,
+            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+            pointBorderColor: "rgba(78, 115, 223, 1)",
+            pointHoverRadius: 3,
+            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+            pointHitRadius: 10,
+            pointBorderWidth: 2,
+            data: [
+                <?php
+                        foreach ($chart_tunai as $value) {
                             echo "'" . $value['revenue'] . "', ";
                         }
                         ?>

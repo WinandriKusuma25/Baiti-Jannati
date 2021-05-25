@@ -124,6 +124,10 @@ class Transaksi_tunai extends CI_Controller
         $data['transaksi_tunai'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiOne($id_donasi);
         $data['users'] = $this->User_model->tampilUserSaja();
 
+        $this->form_validation->set_rules('id_user', 'Nama Donatur', 'required|trim');
+
+        
+
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Baiti Jannati | Edit Donatur';
             $this->load->view('templates/header', $data);

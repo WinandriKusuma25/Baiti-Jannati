@@ -167,7 +167,17 @@
                             <td><?= $dnk->id_user ?></td>
                             <td><?= $dnk->email ?></td>
                             <!-- <td><?= date('d F Y', strtotime($dnk->tgl_donasi)); ?></td> -->
-                            <td><?=  date('d-m-Y H:i:s', strtotime($dnk->tgl_donasi)); ?></td>
+                            <td><?php 
+
+                                $bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+
+                                $angka_bulan = date('m', strtotime( $dnk->tgl_donasi )) - 1;
+                                $nama_bulan  = $bulan[ intval( $angka_bulan ) ];
+
+                                echo date('d', strtotime($dnk->tgl_donasi )) . $nama_bulan . date('Y H.i A', strtotime($dnk->tgl_donasi ))
+                                //date('d F Y H:i:s', strtotime($dnk->tgl_donasi)); ?>
+                            </td>
                             <td>
                                 <a class='btn btn-circle btn-primary'
                                     href='<?= base_url() . 'admin/transaksi_tunai/detail/' . $dnk->id_donasi ?>'

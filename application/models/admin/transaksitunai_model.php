@@ -158,7 +158,9 @@ class Transaksitunai_model extends CI_Model
     public function showDonasiTransaksiTunaiOne($id_donasi)
     {
 
-        $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus, user.email');
+        // $this->db->select('transaksi_donasi_tunai.*, user.name as id_user, user2.name as id_user_pengurus, user.email');
+        $this->db->select('transaksi_donasi_tunai.*, user.name, user.id_user, user2.name as id_user_pengurus, user.email');
+        // $this->db->select('transaksi_donasi_tunai.*, user.*');
         $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->order_by('id_donasi', 'DESC');
@@ -166,6 +168,15 @@ class Transaksitunai_model extends CI_Model
         return $this->db->get('transaksi_donasi_tunai')->result();
     }
 
+
+    public function ubahDonatur(){
+        $data = [
+            'id_donasi' => $this->input->post('id_donasi', true),
+            'id_user' => $this->input->post('id_user', true),
+        ];
+        $this->db->where('id_donasi', $this->input->post('id_donasi'));
+        $this->db->update('transaksi_donasi_tunai', $data);   
+    }
 
 
     // public function getDonasiTransaksiTunai($id_detail_donasi)
@@ -422,26 +433,6 @@ class Transaksitunai_model extends CI_Model
         return count($this->db->get('transaksi_donasi_tunai')->result_array());
     }
 
-    public function getMonth()
-    {
-        $this->db->select('MONTHNAME(tgl_donasi) as month');
-        $this->db->from('transaksi_donasi_tunai');
-        $this->db->group_by('tgl_donasi');
-        $this->db->order_by('id_pemasukan', 'DESC');
-        return $this->db->get()->result_array();
-    }
-
-    public function getStatistics()
-    {
-        $this->db->select('SUM(IF(DAY(tgl_donasi)=(DAY(CURRENT_DATE()) -1), nominal, 0)) as lastDay,
-        SUM(IF(DAY(tgl_donasi)=DAY(CURRENT_DATE()), nominal, 0)) as daily, 
-        SUM(IF(MONTH(tgl_donasi)=(MONTH(CURRENT_DATE()) -1), nominal, 0)) as lastMonth,
-        SUM(IF(MONTH(tgl_donasi)=MONTH(CURRENT_DATE()), nominal, 0)) as monthly, 
-            COUNT(id_pemasukan) amount, SUM(nominal) nominal');
-        $this->db->from('pemasukan_nontransaksi_donasi_tunai_donasi');
-        return $this->db->get()->row_array();
-    }
-
     public function nominalTerbesar()
     {
 
@@ -465,6 +456,35 @@ class Transaksitunai_model extends CI_Model
 
         // parent
         $this->db->where('id_donasi', $id_donasi)->delete('transaksi_donasi_tunai');
+    }
+
+    public function getDateforChart()
+    {
+        $this->db->select('MONTHNAME(tgl_donasi) as month, 
+        SUM(IF(MONTH(tgl_donasi)=MONTH(tgl_donasi) , nominal, 0)) as revenue');
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*,');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
+
+        $this->db->group_by('tgl_donasi');
+        $this->db->order_by('tgl_donasi', 'DESC');
+        $this->db->where('jenis_donasi', 'keuangan');
+        return $this->db->get('transaksi_donasi_tunai')->result_array();
+    }
+
+    public function getMonth()
+    {
+     
+        $this->db->select('transaksi_donasi_tunai.*,  user.name as id_user, user2.name as id_user_pengurus, detail_donasi_tunai.*,');
+           $this->db->select('MONTHNAME(tgl_donasi) as month');
+        $this->db->join('user', 'transaksi_donasi_tunai.id_user = user.id_user');
+        $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
+        $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
+        $this->db->group_by('tgl_donasi');
+        $this->db->order_by('tgl_donasi', 'DSC');
+        $this->db->where('jenis_donasi', 'keuangan');
+        return $this->db->get('transaksi_donasi_tunai')->result_array();
     }
 
 

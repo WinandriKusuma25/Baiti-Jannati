@@ -29,18 +29,13 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Donatur</h6>
                 </div>
 
-                <?php foreach ($transaksi_tunai as $ad) : ?>
+                <?php foreach ($transaksi_tunai as $ad) : 
+                    
+                    // print_r( $ad );    
+                ?>
                 <div class="card-body border-bottom-primary">
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="id_user" name="id_donasi" value="<?= $ad->id_donasi; ?>">
-
-
-
-
-                        <?php foreach ($users as $p) : ?>
-
-                        <?php endforeach ?>
-
                         <div class="form-group">
 
                             <label class="" for="pengurus">Nama Donatur</label>
@@ -50,7 +45,8 @@
                                     <option value="" selected disabled></option>
                                     <?php foreach ($users as $j) : ?>
                                     <option value="<?= $j->id_user ?>"
-                                        <?= $j->id_user == $p->id_user ? "selected" : null ?>><?= $j->name ?> |
+                                        <?= $j->id_user == $ad->id_user ? 'selected="selected"' : null ?>>
+                                        <?= $j->name ?> |
                                         <?= $j->email ?>
                                     </option>
                                     <?php endforeach ?>

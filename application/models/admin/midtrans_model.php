@@ -134,6 +134,9 @@ class Midtrans_model extends CI_Model
         $this->db->from('transaksi_midtrans');
         $this->db->group_by('transaction_time');
         $this->db->order_by('transaction_time', 'DESC');
+        $this->db->where('status_code', '200');
+
+
         return $this->db->get()->result_array();
     }
 
@@ -143,19 +146,20 @@ class Midtrans_model extends CI_Model
         $this->db->from('transaksi_midtrans');
         $this->db->group_by('transaction_time');
         $this->db->order_by('order_id', 'DESC');
+        $this->db->where('status_code', '200');
         return $this->db->get()->result_array();
     }
 
-    public function getStatistics()
-    {
-        $this->db->select('SUM(IF(DAY(transaction_time)=(DAY(CURRENT_DATE()) -1), gross_amount, 0)) as lastDay,
-        SUM(IF(DAY(transaction_time)=DAY(CURRENT_DATE()), gross_amount, 0)) as daily, 
-        SUM(IF(MONTH(transaction_time)=(MONTH(CURRENT_DATE()) -1), gross_amount, 0)) as lastMonth,
-        SUM(IF(MONTH(transaction_time)=MONTH(CURRENT_DATE()), gross_amount, 0)) as monthly, 
-            COUNT(order_id) amount, SUM(gross_amount) gross_amount');
-        $this->db->from('transaksi_midtrans');
-        return $this->db->get()->row_array();
-    }
+    // public function getStatistics()
+    // {
+    //     $this->db->select('SUM(IF(DAY(transaction_time)=(DAY(CURRENT_DATE()) -1), gross_amount, 0)) as lastDay,
+    //     SUM(IF(DAY(transaction_time)=DAY(CURRENT_DATE()), gross_amount, 0)) as daily, 
+    //     SUM(IF(MONTH(transaction_time)=(MONTH(CURRENT_DATE()) -1), gross_amount, 0)) as lastMonth,
+    //     SUM(IF(MONTH(transaction_time)=MONTH(CURRENT_DATE()), gross_amount, 0)) as monthly, 
+    //         COUNT(order_id) amount, SUM(gross_amount) gross_amount');
+    //     $this->db->from('transaksi_midtrans');
+    //     return $this->db->get()->row_array();
+    // }
 
     public function gettahun(){
         $query = $this->db->query("SELECT YEAR(transaction_time) AS tahun FROM 

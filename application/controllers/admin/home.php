@@ -36,10 +36,14 @@ class Home extends CI_Controller
         $data['chart'] = $this->Pengeluarandonasi_model->getDateforChart();
         $data['month'] = $this->Pengeluarandonasi_model->getMonth();
 
-         //chart Pemasukan Non Donasi
-         $data['statistics_transfer'] = $this->Midtrans_model->getStatistics();
+         //chart Pemasukan Transfer
+        //  $data['statistics_transfer'] = $this->Midtrans_model->getStatistics();
          $data['chart_transfer'] = $this->Midtrans_model->getDateforChart();
          $data['month_transfer'] = $this->Midtrans_model->getMonth();
+
+        //chart Pemasukan Tunai
+        $data['chart_tunai'] = $this->Transaksitunai_model->getDateforChart();
+        $data['month_tunai'] = $this->Transaksitunai_model->getMonth();
 
         $data['pengeluaran_donasi_limit'] = $this->Pengeluarandonasi_model->showPengeluaranDonasiLimit();
         $data['pemasukan_non_donasi_limit'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasiLimit();

@@ -42,8 +42,9 @@
 
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script> -->
 <script src="<?= base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -65,6 +66,21 @@ $('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();
     $(this).next('.custom-file-label').addClass("selected").html(fileName);
 });
+
+
+
+// $(document).ready(function() {
+//     var table = $('#data2').DataTable({
+//         responsive: true
+//     });
+// });
+
+// $('#dataTable').DataTable({
+//     responsive: true,
+//     column: [
+//         null, null, null, null
+//     ]
+// });
 </script>
 
 

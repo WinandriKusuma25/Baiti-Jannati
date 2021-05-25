@@ -68,10 +68,10 @@
                                                 </div>
 
                                                 <button type="submit" name="submit"
-                                                    class="btn btn-primary rounded-pill"><i
+                                                    class="btn-md btn-primary rounded-pill" class="col sm-4"><i
                                                         class="fa fa-download"></i>&nbsp;Unduh</button>
                                                 <button type="reset" name="reset"
-                                                    class="btn btn-danger rounded-pill "><i
+                                                    class="btn-md btn-danger rounded-pill "><i
                                                         class="fas fa-sync-alt"></i>&nbsp;Reset</button>
                                             </form>
                                         </div>
