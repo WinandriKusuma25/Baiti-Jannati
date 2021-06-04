@@ -31,34 +31,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-1 py-3 mt-lg-5 wow fadeInUp">
-                    <h3 class="mb-4 text-primary">Sejarah Baiti Jannati</h3>
-                    <hr>
-                    <div class="text-muted">
-                        <p class="mb-4" align="justify"> <?php 
+
+
+
+                    <p class="mb-4" align="justify"> <?php 
                         foreach ($pengaturan as $ad) : ?>
-                            <?php echo word_limiter($ad->sejarah,50 ); ?>
+                    <div class="img-place img-thumbnail  shadow wow zoomIn">
+                        <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>  ">
+
 
                         </p>
-                        <a href="<?= base_url('profile') ?>" class="btn btn-primary rounded-pill">
-                            <i class="fas fa-eye"></i> Baca
-                            Selengkapnya
-                        </a>
+
                     </div>
                 </div>
                 <div class="col-lg-5 py-3">
-                    <div class="img-place img-thumbnail  shadow wow zoomIn">
-                        <img src="<?= base_url('assets/images/pengaturan/') . $ad->foto ?>  ">
+                    <center>
+                        <h3 class="mb-4 text-primary">Sejarah Baiti Jannati</h3>
+                        <hr>
+                    </center>
+                    <div class="text-muted">
+                        <?php echo word_limiter($ad->sejarah,50 ); ?>
+                        <?php endforeach ?>
                     </div>
+                    <a href="<?= base_url('profile') ?>" class="btn btn-primary rounded-pill">
+                        <i class="fas fa-eye"></i> Baca
+                        Selengkapnya
+                    </a>
                 </div>
             </div>
 
+
+
             <div class="row">
-                <div class="col-lg-5 py-3">
+                <div class="col-lg-5 py-3 wow fadeInUp">
                     <div class="img-place wow zoomIn">
-                        <img src="<?= base_url(); ?>assets/images/tujuan.svg" alt="" width="50px">
+                        <img src="<?= base_url(); ?>assets/images/news.svg" alt="" width="50px">
                     </div>
                 </div>
-                <?php endforeach ?>
+
                 <div class="col-lg-6 py-3 mt-lg-5">
                     <center>
                         <h3 class="mb-4 text-primary">Tujuan Baiti Jannati</h3>
@@ -83,108 +93,55 @@
                         </div>
 
 
-                        <!-- Mencari dan mendapatkan Donatur Tetap maupun Tidak Tetap yang hasilnya akan diberikan sepenuhnya
-                        kepada anak yatim / piatu. -->
-
-                        <!-- <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
-                                <span>2</span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Santunan Rutin </h5>
-                                <div class="text-muted">
-                                    <p class="fs-small">Memberikan santunan secara rutin perbulan kepada anak yatim
-                                        /
-                                        piatu dari dana para donatur</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
-                                <span>3</span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Bimbingan Pendidikan </h5>
-                                <div class="text-muted">
-                                    <p class="fs-small">Memberikan bimbingan pendidikan dan
-                                        ketrampilan secara gratis kepada anak didik rumah cerdas ”BAITI JANNATI”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text bg-primary fg-white rounded-circle">
-                                <span>4</span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Biaya Pendidikan </h5>
-                                <div class="text-muted">
-                                    <p class="fs-small">Membantu biaya pendidikan dan
-                                        perlengkapan sekolah anak didik mulai dari tingkat TK sampai dengan SMP /
-                                        MTs.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iconic-item wow fadeInUp">
-                            <div class="iconic-md iconic-text  bg-primary fg-white rounded-circle">
-                                <span>5</span>
-                            </div>
-                            <div class="iconic-content">
-                                <h5>Pendanaan </h5>
-                                <div class="text-muted">
-                                    <p class="fs-small">Mengadakan berbagai kegiatan yang dapat
-                                        mendatangkan dana untuk selanjutnya diperuntukkan untuk anak yatim / piatu.
-                                    </p>
-                                </div>
-                            </div>
-                        </div> -->
 
                     </div>
                     <?php endforeach ?>
 
                 </div>
+            </div>
 
 
-                <div class="container mr-12  wow fadeInUp">
-                    <h3 class="text-center wow fadeIn text-primary">Kegiatan Kami</h3>
-                    <hr>
-                    <br>
-                    <div class="row justify-content-center">
-                        <?php foreach ($kegiatan as $ad) : ?>
-                        <div class="card-page  mr-3 mb-3" style="width:340px; height:300px">
-                            <center><img src="<?= base_url('assets/images/kegiatan/') . $ad->foto ?>"
-                                    style="width:100px; height:100px;">
-                                <br>
-
-                            </center>
+            <div class="container mr-12  wow fadeInUp">
+                <h3 class="text-center wow fadeIn text-primary">Kegiatan Kami</h3>
+                <hr>
+                <br>
+                <div class="row justify-content-center  wow fadeInUp">
+                    <?php foreach ($kegiatan as $ad) : ?>
+                    <div class="card-page  mr-2 mb-3 ml-2" style="width:340px; height:300px">
+                        <center><img src="<?= base_url('assets/images/kegiatan/') . $ad->foto ?>"
+                                style="width:100px; height:100px;">
                             <br>
+
+                        </center>
+                        <br>
+
+                        <center>
+                            <b>
+                                <div class="text-primary">
+                                    <h5><?= $ad->judul ?></h5>
+                                </div>
+                            </b>
                             <div class="text-muted">
-                                <center>
-                                    <b>
-                                        <div class="text-primary">
-                                            <h5><?= $ad->judul ?></h5>
-                                        </div>
-                                    </b>
-                                    <h6><?= $ad->deskripsi ?></h6>
+                                <h6><?= $ad->deskripsi ?></h6>
 
 
-                                </center>
-                            </div>
-
-                            <center>
-                                <br>
+                        </center>
 
 
-                            </center>
+                        <center>
+                            <br>
 
 
-                        </div>
-                        <?php endforeach ?>
+                        </center>
+
 
                     </div>
+                    <?php endforeach ?>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="page-section bg-image bg-image-overlay-dark"

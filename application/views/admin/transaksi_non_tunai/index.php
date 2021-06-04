@@ -188,17 +188,32 @@
 
 
                             <td style=" text-align: center;">
-                                <!-- <a class=' btn-circle btn-primary'
+                                <a class=' btn-circle btn-primary'
                                     href='<?= base_url() . 'admin/transaksi_non_tunai/detail/' . $j->order_id ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
-                                </a> -->
+                                </a>
 
+                                <?php if ($j->status_code == 201) : ?>
+                                <a href="#modalDelete3" data-toggle="modal"
+                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_non_tunai/hapus/' . $j->order_id) ?>')"
+                                    class='btn btn-circle btn-danger'>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                                <?php elseif ($j->status_code == 200) : ?>
+                                <a href="#modalDelete2" data-toggle="modal"
+                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_non_tunai/hapus/' . $j->order_id) ?>')"
+                                    class='btn btn-circle btn-danger'>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                                <?php else : ?>
                                 <a href="#modalDelete" data-toggle="modal"
                                     onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_non_tunai/hapus/' . $j->order_id) ?>')"
                                     class='btn btn-circle btn-danger'>
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a>
+
+                                <?php endif ?>
 
                             </td>
                         </tr>
@@ -302,6 +317,42 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-danger"><b>Peringatan !</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mohon maaf Anda tidak dapat menghapus data ini karena transaksi masih berjalan
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-danger"><b>Peringatan !</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mohon maaf Anda tidak dapat menghapus data ini karena transaksi telah berhasil
             </div>
         </div>
     </div>

@@ -122,6 +122,7 @@ class Transaksitunai_model extends CI_Model
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
         $this->db->join('kategori', 'detail_donasi_tunai.id_kategori = kategori.id_kategori');
+        $this->db->order_by('tgl_donasi', "DESC");
         return $this->db->get_where('transaksi_donasi_tunai', ['jenis_donasi' => 'non keuangan' ])->result();
     }
 
@@ -426,19 +427,6 @@ class Transaksitunai_model extends CI_Model
         return $this->db->count_all($table);
     }
 
-    public function chartTransaksiDonasiTunai($bulan)
-    {
-        $like = 'T-TDT-' . date('y') . $bulan;
-        $this->db->like('id_donasi', $like, 'after');
-        return count($this->db->get('transaksi_donasi_tunai')->result_array());
-    }
-
-    public function nominalTerbesar()
-    {
-
-        $this->db->select_max('nominal');
-        return $this->db->get('transaksi_donasi_tunai')->result();
-    }
 
     
     public function getDetailTransaksiTunai($id_detail_donasi)
@@ -482,7 +470,7 @@ class Transaksitunai_model extends CI_Model
         $this->db->join('user as user2', 'transaksi_donasi_tunai.id_user_pengurus = user2.id_user');
         $this->db->join('detail_donasi_tunai', 'transaksi_donasi_tunai.id_donasi = detail_donasi_tunai.id_donasi');
         $this->db->group_by('tgl_donasi');
-        $this->db->order_by('tgl_donasi', 'DSC');
+        $this->db->order_by('id_detail_donasi', 'ASC');
         $this->db->where('jenis_donasi', 'keuangan');
         return $this->db->get('transaksi_donasi_tunai')->result_array();
     }

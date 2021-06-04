@@ -66,7 +66,7 @@
 
     <?php $no = 1;
 foreach ($transaksi_tunai as $p) : ?>
-    <?php if ($p == null) : ?>
+    <?php if ($p == 'keuangan') : ?>
 
     <?php else : ?>
 
@@ -124,13 +124,11 @@ foreach ($transaksi_tunai as $p) : ?>
         </tbody>
     </table>
 
-    <?php endif ?>
-    <?php endforeach ?>
-    <br>
+
 
     <?php $no = 1;
 foreach ($transaksi_tunai_non as $p) : ?>
-    <?php if ($p == null) : ?>
+    <?php if ($p == 'non keuangan') : ?>
 
     <?php else : ?>
     Berikut merupakan Jenis Donasi Non Keuangan :
@@ -194,8 +192,6 @@ foreach ($transaksi_tunai_non as $p) : ?>
                 <?php endforeach ?>
 
 
-                <?php endif ?>
-                <?php endforeach ?>
 
 
 
@@ -227,3 +223,10 @@ foreach ($transaksi_tunai_non as $p) : ?>
 </body>
 
 </html>
+
+<?php endif ?>
+<?php endforeach ?>
+<br>
+
+<?php endif ?>
+<?php endforeach ?>

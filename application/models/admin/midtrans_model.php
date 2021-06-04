@@ -145,7 +145,7 @@ class Midtrans_model extends CI_Model
         $this->db->select('MONTHNAME(transaction_time) as month');
         $this->db->from('transaksi_midtrans');
         $this->db->group_by('transaction_time');
-        $this->db->order_by('order_id', 'DESC');
+        $this->db->order_by('order_id', 'ASC');
         $this->db->where('status_code', '200');
         return $this->db->get()->result_array();
     }

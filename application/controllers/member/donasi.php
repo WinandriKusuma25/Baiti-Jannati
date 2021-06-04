@@ -13,7 +13,6 @@ class Donasi extends CI_Controller
         $this->load->helper('url');
         $this->load->model('admin/User_model');
         $this->load->library('form_validation');
-        $this->load->library('session');
     }
 
     public function index()
@@ -135,7 +134,7 @@ class Donasi extends CI_Controller
         $result = json_decode($this->input->post('result_data'), true);
 
         $keterangan = $this->input->post('keterangan');
-        $nama = $this->session->userdata('name');
+        $nama = $this->session->userdata('id_user');
         if ($result['payment_type'] == 'echannel'){
             $data = [
                 'order_id' => $result['order_id'],
@@ -147,7 +146,7 @@ class Donasi extends CI_Controller
                 'bill_key' => $result['bill_key'],
                 'biller_code' => $result['biller_code'],
                 'keterangan' => $keterangan,
-                'name' => $nama
+                'id_user' => $nama
             ];
         }elseif ($result['payment_type'] == 'cstore'){
             $data = [
@@ -159,7 +158,7 @@ class Donasi extends CI_Controller
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
                 'keterangan' => $keterangan,
-                'name' => $nama
+                'id_user' => $nama
             ];
         }
         else{
@@ -173,7 +172,7 @@ class Donasi extends CI_Controller
                 'pdf_url' => $result['pdf_url'],
                 'status_code' => $result['status_code'],
                 'keterangan' => $keterangan,
-                'name' => $nama
+                'id_user' => $nama
             ];
         }
        
@@ -182,7 +181,7 @@ class Donasi extends CI_Controller
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                Transaksi berhasil, Silahkan segera melakukan pembayaran ! 
+                Transaksi berhasil di proses, Silahkan segera melakukan pembayaran ! 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
