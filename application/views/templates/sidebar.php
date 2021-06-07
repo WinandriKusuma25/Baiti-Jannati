@@ -86,6 +86,14 @@ if (
             <span>Kategori</span></a>
     </li>
 
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= activate_menu('bank') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('admin/bank') ?>">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Daftar Bank</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider  mt-3">
     <!-- Heading -->
