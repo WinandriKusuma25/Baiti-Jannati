@@ -76,8 +76,7 @@
                 <td style=" text-align: center;">Rp. <?= number_format($j->gross_amount, 2, ',', '.'); ?></td>
             </tr>
             <?php endforeach ?>
-            <?php
-                                foreach ($pemasukan_tunai as $dnk) : ?>
+            <?php foreach ($pemasukan_tunai as $dnk) : ?>
             <tr>
                 <td style=" text-align: center;"><?= $no++ ?></td>
                 <!-- <td><?= $dnk->id_user ?></td>

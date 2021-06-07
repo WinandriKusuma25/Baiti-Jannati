@@ -401,7 +401,7 @@ class Transaksi_tunai extends CI_Controller
     public function cetak($id)
     {
         $data['users'] = $this->Transaksitunai_model->getTransaksiTunaiUser($id);
-        $data['transaksi_tunai'] = $this->Transaksitunai_model->getDonasiTransaksiTunaiKeuangan($id);
+        $data['transaksi_tunai'] = $this->Transaksitunai_model->getDonasiTransaksiTunai($id);
         $data['transaksi_tunai_non'] = $this->Transaksitunai_model->getDonasiTransaksiTunaiNonKeuangan($id);
         $data['transaksi_tunai_tgl'] = $this->Transaksitunai_model->getTransaksiTunaiTglDonasi($id);
         $this->pdf->setPaper('A4', 'potrait');
