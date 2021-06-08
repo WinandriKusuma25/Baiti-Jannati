@@ -66,6 +66,12 @@ if (
             <span>Pemasukan Transaksi Donasi Transfer</span></a>
     </li>
 
+    <li class="nav-item <?= activate_menu('transaksi_transfer_manual') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_transfer_manual') ?>">
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span>Pemasukan Transaksi Donasi Transfer Manual</span></a>
+    </li>
+
     <li class="nav-item <?= activate_menu('pemasukan_non_donasi') ?>">
         <a class="nav-link pb-0" href="<?= base_url('admin/pemasukan_non_donasi') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>

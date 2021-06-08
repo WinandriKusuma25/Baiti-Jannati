@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label for="bank">No. Rekening</label>
-                            <input type="text" class="form-control" id="no_rekening" name="no_rekening"
+                            <input type="number" class="form-control" id="no_rekening" name="no_rekening"
                                 value="<?= set_value('no_rekening')  ?>">
                             <?= form_error('no_rekening', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>

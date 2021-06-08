@@ -10,6 +10,8 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('admin/User_model');
         $this->load->model('admin/Midtrans_model');
+        $this->load->model('admin/Bank_model');
+        $this->load->model('admin/Transaksitransfermanual_model');
         is_logged_in();
     }
 
@@ -18,6 +20,7 @@ class Home extends CI_Controller
         $data['title'] = 'Baiti Jannati | Beranda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();
         $data['transaksi_midtrans'] = $this->Midtrans_model->showTransaksiMidtransPending($this->session->userdata('email'));
+        $data['bank'] = $this->Bank_model->showBank();
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('templates/member/topbar', $data);

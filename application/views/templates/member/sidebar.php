@@ -75,7 +75,13 @@ if (
     <li class="nav-item <?= activate_menu('riwayat_donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('member/riwayat_donasi') ?>">
             <i class="fas fa-fw fa-sticky-note"></i>
-            <span>Riwayat Donasi Transfer</span></a>
+            <span>Riwayat Donasi Transfer Payment Gateway</span></a>
+    </li>
+
+    <li class="nav-item <?= activate_menu('transaksi_transfer_manual') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('member/transaksi_transfer_manual') ?>">
+            <i class="fas fa-fw fa-sticky-note"></i>
+            <span>Riwayat Donasi Transfer Manual</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('riwayat_donasi_tunai') ?>">
@@ -87,7 +93,13 @@ if (
     <li class="nav-item <?= activate_menu('donasi') ?>">
         <a class="nav-link pb-0" href=" <?= base_url('member/donasi') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
-            <span> Tambah Donasi</span></a>
+            <span> Tambah Donasi Via Payment Gateway</span></a>
+    </li>
+
+    <li class="nav-item <?= activate_menu('donasi_manual') ?>">
+        <a class="nav-link pb-0" href=" <?= base_url('member/donasi_manual') ?>">
+            <i class="fas fa-fw fa-hand-holding-heart"></i>
+            <span> Tambah Donasi Via Bank Transfer Manual</span></a>
     </li>
 
     <!-- Divider -->
