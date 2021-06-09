@@ -50,9 +50,9 @@
 
                         <div class="form-group">
                             <label for="nama">No. Rekening</label>
-                            <input type="number" class="form-control" id="no_rekening" name="no_rekening" min="1"
-                                placeholder="Masukkan No. Rekening Anda" value="<?= set_value('no_rekening')  ?>">
-                            <?= form_error('no_rekening', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <input type="number" class="form-control" id="norekening" name="norekening" min="1"
+                                placeholder="Masukkan No. Rekening Anda" value="<?= set_value('norekening')  ?>">
+                            <?= form_error('norekening', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
 
 

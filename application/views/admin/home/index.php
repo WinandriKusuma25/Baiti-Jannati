@@ -42,7 +42,10 @@
                     foreach ($transaksi_tunai_hitung as $total_masuk_tunai) {
                         $nominal_masuk_tunai += $total_masuk_tunai->nominal;
                     }
-                    $nominal = $nominal_masuk_tunai + $nominal_non_masuk + $nominal_masuk - $nominal_keluar;
+                    foreach ($transaksi_manual_hitung as $total_masuk_manual) {
+                        $nominal_masuk_manual += $total_masuk_manual->nominal;
+                    }
+                    $nominal = $nominal_masuk_tunai + $nominal_non_masuk + $nominal_masuk + $nominal_masuk_manual - $nominal_keluar;
                     ?>
 
 

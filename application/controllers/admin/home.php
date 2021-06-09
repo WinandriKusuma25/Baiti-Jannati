@@ -13,6 +13,7 @@ class Home extends CI_Controller
         $this->load->model('admin/Pengeluarandonasi_model');
         $this->load->model('admin/Pemasukannondonasi_model');
         $this->load->model('admin/Midtrans_model');
+        $this->load->model('admin/Transaksitransfermanual_model');
         $this->load->model('admin/Transaksitunai_model');
         is_logged_in();
     }
@@ -56,6 +57,7 @@ class Home extends CI_Controller
         //menghitung sisa saldo
         $data['pengeluaran_donasi_hitung'] = $this->Pengeluarandonasi_model->showPengeluaranDonasi();
         $data['transaksi_midtrans_hitung'] = $this->Midtrans_model->showTransaksiMidtransPendingAll();
+        $data['transaksi_manual_hitung'] = $this->Transaksitransfermanual_model->showTransaksiSukses();
         $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunai();
         $data['pemasukan_non_donasi_hitung'] = $this->Pemasukannondonasi_model->showPemasukanNonDonasi();
         $data['transaksi_tunai_hitung'] = $this->Transaksitunai_model->showDonasiTransaksiTunaiKeuangan();

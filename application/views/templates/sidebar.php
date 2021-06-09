@@ -63,13 +63,13 @@ if (
     <li class="nav-item <?= activate_menu('transaksi_non_tunai') ?>">
         <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_non_tunai') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
-            <span>Pemasukan Transaksi Donasi Transfer</span></a>
+            <span>Pemasukan Transaksi Donasi Transfer Payment Via Gateway</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('transaksi_transfer_manual') ?>">
         <a class="nav-link pb-0" href="<?= base_url('admin/transaksi_transfer_manual') ?>">
             <i class="fas fa-fw fa-hand-holding-heart"></i>
-            <span>Pemasukan Transaksi Donasi Transfer Manual</span></a>
+            <span>Pemasukan Transaksi Donasi Transfer Via Manual</span></a>
     </li>
 
     <li class="nav-item <?= activate_menu('pemasukan_non_donasi') ?>">

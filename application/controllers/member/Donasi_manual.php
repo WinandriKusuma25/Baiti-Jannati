@@ -22,7 +22,7 @@ class Donasi_manual extends CI_Controller
         $this->form_validation->set_rules('nominal', 'nominal', 'required|trim');
         $this->form_validation->set_rules('bank', 'bank', 'required|trim');
         $this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim');
-        $this->form_validation->set_rules('no_rekening', 'no_rekening', 'required|trim');
+        $this->form_validation->set_rules('norekening', 'norekening', 'required|trim');
     
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->result();

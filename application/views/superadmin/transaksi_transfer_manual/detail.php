@@ -8,7 +8,7 @@
         foreach ($transaksi_transfer as $ad) : ?>
         <small>
             <div class="text-muted"> Manajemen donasi &nbsp;/&nbsp; Transaksi Transfer &nbsp; /&nbsp; <a
-                    href="<?= base_url() . 'member/transaksi_transfer_manual/detail/' . $ad->id_transfer ?>">Detail
+                    href="<?= base_url() . 'superadmin/transaksi_transfer_manual/detail/' . $ad->id_transfer ?>">Detail
                     Donasi Transfer</a></div>
         </small>
         <?php endforeach ?>
@@ -61,7 +61,6 @@
                 <div class="card-text">&nbsp;&nbsp; Tujuan Bank :&nbsp;<b><?= $ad->nama_bank ?></b></div>
                 <div class="card-text">&nbsp;&nbsp; Nominal :&nbsp;<b> Rp.
                         <?= number_format($ad->nominal, 2, ',', '.'); ?></b></div>
-                <div class="card-text">&nbsp;&nbsp; Keterangan :&nbsp;<b><?= $ad->keterangan ?></b></div>
                 <div class="card-text">&nbsp;&nbsp; Tgl. Transaksi
                     :&nbsp;<b><?=  date('d-m-Y H:i:s', strtotime($ad->created_at)); ?></b></div>
                 <br>
@@ -72,8 +71,8 @@
 
                     <?php else : ?>
 
-                    <b> <?=  date('d-m-Y H:i:s', strtotime($ad->updated_at)); ?></b> <?php endif ?>
-
+                    <b> <?=  date('d-m-Y H:i:s', strtotime($ad->updated_at)); ?> <?php endif ?> </b>
+                    <div class="card-text">&nbsp;&nbsp; Keterangan :&nbsp;<b><?= $ad->keterangan ?></b></div>
                     <?php if ($ad->status == "diterima") : ?>
                     <div class="project-state">
                         &nbsp;&nbsp;&nbsp;Status Pembayaran : <span class="badge badge-success"> Sukses</span>
@@ -95,7 +94,7 @@
                         width="50%"></center>
                 <p>
                 <p>
-                    &nbsp;&nbsp; <a href="<?php echo base_url("member/transaksi_transfer_manual"); ?>"
+                    &nbsp;&nbsp; <a href="<?php echo base_url("superadmin/transaksi_transfer_manual"); ?>"
                         class="btn btn-primary">
                         <i class="fas fa-arrow-left"></i>&nbsp;Kembali </a>
                     <!-- <hr width="90%"> -->
@@ -103,10 +102,9 @@
                     <?php endforeach ?>
             </div>
 
-
-
         </div>
 
     </div>
+    <br>
 </div>
-<br>
+</div>

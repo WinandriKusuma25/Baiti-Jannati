@@ -57,7 +57,7 @@
 
 
                 <div class="card-text">&nbsp;&nbsp; Dari Bank :&nbsp;<b><?= $ad->bank ?></b></div>
-                <div class="card-text">&nbsp;&nbsp; No. Rekening :&nbsp;<b><?= $ad->no_rekening ?></b></div>
+                <div class="card-text">&nbsp;&nbsp; No. Rekening :&nbsp;<b><?= $ad->norekening ?></b></div>
                 <div class="card-text">&nbsp;&nbsp; Tujuan Bank :&nbsp;<b><?= $ad->nama_bank ?></b></div>
                 <div class="card-text">&nbsp;&nbsp; Nominal :&nbsp;<b> Rp.
                         <?= number_format($ad->nominal, 2, ',', '.'); ?></b></div>
@@ -71,8 +71,8 @@
 
                     <?php else : ?>
 
-                    <?=  date('d-m-Y H:i:s', strtotime($ad->updated_at)); ?> <?php endif ?>
-
+                    <b> <?=  date('d-m-Y H:i:s', strtotime($ad->updated_at)); ?> <?php endif ?> </b>
+                    <div class="card-text">&nbsp;&nbsp; Keterangan :&nbsp;<b><?= $ad->keterangan ?></b></div>
                     <?php if ($ad->status == "diterima") : ?>
                     <div class="project-state">
                         &nbsp;&nbsp;&nbsp;Status Pembayaran : <span class="badge badge-success"> Sukses</span>

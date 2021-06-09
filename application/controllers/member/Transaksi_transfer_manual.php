@@ -109,13 +109,13 @@ class Transaksi_transfer_manual extends CI_Controller
 
             $id_transfer = $this->input->post('id_transfer');
             $bank = $this->input->post('bank');
-            $no_rekening = $this->input->post('no_rekening');
+            $norekening = $this->input->post('norekening');
             $id_bank = $this->input->post('id_bank');
             $nominal = $this->input->post('nominal');
             $keterangan = $this->input->post('keterangan');
 
             $this->db->set('bank', $bank);
-            $this->db->set('no_rekening', $no_rekening);
+            $this->db->set('norekening', $norekening);
             $this->db->set('id_bank', $id_bank);
             $this->db->set('nominal', $nominal);
             $this->db->set('keterangan', $keterangan);

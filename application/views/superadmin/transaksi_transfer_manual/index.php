@@ -9,7 +9,7 @@
         <h1 class="h3 mb-0 text-gray-800">Transaksi Transfer</h1>
         <small>
             <div class="text-muted"> Manajemen Donasi &nbsp;/&nbsp; <a
-                    href="<?php echo base_url("admin/transaksi_transfer_manual"); ?>">Transaksi Transfer Manual</a>
+                    href="<?php echo base_url("superadmin/transaksi_transfer_manual"); ?>">Transaksi Transfer Manual</a>
             </div>
         </small>
     </div>
@@ -121,7 +121,7 @@
             <p>
 
                 <!-- Menampikan Data Filter Tanggal -->
-            <form method="post" action="<?= base_url('admin/transaksi_transfer_manual/filter'); ?>">
+            <form method="post" action="<?= base_url('superadmin/transaksi_transfer_manual/filter'); ?>">
                 <label class="text-primary"><b>Filter Data Berdasarkan Tanggal</b></label>
                 <div class=" form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
@@ -139,8 +139,8 @@
                         <label></label>
                         <button type="submit" class=" btn btn-primary"><i
                                 class="fas fa-filter"></i>&nbsp;Filter</button>
-                        <a href="<?php echo base_url("admin/transaksi_transfer_manual"); ?>" class="btn btn-danger"> <i
-                                class="fas fa-sync-alt"></i>&nbsp;Reset </a>
+                        <a href="<?php echo base_url("superadmin/transaksi_transfer_manual"); ?>"
+                            class="btn btn-danger"> <i class="fas fa-sync-alt"></i>&nbsp;Reset </a>
                     </div>
                 </div>
             </form>
@@ -194,23 +194,11 @@
 
                             <td style=" text-align: center;">
                                 <a class=' btn-circle btn-primary'
-                                    href='<?= base_url() . 'admin/transaksi_transfer_manual/detail/' . $j->id_transfer ?>'
+                                    href='<?= base_url() . 'superadmin/transaksi_transfer_manual/detail/' . $j->id_transfer ?>'
                                     class='btn btn-biru'>
                                     <i class="fas fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a class='btn btn-circle btn-warning'
-                                    href="<?= base_url() . 'admin/transaksi_transfer_manual/edit/' . $j->id_transfer ?>">
-                                    <i class="fas fa-edit" aria-hidden="true"></i>
-                                </a>
-
-
-
-                                <a href="#modalDelete" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/transaksi_transfer_manual/hapus/' . $j->id_transfer) ?>')"
-                                    class='btn btn-circle btn-danger'>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
 
 
 

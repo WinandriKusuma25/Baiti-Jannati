@@ -47,7 +47,7 @@
                             <td><?= $no++ ?></td>
                             <td><?= $j->name ?></td>
                             <td><?= $j->bank ?></td>
-                            <td><?= $j->no_rekening ?></td>
+                            <td><?= $j->norekening ?></td>
                             <td><?= $j->nama_bank ?></td>
 
                             <td>Rp. <?= number_format($j->nominal, 2, ',', '.'); ?></td>
